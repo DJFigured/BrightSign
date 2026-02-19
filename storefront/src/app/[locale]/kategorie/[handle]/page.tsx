@@ -1,0 +1,90 @@
+import { sdk } from "@/lib/sdk"
+import { getLocale } from "next-intl/server"
+import { regionMap, type Locale } from "@/i18n/config"
+import { getRegionId } from "@/lib/medusa-helpers"
+import { CategoryPageClient } from "./client"
+
+interface Props {
+  params: Promise<{ handle: string; locale: string }>
+  searchParams: Promise<{ page?: string }>
+}
+
+export default async function CategoryPage({ params, searchParams }: Props) {
+  const { handle } = await params
+  const { page } = await searchParams
+  const locale = await getLocale() as Locale
+  const regionCode = regionMap[locale]
+  const regionId = getRegionId(regionCode)
+
+  const currentPage = parseInt(page ?? "1", 10)
+  const limit = 12
+  const offset = (currentPage - 1) * limit
+
+  // Fetch categories (flat list - we build the tree from parent_category_id)
+  const { product_categories } = await sdk.store.category.list({
+    fields: "id,name,handle,parent_category_id",
+    limit: 100,
+  }) as { product_categories: Array<{ id: string; name: string; handle: string; parent_category_id: string | null }> }
+
+  // Build children map from flat list
+  const childrenMap = new Map<string, Array<{ id: string; name: string; handle: string }>>()
+  for (const cat of product_categories) {
+    if (cat.parent_category_id) {
+      const siblings = childrenMap.get(cat.parent_category_id) ?? []
+      siblings.push({ id: cat.id, name: cat.name, handle: cat.handle })
+      childrenMap.set(cat.parent_category_id, siblings)
+    }
+  }
+
+  // Attach children to categories for the sidebar
+  const categoriesWithChildren = product_categories.map((cat) => ({
+    ...cat,
+    category_children: childrenMap.get(cat.id),
+  }))
+
+  // Find current category
+  const category = categoriesWithChildren.find((c) => c.handle === handle)
+
+  // Recursively gather ALL descendant category IDs for filtering
+  function getAllDescendantIds(parentId: string): string[] {
+    const ids: string[] = []
+    const children = childrenMap.get(parentId) ?? []
+    for (const child of children) {
+      ids.push(child.id)
+      ids.push(...getAllDescendantIds(child.id))
+    }
+    return ids
+  }
+
+  const categoryIds: string[] = []
+  if (category) {
+    categoryIds.push(category.id)
+    categoryIds.push(...getAllDescendantIds(category.id))
+  }
+
+  // Fetch products with region_id for correct pricing
+  const { products, count } = await sdk.store.product.list({
+    category_id: categoryIds.length > 0 ? categoryIds : undefined,
+    limit,
+    offset,
+    fields: "+variants.calculated_price",
+    region_id: regionId,
+  }) as {
+    products: Array<Record<string, unknown>>
+    count: number
+  }
+
+  const totalPages = Math.ceil(count / limit)
+
+  return (
+    <CategoryPageClient
+      products={products}
+      categories={categoriesWithChildren}
+      currentCategory={category ?? null}
+      currentPage={currentPage}
+      totalPages={totalPages}
+      totalProducts={count}
+      handle={handle}
+    />
+  )
+}

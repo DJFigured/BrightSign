@@ -1,26 +1,129 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-primary: #1a2b4a;
-  --color-primary-light: #2d4a7c;
-  --color-primary-dark: #0f1a2e;
-  --color-accent: #00c389;
-  --color-accent-light: #00e6a0;
-  --color-accent-dark: #00a070;
-  --color-background: #f5f7fa;
-  --color-surface: #ffffff;
-  --color-text: #1a1a1a;
-  --color-muted: #6b7280;
-  --color-border: #e5e7eb;
+  /* BrightSign brand colors */
+  --color-brand-primary: #1a2b4a;
+  --color-brand-primary-light: #2d4a7c;
+  --color-brand-primary-dark: #0f1a2e;
+  --color-brand-accent: #00c389;
+  --color-brand-accent-light: #00e6a0;
+  --color-brand-accent-dark: #00a070;
+
+  /* Semantic colors */
   --color-success: #10b981;
   --color-warning: #f59e0b;
   --color-error: #ef4444;
   --color-info: #3b82f6;
+
+  /* Fonts */
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
+
+  /* shadcn theme mappings */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Radii */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
 }
 
-body {
-  background: var(--color-background);
-  color: var(--color-text);
+:root {
+  --radius: 0.5rem;
+
+  /* BrightSign themed shadcn palette */
+  --background: #f5f7fa;
+  --foreground: #1a1a1a;
+
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+
+  /* Primary = BrightSign dark blue */
+  --primary: #1a2b4a;
+  --primary-foreground: #ffffff;
+
+  /* Secondary = lighter blue */
+  --secondary: #e8ecf2;
+  --secondary-foreground: #1a2b4a;
+
+  /* Muted */
+  --muted: #f0f2f5;
+  --muted-foreground: #6b7280;
+
+  /* Accent = BrightSign green */
+  --accent: #00c389;
+  --accent-foreground: #ffffff;
+
+  --destructive: #ef4444;
+
+  --border: #e5e7eb;
+  --input: #e5e7eb;
+  --ring: #1a2b4a;
+
+  /* Charts */
+  --chart-1: #1a2b4a;
+  --chart-2: #00c389;
+  --chart-3: #2d4a7c;
+  --chart-4: #00a070;
+  --chart-5: #f59e0b;
+
+  /* Sidebar */
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1a1a1a;
+  --sidebar-primary: #1a2b4a;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f0f2f5;
+  --sidebar-accent-foreground: #1a2b4a;
+  --sidebar-border: #e5e7eb;
+  --sidebar-ring: #1a2b4a;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
