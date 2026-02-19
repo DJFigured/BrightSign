@@ -1,0 +1,91 @@
+{
+  "common": {
+    "home": "Strona główna",
+    "products": "Produkty",
+    "cart": "Koszyk",
+    "checkout": "Kasa",
+    "account": "Konto",
+    "login": "Zaloguj się",
+    "register": "Rejestracja",
+    "logout": "Wyloguj",
+    "search": "Szukaj produktów...",
+    "currency": "PLN",
+    "addToCart": "Dodaj do koszyka",
+    "buyNow": "Kup teraz",
+    "inStock": "W magazynie",
+    "lastItems": "Ostatnie sztuki",
+    "onOrder": "Na zamówienie (3-5 dni)",
+    "outOfStock": "Niedostępne",
+    "freeShipping": "Darmowa dostawa od {threshold}",
+    "contact": "Kontakt",
+    "aboutUs": "O nas",
+    "terms": "Regulamin",
+    "privacy": "Polityka prywatności",
+    "returns": "Zwroty"
+  },
+  "home": {
+    "hero": {
+      "title": "Profesjonalne rozwiązania digital signage",
+      "subtitle": "Oficjalny dystrybutor odtwarzaczy BrightSign na Polskę",
+      "cta": "Przeglądaj produkty"
+    },
+    "categories": "Kategorie produktów",
+    "featured": "Polecane produkty",
+    "b2b": {
+      "title": "Klient biznesowy?",
+      "subtitle": "Zarejestruj się jako partner B2B i uzyskaj zniżki",
+      "cta": "Zarejestruj się jako B2B"
+    },
+    "trust": {
+      "delivery": "Szybka dostawa",
+      "deliveryDesc": "Wysyłka w ciągu 24 godzin",
+      "warranty": "Pełna gwarancja",
+      "warrantyDesc": "2 lata na wszystkie produkty",
+      "support": "Wsparcie techniczne",
+      "supportDesc": "Eksperckie doradztwo"
+    }
+  },
+  "product": {
+    "description": "Opis",
+    "specifications": "Specyfikacje",
+    "related": "Może Cię zainteresować",
+    "sku": "Kod produktu",
+    "category": "Kategoria",
+    "series": "Seria"
+  },
+  "b2b": {
+    "title": "Rejestracja B2B",
+    "subtitle": "Zarejestruj się jako klient biznesowy",
+    "companyName": "Nazwa firmy",
+    "vatId": "NIP",
+    "regNumber": "REGON",
+    "contactName": "Osoba kontaktowa",
+    "email": "E-mail",
+    "phone": "Telefon",
+    "street": "Ulica",
+    "city": "Miasto",
+    "postalCode": "Kod pocztowy",
+    "country": "Kraj",
+    "businessType": "Rodzaj działalności",
+    "expectedVolume": "Oczekiwany wolumen",
+    "submit": "Wyślij rejestrację",
+    "benefits": {
+      "title": "Korzyści konta B2B",
+      "discount": "Zniżki od 10% do 20%",
+      "invoice": "Fakturowanie firmowe",
+      "support": "Dedykowane wsparcie",
+      "volume": "Rabaty ilościowe"
+    }
+  },
+  "footer": {
+    "company": "Make more s.r.o.",
+    "description": "Autoryzowany dystrybutor rozwiązań BrightSign digital signage na Polskę i Europę Środkową.",
+    "quickLinks": "Szybkie linki",
+    "customerService": "Obsługa klienta",
+    "newsletter": {
+      "title": "Aktualności i promocje",
+      "placeholder": "Twój e-mail",
+      "subscribe": "Subskrybuj"
+    }
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "common": {
+    "home": "Home",
+    "products": "Products",
+    "cart": "Cart",
+    "checkout": "Checkout",
+    "account": "Account",
+    "login": "Sign In",
+    "register": "Register",
+    "logout": "Sign Out",
+    "search": "Search products...",
+    "currency": "EUR",
+    "addToCart": "Add to Cart",
+    "buyNow": "Buy Now",
+    "inStock": "In Stock",
+    "lastItems": "Last Items",
+    "onOrder": "On Order (3-5 days)",
+    "outOfStock": "Out of Stock",
+    "freeShipping": "Free shipping from {threshold}",
+    "contact": "Contact",
+    "aboutUs": "About Us",
+    "terms": "Terms & Conditions",
+    "privacy": "Privacy Policy",
+    "returns": "Returns"
+  },
+  "home": {
+    "hero": {
+      "title": "Professional Digital Signage Solutions",
+      "subtitle": "Official BrightSign player distributor for Central Europe",
+      "cta": "Browse Products"
+    },
+    "categories": "Product Categories",
+    "featured": "Featured Products",
+    "b2b": {
+      "title": "Business Customer?",
+      "subtitle": "Register as a B2B partner and get discounted prices",
+      "cta": "Register as B2B"
+    },
+    "trust": {
+      "delivery": "Fast Delivery",
+      "deliveryDesc": "Ships within 24 hours",
+      "warranty": "Full Warranty",
+      "warrantyDesc": "2 years on all products",
+      "support": "Technical Support",
+      "supportDesc": "Expert consulting"
+    }
+  },
+  "product": {
+    "description": "Description",
+    "specifications": "Specifications",
+    "related": "You Might Also Like",
+    "sku": "Product Code",
+    "category": "Category",
+    "series": "Series"
+  },
+  "b2b": {
+    "title": "B2B Registration",
+    "subtitle": "Register as a business customer",
+    "companyName": "Company Name",
+    "vatId": "VAT ID",
+    "regNumber": "Registration Number",
+    "contactName": "Contact Person",
+    "email": "Email",
+    "phone": "Phone",
+    "street": "Street",
+    "city": "City",
+    "postalCode": "Postal Code",
+    "country": "Country",
+    "businessType": "Business Type",
+    "expectedVolume": "Expected Volume",
+    "submit": "Submit Registration",
+    "benefits": {
+      "title": "B2B Account Benefits",
+      "discount": "Discounts from 10% to 20%",
+      "invoice": "Company invoicing",
+      "support": "Dedicated support",
+      "volume": "Volume discounts"
+    }
+  },
+  "footer": {
+    "company": "Make more s.r.o.",
+    "description": "Authorized BrightSign digital signage solutions distributor for Czech Republic and Central Europe.",
+    "quickLinks": "Quick Links",
+    "customerService": "Customer Service",
+    "newsletter": {
+      "title": "News & Deals",
+      "placeholder": "Your email",
+      "subscribe": "Subscribe"
+    }
+  }
+}

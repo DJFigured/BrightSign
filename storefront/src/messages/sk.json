@@ -1,0 +1,91 @@
+{
+  "common": {
+    "home": "Domov",
+    "products": "Produkty",
+    "cart": "Košík",
+    "checkout": "Pokladňa",
+    "account": "Účet",
+    "login": "Prihlásenie",
+    "register": "Registrácia",
+    "logout": "Odhlásiť",
+    "search": "Hľadať produkty...",
+    "currency": "EUR",
+    "addToCart": "Pridať do košíka",
+    "buyNow": "Kúpiť",
+    "inStock": "Skladom",
+    "lastItems": "Posledné kusy",
+    "onOrder": "Na objednávku (3-5 dní)",
+    "outOfStock": "Nedostupné",
+    "freeShipping": "Doprava zadarmo od {threshold}",
+    "contact": "Kontakt",
+    "aboutUs": "O nás",
+    "terms": "Obchodné podmienky",
+    "privacy": "Ochrana údajov",
+    "returns": "Reklamácie"
+  },
+  "home": {
+    "hero": {
+      "title": "Profesionálne digital signage riešenia",
+      "subtitle": "Oficiálny distribútor BrightSign prehrávačov pre Slovensko",
+      "cta": "Prezrieť produkty"
+    },
+    "categories": "Kategórie produktov",
+    "featured": "Odporúčané produkty",
+    "b2b": {
+      "title": "Ste firemný zákazník?",
+      "subtitle": "Zaregistrujte sa ako B2B partner a získajte zvýhodnené ceny",
+      "cta": "Registrovať ako B2B"
+    },
+    "trust": {
+      "delivery": "Rýchle doručenie",
+      "deliveryDesc": "Odoslanie do 24 hodín",
+      "warranty": "Plná záruka",
+      "warrantyDesc": "2 roky na všetky produkty",
+      "support": "Technická podpora",
+      "supportDesc": "Expertné poradenstvo"
+    }
+  },
+  "product": {
+    "description": "Popis",
+    "specifications": "Špecifikácie",
+    "related": "Mohlo by vás zaujímať",
+    "sku": "Kód produktu",
+    "category": "Kategória",
+    "series": "Séria"
+  },
+  "b2b": {
+    "title": "B2B registrácia",
+    "subtitle": "Zaregistrujte sa ako firemný zákazník",
+    "companyName": "Názov spoločnosti",
+    "vatId": "DIČ",
+    "regNumber": "IČO",
+    "contactName": "Kontaktná osoba",
+    "email": "E-mail",
+    "phone": "Telefón",
+    "street": "Ulica",
+    "city": "Mesto",
+    "postalCode": "PSČ",
+    "country": "Krajina",
+    "businessType": "Typ podnikania",
+    "expectedVolume": "Očakávaný objem",
+    "submit": "Odoslať registráciu",
+    "benefits": {
+      "title": "Výhody B2B účtu",
+      "discount": "Zľavy od 10 % do 20 %",
+      "invoice": "Fakturácia na firmu",
+      "support": "Dedikovaná podpora",
+      "volume": "Množstvové zľavy"
+    }
+  },
+  "footer": {
+    "company": "Make more s.r.o.",
+    "description": "Autorizovaný distribútor BrightSign digital signage riešení pre Slovensko a strednú Európu.",
+    "quickLinks": "Rýchle odkazy",
+    "customerService": "Zákaznícky servis",
+    "newsletter": {
+      "title": "Novinky a akcie",
+      "placeholder": "Váš e-mail",
+      "subscribe": "Odoberať"
+    }
+  }
+}

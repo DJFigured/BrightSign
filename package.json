@@ -1,0 +1,16 @@
+{
+  "name": "brightsign-eu-shop",
+  "private": true,
+  "scripts": {
+    "dev:backend": "pnpm --filter backend dev",
+    "dev:storefront": "pnpm --filter storefront dev",
+    "build:backend": "pnpm --filter backend build",
+    "build:storefront": "pnpm --filter storefront build",
+    "db:up": "docker compose -f docker-compose.dev.yml up -d",
+    "db:down": "docker compose -f docker-compose.dev.yml down",
+    "db:migrate": "pnpm --filter backend db:migrate"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
