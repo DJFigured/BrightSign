@@ -4,6 +4,7 @@ import * as path from "node:path"
 import { getFamiliesBySeries, FAMILY_URLS } from "./scraper/product-urls.js"
 import { scrapeSeries } from "./scraper/brightsign-biz.js"
 import { downloadAllImages } from "./images/downloader.js"
+import { processAllImages } from "./images/processor.js"
 import { generateAllDescriptions } from "./content/description-generator.js"
 import { translateAll } from "./content/translator.js"
 import type { ScrapedFamily, GeneratedContent } from "./scraper/types.js"
@@ -115,6 +116,32 @@ program
     console.log(`Downloading images for ${families.length} families...\n`)
     await downloadAllImages(families)
     console.log("\nDone!")
+  })
+
+// ── OPTIMIZE ──
+program
+  .command("optimize")
+  .description("Optimize images: resize + WebP conversion + thumbnails")
+  .option("-s, --series <number>", "Series to optimize (5, 6)")
+  .option("-f, --family <code>", "Single family to optimize (e.g., hd5)")
+  .option("-w, --width <px>", "Max gallery width in px", "1200")
+  .option("-t, --thumb-width <px>", "Thumbnail width in px", "400")
+  .option("-q, --quality <number>", "WebP quality 1-100", "82")
+  .option("--include-hero", "Include hero banner images")
+  .option("--overwrite", "Overwrite already optimized files")
+  .action(async (opts) => {
+    ensureDirs()
+    console.log("=== BrightSign Image Optimizer ===\n")
+
+    await processAllImages({
+      family: opts.family,
+      series: opts.series,
+      galleryMaxWidth: parseInt(opts.width),
+      thumbWidth: parseInt(opts.thumbWidth),
+      webpQuality: parseInt(opts.quality),
+      skipHero: !opts.includeHero,
+      overwrite: opts.overwrite ?? false,
+    })
   })
 
 // ── GENERATE ──

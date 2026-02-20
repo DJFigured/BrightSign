@@ -6,6 +6,7 @@
   "scripts": {
     "scrape": "tsx src/cli.ts scrape",
     "images": "tsx src/cli.ts images",
+    "optimize": "tsx src/cli.ts optimize",
     "generate": "tsx src/cli.ts generate",
     "translate": "tsx src/cli.ts translate",
     "status": "tsx src/cli.ts status"
@@ -13,7 +14,8 @@
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
     "cheerio": "^1.0.0",
-    "commander": "^13.1.0"
+    "commander": "^13.1.0",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

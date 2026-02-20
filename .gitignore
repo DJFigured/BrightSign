@@ -49,5 +49,6 @@ coverage/
 
 # Product Agent data (large files - scraped images, generated content)
 tools/product-agent/data/images/
+tools/product-agent/data/images-optimized/
 tools/product-agent/data/scraped/
 tools/product-agent/data/generated/
