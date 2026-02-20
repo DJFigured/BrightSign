@@ -185,7 +185,7 @@ export function ProductDetailClient({ product, relatedProducts }: Props) {
               <h2 className="mb-3 text-lg font-semibold">{t("specifications")}</h2>
               <dl className="grid grid-cols-2 gap-2 text-sm">
                 {Object.entries(metadata)
-                  .filter(([key]) => !key.startsWith("_"))
+                  .filter(([key, value]) => !key.startsWith("_") && typeof value === "string")
                   .map(([key, value]) => (
                     <div key={key} className="contents">
                       <dt className="font-medium capitalize">{key.replace(/([A-Z])/g, " $1")}</dt>

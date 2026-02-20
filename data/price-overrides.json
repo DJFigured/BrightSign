@@ -1,0 +1,19 @@
+[
+  { "modelNumber": "HD226", "priceCZK": 0, "_note": "Série 6 - cena TBD" },
+  { "modelNumber": "HD1026", "priceCZK": 0, "_note": "Série 6 - cena TBD" },
+  { "modelNumber": "XD236", "priceCZK": 0, "_note": "Série 6 - cena TBD" },
+  { "modelNumber": "XD1036", "priceCZK": 0, "_note": "Série 6 - cena TBD" },
+
+  { "modelNumber": "AU335", "priceCZK": 5800 },
+  { "modelNumber": "LS425", "priceCZK": 9200 },
+  { "modelNumber": "LS445", "priceCZK": 11900 },
+  { "modelNumber": "HD225", "priceCZK": 14900 },
+  { "modelNumber": "HD1025", "priceCZK": 17900 },
+  { "modelNumber": "XD235", "priceCZK": 19400 },
+  { "modelNumber": "XD1035", "priceCZK": 22400 },
+  { "modelNumber": "XT245", "priceCZK": 24400 },
+  { "modelNumber": "XT1145", "priceCZK": 26400 },
+  { "modelNumber": "XT2145", "priceCZK": 31900 },
+  { "modelNumber": "XC2055", "priceCZK": 36900 },
+  { "modelNumber": "XC4055", "priceCZK": 49900 }
+]
