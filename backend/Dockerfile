@@ -29,6 +29,9 @@ COPY --from=builder --chown=medusa:nodejs /app/package.json ./package.json
 COPY --from=builder --chown=medusa:nodejs /app/medusa-config.ts ./medusa-config.ts
 COPY --from=builder --chown=medusa:nodejs /app/tsconfig.json ./tsconfig.json
 
+# Admin build: copy to /app/public/admin (rootDirectory + ADMIN_RELATIVE_OUTPUT_DIR)
+COPY --from=builder --chown=medusa:nodejs /app/.medusa/server/public/admin ./public/admin
+
 # Create uploads directory
 RUN mkdir -p /app/uploads && chown -R medusa:nodejs /app/uploads
 
