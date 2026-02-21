@@ -1,10 +1,10 @@
 
 // Hardcoded region IDs from seed data to avoid async fetching on every request
 const REGION_MAP: Record<string, string> = {
-  CZ: "reg_01KHTQMR6HD7AEMP006EH8JFSC",
-  SK: "reg_01KHTQMR6H8P4KV67VRK9WDPZK",
-  PL: "reg_01KHTQMR6HQTCVCYFR0VX0PC70",
-  EU: "reg_01KHTQMR6HSRZAKZ0SA0SESARC",
+  CZ: "reg_01KJ0945H6KXKT9DKJ2Q9Z00NZ",
+  SK: "reg_01KJ0945H7SR9N97MA3JNP7A5B",
+  PL: "reg_01KJ0945H7M4A7V4P095CQ18V4",
+  EU: "reg_01KJ0945H8MT8HPKVV1EA96AP9",
 }
 
 export function getRegionId(regionCode: string): string {
@@ -12,7 +12,7 @@ export function getRegionId(regionCode: string): string {
 }
 
 // Sales channel ID for the BrightSign Webshop
-export const SALES_CHANNEL_ID = "sc_01KHTQMR52ZWPKQND5NRQT3MH3"
+export const SALES_CHANNEL_ID = "sc_01KJ0945DKEPX1P4KAHV82GZ0M"
 
 export function formatPrice(amount: number | undefined | null, currencyCode: string): string {
   if (amount == null) return ""
