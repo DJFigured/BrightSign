@@ -44,7 +44,7 @@ export function orderConfirmationTemplate(order: OrderData): string {
           <tr>
             <td style="background:#1a2b4a;padding:32px 40px;">
               <h1 style="margin:0;color:#fff;font-size:24px;">BrightSign Shop</h1>
-              <p style="margin:8px 0 0;color:#00c389;font-size:14px;">brightsign-shop.cz</p>
+              <p style="margin:8px 0 0;color:#00c389;font-size:14px;">${(process.env.FRONTEND_URL || "https://brightsign-shop.cz").replace(/^https?:\/\//, "")}</p>
             </td>
           </tr>
           <!-- Body -->

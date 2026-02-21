@@ -1,5 +1,6 @@
 import { MedusaContainer } from "@medusajs/framework/types"
 import { validateVatNumber } from "../lib/vies"
+import { sendB2BValidated } from "../lib/email"
 
 /**
  * Scheduled job: vies-retry
@@ -74,7 +75,11 @@ export default async function viesRetryJob(container: MedusaContainer) {
           `[VIES Retry] Validated ${customer.email} (${vatId}) → b2b_standard`
         )
 
-        // TODO: Send vat-validated email when RESEND_API_KEY is set
+        await sendB2BValidated({
+          email: customer.email,
+          first_name: customer.first_name ?? "",
+          company_name: customer.metadata?.company_name as string | undefined,
+        }).catch((err: any) => logger.error(`[VIES Email] Validation email failed: ${err.message}`))
       } else {
         // Explicitly invalid → mark as invalid, keep in pending
         await customerModuleService.updateCustomers(customer.id, {

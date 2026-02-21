@@ -45,7 +45,7 @@ export function b2bValidatedTemplate(customer: {
                 Potřebujete větší objem? Kontaktujte nás pro individuální nabídku s vyššími slevami (15–20%).
               </p>
 
-              <a href="https://brightsign-shop.cz/katalog" style="display:inline-block;background:#00c389;color:#fff;padding:12px 28px;text-decoration:none;border-radius:4px;font-weight:bold;">
+              <a href="${process.env.FRONTEND_URL || "https://brightsign-shop.cz"}/katalog" style="display:inline-block;background:#00c389;color:#fff;padding:12px 28px;text-decoration:none;border-radius:4px;font-weight:bold;">
                 Nakupovat se slevou →
               </a>
             </td>

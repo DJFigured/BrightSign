@@ -2,6 +2,7 @@ import {
   SubscriberArgs,
   SubscriberConfig,
 } from "@medusajs/framework"
+import { sendOrderConfirmation } from "../lib/email"
 
 export default async function orderPlacedHandler({
   event: { data },
@@ -23,9 +24,20 @@ export default async function orderPlacedHandler({
     `[Order] #${order.display_id} placed by ${order.email} — ${totalFormatted} — ${order.items?.length ?? 0} item(s)`
   )
 
-  // TODO: Send order confirmation email when RESEND_API_KEY is set
-  // import { sendOrderConfirmation } from "../lib/email.js"
-  // await sendOrderConfirmation(order)
+  if (order.email) {
+    await sendOrderConfirmation({
+      id: order.id,
+      display_id: order.display_id ?? 0,
+      email: order.email,
+      total: Number(order.total),
+      currency_code: order.currency_code ?? "CZK",
+      items: (order.items ?? []).map((item: any) => ({
+        title: item.title || item.product_title || "Produkt",
+        quantity: item.quantity,
+        unit_price: Number(item.unit_price),
+      })),
+    }).catch((err: any) => logger.error(`[Order Email] Failed to send confirmation: ${err.message}`))
+  }
 }
 
 export const config: SubscriberConfig = {

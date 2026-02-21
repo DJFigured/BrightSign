@@ -2,6 +2,7 @@ import {
   SubscriberArgs,
   SubscriberConfig,
 } from "@medusajs/framework"
+import { sendEmail } from "../lib/email"
 
 export default async function orderPaymentCapturedHandler({
   event: { data },
@@ -28,8 +29,16 @@ export default async function orderPaymentCapturedHandler({
   // 2. Admin marks order as fulfilled in Medusa /app
   // 3. Customer receives shipping notification
 
-  // TODO: Notify admin (obchod@brightsign.cz) of new order to fulfill
-  // TODO: Send payment confirmed email to customer
+  // Notify admin about new order to fulfill
+  const adminUrl = process.env.BACKEND_URL || "http://localhost:9000"
+  await sendEmail({
+    to: process.env.ADMIN_EMAIL || "obchod@brightsign.cz",
+    subject: `Nová objednávka k vyřízení #${order.display_id || order.id}`,
+    html: `<p>Objednávka <strong>#${order.display_id || order.id}</strong> byla zaplacena.</p>
+<p>Celkem: ${totalFormatted}</p>
+<p>Zákazník: ${order.email || "neznámý"}</p>
+<p><a href="${adminUrl}/app/orders/${order.id}">Otevřít v Admin panelu</a></p>`,
+  }).catch((err: any) => logger.error(`[Admin Email] Failed: ${err.message}`))
 }
 
 export const config: SubscriberConfig = {

@@ -61,7 +61,7 @@ export function b2bWelcomeTemplate(
                 </ul>
               </div>
 
-              <a href="https://brightsign-shop.cz/katalog" style="display:inline-block;background:#00c389;color:#fff;padding:12px 28px;text-decoration:none;border-radius:4px;font-weight:bold;">
+              <a href="${process.env.FRONTEND_URL || "https://brightsign-shop.cz"}/katalog" style="display:inline-block;background:#00c389;color:#fff;padding:12px 28px;text-decoration:none;border-radius:4px;font-weight:bold;">
                 Přejít do katalogu →
               </a>
             </td>
@@ -69,7 +69,7 @@ export function b2bWelcomeTemplate(
           <tr>
             <td style="background:#f5f5f5;padding:20px 40px;text-align:center;">
               <p style="margin:0;color:#888;font-size:12px;">
-                Make more s.r.o. | obchod@brightsign.cz | +420 xxx xxx xxx
+                Make more s.r.o. | obchod@brightsign.cz
               </p>
             </td>
           </tr>
