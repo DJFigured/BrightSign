@@ -33,6 +33,33 @@ export const FAMILY_URLS: FamilyUrlEntry[] = [
   // { familyCode: "ls6", series: "6", path: "/brightsign-players/series-6/ls6/", expectedModels: ["LS426", "LS446"] },
   // { familyCode: "au6", series: "6", path: "/brightsign-players/series-6/au6/", expectedModels: ["AU336"] },
   // ── Series 5 ──
+  // (defined below)
+  // ── Series 4 (legacy/clearance — no individual family pages on brightsign.biz) ──
+  {
+    familyCode: "hd4",
+    series: "4",
+    path: "/brightsign-players/series-4/",
+    expectedModels: ["HD224", "HD1024"],
+  },
+  {
+    familyCode: "xd4",
+    series: "4",
+    path: "/brightsign-players/series-4/",
+    expectedModels: ["XD234", "XD1034"],
+  },
+  {
+    familyCode: "xt4",
+    series: "4",
+    path: "/brightsign-players/series-4/",
+    expectedModels: ["XT244", "XT1144"],
+  },
+  {
+    familyCode: "ls4",
+    series: "4",
+    path: "/brightsign-players/series-4/",
+    expectedModels: ["LS424", "LS444"],
+  },
+  // ── Series 5 ──
   {
     familyCode: "hd5",
     series: "5",

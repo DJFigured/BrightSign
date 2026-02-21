@@ -20,14 +20,24 @@ import * as path from "path"
 const CZK_TO_EUR = 25.5
 const CZK_TO_PLN = 5.8
 
-// Family code → category handle mapping
+// Family code → series category handle mapping
 const FAMILY_CATEGORY_MAP: Record<string, string> = {
-  au6: "au6-serie", au5: "au5-serie",
-  ls6: "ls6-serie", ls5: "ls5-serie",
-  hd6: "hd6-serie", hd5: "hd5-serie",
-  xd6: "xd6-serie", xd5: "xd5-serie",
-  xt6: "xt6-serie", xt5: "xt5-serie",
+  au6: "au6-serie", au5: "au5-serie", au4: "au4-serie",
+  ls6: "ls6-serie", ls5: "ls5-serie", ls4: "ls4-serie",
+  hd6: "hd6-serie", hd5: "hd5-serie", hd4: "hd4-serie",
+  xd6: "xd6-serie", xd5: "xd5-serie", xd4: "xd4-serie",
+  xt6: "xt6-serie", xt5: "xt5-serie", xt4: "xt4-serie",
   xc6: "xc6-serie", xc5: "xc5-serie",
+}
+
+// Family code prefix → product line category handle
+const LINE_CATEGORY_MAP: Record<string, string> = {
+  au: "au-prehravace",
+  ls: "ls-prehravace",
+  hd: "hd-prehravace",
+  xd: "xd-prehravace",
+  xt: "xt-prehravace",
+  xc: "xc-prehravace",
 }
 
 interface GeneratedContent {
@@ -151,9 +161,17 @@ export default async function syncProducts({ container }: ExecArgs) {
 
   for (const content of generated) {
     const handle = `brightsign-${content.modelNumber.toLowerCase()}`
-    const categoryHandle = FAMILY_CATEGORY_MAP[content.familyCode]
-    const category = categoryHandle ? categoryByHandle.get(categoryHandle) : null
-    const categoryIds = category ? [category.id] : []
+
+    // Dual category assignment: series family + product line
+    const categoryIds: string[] = []
+    const seriesCatHandle = FAMILY_CATEGORY_MAP[content.familyCode]
+    const seriesCat = seriesCatHandle ? categoryByHandle.get(seriesCatHandle) : null
+    if (seriesCat) categoryIds.push(seriesCat.id)
+
+    const linePrefix = content.familyCode.replace(/[0-9]/g, "")
+    const lineCatHandle = LINE_CATEGORY_MAP[linePrefix]
+    const lineCat = lineCatHandle ? categoryByHandle.get(lineCatHandle) : null
+    if (lineCat) categoryIds.push(lineCat.id)
 
     const price = priceMap.get(content.modelNumber)
     const priceCZK = price?.priceCZK ?? 0
@@ -162,11 +180,15 @@ export default async function syncProducts({ container }: ExecArgs) {
 
     const modelTranslations = translations[content.modelNumber] || {}
 
+    const isClearance = content.series === "4"
     const metadata: Record<string, unknown> = {
       productNumber: content.modelNumber,
       series: content.series,
+      familyCode: content.familyCode,
       familyName: content.familyCode.toUpperCase(),
-      warranty: content.specs.warranty || (content.series === "6" ? "5 let" : "3 roky"),
+      lineCode: linePrefix.toUpperCase(),
+      clearance: isClearance ? "true" : "false",
+      warranty: content.specs.warranty || (content.series === "6" ? "5 let" : content.series === "5" ? "3 roky" : "2 roky"),
       specs: content.specs.raw || {},
       seo: {
         title: content.seoTitle,
@@ -192,8 +214,12 @@ export default async function syncProducts({ container }: ExecArgs) {
         title: content.title,
         subtitle: content.subtitle,
         description: content.description,
+        status: priceCZK ? ProductStatus.PUBLISHED : ProductStatus.DRAFT,
         metadata,
         category_ids: categoryIds,
+        priceCZK,
+        priceEUR,
+        pricePLN,
       })
     } else {
       const prices: { currency_code: string; amount: number }[] = []
@@ -242,9 +268,12 @@ export default async function syncProducts({ container }: ExecArgs) {
     }
   }
 
-  // Update existing products
+  // Update existing products (title, description, metadata, status)
+  // NOTE: updateProductsWorkflow does NOT support category_ids or price changes
+  // For price/category changes, use SYNC_FORCE_RECREATE=1
   if (toUpdate.length) {
     logger.info(`Updating ${toUpdate.length} existing products...`)
+    const needsRecreateForPrices: string[] = []
     for (const product of toUpdate) {
       logger.info(`  Updating: ${product.id}`)
       await updateProductsWorkflow(container).run({
@@ -254,10 +283,17 @@ export default async function syncProducts({ container }: ExecArgs) {
             title: product.title,
             subtitle: product.subtitle,
             description: product.description,
+            status: product.status,
             metadata: product.metadata,
           },
         },
       })
+      if (product.priceCZK) {
+        needsRecreateForPrices.push(product.id)
+      }
+    }
+    if (needsRecreateForPrices.length) {
+      logger.warn(`  ${needsRecreateForPrices.length} products may need SYNC_FORCE_RECREATE=1 to update prices/categories.`)
     }
   }
 

@@ -1,9 +1,16 @@
 import { useTranslations } from "next-intl"
 import { Link } from "@/i18n/navigation"
+import type { HeaderNavData } from "./Header"
 
-export function Footer() {
+interface FooterProps {
+  navData?: HeaderNavData
+}
+
+export function Footer({ navData }: FooterProps) {
   const t = useTranslations("footer")
   const tc = useTranslations("common")
+
+  const series = navData?.series ?? []
 
   return (
     <footer className="bg-brand-primary-dark text-white">
@@ -18,25 +25,24 @@ export function Footer() {
             <p className="mt-3 text-sm text-white/60">{t("company")}</p>
           </div>
 
-          {/* Products */}
+          {/* Products - dynamic */}
           <div>
             <h4 className="mb-3 font-semibold">{tc("products")}</h4>
             <ul className="space-y-2 text-sm text-white/60">
-              <li>
-                <Link href="/kategorie/serie-5" className="hover:text-brand-accent transition-colors">
-                  BrightSign Série 5
-                </Link>
-              </li>
-              <li>
-                <Link href="/kategorie/serie-4" className="hover:text-brand-accent transition-colors">
-                  BrightSign Série 4
-                </Link>
-              </li>
-              <li>
-                <Link href="/kategorie/prislusenstvi" className="hover:text-brand-accent transition-colors">
-                  Příslušenství
-                </Link>
-              </li>
+              {series.map((s) => (
+                <li key={s.handle}>
+                  <Link href={`/kategorie/${s.handle}`} className="hover:text-brand-accent transition-colors">
+                    BrightSign {s.name}
+                  </Link>
+                </li>
+              ))}
+              {navData?.hasAccessories && (
+                <li>
+                  <Link href="/kategorie/prislusenstvi" className="hover:text-brand-accent transition-colors">
+                    Příslušenství
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
 
@@ -46,7 +52,7 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-white/60">
               <li>
                 <Link href="/b2b/registrace" className="hover:text-brand-accent transition-colors">
-                  B2B registrace
+                  {t("b2bRegistration")}
                 </Link>
               </li>
               <li>

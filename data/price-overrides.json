@@ -15,5 +15,14 @@
   { "modelNumber": "XT1145", "priceCZK": 26400 },
   { "modelNumber": "XT2145", "priceCZK": 31900 },
   { "modelNumber": "XC2055", "priceCZK": 36900 },
-  { "modelNumber": "XC4055", "priceCZK": 49900 }
+  { "modelNumber": "XC4055", "priceCZK": 49900 },
+
+  { "modelNumber": "HD224", "priceCZK": 10900, "_note": "Série 4 doprodej (~73% ceny S5)" },
+  { "modelNumber": "HD1024", "priceCZK": 13200, "_note": "Série 4 doprodej (~74% ceny S5)" },
+  { "modelNumber": "XD234", "priceCZK": 14200, "_note": "Série 4 doprodej (~73% ceny S5)" },
+  { "modelNumber": "XD1034", "priceCZK": 16500, "_note": "Série 4 doprodej (~74% ceny S5)" },
+  { "modelNumber": "XT244", "priceCZK": 17900, "_note": "Série 4 doprodej (~73% ceny S5)" },
+  { "modelNumber": "XT1144", "priceCZK": 19400, "_note": "Série 4 doprodej (~73% ceny S5)" },
+  { "modelNumber": "LS424", "priceCZK": 6700, "_note": "Série 4 doprodej (~73% ceny S5)" },
+  { "modelNumber": "LS444", "priceCZK": 8700, "_note": "Série 4 doprodej (~73% ceny S5)" }
 ]

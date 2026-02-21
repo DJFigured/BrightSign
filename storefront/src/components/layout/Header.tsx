@@ -8,16 +8,43 @@ import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { LocaleSwitcher } from "./LocaleSwitcher"
 import { MobileMenu } from "./MobileMenu"
-import { ShoppingCart, User, Search, Menu } from "lucide-react"
+import { ShoppingCart, User, Search, Menu, ChevronDown } from "lucide-react"
 import { useCart } from "@/lib/cart-context"
 
-export function Header() {
-  const t = useTranslations("common")
+export interface NavSeriesItem {
+  name: string
+  handle: string
+  children: Array<{ name: string; handle: string }>
+}
+
+export interface NavLineItem {
+  name: string
+  handle: string
+  description?: string | null
+}
+
+export interface HeaderNavData {
+  series: NavSeriesItem[]
+  lines: NavLineItem[]
+  hasAccessories: boolean
+}
+
+interface HeaderProps {
+  navData?: HeaderNavData
+}
+
+export function Header({ navData }: HeaderProps) {
+  const t = useTranslations("header")
+  const tc = useTranslations("common")
   const [mobileOpen, setMobileOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
+  const [dropdownOpen, setDropdownOpen] = useState(false)
   const { cart } = useCart()
 
   const itemCount = cart?.items?.length ?? 0
+
+  const series = navData?.series ?? []
+  const lines = navData?.lines ?? []
 
   return (
     <>
@@ -25,10 +52,10 @@ export function Header() {
         {/* Top bar */}
         <div className="bg-brand-primary text-white">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-1.5 text-xs">
-            <span>Autorizovaný distributor BrightSign pro ČR a EU</span>
+            <span>{t("topBar")}</span>
             <div className="hidden items-center gap-4 md:flex">
               <Link href="/b2b/registrace" className="hover:text-brand-accent transition-colors">
-                B2B registrace
+                {t("b2bRegistration")}
               </Link>
               <LocaleSwitcher />
             </div>
@@ -46,7 +73,7 @@ export function Header() {
           <div className="relative hidden max-w-md flex-1 md:block">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input
-              placeholder={t("search")}
+              placeholder={tc("search")}
               className="pl-9"
             />
           </div>
@@ -100,7 +127,7 @@ export function Header() {
             <div className="relative">
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <Input
-                placeholder={t("search")}
+                placeholder={tc("search")}
                 className="pl-9"
                 autoFocus
               />
@@ -111,35 +138,119 @@ export function Header() {
         {/* Desktop category nav */}
         <nav className="hidden border-t border-border md:block">
           <div className="mx-auto flex max-w-7xl items-center gap-6 px-4 py-2 text-sm">
-            <Link
-              href="/kategorie/prehravace"
-              className="font-medium text-foreground hover:text-brand-accent transition-colors"
+            {/* Přehrávače with mega-menu */}
+            <div
+              className="relative"
+              onMouseEnter={() => setDropdownOpen(true)}
+              onMouseLeave={() => setDropdownOpen(false)}
             >
-              Přehrávače
-            </Link>
-            <Link
-              href="/kategorie/prislusenstvi"
-              className="font-medium text-foreground hover:text-brand-accent transition-colors"
-            >
-              Příslušenství
-            </Link>
-            <Link
-              href="/kategorie/serie-5"
-              className="font-medium text-foreground hover:text-brand-accent transition-colors"
-            >
-              Série 5
-            </Link>
-            <Link
-              href="/kategorie/serie-4"
-              className="font-medium text-foreground hover:text-brand-accent transition-colors"
-            >
-              Série 4
-            </Link>
+              <Link
+                href="/kategorie/prehravace"
+                className="flex items-center gap-1 font-medium text-foreground hover:text-brand-accent transition-colors"
+              >
+                {t("players")}
+                <ChevronDown className="h-3 w-3" />
+              </Link>
+
+              {/* Mega dropdown */}
+              {dropdownOpen && (series.length > 0 || lines.length > 0) && (
+                <div className="absolute left-0 top-full z-50 w-[520px] rounded-b-lg border border-t-0 border-border bg-white p-4 shadow-lg">
+                  <div className="grid grid-cols-2 gap-6">
+                    {/* By Series */}
+                    {series.length > 0 && (
+                      <div>
+                        <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                          Podle série
+                        </p>
+                        <div className="flex flex-col gap-1">
+                          {series.map((s) => (
+                            <div key={s.handle}>
+                              <Link
+                                href={`/kategorie/${s.handle}`}
+                                className="block rounded px-2 py-1 text-sm font-medium hover:bg-muted transition-colors"
+                                onClick={() => setDropdownOpen(false)}
+                              >
+                                {s.name}
+                              </Link>
+                              {s.children.length > 0 && (
+                                <div className="ml-3 flex flex-col">
+                                  {s.children.map((ch) => (
+                                    <Link
+                                      key={ch.handle}
+                                      href={`/kategorie/${ch.handle}`}
+                                      className="block rounded px-2 py-0.5 text-xs text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+                                      onClick={() => setDropdownOpen(false)}
+                                    >
+                                      {ch.name}
+                                    </Link>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* By Product Line */}
+                    {lines.length > 0 && (
+                      <div>
+                        <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                          Podle řady
+                        </p>
+                        <div className="flex flex-col gap-1">
+                          {lines.map((l) => (
+                            <Link
+                              key={l.handle}
+                              href={`/kategorie/${l.handle}`}
+                              className="group block rounded px-2 py-1 hover:bg-muted transition-colors"
+                              onClick={() => setDropdownOpen(false)}
+                            >
+                              <span className="text-sm font-medium">{l.name}</span>
+                              {l.description && (
+                                <span className="ml-1 text-xs text-muted-foreground">
+                                  — {l.description.split(" – ")[0]}
+                                </span>
+                              )}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Příslušenství */}
+            {navData?.hasAccessories && (
+              <Link
+                href="/kategorie/prislusenstvi"
+                className="font-medium text-foreground hover:text-brand-accent transition-colors"
+              >
+                {t("accessories")}
+              </Link>
+            )}
+
+            {/* Direct series links */}
+            {series.map((s) => (
+              <Link
+                key={s.handle}
+                href={`/kategorie/${s.handle}`}
+                className="font-medium text-foreground hover:text-brand-accent transition-colors"
+              >
+                {s.name}
+              </Link>
+            ))}
           </div>
         </nav>
       </header>
 
-      <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} />
+      <MobileMenu
+        open={mobileOpen}
+        onClose={() => setMobileOpen(false)}
+        navData={navData}
+      />
     </>
   )
 }

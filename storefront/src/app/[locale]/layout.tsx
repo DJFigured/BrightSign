@@ -3,10 +3,11 @@ import { notFound } from "next/navigation"
 import { NextIntlClientProvider, hasLocale } from "next-intl"
 import { getMessages } from "next-intl/server"
 import { routing } from "@/i18n/routing"
-import { Header } from "@/components/layout/Header"
+import { Header, type HeaderNavData } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
 import { CartProvider } from "@/lib/cart-context"
 import { AuthProvider } from "@/lib/auth-context"
+import { getNavigationData } from "@/lib/categories"
 
 const inter = Inter({
   variable: "--font-inter",
@@ -31,7 +32,25 @@ export default async function LocaleLayout({
     notFound()
   }
 
-  const messages = await getMessages()
+  const [messages, navRaw] = await Promise.all([
+    getMessages(),
+    getNavigationData(),
+  ])
+
+  // Transform to serializable HeaderNavData
+  const navData: HeaderNavData = {
+    series: navRaw.series.map(s => ({
+      name: s.name,
+      handle: s.handle,
+      children: s.children.map(ch => ({ name: ch.name, handle: ch.handle })),
+    })),
+    lines: navRaw.lines.map(l => ({
+      name: l.name,
+      handle: l.handle,
+      description: l.description ?? null,
+    })),
+    hasAccessories: !!navRaw.accessories,
+  }
 
   return (
     <html lang={locale}>
@@ -42,9 +61,9 @@ export default async function LocaleLayout({
           <AuthProvider>
             <CartProvider>
               <div className="flex min-h-screen flex-col">
-                <Header />
+                <Header navData={navData} />
                 <main className="flex-1">{children}</main>
-                <Footer />
+                <Footer navData={navData} />
               </div>
             </CartProvider>
           </AuthProvider>

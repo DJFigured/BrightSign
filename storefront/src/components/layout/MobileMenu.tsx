@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import { useTranslations } from "next-intl"
 import { Link } from "@/i18n/navigation"
 import {
@@ -10,27 +11,39 @@ import {
 } from "@/components/ui/sheet"
 import { Separator } from "@/components/ui/separator"
 import { LocaleSwitcher } from "./LocaleSwitcher"
+import { ChevronDown } from "lucide-react"
+import type { HeaderNavData } from "./Header"
 
 interface MobileMenuProps {
   open: boolean
   onClose: () => void
+  navData?: HeaderNavData
 }
 
-export function MobileMenu({ open, onClose }: MobileMenuProps) {
+export function MobileMenu({ open, onClose, navData }: MobileMenuProps) {
   const t = useTranslations("common")
+  const th = useTranslations("header")
+  const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set())
 
-  const navItems = [
-    { href: "/", label: t("home") },
-    { href: "/kategorie/prehravace", label: "Přehrávače" },
-    { href: "/kategorie/prislusenstvi", label: "Příslušenství" },
-    { href: "/kategorie/serie-5", label: "Série 5" },
-    { href: "/kategorie/serie-4", label: "Série 4" },
-  ]
+  const toggleSection = (key: string) => {
+    setExpandedSections((prev) => {
+      const next = new Set(prev)
+      if (next.has(key)) {
+        next.delete(key)
+      } else {
+        next.add(key)
+      }
+      return next
+    })
+  }
+
+  const series = navData?.series ?? []
+  const lines = navData?.lines ?? []
 
   const accountItems = [
-    { href: "/prihlaseni", label: t("login") },
-    { href: "/registrace", label: t("register") },
-    { href: "/b2b/registrace", label: "B2B registrace" },
+    { href: "/prihlaseni" as const, label: t("login") },
+    { href: "/registrace" as const, label: t("register") },
+    { href: "/b2b/registrace" as const, label: th("b2bRegistration") },
   ]
 
   return (
@@ -43,16 +56,94 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
         </SheetHeader>
 
         <nav className="mt-6 flex flex-col gap-1">
-          {navItems.map((item) => (
+          {/* Home */}
+          <Link
+            href="/"
+            onClick={onClose}
+            className="rounded-md px-3 py-2 text-sm font-medium hover:bg-muted transition-colors"
+          >
+            {t("home")}
+          </Link>
+
+          {/* Přehrávače - collapsible */}
+          <button
+            onClick={() => toggleSection("players")}
+            className="flex items-center justify-between rounded-md px-3 py-2 text-sm font-medium hover:bg-muted transition-colors"
+          >
+            {th("players")}
+            <ChevronDown className={`h-4 w-4 transition-transform ${expandedSections.has("players") ? "rotate-180" : ""}`} />
+          </button>
+          {expandedSections.has("players") && (
+            <div className="ml-3 flex flex-col gap-0.5">
+              <Link
+                href="/kategorie/prehravace"
+                onClick={onClose}
+                className="rounded-md px-3 py-1.5 text-sm text-brand-accent font-medium hover:bg-muted transition-colors"
+              >
+                Všechny přehrávače
+              </Link>
+
+              {/* Series */}
+              {series.map((s) => (
+                <div key={s.handle}>
+                  <button
+                    onClick={() => toggleSection(s.handle)}
+                    className="flex w-full items-center justify-between rounded-md px-3 py-1.5 text-sm font-medium hover:bg-muted transition-colors"
+                  >
+                    {s.name}
+                    {s.children.length > 0 && (
+                      <ChevronDown className={`h-3 w-3 transition-transform ${expandedSections.has(s.handle) ? "rotate-180" : ""}`} />
+                    )}
+                  </button>
+                  {expandedSections.has(s.handle) && s.children.length > 0 && (
+                    <div className="ml-3 flex flex-col gap-0.5">
+                      {s.children.map((ch) => (
+                        <Link
+                          key={ch.handle}
+                          href={`/kategorie/${ch.handle}`}
+                          onClick={onClose}
+                          className="rounded-md px-3 py-1 text-xs text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+                        >
+                          {ch.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+
+              {/* Product Lines */}
+              {lines.length > 0 && (
+                <>
+                  <Separator className="my-1" />
+                  <p className="px-3 py-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    Podle řady
+                  </p>
+                  {lines.map((l) => (
+                    <Link
+                      key={l.handle}
+                      href={`/kategorie/${l.handle}`}
+                      onClick={onClose}
+                      className="rounded-md px-3 py-1.5 text-sm hover:bg-muted transition-colors"
+                    >
+                      {l.name}
+                    </Link>
+                  ))}
+                </>
+              )}
+            </div>
+          )}
+
+          {/* Příslušenství */}
+          {navData?.hasAccessories && (
             <Link
-              key={item.href}
-              href={item.href}
+              href="/kategorie/prislusenstvi"
               onClick={onClose}
               className="rounded-md px-3 py-2 text-sm font-medium hover:bg-muted transition-colors"
             >
-              {item.label}
+              {th("accessories")}
             </Link>
-          ))}
+          )}
         </nav>
 
         <Separator className="my-4" />
@@ -73,7 +164,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
         <Separator className="my-4" />
 
         <div className="px-3">
-          <p className="mb-2 text-xs text-muted-foreground">Jazyk / Language</p>
+          <p className="mb-2 text-xs text-muted-foreground">{th("language")}</p>
           <LocaleSwitcher />
         </div>
       </SheetContent>
