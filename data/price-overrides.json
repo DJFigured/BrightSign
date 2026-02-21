@@ -1,8 +1,8 @@
 [
-  { "modelNumber": "HD226", "priceCZK": 0, "_note": "Série 6 - cena TBD" },
-  { "modelNumber": "HD1026", "priceCZK": 0, "_note": "Série 6 - cena TBD" },
-  { "modelNumber": "XD236", "priceCZK": 0, "_note": "Série 6 - cena TBD" },
-  { "modelNumber": "XD1036", "priceCZK": 0, "_note": "Série 6 - cena TBD" },
+  { "modelNumber": "HD226", "priceCZK": 17100, "_note": "Série 6 - odhad S5+15%" },
+  { "modelNumber": "HD1026", "priceCZK": 20600, "_note": "Série 6 - odhad S5+15%" },
+  { "modelNumber": "XD236", "priceCZK": 22300, "_note": "Série 6 - odhad S5+15%" },
+  { "modelNumber": "XD1036", "priceCZK": 25800, "_note": "Série 6 - odhad S5+15%" },
 
   { "modelNumber": "AU335", "priceCZK": 5800 },
   { "modelNumber": "LS425", "priceCZK": 9200 },

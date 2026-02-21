@@ -10,6 +10,7 @@ import {
 import {
   createInventoryLevelsWorkflow,
   createProductsWorkflow,
+  deleteProductsWorkflow,
   updateProductsWorkflow,
 } from "@medusajs/medusa/core-flows"
 import * as fs from "fs"
@@ -60,6 +61,10 @@ interface PriceOverride {
  * Reads from:
  *   tools/product-agent/data/generated/generated-content.json
  *   data/price-overrides.json (optional)
+ *
+ * Env vars:
+ *   SYNC_FORCE_RECREATE=1 — delete + recreate existing products (useful when
+ *     updateProductsWorkflow can't set prices on existing draft products)
  */
 export default async function syncProducts({ container }: ExecArgs) {
   const logger = container.resolve(ContainerRegistrationKeys.LOGGER)
@@ -67,7 +72,9 @@ export default async function syncProducts({ container }: ExecArgs) {
   const fulfillmentModuleService = container.resolve(Modules.FULFILLMENT)
   const salesChannelModuleService = container.resolve(Modules.SALES_CHANNEL)
 
-  logger.info("Starting product sync from generated content...")
+  const forceRecreate = process.env.SYNC_FORCE_RECREATE === "1"
+
+  logger.info(`Starting product sync from generated content (forceRecreate: ${forceRecreate})...`)
 
   // Load generated content
   const generatedPath = path.resolve(
@@ -170,7 +177,16 @@ export default async function syncProducts({ container }: ExecArgs) {
 
     const existing = existingByHandle.get(handle)
 
-    if (existing) {
+    if (existing && forceRecreate) {
+      // Force-recreate: delete existing product so it can be recreated with prices
+      logger.info(`  Force-recreate: deleting ${handle} (${existing.id})...`)
+      await deleteProductsWorkflow(container).run({
+        input: { ids: [existing.id] },
+      })
+      // Fall through to create path below
+    }
+
+    if (existing && !forceRecreate) {
       toUpdate.push({
         id: existing.id,
         title: content.title,

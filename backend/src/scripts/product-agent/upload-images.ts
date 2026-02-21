@@ -10,17 +10,25 @@ import * as path from "path"
  *
  * Images must be in: tools/product-agent/data/images/{familyCode}/
  * Products must already exist in Medusa (run sync-products first).
+ *
+ * Env vars:
+ *   UPLOAD_OPTIMIZED=1 — read from data/images-optimized/ (WebP) instead of data/images/
+ *   UPLOAD_OVERWRITE=1 — re-upload even if product already has images
  */
 export default async function uploadImages({ container }: ExecArgs) {
   const logger = container.resolve(ContainerRegistrationKeys.LOGGER)
   const query = container.resolve(ContainerRegistrationKeys.QUERY)
   const fileModuleService = container.resolve(Modules.FILE)
 
-  logger.info("Starting image upload to Medusa...")
+  const useOptimized = process.env.UPLOAD_OPTIMIZED === "1"
+  const overwrite = process.env.UPLOAD_OVERWRITE === "1"
+
+  const imageSubdir = useOptimized ? "images-optimized" : "images"
+  logger.info(`Starting image upload to Medusa (source: ${imageSubdir}, overwrite: ${overwrite})...`)
 
   const imagesBaseDir = path.resolve(
     __dirname,
-    "../../../../tools/product-agent/data/images"
+    `../../../../tools/product-agent/data/${imageSubdir}`
   )
 
   if (!fs.existsSync(imagesBaseDir)) {
@@ -70,10 +78,10 @@ export default async function uploadImages({ container }: ExecArgs) {
       continue
     }
 
-    // Read all image files in the family directory
+    // Read all image files in the family directory (skip thumbs/ subdirectory)
     const imageFiles = fs
       .readdirSync(imageDir)
-      .filter((f) => /\.(png|jpg|jpeg|webp)$/i.test(f))
+      .filter((f) => /\.(png|jpg|jpeg|webp)$/i.test(f) && f !== "thumbs")
       .sort()
 
     if (!imageFiles.length) {
@@ -118,8 +126,8 @@ export default async function uploadImages({ container }: ExecArgs) {
         continue
       }
 
-      // Skip if product already has images
-      if (product.images?.length > 0 || product.thumbnail) {
+      // Skip if product already has images (unless overwrite)
+      if (!overwrite && (product.images?.length > 0 || product.thumbnail)) {
         logger.info(`  ${handle}: already has images, skipping.`)
         skipped++
         continue
