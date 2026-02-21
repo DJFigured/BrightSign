@@ -609,7 +609,7 @@ export default async function seedBrightSignData({ container }: ExecArgs) {
         ],
       },
     })
-    publishableApiKey = keyResult
+    publishableApiKey = keyResult as any
   }
 
   await linkSalesChannelsToApiKeyWorkflow(container).run({
