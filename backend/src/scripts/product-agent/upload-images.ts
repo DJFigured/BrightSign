@@ -104,7 +104,7 @@ export default async function uploadImages({ container }: ExecArgs) {
         const [uploadResult] = await fileModuleService.createFiles([{
           filename,
           mimeType,
-          content: fileContent.toString("binary"),
+          content: fileContent.toString("base64"),
           access: "public",
         }])
         uploadedUrls.push(uploadResult.url)
