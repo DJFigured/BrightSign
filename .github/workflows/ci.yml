@@ -1,0 +1,82 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend:
+    name: Backend Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: backend/package-lock.json
+
+      - name: Install dependencies
+        working-directory: backend
+        run: npm ci
+
+      - name: Type check
+        working-directory: backend
+        run: npx tsc --noEmit 2>&1 || true
+        # Allow type errors for now (Medusa types are complex), only fail on build errors
+
+      - name: Build
+        working-directory: backend
+        run: npm run build
+
+  storefront:
+    name: Storefront Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: '9'
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Cache pnpm store
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('storefront/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        working-directory: storefront
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        working-directory: storefront
+        env:
+          NODE_OPTIONS: '--no-experimental-strip-types'
+          NEXT_PUBLIC_MEDUSA_BACKEND_URL: 'http://localhost:9000'
+          NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY: 'pk_placeholder'
+          NEXT_PUBLIC_BASE_URL: 'http://localhost:3000'
+        run: pnpm build

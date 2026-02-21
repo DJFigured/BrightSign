@@ -1,0 +1,9 @@
+node_modules
+.git
+.env
+.env.*
+!.env.template
+.next
+*.log
+coverage
+.DS_Store

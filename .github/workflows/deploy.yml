@@ -1,0 +1,60 @@
+name: Deploy to VPS
+
+on:
+  workflow_dispatch:
+    inputs:
+      service:
+        description: 'Which service to redeploy'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - backend
+          - storefront
+
+jobs:
+  deploy:
+    name: Deploy to Hetzner VPS
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: 22
+          script: |
+            set -e
+            cd /root/brightsign
+
+            echo "=== Pulling latest code ==="
+            git pull origin main
+
+            echo "=== Deploying: ${{ github.event.inputs.service }} ==="
+
+            if [ "${{ github.event.inputs.service }}" = "all" ] || [ "${{ github.event.inputs.service }}" = "backend" ]; then
+              echo "--- Rebuilding backend ---"
+              docker compose -f docker-compose.prod.yml build backend
+              docker compose -f docker-compose.prod.yml up -d --no-deps backend
+              echo "--- Running migrations ---"
+              docker compose -f docker-compose.prod.yml exec -T backend npx medusa db:migrate
+            fi
+
+            if [ "${{ github.event.inputs.service }}" = "all" ] || [ "${{ github.event.inputs.service }}" = "storefront" ]; then
+              echo "--- Rebuilding storefront ---"
+              docker compose -f docker-compose.prod.yml build storefront
+              docker compose -f docker-compose.prod.yml up -d --no-deps storefront
+            fi
+
+            echo "=== Deploy complete ==="
+            docker compose -f docker-compose.prod.yml ps
+
+# Required GitHub Secrets:
+# VPS_HOST       = 91.99.49.122
+# VPS_USER       = root
+# VPS_SSH_KEY    = contents of ~/.ssh/id_ed25519 (private key)
