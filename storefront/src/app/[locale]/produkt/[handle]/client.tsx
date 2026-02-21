@@ -10,7 +10,7 @@ import { Separator } from "@/components/ui/separator"
 import { ProductCard } from "@/components/product/ProductCard"
 import { useCart } from "@/lib/cart-context"
 import { formatPrice } from "@/lib/medusa-helpers"
-import { Minus, Plus, ShoppingCart, ChevronRight, Shield, Truck } from "lucide-react"
+import { Minus, Plus, ShoppingCart, ChevronRight, Shield, Truck, FileDown } from "lucide-react"
 
 interface ProductImage {
   id: string
@@ -97,6 +97,7 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
   const segment = lineCode ? SEGMENT_LABELS[lineCode] : undefined
   const productNumber = metadata?.productNumber as string | undefined
   const specs = metadata?.specs as Record<string, string> | undefined
+  const datasheetUrl = metadata?.datasheetUrl as string | undefined
 
   const allImages = images.length > 0
     ? images
@@ -326,6 +327,22 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
                   </tbody>
                 </table>
               </div>
+            </div>
+          )}
+
+          {/* Datasheet download */}
+          {datasheetUrl && (
+            <div className="mt-6">
+              <a
+                href={datasheetUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="outline" className="gap-2">
+                  <FileDown className="h-4 w-4" />
+                  Stáhnout datasheet (PDF)
+                </Button>
+              </a>
             </div>
           )}
         </div>

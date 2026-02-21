@@ -9,16 +9,23 @@ export default async function HomePage() {
   const regionCode = regionMap[locale]
   const regionId = getRegionId(regionCode)
 
-  // Fetch featured products (Série 6 newest, then S5 bestsellers)
+  // Fetch featured products — prefer S6 → S5 → S4 (with images first)
   let featuredProducts: Array<Record<string, unknown>> = []
   try {
     const { products } = await sdk.store.product.list({
       fields: "+variants.calculated_price,+metadata",
       region_id: regionId,
-      limit: 8,
-      order: "-created_at",
+      limit: 24,
     }) as { products: Array<Record<string, unknown>> }
-    featuredProducts = products
+    // Sort: S6 first, then S5, then S4; within each series prefer products with thumbnails
+    featuredProducts = products.sort((a, b) => {
+      const sa = Number((a.metadata as Record<string, string>)?.series || "0")
+      const sb = Number((b.metadata as Record<string, string>)?.series || "0")
+      if (sb !== sa) return sb - sa // Higher series first
+      const ha = a.thumbnail ? 0 : 1
+      const hb = b.thumbnail ? 0 : 1
+      return ha - hb // With images first
+    }).slice(0, 8)
   } catch {
     // Silently fail — homepage still renders
   }

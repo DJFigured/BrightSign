@@ -40,6 +40,18 @@ const LINE_CATEGORY_MAP: Record<string, string> = {
   xc: "xc-prehravace",
 }
 
+// Datasheet URLs per family (from scraped brightsign.biz data)
+const FAMILY_DATASHEET_MAP: Record<string, string> = {
+  hd6: "https://www.brightsign.biz/wp-content/uploads/2025/06/HD6-datasheet-20250604.pdf",
+  xd6: "https://www.brightsign.biz/wp-content/uploads/2025/06/XD6-datasheet-20250604.pdf",
+  hd5: "https://www.brightsign.biz/wp-content/uploads/2024/06/HD5-datasheet-2024.pdf",
+  xd5: "https://www.brightsign.biz/wp-content/uploads/2024/06/XD5-datasheet-2024.pdf",
+  xt5: "https://www.brightsign.biz/wp-content/uploads/2024/06/XT5-datasheet-2024.pdf",
+  xc5: "https://www.brightsign.biz/wp-content/uploads/2024/07/XC5-datasheet-07182024-Final-1.pdf",
+  ls5: "https://www.brightsign.biz/wp-content/uploads/2024/06/LS5-datasheet-2024.pdf",
+  au5: "https://www.brightsign.biz/wp-content/uploads/2024/06/AU5-datasheet-2024.pdf",
+}
+
 interface GeneratedContent {
   modelNumber: string
   familyCode: string
@@ -181,6 +193,7 @@ export default async function syncProducts({ container }: ExecArgs) {
     const modelTranslations = translations[content.modelNumber] || {}
 
     const isClearance = content.series === "4"
+    const datasheetUrl = FAMILY_DATASHEET_MAP[content.familyCode] || null
     const metadata: Record<string, unknown> = {
       productNumber: content.modelNumber,
       series: content.series,
@@ -189,6 +202,7 @@ export default async function syncProducts({ container }: ExecArgs) {
       lineCode: linePrefix.toUpperCase(),
       clearance: isClearance ? "true" : "false",
       warranty: content.specs.warranty || (content.series === "6" ? "5 let" : content.series === "5" ? "3 roky" : "2 roky"),
+      datasheetUrl,
       specs: content.specs.raw || {},
       seo: {
         title: content.seoTitle,
