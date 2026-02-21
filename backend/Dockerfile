@@ -14,33 +14,31 @@ RUN npm run build
 # ---- Stage 2: Runner ----
 FROM node:20-alpine AS runner
 
-WORKDIR /app
-
 ENV NODE_ENV=production
 
 # Create non-root user
 RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 medusa
 
-# Copy built application and config
-COPY --from=builder --chown=medusa:nodejs /app/.medusa ./.medusa
-COPY --from=builder --chown=medusa:nodejs /app/node_modules ./node_modules
-COPY --from=builder --chown=medusa:nodejs /app/package.json ./package.json
-COPY --from=builder --chown=medusa:nodejs /app/medusa-config.ts ./medusa-config.ts
-COPY --from=builder --chown=medusa:nodejs /app/tsconfig.json ./tsconfig.json
+# node_modules at /app/node_modules (Node resolution walks up from /app/.medusa/server/)
+COPY --from=builder --chown=medusa:nodejs /app/node_modules /app/node_modules
 
-# Admin build: copy to /app/public/admin (rootDirectory + ADMIN_RELATIVE_OUTPUT_DIR)
-COPY --from=builder --chown=medusa:nodejs /app/.medusa/server/public/admin ./public/admin
+# Compiled server at /app/.medusa/server/ — this is rootDirectory
+# medusa-config.js + src/subscribers + src/jobs + public/admin are all here
+COPY --from=builder --chown=medusa:nodejs /app/.medusa/server /app/.medusa/server
 
-# Create uploads directory
+# Uploads directory
 RUN mkdir -p /app/uploads && chown -R medusa:nodejs /app/uploads
 
 USER medusa
 
+# rootDirectory = /app/.medusa/server (where medusa-config.js is)
+WORKDIR /app/.medusa/server
+
 EXPOSE 9000
 
 # Health check via Medusa /health endpoint
-HEALTHCHECK --interval=30s --timeout=5s --start-period=60s --retries=3 \
+HEALTHCHECK --interval=30s --timeout=5s --start-period=90s --retries=3 \
   CMD wget --no-verbose --tries=1 --spider http://localhost:9000/health || exit 1
 
-CMD ["npm", "run", "start"]
+CMD ["/app/node_modules/.bin/medusa", "start"]
