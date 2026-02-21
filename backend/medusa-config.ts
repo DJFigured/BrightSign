@@ -28,6 +28,21 @@ module.exports = defineConfig({
       },
     },
     {
+      resolve: "@medusajs/medusa/file",
+      options: {
+        providers: [
+          {
+            resolve: "@medusajs/file-local",
+            id: "local",
+            options: {
+              upload_dir: process.env.FILE_UPLOAD_DIR || "uploads",
+              backend_url: `${process.env.BACKEND_URL || "http://localhost:9000"}/uploads`,
+            },
+          },
+        ],
+      },
+    },
+    {
       resolve: "@medusajs/medusa/payment",
       options: {
         providers: [

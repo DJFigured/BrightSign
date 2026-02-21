@@ -29,8 +29,10 @@ services:
       - .env.production
     environment:
       NODE_ENV: production
-      DATABASE_URL: postgresql://${POSTGRES_USER:-medusa}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-medusa}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-medusa}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-medusa}?sslmode=disable
       REDIS_URL: redis://redis:6379
+      BACKEND_URL: ${BACKEND_URL:-http://localhost:9000}
+      FILE_UPLOAD_DIR: /app/uploads
     ports:
       - "9000:9000"
     depends_on:
