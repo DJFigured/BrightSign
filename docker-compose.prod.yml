@@ -31,6 +31,8 @@ services:
       NODE_ENV: production
       DATABASE_URL: postgresql://${POSTGRES_USER:-medusa}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-medusa}
       REDIS_URL: redis://redis:6379
+    ports:
+      - "9000:9000"
     depends_on:
       postgres:
         condition: service_healthy
@@ -46,13 +48,15 @@ services:
       context: ./storefront
       dockerfile: Dockerfile
       args:
-        NEXT_PUBLIC_MEDUSA_BACKEND_URL: ${BACKEND_URL:-http://backend:9000}
+        NEXT_PUBLIC_MEDUSA_BACKEND_URL: ${BACKEND_URL:-http://91.99.49.122:9000}
         NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY: ${NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY}
-        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_BASE_URL:-http://localhost}
+        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_BASE_URL:-http://91.99.49.122}
     container_name: brightsign-storefront
     restart: unless-stopped
     environment:
       NODE_ENV: production
+    ports:
+      - "3000:3000"
     depends_on:
       backend:
         condition: service_healthy
