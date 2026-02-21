@@ -24,6 +24,8 @@ interface ShippingOption {
 
 export default function CheckoutPage() {
   const tc = useTranslations("common")
+  const tCart = useTranslations("cart")
+  const t = useTranslations("checkout")
   const { cart, refreshCart, cartId } = useCart()
   const [step, setStep] = useState<Step>("contact")
   const [loading, setLoading] = useState(false)
@@ -63,16 +65,16 @@ export default function CheckoutPage() {
     }
     return (
       <div className="mx-auto max-w-2xl px-4 py-16 text-center">
-        <p className="text-muted-foreground">Košík je prázdný</p>
+        <p className="text-muted-foreground">{t("cartEmpty")}</p>
       </div>
     )
   }
 
   const steps: { key: Step; label: string }[] = [
-    { key: "contact", label: "Kontakt" },
-    { key: "address", label: "Adresa" },
-    { key: "shipping", label: "Doprava" },
-    { key: "payment", label: "Platba" },
+    { key: "contact", label: t("contact") },
+    { key: "address", label: t("shipping") },
+    { key: "shipping", label: t("shippingMethod") },
+    { key: "payment", label: t("payment") },
   ]
 
   async function handleContactSubmit(e: React.FormEvent) {
@@ -206,12 +208,12 @@ export default function CheckoutPage() {
           {step === "contact" && (
             <Card>
               <CardHeader>
-                <CardTitle>Kontaktní údaje</CardTitle>
+                <CardTitle>{t("contact")}</CardTitle>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleContactSubmit} className="space-y-4">
                   <div>
-                    <Label htmlFor="email">E-mail</Label>
+                    <Label htmlFor="email">{t("email")}</Label>
                     <Input
                       id="email"
                       type="email"
@@ -222,7 +224,7 @@ export default function CheckoutPage() {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="phone">Telefon</Label>
+                    <Label htmlFor="phone">{t("phone")}</Label>
                     <Input
                       id="phone"
                       type="tel"
@@ -233,7 +235,7 @@ export default function CheckoutPage() {
                   </div>
                   <Button type="submit" disabled={loading} className="bg-brand-accent hover:bg-brand-accent-dark text-white">
                     {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                    Pokračovat
+                    {t("continue")}
                   </Button>
                 </form>
               </CardContent>
@@ -243,13 +245,13 @@ export default function CheckoutPage() {
           {step === "address" && (
             <Card>
               <CardHeader>
-                <CardTitle>Dodací adresa</CardTitle>
+                <CardTitle>{t("shipping")}</CardTitle>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleAddressSubmit} className="space-y-4">
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div>
-                      <Label htmlFor="firstName">Jméno</Label>
+                      <Label htmlFor="firstName">{t("firstName")}</Label>
                       <Input
                         id="firstName"
                         required
@@ -258,7 +260,7 @@ export default function CheckoutPage() {
                       />
                     </div>
                     <div>
-                      <Label htmlFor="lastName">Příjmení</Label>
+                      <Label htmlFor="lastName">{t("lastName")}</Label>
                       <Input
                         id="lastName"
                         required
@@ -268,7 +270,7 @@ export default function CheckoutPage() {
                     </div>
                   </div>
                   <div>
-                    <Label htmlFor="address1">Ulice a číslo popisné</Label>
+                    <Label htmlFor="address1">{t("address")}</Label>
                     <Input
                       id="address1"
                       required
@@ -278,7 +280,7 @@ export default function CheckoutPage() {
                   </div>
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div>
-                      <Label htmlFor="city">Město</Label>
+                      <Label htmlFor="city">{t("city")}</Label>
                       <Input
                         id="city"
                         required
@@ -287,7 +289,7 @@ export default function CheckoutPage() {
                       />
                     </div>
                     <div>
-                      <Label htmlFor="postalCode">PSČ</Label>
+                      <Label htmlFor="postalCode">{t("postalCode")}</Label>
                       <Input
                         id="postalCode"
                         required
@@ -298,11 +300,11 @@ export default function CheckoutPage() {
                   </div>
                   <div className="flex gap-2">
                     <Button type="button" variant="outline" onClick={() => setStep("contact")}>
-                      Zpět
+                      {t("back")}
                     </Button>
                     <Button type="submit" disabled={loading} className="bg-brand-accent hover:bg-brand-accent-dark text-white">
                       {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                      Pokračovat
+                      {t("continue")}
                     </Button>
                   </div>
                 </form>
@@ -313,12 +315,12 @@ export default function CheckoutPage() {
           {step === "shipping" && (
             <Card>
               <CardHeader>
-                <CardTitle>Způsob dopravy</CardTitle>
+                <CardTitle>{t("shippingMethod")}</CardTitle>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleShippingSubmit} className="space-y-4">
                   {shippingOptions.length === 0 ? (
-                    <p className="text-muted-foreground">Načítám možnosti dopravy...</p>
+                    <p className="text-muted-foreground">{t("loadingShipping")}</p>
                   ) : (
                     <div className="space-y-2">
                       {shippingOptions.map((option) => (
@@ -343,7 +345,7 @@ export default function CheckoutPage() {
                           </div>
                           <span className="font-semibold">
                             {option.amount === 0
-                              ? "Zdarma"
+                              ? t("free")
                               : formatPrice(option.amount, currency)}
                           </span>
                         </label>
@@ -352,7 +354,7 @@ export default function CheckoutPage() {
                   )}
                   <div className="flex gap-2">
                     <Button type="button" variant="outline" onClick={() => setStep("address")}>
-                      Zpět
+                      {t("back")}
                     </Button>
                     <Button
                       type="submit"
@@ -360,7 +362,7 @@ export default function CheckoutPage() {
                       className="bg-brand-accent hover:bg-brand-accent-dark text-white"
                     >
                       {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                      Pokračovat
+                      {t("continue")}
                     </Button>
                   </div>
                 </form>
@@ -371,20 +373,20 @@ export default function CheckoutPage() {
           {step === "payment" && (
             <Card>
               <CardHeader>
-                <CardTitle>Platba</CardTitle>
+                <CardTitle>{t("payment")}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="rounded-lg border border-border bg-muted/50 p-6 text-center">
                   <p className="text-sm text-muted-foreground">
-                    Stripe platební brána bude aktivována po dodání API klíčů.
+                    {t("stripeNote")}
                   </p>
                   <p className="mt-2 text-sm text-muted-foreground">
-                    Prozatím bude objednávka vytvořena bez online platby.
+                    {t("stripeNote2")}
                   </p>
                 </div>
                 <div className="flex gap-2">
                   <Button type="button" variant="outline" onClick={() => setStep("shipping")}>
-                    Zpět
+                    {t("back")}
                   </Button>
                   <Button
                     onClick={handlePlaceOrder}
@@ -393,7 +395,7 @@ export default function CheckoutPage() {
                     size="lg"
                   >
                     {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                    Dokončit objednávku
+                    {t("placeOrder")}
                   </Button>
                 </div>
               </CardContent>
@@ -405,7 +407,7 @@ export default function CheckoutPage() {
         <div>
           <Card>
             <CardHeader>
-              <CardTitle className="text-base">Shrnutí objednávky</CardTitle>
+              <CardTitle className="text-base">{t("summary")}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3 text-sm">
               {items.map((item) => (
@@ -418,18 +420,18 @@ export default function CheckoutPage() {
               ))}
               <Separator />
               <div className="flex justify-between">
-                <span className="text-muted-foreground">Mezisoučet</span>
+                <span className="text-muted-foreground">{tCart("subtotal")}</span>
                 <span>{formatPrice(subtotal ?? 0, currency)}</span>
               </div>
               {shippingTotal != null && shippingTotal > 0 && (
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Doprava</span>
+                  <span className="text-muted-foreground">{t("shippingMethod")}</span>
                   <span>{formatPrice(shippingTotal, currency)}</span>
                 </div>
               )}
               <Separator />
               <div className="flex justify-between text-base font-semibold">
-                <span>Celkem</span>
+                <span>{tCart("total")}</span>
                 <span className="text-brand-primary">
                   {formatPrice(total ?? subtotal ?? 0, currency)}
                 </span>
@@ -443,20 +445,21 @@ export default function CheckoutPage() {
 }
 
 function ConfirmationView({ orderId }: { orderId: string }) {
+  const t = useTranslations("checkout")
   return (
     <div className="mx-auto max-w-2xl px-4 py-16 text-center">
       <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
         <Check className="h-8 w-8 text-green-600" />
       </div>
-      <h1 className="mb-2 text-2xl font-bold">Děkujeme za objednávku!</h1>
+      <h1 className="mb-2 text-2xl font-bold">{t("orderPlaced")}</h1>
       <p className="mb-2 text-muted-foreground">
-        Vaše objednávka byla úspěšně vytvořena.
+        {t("orderSuccess")}
       </p>
       <p className="mb-6 text-sm text-muted-foreground">
-        Číslo objednávky: <span className="font-mono font-medium">{orderId}</span>
+        {t("orderNumber")}: <span className="font-mono font-medium">{orderId}</span>
       </p>
       <Button asChild className="bg-brand-accent hover:bg-brand-accent-dark text-white">
-        <Link href="/">Zpět na hlavní stránku</Link>
+        <Link href="/">{t("backToHome")}</Link>
       </Button>
     </div>
   )

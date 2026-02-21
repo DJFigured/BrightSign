@@ -21,7 +21,166 @@
     "aboutUs": "About Us",
     "terms": "Terms & Conditions",
     "privacy": "Privacy Policy",
-    "returns": "Returns"
+    "returns": "Returns",
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Try Again",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "close": "Close"
+  },
+  "header": {
+    "catalog": "Catalog",
+    "categories": "Categories",
+    "cart": "Cart",
+    "login": "Sign In",
+    "register": "Register",
+    "account": "My Account",
+    "logout": "Sign Out",
+    "b2b": "B2B",
+    "search": "Search",
+    "topBar": "Authorized BrightSign distributor for CZ and EU",
+    "b2bRegistration": "B2B Registration",
+    "players": "Players",
+    "accessories": "Accessories",
+    "series5": "Series 5",
+    "series4": "Series 4",
+    "language": "Language"
+  },
+  "footer": {
+    "company": "Make more s.r.o.",
+    "description": "Authorized BrightSign digital signage solutions distributor for Czech Republic and Central Europe.",
+    "quickLinks": "Quick Links",
+    "customerService": "Customer Service",
+    "rights": "All rights reserved",
+    "about": "About Us",
+    "contact": "Contact",
+    "terms": "Terms & Conditions",
+    "privacy": "Privacy Policy",
+    "newsletter": {
+      "title": "News & Deals",
+      "placeholder": "Your email",
+      "subscribe": "Subscribe"
+    }
+  },
+  "cart": {
+    "title": "Cart",
+    "empty": "Your cart is empty",
+    "continueShopping": "Continue Shopping",
+    "product": "Product",
+    "price": "Price",
+    "quantity": "Quantity",
+    "total": "Total",
+    "remove": "Remove",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "shippingCalculated": "Calculated at checkout",
+    "vat": "VAT",
+    "orderTotal": "Order Total",
+    "checkout": "Proceed to Checkout",
+    "loading": "Loading...",
+    "updating": "Updating...",
+    "items": "items",
+    "item": "item",
+    "summary": "Order Summary"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "contact": "Contact Details",
+    "shipping": "Shipping Address",
+    "shippingMethod": "Shipping Method",
+    "payment": "Payment",
+    "summary": "Order Summary",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "phone": "Phone",
+    "company": "Company",
+    "vatId": "VAT ID",
+    "address": "Address",
+    "city": "City",
+    "postalCode": "Postal Code",
+    "country": "Country",
+    "selectCountry": "Select country",
+    "selectShipping": "Select shipping method",
+    "selectPayment": "Select payment method",
+    "continueToShipping": "Continue to Shipping",
+    "continueToPayment": "Continue to Payment",
+    "continue": "Continue",
+    "placeOrder": "Place Order",
+    "back": "Back",
+    "orderPlaced": "Thank you for your order!",
+    "orderSuccess": "Your order has been successfully placed.",
+    "orderNumber": "Order Number",
+    "backToHome": "Back to Home",
+    "continueShopping": "Continue Shopping",
+    "required": "Required field",
+    "invalidEmail": "Invalid email",
+    "processing": "Processing...",
+    "free": "Free",
+    "step": "Step",
+    "of": "of",
+    "cartEmpty": "Cart is empty",
+    "loadingShipping": "Loading shipping options...",
+    "stripeNote": "Stripe payment gateway will be activated after API keys are provided.",
+    "stripeNote2": "For now, orders will be created without online payment."
+  },
+  "auth": {
+    "login": "Sign In",
+    "register": "Register",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "loginButton": "Sign In",
+    "registerButton": "Register",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "forgotPassword": "Forgot password?",
+    "loginError": "Incorrect email or password",
+    "registerError": "Registration failed",
+    "passwordMismatch": "Passwords do not match"
+  },
+  "account": {
+    "title": "My Account",
+    "welcome": "Welcome",
+    "orders": "Orders",
+    "noOrders": "No orders yet",
+    "orderNumber": "Order Number",
+    "orderDate": "Date",
+    "orderStatus": "Status",
+    "orderTotal": "Total",
+    "profile": "Profile",
+    "logout": "Sign Out"
+  },
+  "category": {
+    "allProducts": "All Products",
+    "noProducts": "No products found",
+    "loading": "Loading...",
+    "products": "products",
+    "showingOf": "Showing",
+    "prev": "Previous",
+    "next": "Next",
+    "page": "Page"
+  },
+  "product": {
+    "description": "Description",
+    "specifications": "Specifications",
+    "related": "You Might Also Like",
+    "sku": "Product Code",
+    "category": "Category",
+    "series": "Series",
+    "addToCart": "Add to Cart",
+    "outOfStock": "Out of Stock",
+    "quantity": "Quantity",
+    "inStock": "In Stock",
+    "price": "Price",
+    "relatedProducts": "Related Products"
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "description": "Sorry, the page you requested does not exist.",
+    "back": "Back to Home"
   },
   "home": {
     "hero": {
@@ -45,14 +204,6 @@
       "supportDesc": "Expert consulting"
     }
   },
-  "product": {
-    "description": "Description",
-    "specifications": "Specifications",
-    "related": "You Might Also Like",
-    "sku": "Product Code",
-    "category": "Category",
-    "series": "Series"
-  },
   "b2b": {
     "title": "B2B Registration",
     "subtitle": "Register as a business customer",
@@ -75,17 +226,6 @@
       "invoice": "Company invoicing",
       "support": "Dedicated support",
       "volume": "Volume discounts"
-    }
-  },
-  "footer": {
-    "company": "Make more s.r.o.",
-    "description": "Authorized BrightSign digital signage solutions distributor for Czech Republic and Central Europe.",
-    "quickLinks": "Quick Links",
-    "customerService": "Customer Service",
-    "newsletter": {
-      "title": "News & Deals",
-      "placeholder": "Your email",
-      "subscribe": "Subscribe"
     }
   }
 }

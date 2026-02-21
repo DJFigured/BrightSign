@@ -1,4 +1,3 @@
-import { sdk } from "./sdk"
 
 // Hardcoded region IDs from seed data to avoid async fetching on every request
 const REGION_MAP: Record<string, string> = {

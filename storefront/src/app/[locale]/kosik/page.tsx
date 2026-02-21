@@ -11,12 +11,13 @@ import { Minus, Plus, Trash2, ShoppingBag } from "lucide-react"
 
 export default function CartPage() {
   const t = useTranslations("common")
+  const tc = useTranslations("cart")
   const { cart, loading, updateItem, removeItem } = useCart()
 
   if (loading) {
     return (
       <div className="mx-auto max-w-4xl px-4 py-16 text-center">
-        <p className="text-muted-foreground">Načítám košík...</p>
+        <p className="text-muted-foreground">{tc("loading")}</p>
       </div>
     )
   }
@@ -29,10 +30,10 @@ export default function CartPage() {
     return (
       <div className="mx-auto max-w-4xl px-4 py-16 text-center">
         <ShoppingBag className="mx-auto mb-4 h-16 w-16 text-muted-foreground" />
-        <h1 className="mb-2 text-2xl font-bold">{t("cart")}</h1>
-        <p className="mb-6 text-muted-foreground">Váš košík je prázdný</p>
+        <h1 className="mb-2 text-2xl font-bold">{tc("title")}</h1>
+        <p className="mb-6 text-muted-foreground">{tc("empty")}</p>
         <Button asChild className="bg-brand-accent hover:bg-brand-accent-dark text-white">
-          <Link href="/kategorie/prehravace">Prohlédnout produkty</Link>
+          <Link href="/kategorie/prehravace">{tc("continueShopping")}</Link>
         </Button>
       </div>
     )
@@ -44,7 +45,7 @@ export default function CartPage() {
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
-      <h1 className="mb-6 text-2xl font-bold">{t("cart")}</h1>
+      <h1 className="mb-6 text-2xl font-bold">{tc("title")}</h1>
 
       <div className="grid gap-8 lg:grid-cols-3">
         {/* Cart items */}
@@ -110,6 +111,7 @@ export default function CartPage() {
                       size="icon"
                       className="h-8 w-8 text-destructive"
                       onClick={() => removeItem(item.id)}
+                      aria-label={tc("remove")}
                     >
                       <Trash2 className="h-4 w-4" />
                     </Button>
@@ -123,19 +125,19 @@ export default function CartPage() {
         {/* Order summary */}
         <div>
           <div className="rounded-lg border border-border bg-white p-6">
-            <h2 className="mb-4 text-lg font-semibold">Shrnutí objednávky</h2>
+            <h2 className="mb-4 text-lg font-semibold">{tc("summary")}</h2>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
-                <span className="text-muted-foreground">Mezisoučet</span>
+                <span className="text-muted-foreground">{tc("subtotal")}</span>
                 <span>{formatPrice(subtotal ?? 0, currency)}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-muted-foreground">Doprava</span>
-                <span>{shippingTotal ? formatPrice(shippingTotal, currency) : "Vypočítá se"}</span>
+                <span className="text-muted-foreground">{tc("shipping")}</span>
+                <span>{shippingTotal ? formatPrice(shippingTotal, currency) : tc("shippingCalculated")}</span>
               </div>
               <Separator />
               <div className="flex justify-between text-base font-semibold">
-                <span>Celkem</span>
+                <span>{tc("total")}</span>
                 <span className="text-brand-primary">{formatPrice(total ?? subtotal ?? 0, currency)}</span>
               </div>
             </div>
