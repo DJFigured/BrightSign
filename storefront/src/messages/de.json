@@ -445,5 +445,17 @@
     "noResults": "Keine Ergebnisse für \u201E{query}\u201D",
     "resultsFor": "Ergebnisse für \u201E{query}\u201D",
     "placeholder": "Produkte suchen..."
+  },
+  "cookies": {
+    "title": "Cookies",
+    "description": "Diese Website verwendet Cookies zur Analyse und Personalisierung von Werbung. Notwendige Cookies sind immer aktiv.",
+    "acceptAll": "Alle akzeptieren",
+    "rejectAll": "Nur notwendige",
+    "settings": "Einstellungen",
+    "analyticsLabel": "Analytische Cookies",
+    "analyticsDesc": "Helfen uns zu verstehen, wie Besucher die Website nutzen (Google Analytics).",
+    "marketingLabel": "Marketing-Cookies",
+    "marketingDesc": "Ermöglichen relevante Werbung (Meta Pixel, Google Ads).",
+    "save": "Einstellungen speichern"
   }
 }

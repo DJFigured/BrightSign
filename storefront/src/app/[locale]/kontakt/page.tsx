@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
+import { trackLead } from '@/lib/analytics'
 
 const MEDUSA_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || 'http://localhost:9000'
 const API_KEY = process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY || ''
@@ -48,6 +49,7 @@ export default function ContactPage() {
       }
 
       setSubmitted(true)
+      trackLead('contact_form')
     } catch {
       setError(t('submitError'))
     } finally {

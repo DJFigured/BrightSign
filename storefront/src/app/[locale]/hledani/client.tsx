@@ -1,7 +1,9 @@
 "use client"
 
+import { useEffect, useRef } from "react"
 import { useTranslations } from "next-intl"
 import { ProductCard } from "@/components/product/ProductCard"
+import { trackEvent, trackEcommerce, mapProductToItem } from "@/lib/analytics"
 
 interface SearchResultsClientProps {
   products: Array<Record<string, unknown>>
@@ -10,6 +12,18 @@ interface SearchResultsClientProps {
 
 export function SearchResultsClient({ products, query }: SearchResultsClientProps) {
   const t = useTranslations("search")
+
+  // Track search + view_item_list
+  const trackedRef = useRef("")
+  useEffect(() => {
+    if (!query || trackedRef.current === query) return
+    trackedRef.current = query
+    trackEvent("search", { search_term: query })
+    if (products.length > 0) {
+      const items = products.map((p, i) => mapProductToItem(p, { index: i, listName: "search_results" }))
+      trackEcommerce("view_item_list", items, { listName: "search_results" })
+    }
+  }, [query, products])
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8">

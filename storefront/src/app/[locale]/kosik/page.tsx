@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useRef } from "react"
 import { useTranslations } from "next-intl"
 import { Link } from "@/i18n/navigation"
 import Image from "next/image"
@@ -8,11 +9,26 @@ import { Separator } from "@/components/ui/separator"
 import { useCart } from "@/lib/cart-context"
 import { formatPrice } from "@/lib/medusa-helpers"
 import { Minus, Plus, Trash2, ShoppingBag } from "lucide-react"
+import { trackEcommerce, mapCartItemToGA4 } from "@/lib/analytics"
 
 export default function CartPage() {
   const t = useTranslations("common")
   const tc = useTranslations("cart")
   const { cart, loading, updateItem, removeItem } = useCart()
+
+  const items = cart?.items ?? []
+  const currencyCode = cart?.currency_code
+  const currency = currencyCode?.toUpperCase() ?? "CZK"
+
+  // Track view_cart
+  const trackedCartRef = useRef(false)
+  useEffect(() => {
+    if (trackedCartRef.current || items.length === 0) return
+    trackedCartRef.current = true
+    const ga4Items = items.map((item) => mapCartItemToGA4(item as unknown as Record<string, unknown>))
+    const total = (cart?.total as number | undefined) ?? (cart?.subtotal as number | undefined)
+    trackEcommerce("view_cart", ga4Items, { value: total ?? undefined, currency })
+  }, [items, cart, currency])
 
   if (loading) {
     return (
@@ -21,10 +37,6 @@ export default function CartPage() {
       </div>
     )
   }
-
-  const items = cart?.items ?? []
-  const currencyCode = cart?.currency_code
-  const currency = currencyCode?.toUpperCase() ?? "CZK"
 
   if (items.length === 0) {
     return (
@@ -110,7 +122,14 @@ export default function CartPage() {
                       variant="ghost"
                       size="icon"
                       className="h-8 w-8 text-destructive"
-                      onClick={() => removeItem(item.id)}
+                      onClick={() => {
+                        const ga4Item = mapCartItemToGA4(item as unknown as Record<string, unknown>)
+                        trackEcommerce("remove_from_cart", [ga4Item], {
+                          value: item.unit_price * item.quantity,
+                          currency,
+                        })
+                        removeItem(item.id)
+                      }}
                       aria-label={tc("remove")}
                     >
                       <Trash2 className="h-4 w-4" />

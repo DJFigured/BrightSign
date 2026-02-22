@@ -11,6 +11,7 @@ import { useCart } from "@/lib/cart-context"
 import { useCompare } from "@/lib/compare-context"
 import { useTranslations } from "next-intl"
 import { useState } from "react"
+import { trackEcommerce, mapProductToItem } from "@/lib/analytics"
 import { GitCompareArrows } from "lucide-react"
 
 interface ProductCardProps {
@@ -72,6 +73,12 @@ export function ProductCard({ product }: ProductCardProps) {
     setAdding(true)
     try {
       await addItem(variant.id)
+      // Track add_to_cart
+      const item = mapProductToItem(product as Record<string, unknown>)
+      trackEcommerce("add_to_cart", [item], {
+        value: priceAmount ?? undefined,
+        currency: currencyCode,
+      })
     } catch (err) {
       console.error("Failed to add to cart:", err)
     } finally {

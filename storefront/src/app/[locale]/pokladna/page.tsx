@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useTranslations, useLocale } from "next-intl"
 import { Link } from "@/i18n/navigation"
 import { Button } from "@/components/ui/button"
@@ -12,6 +12,7 @@ import { useCart } from "@/lib/cart-context"
 import { sdk } from "@/lib/sdk"
 import { formatPrice } from "@/lib/medusa-helpers"
 import { Check, Loader2 } from "lucide-react"
+import { trackEcommerce, mapCartItemToGA4 } from "@/lib/analytics"
 
 type Step = "contact" | "address" | "shipping" | "payment" | "confirmation"
 
@@ -56,6 +57,16 @@ export default function CheckoutPage() {
   const currencyCode = cart?.currency_code
   const currency = currencyCode?.toUpperCase() ?? "CZK"
   const items = cart?.items ?? []
+
+  // Track begin_checkout on first load
+  const trackedCheckoutRef = useRef(false)
+  useEffect(() => {
+    if (trackedCheckoutRef.current || items.length === 0) return
+    trackedCheckoutRef.current = true
+    const ga4Items = items.map((item) => mapCartItemToGA4(item as unknown as Record<string, unknown>))
+    const total = (cart?.total as number | undefined) ?? (cart?.subtotal as number | undefined)
+    trackEcommerce("begin_checkout", ga4Items, { value: total ?? undefined, currency })
+  }, [items, cart, currency])
 
   // Load shipping options when on shipping step
   useEffect(() => {
@@ -136,6 +147,14 @@ export default function CheckoutPage() {
         option_id: selectedShipping,
       })
       await refreshCart()
+      // Track add_shipping_info
+      const option = shippingOptions.find((o) => o.id === selectedShipping)
+      const ga4Items = items.map((item) => mapCartItemToGA4(item as unknown as Record<string, unknown>))
+      trackEcommerce("add_shipping_info", ga4Items, {
+        value: (cart?.total as number | undefined) ?? undefined,
+        currency,
+        shippingTier: option?.name,
+      })
       setStep("payment")
     } catch (err) {
       console.error("Failed to add shipping:", err)
@@ -146,6 +165,15 @@ export default function CheckoutPage() {
 
   async function handlePlaceOrder() {
     setLoading(true)
+
+    // Track add_payment_info
+    const ga4Items = items.map((item) => mapCartItemToGA4(item as unknown as Record<string, unknown>))
+    trackEcommerce("add_payment_info", ga4Items, {
+      value: (cart?.total as number | undefined) ?? undefined,
+      currency,
+      paymentType: "system_default",
+    })
+
     try {
       // Initialize payment session
       await sdk.store.payment.initiatePaymentSession(cart as Parameters<typeof sdk.store.payment.initiatePaymentSession>[0], {
@@ -156,6 +184,12 @@ export default function CheckoutPage() {
       const result = await sdk.store.cart.complete(cartId!) as Record<string, unknown>
       if (result.type === "order") {
         const order = result.order as { id: string }
+        // Track purchase — KEY CONVERSION
+        trackEcommerce("purchase", ga4Items, {
+          transactionId: order.id,
+          value: (cart?.total as number | undefined) ?? undefined,
+          currency,
+        })
         setOrderId(order.id)
         setStep("confirmation")
       } else {
@@ -168,6 +202,11 @@ export default function CheckoutPage() {
         const result = await sdk.store.cart.complete(cartId!) as Record<string, unknown>
         if (result.type === "order") {
           const order = result.order as { id: string }
+          trackEcommerce("purchase", ga4Items, {
+            transactionId: order.id,
+            value: (cart?.total as number | undefined) ?? undefined,
+            currency,
+          })
           setOrderId(order.id)
           setStep("confirmation")
         }

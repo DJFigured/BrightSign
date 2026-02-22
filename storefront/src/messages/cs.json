@@ -451,5 +451,17 @@
     "noResults": "Žádné výsledky pro \u201E{query}\u201D",
     "resultsFor": "Výsledky pro \u201E{query}\u201D",
     "placeholder": "Hledat produkty..."
+  },
+  "cookies": {
+    "title": "Soubory cookie",
+    "description": "Tento web používá cookies pro analýzu návštěvnosti a personalizaci reklam. Nezbytné cookies jsou vždy aktivní.",
+    "acceptAll": "Přijmout vše",
+    "rejectAll": "Jen nezbytné",
+    "settings": "Nastavení",
+    "analyticsLabel": "Analytické cookies",
+    "analyticsDesc": "Pomáhají nám pochopit, jak návštěvníci používají web (Google Analytics).",
+    "marketingLabel": "Marketingové cookies",
+    "marketingDesc": "Umožňují zobrazovat relevantní reklamy (Meta Pixel, Google Ads).",
+    "save": "Uložit nastavení"
   }
 }

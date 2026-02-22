@@ -10,6 +10,10 @@ import { AuthProvider } from "@/lib/auth-context"
 import { CompareProvider } from "@/lib/compare-context"
 import { CompareBar } from "@/components/product/CompareBar"
 import { getNavigationData } from "@/lib/categories"
+import { GoogleTagManager, GoogleTagManagerNoScript } from "@/components/analytics/GoogleTagManager"
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics"
+import { MetaPixel } from "@/components/analytics/MetaPixel"
+import { CookieConsent } from "@/components/analytics/CookieConsent"
 
 const inter = Inter({
   variable: "--font-inter",
@@ -56,9 +60,15 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
+      <head>
+        <GoogleTagManager />
+        <GoogleAnalytics />
+      </head>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}
       >
+        <GoogleTagManagerNoScript />
+        <MetaPixel />
         <NextIntlClientProvider messages={messages}>
           <AuthProvider>
             <CartProvider>
@@ -72,6 +82,7 @@ export default async function LocaleLayout({
               </CompareProvider>
             </CartProvider>
           </AuthProvider>
+          <CookieConsent />
         </NextIntlClientProvider>
       </body>
     </html>

@@ -445,5 +445,17 @@
     "noResults": "Brak wyników dla \u201E{query}\u201D",
     "resultsFor": "Wyniki dla \u201E{query}\u201D",
     "placeholder": "Szukaj produktów..."
+  },
+  "cookies": {
+    "title": "Pliki cookie",
+    "description": "Ta strona używa plików cookie do analizy ruchu i personalizacji reklam. Niezbędne pliki cookie są zawsze aktywne.",
+    "acceptAll": "Zaakceptuj wszystkie",
+    "rejectAll": "Tylko niezbędne",
+    "settings": "Ustawienia",
+    "analyticsLabel": "Analityczne cookies",
+    "analyticsDesc": "Pomagają nam zrozumieć, jak odwiedzający korzystają ze strony (Google Analytics).",
+    "marketingLabel": "Marketingowe cookies",
+    "marketingDesc": "Umożliwiają wyświetlanie trafnych reklam (Meta Pixel, Google Ads).",
+    "save": "Zapisz ustawienia"
   }
 }

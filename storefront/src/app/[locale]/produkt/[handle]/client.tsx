@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import { useTranslations } from "next-intl"
 import { Link } from "@/i18n/navigation"
@@ -11,6 +11,7 @@ import { ProductCard } from "@/components/product/ProductCard"
 import { useCart } from "@/lib/cart-context"
 import { formatPrice } from "@/lib/medusa-helpers"
 import { Minus, Plus, ShoppingCart, ChevronRight, Shield, Truck, FileDown } from "lucide-react"
+import { trackEcommerce, mapProductToItem } from "@/lib/analytics"
 
 interface ProductImage {
   id: string
@@ -105,11 +106,29 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
       ? [{ id: "thumb", url: thumbnail }]
       : []
 
+  // Track view_item
+  const trackedRef = useRef(false)
+  useEffect(() => {
+    if (trackedRef.current) return
+    trackedRef.current = true
+    const item = mapProductToItem(product)
+    trackEcommerce("view_item", [item], {
+      value: priceAmount ?? undefined,
+      currency: currencyCode,
+    })
+  }, [product, priceAmount, currencyCode])
+
   async function handleAddToCart() {
     if (!variant) return
     setAdding(true)
     try {
       await addItem(variant.id, quantity)
+      // Track add_to_cart
+      const item = mapProductToItem(product, { quantity })
+      trackEcommerce("add_to_cart", [item], {
+        value: priceAmount != null ? priceAmount * quantity : undefined,
+        currency: currencyCode,
+      })
     } catch (err) {
       console.error("Failed to add to cart:", err)
     } finally {

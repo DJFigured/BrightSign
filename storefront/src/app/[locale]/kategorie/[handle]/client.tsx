@@ -6,8 +6,9 @@ import { ProductCard } from "@/components/product/ProductCard"
 import { ProductFilters, type FilterState } from "@/components/product/ProductFilters"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight } from "lucide-react"
-import { useMemo, useCallback } from "react"
+import { useMemo, useCallback, useEffect, useRef } from "react"
 import { useSearchParams } from "next/navigation"
+import { trackEcommerce, mapProductToItem } from "@/lib/analytics"
 
 interface Category {
   id: string
@@ -131,6 +132,18 @@ export function CategoryPageClient({
     (currentPage - 1) * PRODUCTS_PER_PAGE,
     currentPage * PRODUCTS_PER_PAGE
   )
+
+  // Track view_item_list
+  const trackedListRef = useRef("")
+  useEffect(() => {
+    const key = `${handle}-${currentPage}`
+    if (trackedListRef.current === key || paginatedProducts.length === 0) return
+    trackedListRef.current = key
+    const items = paginatedProducts.map((p, i) =>
+      mapProductToItem(p as Record<string, unknown>, { index: i, listName: currentCategory?.name ?? handle })
+    )
+    trackEcommerce("view_item_list", items, { listName: currentCategory?.name ?? handle })
+  }, [paginatedProducts, handle, currentPage, currentCategory?.name])
 
   // Update URL when filters change
   const handleFilterChange = useCallback(

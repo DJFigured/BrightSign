@@ -434,5 +434,17 @@
     "noResults": "No results for \"{query}\"",
     "resultsFor": "Results for \"{query}\"",
     "placeholder": "Search products..."
+  },
+  "cookies": {
+    "title": "Cookies",
+    "description": "This website uses cookies for traffic analysis and ad personalization. Essential cookies are always active.",
+    "acceptAll": "Accept all",
+    "rejectAll": "Essential only",
+    "settings": "Settings",
+    "analyticsLabel": "Analytics cookies",
+    "analyticsDesc": "Help us understand how visitors use the website (Google Analytics).",
+    "marketingLabel": "Marketing cookies",
+    "marketingDesc": "Enable relevant ad delivery (Meta Pixel, Google Ads).",
+    "save": "Save settings"
   }
 }
