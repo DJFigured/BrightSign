@@ -1,8 +1,10 @@
+import type { Metadata } from "next"
 import { Inter, JetBrains_Mono } from "next/font/google"
 import { notFound } from "next/navigation"
 import { NextIntlClientProvider, hasLocale } from "next-intl"
 import { getMessages } from "next-intl/server"
 import { routing } from "@/i18n/routing"
+import { locales } from "@/i18n/config"
 import { Header, type HeaderNavData } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
 import { CartProvider } from "@/lib/cart-context"
@@ -24,6 +26,37 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin"],
 })
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://brightsign.cz"
+
+const hreflangMap: Record<string, string> = {
+  cs: "cs-CZ",
+  sk: "sk-SK",
+  pl: "pl-PL",
+  en: "en",
+  de: "de-DE",
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+
+  const languages: Record<string, string> = {}
+  for (const loc of locales) {
+    languages[hreflangMap[loc] || loc] = `${SITE_URL}/${loc}`
+  }
+  languages["x-default"] = `${SITE_URL}/cs`
+
+  return {
+    alternates: {
+      canonical: `${SITE_URL}/${locale}`,
+      languages,
+    },
+  }
+}
 
 export default async function LocaleLayout({
   children,

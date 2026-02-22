@@ -129,7 +129,24 @@
     "cartEmpty": "Košík je prázdný",
     "loadingShipping": "Načítám možnosti dopravy...",
     "stripeNote": "Stripe platební brána bude aktivována po dodání API klíčů.",
-    "stripeNote2": "Prozatím bude objednávka vytvořena bez online platby."
+    "stripeNote2": "Prozatím bude objednávka vytvořena bez online platby.",
+    "stripeInitializing": "Připravuji platební formulář...",
+    "securePayment": "Zabezpečená platba přes Stripe",
+    "payNow": "Zaplatit",
+    "paymentFailed": "Platba se nezdařila. Zkuste to prosím znovu.",
+    "orderItems": "Položky",
+    "shippingAddress": "Doručovací adresa",
+    "paymentMethod": "Platba",
+    "viewOrders": "Moje objednávky",
+    "orderDetail": "Detail objednávky",
+    "orderStatusLabel": "Stav objednávky",
+    "fulfillment": "Doručení",
+    "tracking": "Sledování zásilky",
+    "backToOrders": "Zpět na objednávky",
+    "paid": "Zaplaceno",
+    "pending": "Čeká na platbu",
+    "noPaymentInfo": "Bez online platby",
+    "itemsCount": "{count, plural, one {položka} few {položky} other {položek}}"
   },
   "auth": {
     "login": "Přihlášení",
@@ -165,7 +182,8 @@
     "orderStatus": "Stav",
     "orderTotal": "Celkem",
     "profile": "Profil",
-    "logout": "Odhlásit se"
+    "logout": "Odhlásit se",
+    "viewDetail": "Zobrazit detail"
   },
   "category": {
     "allProducts": "Všechny produkty",

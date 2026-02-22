@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { useTranslations, useLocale } from "next-intl"
-import { useRouter } from "@/i18n/navigation"
+import { useRouter, Link } from "@/i18n/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
@@ -110,7 +110,11 @@ export default function AccountPage() {
               ) : (
                 <div className="space-y-3">
                   {orders.map((order) => (
-                    <div key={order.id}>
+                    <Link
+                      key={order.id}
+                      href={`/ucet/objednavka/${order.id}`}
+                      className="block rounded-lg p-2 -mx-2 transition-colors hover:bg-muted/50"
+                    >
                       <div className="flex items-center justify-between">
                         <div>
                           <span className="font-mono text-sm font-medium">
@@ -131,7 +135,7 @@ export default function AccountPage() {
                         {order.items?.map((i) => `${i.quantity}× ${i.title}`).join(", ")}
                       </p>
                       <Separator className="mt-3" />
-                    </div>
+                    </Link>
                   ))}
                 </div>
               )}

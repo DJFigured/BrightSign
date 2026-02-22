@@ -127,7 +127,24 @@
     "cartEmpty": "Cart is empty",
     "loadingShipping": "Loading shipping options...",
     "stripeNote": "Stripe payment gateway will be activated after API keys are provided.",
-    "stripeNote2": "For now, orders will be created without online payment."
+    "stripeNote2": "For now, orders will be created without online payment.",
+    "stripeInitializing": "Preparing payment form...",
+    "securePayment": "Secure payment via Stripe",
+    "payNow": "Pay now",
+    "paymentFailed": "Payment failed. Please try again.",
+    "orderItems": "Items",
+    "shippingAddress": "Shipping address",
+    "paymentMethod": "Payment",
+    "viewOrders": "My orders",
+    "orderDetail": "Order detail",
+    "orderStatusLabel": "Order status",
+    "fulfillment": "Fulfillment",
+    "tracking": "Tracking",
+    "backToOrders": "Back to orders",
+    "paid": "Paid",
+    "pending": "Pending payment",
+    "noPaymentInfo": "No online payment",
+    "itemsCount": "{count, plural, one {item} other {items}}"
   },
   "auth": {
     "login": "Sign In",
@@ -163,7 +180,8 @@
     "orderStatus": "Status",
     "orderTotal": "Total",
     "profile": "Profile",
-    "logout": "Sign Out"
+    "logout": "Sign Out",
+    "viewDetail": "View detail"
   },
   "category": {
     "allProducts": "All Products",
