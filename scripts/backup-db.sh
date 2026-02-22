@@ -8,7 +8,7 @@ set -euo pipefail
 BACKUP_DIR="/root/backups"
 CONTAINER="brightsign-postgres"
 DB_NAME="medusa"
-DB_USER="postgres"
+DB_USER="medusa"
 RETENTION_DAYS=14
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 BACKUP_FILE="${BACKUP_DIR}/brightsign_${TIMESTAMP}.sql.gz"
