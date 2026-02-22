@@ -8,6 +8,7 @@ import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 
 const MEDUSA_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || 'http://localhost:9000'
+const API_KEY = process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY || ''
 
 type VatStatus = 'valid' | 'invalid' | 'pending' | 'not_provided'
 
@@ -35,7 +36,10 @@ export default function B2BRegistracePage() {
     try {
       const res = await fetch(`${MEDUSA_URL}/store/b2b/inquiry`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'x-publishable-api-key': API_KEY,
+        },
         body: JSON.stringify({
           company_name: form.company,
           registration_number: form.ico,
