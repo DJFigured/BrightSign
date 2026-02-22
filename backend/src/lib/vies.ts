@@ -106,9 +106,9 @@ export async function validateVatNumber(
     }
 
     return {
-      valid: !!data.isValid,
-      name: data.traderName || "",
-      address: data.traderAddress || "",
+      valid: !!data.valid,
+      name: data.name || "",
+      address: data.address || "",
       countryCode: countryCode.toUpperCase(),
       vatNumber: vatNumber,
       requestDate: new Date().toISOString(),
