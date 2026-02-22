@@ -1,4 +1,4 @@
-import { useTranslations } from "next-intl"
+import { useTranslations, useMessages } from "next-intl"
 import { Link } from "@/i18n/navigation"
 import type { HeaderNavData } from "./Header"
 
@@ -9,6 +9,9 @@ interface FooterProps {
 export function Footer({ navData }: FooterProps) {
   const t = useTranslations("footer")
   const tc = useTranslations("common")
+  const messages = useMessages()
+  const navLabels = (messages as Record<string, unknown>).nav as Record<string, string> | undefined
+  const catName = (handle: string, fallback: string) => navLabels?.[handle] ?? fallback
 
   const series = navData?.series ?? []
 
@@ -32,14 +35,14 @@ export function Footer({ navData }: FooterProps) {
               {series.map((s) => (
                 <li key={s.handle}>
                   <Link href={`/kategorie/${s.handle}`} className="hover:text-brand-accent transition-colors">
-                    BrightSign {s.name}
+                    BrightSign {catName(s.handle, s.name)}
                   </Link>
                 </li>
               ))}
               {navData?.hasAccessories && (
                 <li>
                   <Link href="/kategorie/prislusenstvi" className="hover:text-brand-accent transition-colors">
-                    Příslušenství
+                    {t("accessories")}
                   </Link>
                 </li>
               )}
@@ -90,7 +93,7 @@ export function Footer({ navData }: FooterProps) {
         </div>
 
         <div className="mt-8 border-t border-white/10 pt-8 text-center text-sm text-white/40">
-          &copy; {new Date().getFullYear()} Make more s.r.o. Všechna práva vyhrazena.
+          &copy; {t("copyright", { year: new Date().getFullYear().toString() })}
         </div>
       </div>
     </footer>

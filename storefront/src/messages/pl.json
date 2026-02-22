@@ -39,7 +39,14 @@
     "account": "Moje konto",
     "logout": "Wyloguj się",
     "b2b": "B2B",
-    "search": "Szukaj"
+    "search": "Szukaj",
+    "topBar": "Autoryzowany dystrybutor BrightSign na Polskę i UE",
+    "b2bRegistration": "Rejestracja B2B",
+    "players": "Odtwarzacze",
+    "accessories": "Akcesoria",
+    "series5": "Seria 5",
+    "series4": "Seria 4",
+    "language": "Język / Language"
   },
   "footer": {
     "company": "Make more s.r.o.",
@@ -51,6 +58,9 @@
     "contact": "Kontakt",
     "terms": "Regulamin",
     "privacy": "Polityka prywatności",
+    "b2bRegistration": "Rejestracja B2B",
+    "accessories": "Akcesoria",
+    "copyright": "{year} Make more s.r.o. Wszelkie prawa zastrzeżone.",
     "newsletter": {
       "title": "Aktualności i promocje",
       "placeholder": "Twój e-mail",
@@ -313,6 +323,32 @@
       "s4title": "4. Kontakt do reklamacji",
       "s4content": "E-mail: info@brightsign.cz\nFirma: Make more s.r.o.\nNr identyfikacyjny: 21890161"
     }
+  },
+  "nav": {
+    "bySeries": "Według serii",
+    "byLine": "Według linii produktów",
+    "allPlayers": "Wszystkie odtwarzacze",
+    "serie-6": "Seria 6",
+    "serie-5": "Seria 5",
+    "serie-4": "Seria 4",
+    "hd5": "HD5",
+    "hd6": "HD6",
+    "xd5": "XD5",
+    "xd6": "XD6",
+    "xt5": "XT5",
+    "ls5": "LS5",
+    "xc5": "XC5",
+    "au5": "AU5",
+    "hd4": "HD4",
+    "xd4": "XD4",
+    "xt4": "XT4",
+    "ls4": "LS4",
+    "hd-prehravace": "Odtwarzacze HD",
+    "xd-prehravace": "Odtwarzacze XD",
+    "xt-prehravace": "Odtwarzacze XT",
+    "xc-prehravace": "Odtwarzacze XC",
+    "ls-prehravace": "Odtwarzacze LS",
+    "au-prehravace": "Odtwarzacze AU"
   },
   "contactPage": {
     "title": "Kontakt",

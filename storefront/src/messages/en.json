@@ -58,6 +58,9 @@
     "contact": "Contact",
     "terms": "Terms & Conditions",
     "privacy": "Privacy Policy",
+    "b2bRegistration": "B2B Registration",
+    "accessories": "Accessories",
+    "copyright": "{year} Make more s.r.o. All rights reserved.",
     "newsletter": {
       "title": "News & Deals",
       "placeholder": "Your email",
@@ -309,6 +312,32 @@
       "s4title": "4. Complaints Contact",
       "s4content": "Email: info@brightsign.cz\nCompany: Make more s.r.o.\nCompany ID: 21890161"
     }
+  },
+  "nav": {
+    "bySeries": "By Series",
+    "byLine": "By Product Line",
+    "allPlayers": "All Players",
+    "serie-6": "Series 6",
+    "serie-5": "Series 5",
+    "serie-4": "Series 4",
+    "hd5": "HD5",
+    "hd6": "HD6",
+    "xd5": "XD5",
+    "xd6": "XD6",
+    "xt5": "XT5",
+    "ls5": "LS5",
+    "xc5": "XC5",
+    "au5": "AU5",
+    "hd4": "HD4",
+    "xd4": "XD4",
+    "xt4": "XT4",
+    "ls4": "LS4",
+    "hd-prehravace": "HD Players",
+    "xd-prehravace": "XD Players",
+    "xt-prehravace": "XT Players",
+    "xc-prehravace": "XC Players",
+    "ls-prehravace": "LS Players",
+    "au-prehravace": "AU Players"
   },
   "contactPage": {
     "title": "Contact",

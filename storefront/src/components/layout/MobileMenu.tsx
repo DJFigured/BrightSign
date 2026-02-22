@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { useTranslations } from "next-intl"
+import { useTranslations, useMessages } from "next-intl"
 import { Link } from "@/i18n/navigation"
 import {
   Sheet,
@@ -23,6 +23,9 @@ interface MobileMenuProps {
 export function MobileMenu({ open, onClose, navData }: MobileMenuProps) {
   const t = useTranslations("common")
   const th = useTranslations("header")
+  const messages = useMessages()
+  const navLabels = (messages as Record<string, unknown>).nav as Record<string, string> | undefined
+  const catName = (handle: string, fallback: string) => navLabels?.[handle] ?? fallback
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set())
 
   const toggleSection = (key: string) => {
@@ -80,7 +83,7 @@ export function MobileMenu({ open, onClose, navData }: MobileMenuProps) {
                 onClick={onClose}
                 className="rounded-md px-3 py-1.5 text-sm text-brand-accent font-medium hover:bg-muted transition-colors"
               >
-                Všechny přehrávače
+                {catName("allPlayers", "Všechny přehrávače")}
               </Link>
 
               {/* Series */}
@@ -90,7 +93,7 @@ export function MobileMenu({ open, onClose, navData }: MobileMenuProps) {
                     onClick={() => toggleSection(s.handle)}
                     className="flex w-full items-center justify-between rounded-md px-3 py-1.5 text-sm font-medium hover:bg-muted transition-colors"
                   >
-                    {s.name}
+                    {catName(s.handle, s.name)}
                     {s.children.length > 0 && (
                       <ChevronDown className={`h-3 w-3 transition-transform ${expandedSections.has(s.handle) ? "rotate-180" : ""}`} />
                     )}
@@ -104,7 +107,7 @@ export function MobileMenu({ open, onClose, navData }: MobileMenuProps) {
                           onClick={onClose}
                           className="rounded-md px-3 py-1 text-xs text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
                         >
-                          {ch.name}
+                          {catName(ch.handle, ch.name)}
                         </Link>
                       ))}
                     </div>
@@ -117,7 +120,7 @@ export function MobileMenu({ open, onClose, navData }: MobileMenuProps) {
                 <>
                   <Separator className="my-1" />
                   <p className="px-3 py-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                    Podle řady
+                    {catName("byLine", "Podle řady")}
                   </p>
                   {lines.map((l) => (
                     <Link
@@ -126,7 +129,7 @@ export function MobileMenu({ open, onClose, navData }: MobileMenuProps) {
                       onClick={onClose}
                       className="rounded-md px-3 py-1.5 text-sm hover:bg-muted transition-colors"
                     >
-                      {l.name}
+                      {catName(l.handle, l.name)}
                     </Link>
                   ))}
                 </>

@@ -39,7 +39,14 @@
     "account": "Môj účet",
     "logout": "Odhlásiť sa",
     "b2b": "B2B",
-    "search": "Hľadať"
+    "search": "Hľadať",
+    "topBar": "Autorizovaný distribútor BrightSign pre SR a EÚ",
+    "b2bRegistration": "B2B registrácia",
+    "players": "Prehrávače",
+    "accessories": "Príslušenstvo",
+    "series5": "Séria 5",
+    "series4": "Séria 4",
+    "language": "Jazyk / Language"
   },
   "footer": {
     "company": "Make more s.r.o.",
@@ -51,6 +58,9 @@
     "contact": "Kontakt",
     "terms": "Obchodné podmienky",
     "privacy": "Ochrana osobných údajov",
+    "b2bRegistration": "B2B registrácia",
+    "accessories": "Príslušenstvo",
+    "copyright": "{year} Make more s.r.o. Všetky práva vyhradené.",
     "newsletter": {
       "title": "Novinky a akcie",
       "placeholder": "Váš e-mail",
@@ -313,6 +323,32 @@
       "s4title": "4. Kontakt pre reklamácie",
       "s4content": "E-mail: info@brightsign.cz\nSpoločnosť: Make more s.r.o.\nIČO: 21890161"
     }
+  },
+  "nav": {
+    "bySeries": "Podľa série",
+    "byLine": "Podľa radu",
+    "allPlayers": "Všetky prehrávače",
+    "serie-6": "Séria 6",
+    "serie-5": "Séria 5",
+    "serie-4": "Séria 4",
+    "hd5": "HD5",
+    "hd6": "HD6",
+    "xd5": "XD5",
+    "xd6": "XD6",
+    "xt5": "XT5",
+    "ls5": "LS5",
+    "xc5": "XC5",
+    "au5": "AU5",
+    "hd4": "HD4",
+    "xd4": "XD4",
+    "xt4": "XT4",
+    "ls4": "LS4",
+    "hd-prehravace": "HD Prehrávače",
+    "xd-prehravace": "XD Prehrávače",
+    "xt-prehravace": "XT Prehrávače",
+    "xc-prehravace": "XC Prehrávače",
+    "ls-prehravace": "LS Prehrávače",
+    "au-prehravace": "AU Prehrávače"
   },
   "contactPage": {
     "title": "Kontakt",

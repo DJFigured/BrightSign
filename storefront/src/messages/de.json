@@ -39,7 +39,14 @@
     "account": "Mein Konto",
     "logout": "Abmelden",
     "b2b": "B2B",
-    "search": "Suchen"
+    "search": "Suchen",
+    "topBar": "Autorisierter BrightSign Distributor für Mitteleuropa",
+    "b2bRegistration": "B2B-Registrierung",
+    "players": "Player",
+    "accessories": "Zubehör",
+    "series5": "Serie 5",
+    "series4": "Serie 4",
+    "language": "Sprache / Language"
   },
   "footer": {
     "company": "Make more s.r.o.",
@@ -51,6 +58,9 @@
     "contact": "Kontakt",
     "terms": "AGB",
     "privacy": "Datenschutzrichtlinie",
+    "b2bRegistration": "B2B-Registrierung",
+    "accessories": "Zubehör",
+    "copyright": "{year} Make more s.r.o. Alle Rechte vorbehalten.",
     "newsletter": {
       "title": "Neuigkeiten & Angebote",
       "placeholder": "Ihre E-Mail",
@@ -313,6 +323,32 @@
       "s4title": "4. Kontakt für Reklamationen",
       "s4content": "E-Mail: info@brightsign.cz\nUnternehmen: Make more s.r.o.\nFirmennummer: 21890161"
     }
+  },
+  "nav": {
+    "bySeries": "Nach Serie",
+    "byLine": "Nach Produktlinie",
+    "allPlayers": "Alle Player",
+    "serie-6": "Serie 6",
+    "serie-5": "Serie 5",
+    "serie-4": "Serie 4",
+    "hd5": "HD5",
+    "hd6": "HD6",
+    "xd5": "XD5",
+    "xd6": "XD6",
+    "xt5": "XT5",
+    "ls5": "LS5",
+    "xc5": "XC5",
+    "au5": "AU5",
+    "hd4": "HD4",
+    "xd4": "XD4",
+    "xt4": "XT4",
+    "ls4": "LS4",
+    "hd-prehravace": "HD Player",
+    "xd-prehravace": "XD Player",
+    "xt-prehravace": "XT Player",
+    "xc-prehravace": "XC Player",
+    "ls-prehravace": "LS Player",
+    "au-prehravace": "AU Player"
   },
   "contactPage": {
     "title": "Kontakt",

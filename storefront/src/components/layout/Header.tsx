@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { useTranslations } from "next-intl"
+import { useTranslations, useMessages } from "next-intl"
 import { Link } from "@/i18n/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -36,6 +36,9 @@ interface HeaderProps {
 export function Header({ navData }: HeaderProps) {
   const t = useTranslations("header")
   const tc = useTranslations("common")
+  const messages = useMessages()
+  const navLabels = (messages as Record<string, unknown>).nav as Record<string, string> | undefined
+  const catName = (handle: string, fallback: string) => navLabels?.[handle] ?? fallback
   const [mobileOpen, setMobileOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
@@ -160,7 +163,7 @@ export function Header({ navData }: HeaderProps) {
                     {series.length > 0 && (
                       <div>
                         <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                          Podle série
+                          {catName("bySeries", "Podle série")}
                         </p>
                         <div className="flex flex-col gap-1">
                           {series.map((s) => (
@@ -170,7 +173,7 @@ export function Header({ navData }: HeaderProps) {
                                 className="block rounded px-2 py-1 text-sm font-medium hover:bg-muted transition-colors"
                                 onClick={() => setDropdownOpen(false)}
                               >
-                                {s.name}
+                                {catName(s.handle, s.name)}
                               </Link>
                               {s.children.length > 0 && (
                                 <div className="ml-3 flex flex-col">
@@ -181,7 +184,7 @@ export function Header({ navData }: HeaderProps) {
                                       className="block rounded px-2 py-0.5 text-xs text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
                                       onClick={() => setDropdownOpen(false)}
                                     >
-                                      {ch.name}
+                                      {catName(ch.handle, ch.name)}
                                     </Link>
                                   ))}
                                 </div>
@@ -196,7 +199,7 @@ export function Header({ navData }: HeaderProps) {
                     {lines.length > 0 && (
                       <div>
                         <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                          Podle řady
+                          {catName("byLine", "Podle řady")}
                         </p>
                         <div className="flex flex-col gap-1">
                           {lines.map((l) => (
@@ -206,7 +209,7 @@ export function Header({ navData }: HeaderProps) {
                               className="group block rounded px-2 py-1 hover:bg-muted transition-colors"
                               onClick={() => setDropdownOpen(false)}
                             >
-                              <span className="text-sm font-medium">{l.name}</span>
+                              <span className="text-sm font-medium">{catName(l.handle, l.name)}</span>
                               {l.description && (
                                 <span className="ml-1 text-xs text-muted-foreground">
                                   — {l.description.split(" – ")[0]}
@@ -239,7 +242,7 @@ export function Header({ navData }: HeaderProps) {
                 href={`/kategorie/${s.handle}`}
                 className="font-medium text-foreground hover:text-brand-accent transition-colors"
               >
-                {s.name}
+                {catName(s.handle, s.name)}
               </Link>
             ))}
           </div>

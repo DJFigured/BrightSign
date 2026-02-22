@@ -341,6 +341,32 @@
       "s4content": "E-mail: info@brightsign.cz\nSpolečnost: Make more s.r.o.\nIČO: 21890161\n\nV případě sporu se zákazník (spotřebitel) může obrátit na Českou obchodní inspekci (www.coi.cz) jako subjekt mimosoudního řešení spotřebitelských sporů."
     }
   },
+  "nav": {
+    "bySeries": "Podle série",
+    "byLine": "Podle řady",
+    "allPlayers": "Všechny přehrávače",
+    "serie-6": "Série 6",
+    "serie-5": "Série 5",
+    "serie-4": "Série 4",
+    "hd5": "HD5",
+    "hd6": "HD6",
+    "xd5": "XD5",
+    "xd6": "XD6",
+    "xt5": "XT5",
+    "ls5": "LS5",
+    "xc5": "XC5",
+    "au5": "AU5",
+    "hd4": "HD4",
+    "xd4": "XD4",
+    "xt4": "XT4",
+    "ls4": "LS4",
+    "hd-prehravace": "HD Přehrávače",
+    "xd-prehravace": "XD Přehrávače",
+    "xt-prehravace": "XT Přehrávače",
+    "xc-prehravace": "XC Přehrávače",
+    "ls-prehravace": "LS Přehrávače",
+    "au-prehravace": "AU Přehrávače"
+  },
   "contactPage": {
     "title": "Kontakt",
     "subtitle": "Máte dotaz nebo potřebujete poradit? Ozvěte se nám.",
