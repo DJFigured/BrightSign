@@ -153,13 +153,22 @@
     "forgotPassword": "Zapomniałeś hasła?",
     "loginError": "Nieprawidłowy e-mail lub hasło",
     "registerError": "Rejestracja nie powiodła się",
-    "passwordMismatch": "Hasła nie są zgodne"
+    "passwordMismatch": "Hasła nie są zgodne",
+    "loginSubtitle": "Zaloguj się na swoje konto",
+    "registerSubtitle": "Utwórz nowe konto",
+    "firstName": "Imię",
+    "lastName": "Nazwisko",
+    "minChars": "Minimum 8 znaków",
+    "createAccount": "Utwórz konto",
+    "signIn": "Zaloguj się",
+    "signUp": "Zarejestruj się"
   },
   "account": {
     "title": "Moje konto",
     "welcome": "Witamy",
     "orders": "Zamówienia",
     "noOrders": "Brak zamówień",
+    "noOrdersYet": "Nie masz jeszcze żadnych zamówień",
     "orderNumber": "Numer zamówienia",
     "orderDate": "Data",
     "orderStatus": "Status",
@@ -189,7 +198,19 @@
     "quantity": "Ilość",
     "inStock": "W magazynie",
     "price": "Cena",
-    "relatedProducts": "Powiązane produkty"
+    "relatedProducts": "Powiązane produkty",
+    "adding": "Dodawanie...",
+    "noImage": "Brak zdjęcia",
+    "inclVat": "z VAT",
+    "exclVat": "bez VAT",
+    "seriesN": "Seria {n}",
+    "clearance": "Wyprzedaż",
+    "segmentBasic": "Basic",
+    "segmentAudio": "Audio",
+    "segmentEntry4K": "Entry 4K",
+    "segmentPerformance4K": "Performance 4K",
+    "segmentEnterprise": "Enterprise",
+    "segmentVideoWall": "Video Wall"
   },
   "notFound": {
     "title": "Strona nie znaleziona",
@@ -200,10 +221,12 @@
     "hero": {
       "title": "Profesjonalne rozwiązania digital signage",
       "subtitle": "Oficjalny dystrybutor odtwarzaczy BrightSign na Polskę",
-      "cta": "Przeglądaj produkty"
+      "cta": "Przeglądaj produkty",
+      "b2bCta": "Rejestracja B2B"
     },
     "categories": "Kategorie produktów",
     "featured": "Polecane produkty",
+    "viewAll": "Zobacz wszystko",
     "b2b": {
       "title": "Klient biznesowy?",
       "subtitle": "Zarejestruj się jako partner B2B i uzyskaj zniżki",
@@ -216,6 +239,40 @@
       "warrantyDesc": "2 lata na wszystkie produkty",
       "support": "Wsparcie techniczne",
       "supportDesc": "Eksperckie doradztwo"
+    },
+    "productLines": {
+      "title": "Wybierz według linii produktów",
+      "subtitle": "BrightSign oferuje 6 linii produktów do każdego typu instalacji",
+      "ls": { "name": "Odtwarzacze LS", "label": "Basic", "description": "Podstawowe rozwiązania Full HD do prostych wyświetlaczy" },
+      "hd": { "name": "Odtwarzacze HD", "label": "Entry 4K", "description": "Odtwarzacze 4K klasy podstawowej z HTML5 i HDR" },
+      "xd": { "name": "Odtwarzacze XD", "label": "Performance 4K", "description": "Wydajne odtwarzacze 4K z grafiką WebGL" },
+      "xt": { "name": "Odtwarzacze XT", "label": "Enterprise", "description": "Odtwarzacze premium z podwójnym wyjściem 4K/8K" },
+      "xc": { "name": "Odtwarzacze XC", "label": "Video Wall", "description": "Rozwiązania multi-display i ściany wideo" },
+      "au": { "name": "Odtwarzacze AU", "label": "Audio", "description": "Specjalistyczne odtwarzacze audio do nagłośnienia" }
+    },
+    "segmentGuide": {
+      "title": "Przewodnik wyboru",
+      "subtitle": "Nie wiesz jaki odtwarzacz potrzebujesz? Pomożemy Ci wybrać.",
+      "beginner": { "level": "Początkujący", "description": "Proste prezentacje, cyfrowe menu, panele informacyjne", "recommendation": "Seria LS lub HD" },
+      "standard": { "level": "Standard", "description": "Wyświetlacze detaliczne, komunikacja korporacyjna, treści interaktywne", "recommendation": "Seria HD lub XD" },
+      "advanced": { "level": "Zaawansowany", "description": "Instalacje multi-screen, ściany wideo, treści 8K, live TV", "recommendation": "Seria XT lub XC" }
+    },
+    "whyBrightsign": {
+      "title": "Dlaczego BrightSign?",
+      "leaderTitle": "Światowy lider",
+      "leaderDesc": "Najwięcej wdrożonych odtwarzaczy digital signage na świecie",
+      "warrantyValue": "5 lat",
+      "warrantyTitle": "Gwarancja",
+      "warrantyDesc": "Seria 6 z 5-letnią gwarancją — najdłuższa w branży",
+      "licenseTitle": "Opłaty licencyjne",
+      "licenseDesc": "Brak miesięcznych opłat licencyjnych za sprzęt",
+      "reliabilityTitle": "Niezawodność",
+      "reliabilityDesc": "Praca 24/7 bez przestojów dzięki dedykowanemu systemowi OS"
+    },
+    "clearance": {
+      "title": "Seria 4 w obniżonych cenach",
+      "description": "Odtwarzacze poprzedniej generacji w cenach wyprzedażowych. Idealne do rozbudowy istniejących instalacji lub projektów z ograniczonym budżetem.",
+      "cta": "Zobacz wyprzedaż"
     }
   },
   "b2b": {
@@ -234,6 +291,11 @@
     "businessType": "Rodzaj działalności",
     "expectedVolume": "Oczekiwany wolumen",
     "submit": "Wyślij rejestrację",
+    "message": "Wiadomość",
+    "messagePlaceholder": "Opisz swoje potrzeby, rodzaje projektów, szacowany wolumen...",
+    "submitButton": "Wyślij wniosek o współpracę B2B",
+    "successTitle": "Wniosek wysłany",
+    "successMessage": "Otrzymaliśmy Twój wniosek o współpracę B2B. Skontaktujemy się w ciągu 24 godzin.",
     "benefits": {
       "title": "Korzyści konta B2B",
       "discount": "Zniżki od 10% do 20%",

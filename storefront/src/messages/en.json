@@ -142,13 +142,22 @@
     "forgotPassword": "Forgot password?",
     "loginError": "Incorrect email or password",
     "registerError": "Registration failed",
-    "passwordMismatch": "Passwords do not match"
+    "passwordMismatch": "Passwords do not match",
+    "loginSubtitle": "Sign in to your account",
+    "registerSubtitle": "Create a new account",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "minChars": "Minimum 8 characters",
+    "createAccount": "Create Account",
+    "signIn": "Sign In",
+    "signUp": "Register"
   },
   "account": {
     "title": "My Account",
     "welcome": "Welcome",
     "orders": "Orders",
     "noOrders": "No orders yet",
+    "noOrdersYet": "You don't have any orders yet",
     "orderNumber": "Order Number",
     "orderDate": "Date",
     "orderStatus": "Status",
@@ -178,7 +187,19 @@
     "quantity": "Quantity",
     "inStock": "In Stock",
     "price": "Price",
-    "relatedProducts": "Related Products"
+    "relatedProducts": "Related Products",
+    "adding": "Adding...",
+    "noImage": "No image",
+    "inclVat": "incl. VAT",
+    "exclVat": "excl. VAT",
+    "seriesN": "Series {n}",
+    "clearance": "Clearance",
+    "segmentBasic": "Basic",
+    "segmentAudio": "Audio",
+    "segmentEntry4K": "Entry 4K",
+    "segmentPerformance4K": "Performance 4K",
+    "segmentEnterprise": "Enterprise",
+    "segmentVideoWall": "Video Wall"
   },
   "notFound": {
     "title": "Page Not Found",
@@ -189,10 +210,12 @@
     "hero": {
       "title": "Professional Digital Signage Solutions",
       "subtitle": "Official BrightSign player distributor for Central Europe",
-      "cta": "Browse Products"
+      "cta": "Browse Products",
+      "b2bCta": "B2B Registration"
     },
     "categories": "Product Categories",
     "featured": "Featured Products",
+    "viewAll": "View All",
     "b2b": {
       "title": "Business Customer?",
       "subtitle": "Register as a B2B partner and get discounted prices",
@@ -205,6 +228,40 @@
       "warrantyDesc": "2 years on all products",
       "support": "Technical Support",
       "supportDesc": "Expert consulting"
+    },
+    "productLines": {
+      "title": "Browse by Product Line",
+      "subtitle": "BrightSign offers 6 product lines for every type of installation",
+      "ls": { "name": "LS Players", "label": "Basic", "description": "Basic Full HD solutions for simple displays" },
+      "hd": { "name": "HD Players", "label": "Entry 4K", "description": "Entry-level 4K players with HTML5 and HDR" },
+      "xd": { "name": "XD Players", "label": "Performance 4K", "description": "High-performance 4K players with WebGL graphics" },
+      "xt": { "name": "XT Players", "label": "Enterprise", "description": "Premium players with dual 4K/8K output" },
+      "xc": { "name": "XC Players", "label": "Video Wall", "description": "Multi-display and video wall solutions" },
+      "au": { "name": "AU Players", "label": "Audio", "description": "Specialized audio players for sound systems" }
+    },
+    "segmentGuide": {
+      "title": "Selection Guide",
+      "subtitle": "Not sure which player you need? We'll help you choose.",
+      "beginner": { "level": "Beginner", "description": "Simple presentations, digital menus, information panels", "recommendation": "LS or HD series" },
+      "standard": { "level": "Standard", "description": "Retail displays, corporate communication, interactive content", "recommendation": "HD or XD series" },
+      "advanced": { "level": "Advanced", "description": "Multi-screen installations, video walls, 8K content, live TV", "recommendation": "XT or XC series" }
+    },
+    "whyBrightsign": {
+      "title": "Why BrightSign?",
+      "leaderTitle": "World Leader",
+      "leaderDesc": "Most deployed digital signage players worldwide",
+      "warrantyValue": "5 years",
+      "warrantyTitle": "Warranty",
+      "warrantyDesc": "Series 6 with 5-year warranty — longest in the industry",
+      "licenseTitle": "License Fees",
+      "licenseDesc": "No monthly license fees for hardware",
+      "reliabilityTitle": "Reliability",
+      "reliabilityDesc": "24/7 operation without downtime thanks to purpose-built OS"
+    },
+    "clearance": {
+      "title": "Series 4 at Discounted Prices",
+      "description": "Previous generation players at clearance prices. Ideal for expanding existing installations or budget-conscious projects.",
+      "cta": "View Clearance"
     }
   },
   "b2b": {
@@ -223,6 +280,11 @@
     "businessType": "Business Type",
     "expectedVolume": "Expected Volume",
     "submit": "Submit Registration",
+    "message": "Message",
+    "messagePlaceholder": "Describe your needs, project types, estimated volume...",
+    "submitButton": "Submit B2B Partnership Request",
+    "successTitle": "Request Submitted",
+    "successMessage": "We have received your B2B partnership request. We will contact you within 24 hours.",
     "benefits": {
       "title": "B2B Account Benefits",
       "discount": "Discounts from 10% to 20%",

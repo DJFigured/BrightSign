@@ -153,13 +153,22 @@
     "forgotPassword": "Passwort vergessen?",
     "loginError": "Falsche E-Mail oder falsches Passwort",
     "registerError": "Registrierung fehlgeschlagen",
-    "passwordMismatch": "Passwörter stimmen nicht überein"
+    "passwordMismatch": "Passwörter stimmen nicht überein",
+    "loginSubtitle": "Melden Sie sich in Ihrem Konto an",
+    "registerSubtitle": "Erstellen Sie ein neues Konto",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "minChars": "Mindestens 8 Zeichen",
+    "createAccount": "Konto erstellen",
+    "signIn": "Anmelden",
+    "signUp": "Registrieren"
   },
   "account": {
     "title": "Mein Konto",
     "welcome": "Willkommen",
     "orders": "Bestellungen",
     "noOrders": "Noch keine Bestellungen",
+    "noOrdersYet": "Sie haben noch keine Bestellungen",
     "orderNumber": "Bestellnummer",
     "orderDate": "Datum",
     "orderStatus": "Status",
@@ -189,7 +198,19 @@
     "quantity": "Menge",
     "inStock": "Auf Lager",
     "price": "Preis",
-    "relatedProducts": "Ähnliche Produkte"
+    "relatedProducts": "Ähnliche Produkte",
+    "adding": "Wird hinzugefügt...",
+    "noImage": "Kein Bild",
+    "inclVat": "inkl. MwSt.",
+    "exclVat": "exkl. MwSt.",
+    "seriesN": "Serie {n}",
+    "clearance": "Abverkauf",
+    "segmentBasic": "Basic",
+    "segmentAudio": "Audio",
+    "segmentEntry4K": "Entry 4K",
+    "segmentPerformance4K": "Performance 4K",
+    "segmentEnterprise": "Enterprise",
+    "segmentVideoWall": "Video Wall"
   },
   "notFound": {
     "title": "Seite nicht gefunden",
@@ -200,10 +221,12 @@
     "hero": {
       "title": "Professionelle Digital Signage Lösungen",
       "subtitle": "Offizieller BrightSign Player Distributor für Mitteleuropa",
-      "cta": "Produkte ansehen"
+      "cta": "Produkte ansehen",
+      "b2bCta": "B2B-Registrierung"
     },
     "categories": "Produktkategorien",
     "featured": "Empfohlene Produkte",
+    "viewAll": "Alle anzeigen",
     "b2b": {
       "title": "Geschäftskunde?",
       "subtitle": "Registrieren Sie sich als B2B-Partner und erhalten Sie Rabatte",
@@ -216,6 +239,40 @@
       "warrantyDesc": "2 Jahre auf alle Produkte",
       "support": "Technischer Support",
       "supportDesc": "Expertenberatung"
+    },
+    "productLines": {
+      "title": "Nach Produktlinie wählen",
+      "subtitle": "BrightSign bietet 6 Produktlinien für jeden Installationstyp",
+      "ls": { "name": "LS Player", "label": "Basic", "description": "Einfache Full HD Lösungen für einfache Displays" },
+      "hd": { "name": "HD Player", "label": "Entry 4K", "description": "4K Einstiegs-Player mit HTML5 und HDR" },
+      "xd": { "name": "XD Player", "label": "Performance 4K", "description": "Leistungsstarke 4K Player mit WebGL-Grafik" },
+      "xt": { "name": "XT Player", "label": "Enterprise", "description": "Premium-Player mit dualem 4K/8K Ausgang" },
+      "xc": { "name": "XC Player", "label": "Video Wall", "description": "Multi-Display und Videowand-Lösungen" },
+      "au": { "name": "AU Player", "label": "Audio", "description": "Spezialisierte Audio-Player für Beschallungssysteme" }
+    },
+    "segmentGuide": {
+      "title": "Auswahlhilfe",
+      "subtitle": "Sie wissen nicht welchen Player Sie brauchen? Wir helfen Ihnen bei der Auswahl.",
+      "beginner": { "level": "Einsteiger", "description": "Einfache Präsentationen, digitale Menüs, Informationstafeln", "recommendation": "LS oder HD Serie" },
+      "standard": { "level": "Standard", "description": "Retail-Displays, Unternehmenskommunikation, interaktive Inhalte", "recommendation": "HD oder XD Serie" },
+      "advanced": { "level": "Fortgeschritten", "description": "Multi-Screen-Installationen, Videowände, 8K-Inhalte, Live-TV", "recommendation": "XT oder XC Serie" }
+    },
+    "whyBrightsign": {
+      "title": "Warum BrightSign?",
+      "leaderTitle": "Weltmarktführer",
+      "leaderDesc": "Die meisten eingesetzten Digital Signage Player weltweit",
+      "warrantyValue": "5 Jahre",
+      "warrantyTitle": "Garantie",
+      "warrantyDesc": "Serie 6 mit 5 Jahren Garantie — die längste der Branche",
+      "licenseTitle": "Lizenzgebühren",
+      "licenseDesc": "Keine monatlichen Lizenzgebühren für Hardware",
+      "reliabilityTitle": "Zuverlässigkeit",
+      "reliabilityDesc": "24/7-Betrieb ohne Ausfälle dank purpose-built OS"
+    },
+    "clearance": {
+      "title": "Serie 4 zu reduzierten Preisen",
+      "description": "Player der vorherigen Generation zu Abverkaufspreisen. Ideal für die Erweiterung bestehender Installationen oder budgetbewusste Projekte.",
+      "cta": "Abverkauf anzeigen"
     }
   },
   "b2b": {
@@ -234,6 +291,11 @@
     "businessType": "Geschäftsart",
     "expectedVolume": "Erwartetes Volumen",
     "submit": "Registrierung absenden",
+    "message": "Nachricht",
+    "messagePlaceholder": "Beschreiben Sie Ihre Bedürfnisse, Projekttypen, geschätztes Volumen...",
+    "submitButton": "B2B-Partnerschaftsanfrage senden",
+    "successTitle": "Anfrage gesendet",
+    "successMessage": "Wir haben Ihre B2B-Partnerschaftsanfrage erhalten. Wir melden uns innerhalb von 24 Stunden.",
     "benefits": {
       "title": "Vorteile des B2B-Kontos",
       "discount": "Rabatte von 10% bis 20%",

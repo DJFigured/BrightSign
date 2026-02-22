@@ -11,7 +11,7 @@ import { useAuth } from "@/lib/auth-context"
 import { Loader2 } from "lucide-react"
 
 export default function LoginPage() {
-  const t = useTranslations("common")
+  const t = useTranslations("auth")
   const { login } = useAuth()
   const router = useRouter()
   const [email, setEmail] = useState("")
@@ -27,7 +27,7 @@ export default function LoginPage() {
       await login(email, password)
       router.push("/ucet")
     } catch {
-      setError("Nesprávný e-mail nebo heslo")
+      setError(t("loginError"))
     } finally {
       setLoading(false)
     }
@@ -38,7 +38,7 @@ export default function LoginPage() {
       <Card>
         <CardHeader className="text-center">
           <CardTitle className="text-2xl">{t("login")}</CardTitle>
-          <CardDescription>Přihlaste se do svého účtu</CardDescription>
+          <CardDescription>{t("loginSubtitle")}</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -48,18 +48,17 @@ export default function LoginPage() {
               </div>
             )}
             <div>
-              <Label htmlFor="email">E-mail</Label>
+              <Label htmlFor="email">{t("email")}</Label>
               <Input
                 id="email"
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="vas@email.cz"
               />
             </div>
             <div>
-              <Label htmlFor="password">Heslo</Label>
+              <Label htmlFor="password">{t("password")}</Label>
               <Input
                 id="password"
                 type="password"
@@ -74,13 +73,13 @@ export default function LoginPage() {
               className="w-full bg-brand-accent hover:bg-brand-accent-dark text-white"
             >
               {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              Přihlásit se
+              {t("loginButton")}
             </Button>
           </form>
           <div className="mt-4 text-center text-sm text-muted-foreground">
-            Nemáte účet?{" "}
+            {t("noAccount")}{" "}
             <Link href="/registrace" className="font-medium text-brand-accent hover:underline">
-              Zaregistrujte se
+              {t("signUp")}
             </Link>
           </div>
         </CardContent>

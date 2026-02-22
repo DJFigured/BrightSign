@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { useTranslations } from "next-intl"
+import { useTranslations, useLocale } from "next-intl"
 import { useRouter } from "@/i18n/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -23,7 +23,8 @@ interface Order {
 }
 
 export default function AccountPage() {
-  const t = useTranslations("common")
+  const t = useTranslations("account")
+  const locale = useLocale()
   const { customer, loading: authLoading, logout } = useAuth()
   const router = useRouter()
   const [orders, setOrders] = useState<Order[]>([])
@@ -64,7 +65,7 @@ export default function AccountPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
       <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-2xl font-bold">{t("account")}</h1>
+        <h1 className="text-2xl font-bold">{t("title")}</h1>
         <Button variant="outline" onClick={handleLogout}>
           <LogOut className="mr-2 h-4 w-4" />
           {t("logout")}
@@ -77,7 +78,7 @@ export default function AccountPage() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-base">
               <User className="h-4 w-4" />
-              Profil
+              {t("profile")}
             </CardTitle>
           </CardHeader>
           <CardContent className="text-sm">
@@ -94,7 +95,7 @@ export default function AccountPage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-base">
                 <Package className="h-4 w-4" />
-                Objednávky
+                {t("orders")}
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -104,7 +105,7 @@ export default function AccountPage() {
                 </div>
               ) : orders.length === 0 ? (
                 <p className="py-8 text-center text-sm text-muted-foreground">
-                  Zatím nemáte žádné objednávky
+                  {t("noOrdersYet")}
                 </p>
               ) : (
                 <div className="space-y-3">
@@ -116,7 +117,7 @@ export default function AccountPage() {
                             #{order.display_id}
                           </span>
                           <span className="ml-2 text-sm text-muted-foreground">
-                            {new Date(order.created_at).toLocaleDateString("cs-CZ")}
+                            {new Date(order.created_at).toLocaleDateString(locale)}
                           </span>
                         </div>
                         <div className="flex items-center gap-2">

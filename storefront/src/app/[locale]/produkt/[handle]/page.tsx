@@ -1,5 +1,5 @@
 import { sdk } from "@/lib/sdk"
-import { getLocale } from "next-intl/server"
+import { getLocale, getTranslations } from "next-intl/server"
 import { regionMap, type Locale } from "@/i18n/config"
 import { getRegionId } from "@/lib/medusa-helpers"
 import { notFound } from "next/navigation"
@@ -68,8 +68,9 @@ export default async function ProductPage({ params }: Props) {
 
   // Build breadcrumbs
   const meta = product.metadata as Record<string, unknown> | undefined
+  const tHeader = await getTranslations("header")
   const breadcrumbs = [
-    { name: "Přehrávače", href: "/kategorie/prehravace" },
+    { name: tHeader("players"), href: "/kategorie/prehravace" },
   ]
   if (categories && categories.length > 0) {
     // Add first category (series family)

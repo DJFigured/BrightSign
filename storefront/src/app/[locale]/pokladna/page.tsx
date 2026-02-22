@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useTranslations } from "next-intl"
+import { useTranslations, useLocale } from "next-intl"
 import { Link } from "@/i18n/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -26,11 +26,21 @@ export default function CheckoutPage() {
   const tc = useTranslations("common")
   const tCart = useTranslations("cart")
   const t = useTranslations("checkout")
+  const locale = useLocale()
   const { cart, refreshCart, cartId } = useCart()
   const [step, setStep] = useState<Step>("contact")
   const [loading, setLoading] = useState(false)
   const [shippingOptions, setShippingOptions] = useState<ShippingOption[]>([])
   const [orderId, setOrderId] = useState<string | null>(null)
+
+  // Map locale to default country code
+  const localeCountryMap: Record<string, string> = {
+    cs: "cz",
+    sk: "sk",
+    pl: "pl",
+    en: "gb",
+    de: "de",
+  }
 
   // Form state
   const [email, setEmail] = useState("")
@@ -40,7 +50,7 @@ export default function CheckoutPage() {
   const [address1, setAddress1] = useState("")
   const [city, setCity] = useState("")
   const [postalCode, setPostalCode] = useState("")
-  const [countryCode] = useState("cz")
+  const [countryCode] = useState(localeCountryMap[locale] || "cz")
   const [selectedShipping, setSelectedShipping] = useState("")
 
   const currencyCode = cart?.currency_code
@@ -220,7 +230,6 @@ export default function CheckoutPage() {
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="vas@email.cz"
                     />
                   </div>
                   <div>
@@ -230,7 +239,6 @@ export default function CheckoutPage() {
                       type="tel"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      placeholder="+420 123 456 789"
                     />
                   </div>
                   <Button type="submit" disabled={loading} className="bg-brand-accent hover:bg-brand-accent-dark text-white">

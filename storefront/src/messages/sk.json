@@ -153,13 +153,22 @@
     "forgotPassword": "Zabudnuté heslo?",
     "loginError": "Nesprávny e-mail alebo heslo",
     "registerError": "Registrácia sa nepodarila",
-    "passwordMismatch": "Heslá sa nezhodujú"
+    "passwordMismatch": "Heslá sa nezhodujú",
+    "loginSubtitle": "Prihláste sa do svojho účtu",
+    "registerSubtitle": "Vytvorte si nový účet",
+    "firstName": "Meno",
+    "lastName": "Priezvisko",
+    "minChars": "Minimálne 8 znakov",
+    "createAccount": "Vytvoriť účet",
+    "signIn": "Prihláste sa",
+    "signUp": "Zaregistrujte sa"
   },
   "account": {
     "title": "Môj účet",
     "welcome": "Vitajte",
     "orders": "Objednávky",
     "noOrders": "Zatiaľ žiadne objednávky",
+    "noOrdersYet": "Zatiaľ nemáte žiadne objednávky",
     "orderNumber": "Číslo objednávky",
     "orderDate": "Dátum",
     "orderStatus": "Stav",
@@ -189,7 +198,19 @@
     "quantity": "Množstvo",
     "inStock": "Skladom",
     "price": "Cena",
-    "relatedProducts": "Súvisiace produkty"
+    "relatedProducts": "Súvisiace produkty",
+    "adding": "Pridávam...",
+    "noImage": "Bez obrázka",
+    "inclVat": "s DPH",
+    "exclVat": "bez DPH",
+    "seriesN": "Séria {n}",
+    "clearance": "Výpredaj",
+    "segmentBasic": "Basic",
+    "segmentAudio": "Audio",
+    "segmentEntry4K": "Entry 4K",
+    "segmentPerformance4K": "Performance 4K",
+    "segmentEnterprise": "Enterprise",
+    "segmentVideoWall": "Video Wall"
   },
   "notFound": {
     "title": "Stránka nenájdená",
@@ -200,10 +221,12 @@
     "hero": {
       "title": "Profesionálne digital signage riešenia",
       "subtitle": "Oficiálny distribútor BrightSign prehrávačov pre Slovensko",
-      "cta": "Prezrieť produkty"
+      "cta": "Prezrieť produkty",
+      "b2bCta": "B2B registrácia"
     },
     "categories": "Kategórie produktov",
     "featured": "Odporúčané produkty",
+    "viewAll": "Zobraziť všetko",
     "b2b": {
       "title": "Ste firemný zákazník?",
       "subtitle": "Zaregistrujte sa ako B2B partner a získajte zvýhodnené ceny",
@@ -216,6 +239,40 @@
       "warrantyDesc": "2 roky na všetky produkty",
       "support": "Technická podpora",
       "supportDesc": "Expertné poradenstvo"
+    },
+    "productLines": {
+      "title": "Vyberte podľa radu",
+      "subtitle": "BrightSign ponúka 6 produktových radov pre každý typ inštalácie",
+      "ls": { "name": "LS Prehrávače", "label": "Basic", "description": "Základné Full HD riešenia pre jednoduché displeje" },
+      "hd": { "name": "HD Prehrávače", "label": "Entry 4K", "description": "Vstupné 4K prehrávače s HTML5 a HDR" },
+      "xd": { "name": "XD Prehrávače", "label": "Performance 4K", "description": "Výkonné 4K prehrávače s WebGL grafikou" },
+      "xt": { "name": "XT Prehrávače", "label": "Enterprise", "description": "Prémiové prehrávače s duálnym 4K/8K výstupom" },
+      "xc": { "name": "XC Prehrávače", "label": "Video Wall", "description": "Multi-display a video steny" },
+      "au": { "name": "AU Prehrávače", "label": "Audio", "description": "Špecializované audio prehrávače pre ozvučenie" }
+    },
+    "segmentGuide": {
+      "title": "Sprievodca výberom",
+      "subtitle": "Neviete aký prehrávač potrebujete? Pomôžeme vám s výberom.",
+      "beginner": { "level": "Začiatočník", "description": "Jednoduché prezentácie, digitálne menu, informačné panely", "recommendation": "LS alebo HD rad" },
+      "standard": { "level": "Štandard", "description": "Retail displeje, korporátna komunikácia, interaktívny obsah", "recommendation": "HD alebo XD rad" },
+      "advanced": { "level": "Pokročilý", "description": "Multi-screen inštalácie, video steny, 8K obsah, live TV", "recommendation": "XT alebo XC rad" }
+    },
+    "whyBrightsign": {
+      "title": "Prečo BrightSign?",
+      "leaderTitle": "Celosvetová jednotka",
+      "leaderDesc": "Najviac nasadených digital signage prehrávačov na svete",
+      "warrantyValue": "5 rokov",
+      "warrantyTitle": "Záruka",
+      "warrantyDesc": "Séria 6 s 5-ročnou zárukou — najdlhšia v odvetví",
+      "licenseTitle": "Poplatky za licencie",
+      "licenseDesc": "Žiadne mesačné licenčné poplatky za hardvér",
+      "reliabilityTitle": "Spoľahlivosť",
+      "reliabilityDesc": "Nepretržitá prevádzka bez výpadkov vďaka purpose-built OS"
+    },
+    "clearance": {
+      "title": "Séria 4 za zvýhodnené ceny",
+      "description": "Prehrávače predchádzajúcej generácie za výpredajové ceny. Ideálne pre rozšírenie existujúcich inštalácií alebo projekty s obmedzeným rozpočtom.",
+      "cta": "Zobraziť výpredaj"
     }
   },
   "b2b": {
@@ -234,6 +291,11 @@
     "businessType": "Typ podnikania",
     "expectedVolume": "Očakávaný objem",
     "submit": "Odoslať registráciu",
+    "message": "Správa",
+    "messagePlaceholder": "Popíšte vaše potreby, typ projektov, odhadovaný objem...",
+    "submitButton": "Odoslať žiadosť o B2B spoluprácu",
+    "successTitle": "Žiadosť odoslaná",
+    "successMessage": "Váš záujem o B2B spoluprácu sme prijali. Ozveme sa vám do 24 hodín.",
     "benefits": {
       "title": "Výhody B2B účtu",
       "discount": "Zľavy od 10 % do 20 %",

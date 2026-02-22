@@ -11,7 +11,7 @@ import { useAuth } from "@/lib/auth-context"
 import { Loader2 } from "lucide-react"
 
 export default function RegisterPage() {
-  const t = useTranslations("common")
+  const t = useTranslations("auth")
   const { register } = useAuth()
   const router = useRouter()
   const [firstName, setFirstName] = useState("")
@@ -29,7 +29,7 @@ export default function RegisterPage() {
       await register(email, password, firstName, lastName)
       router.push("/ucet")
     } catch {
-      setError("Registrace se nezdařila. Zkuste jiný e-mail.")
+      setError(t("registerError"))
     } finally {
       setLoading(false)
     }
@@ -40,7 +40,7 @@ export default function RegisterPage() {
       <Card>
         <CardHeader className="text-center">
           <CardTitle className="text-2xl">{t("register")}</CardTitle>
-          <CardDescription>Vytvořte si nový účet</CardDescription>
+          <CardDescription>{t("registerSubtitle")}</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -51,7 +51,7 @@ export default function RegisterPage() {
             )}
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
-                <Label htmlFor="firstName">Jméno</Label>
+                <Label htmlFor="firstName">{t("firstName")}</Label>
                 <Input
                   id="firstName"
                   required
@@ -60,7 +60,7 @@ export default function RegisterPage() {
                 />
               </div>
               <div>
-                <Label htmlFor="lastName">Příjmení</Label>
+                <Label htmlFor="lastName">{t("lastName")}</Label>
                 <Input
                   id="lastName"
                   required
@@ -70,18 +70,17 @@ export default function RegisterPage() {
               </div>
             </div>
             <div>
-              <Label htmlFor="email">E-mail</Label>
+              <Label htmlFor="email">{t("email")}</Label>
               <Input
                 id="email"
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="vas@email.cz"
               />
             </div>
             <div>
-              <Label htmlFor="password">Heslo</Label>
+              <Label htmlFor="password">{t("password")}</Label>
               <Input
                 id="password"
                 type="password"
@@ -90,7 +89,7 @@ export default function RegisterPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <p className="mt-1 text-xs text-muted-foreground">Minimálně 8 znaků</p>
+              <p className="mt-1 text-xs text-muted-foreground">{t("minChars")}</p>
             </div>
             <Button
               type="submit"
@@ -98,13 +97,13 @@ export default function RegisterPage() {
               className="w-full bg-brand-accent hover:bg-brand-accent-dark text-white"
             >
               {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              Vytvořit účet
+              {t("createAccount")}
             </Button>
           </form>
           <div className="mt-4 text-center text-sm text-muted-foreground">
-            Máte už účet?{" "}
+            {t("hasAccount")}{" "}
             <Link href="/prihlaseni" className="font-medium text-brand-accent hover:underline">
-              Přihlaste se
+              {t("signIn")}
             </Link>
           </div>
         </CardContent>

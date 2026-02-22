@@ -238,10 +238,11 @@ export default async function syncProducts({ container }: ExecArgs) {
     } else {
       const prices: { currency_code: string; amount: number }[] = []
       if (priceCZK) {
+        // Medusa stores prices in minor units (haléře/cents/grosze)
         prices.push(
-          { currency_code: "czk", amount: priceCZK },
-          { currency_code: "eur", amount: priceEUR },
-          { currency_code: "pln", amount: pricePLN }
+          { currency_code: "czk", amount: priceCZK * 100 },
+          { currency_code: "eur", amount: priceEUR * 100 },
+          { currency_code: "pln", amount: pricePLN * 100 }
         )
       }
 

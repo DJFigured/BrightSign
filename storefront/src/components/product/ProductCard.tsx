@@ -31,18 +31,19 @@ interface ProductCardProps {
   }
 }
 
-// Map familyCode prefix to segment label
-const SEGMENT_LABELS: Record<string, string> = {
-  LS: "Basic",
-  AU: "Audio",
-  HD: "Entry 4K",
-  XD: "Performance 4K",
-  XT: "Enterprise",
-  XC: "Video Wall",
+// Map familyCode prefix to segment label translation key
+const SEGMENT_KEYS: Record<string, string> = {
+  LS: "segmentBasic",
+  AU: "segmentAudio",
+  HD: "segmentEntry4K",
+  XD: "segmentPerformance4K",
+  XT: "segmentEnterprise",
+  XC: "segmentVideoWall",
 }
 
 export function ProductCard({ product }: ProductCardProps) {
   const t = useTranslations("common")
+  const tp = useTranslations("product")
   const tc = useTranslations("compare")
   const [adding, setAdding] = useState(false)
   const { addItem } = useCart()
@@ -60,7 +61,7 @@ export function ProductCard({ product }: ProductCardProps) {
   const lineCode = meta?.lineCode || meta?.familyName?.replace(/[0-9]/g, "")
   const isClearance = meta?.clearance === "true"
   const warranty = meta?.warranty
-  const segment = lineCode ? SEGMENT_LABELS[lineCode] : undefined
+  const segmentKey = lineCode ? SEGMENT_KEYS[lineCode] : undefined
 
   // Price without VAT (Czech DPH 21%)
   const priceExVat = priceAmount != null ? Math.round(priceAmount / 1.21) : null
@@ -92,7 +93,7 @@ export function ProductCard({ product }: ProductCardProps) {
             />
           ) : (
             <div className="flex h-full items-center justify-center text-muted-foreground">
-              No image
+              {tp("noImage")}
             </div>
           )}
 
@@ -109,17 +110,17 @@ export function ProductCard({ product }: ProductCardProps) {
                       : "bg-brand-primary/10 text-brand-primary"
                 }`}
               >
-                Série {series}
+                {tp("seriesN", { n: series })}
               </Badge>
             )}
             {isClearance && (
               <Badge variant="secondary" className="bg-orange-500 text-white text-[10px]">
-                Doprodej
+                {tp("clearance")}
               </Badge>
             )}
-            {segment && (
+            {segmentKey && (
               <Badge variant="outline" className="text-[10px] bg-white/80">
-                {segment}
+                {tp(segmentKey)}
               </Badge>
             )}
           </div>
@@ -167,12 +168,12 @@ export function ProductCard({ product }: ProductCardProps) {
                   <p className="text-lg font-bold text-brand-primary">
                     {formatPrice(priceAmount, currencyCode)}
                     <span className="ml-1 text-xs font-normal text-muted-foreground">
-                      s DPH
+                      {tp("inclVat")}
                     </span>
                   </p>
                   {priceExVat != null && (
                     <p className="text-xs text-muted-foreground">
-                      {formatPrice(priceExVat, currencyCode)} bez DPH
+                      {formatPrice(priceExVat, currencyCode)} {tp("exclVat")}
                     </p>
                   )}
                 </>
