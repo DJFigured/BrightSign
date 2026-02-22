@@ -7,7 +7,7 @@
  * Run with: npx medusa exec src/scripts/create-price-lists.ts
  */
 
-import { MedusaContainer } from "@medusajs/framework/types"
+import type { ExecArgs } from "@medusajs/framework/types"
 import { Modules, ContainerRegistrationKeys } from "@medusajs/framework/utils"
 
 const TIERS = [
@@ -16,7 +16,7 @@ const TIERS = [
   { name: "B2B Partner (-20%)", groupName: "b2b_partner", multiplier: 0.80 },
 ]
 
-export default async function createPriceLists(container: MedusaContainer) {
+export default async function createPriceLists({ container }: ExecArgs) {
   const logger = container.resolve("logger")
   const pricingModuleService = container.resolve(Modules.PRICING)
   const customerModuleService = container.resolve(Modules.CUSTOMER)
