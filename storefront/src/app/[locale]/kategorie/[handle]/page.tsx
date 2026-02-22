@@ -3,10 +3,33 @@ import { getLocale } from "next-intl/server"
 import { regionMap, type Locale } from "@/i18n/config"
 import { getRegionId } from "@/lib/medusa-helpers"
 import { CategoryPageClient } from "./client"
+import type { Metadata } from "next"
 
 interface Props {
   params: Promise<{ handle: string; locale: string }>
   searchParams: Promise<Record<string, string | undefined>>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { handle } = await params
+  try {
+    const { product_categories } = (await sdk.store.category.list({
+      fields: "name,description",
+      handle,
+      limit: 1,
+    })) as { product_categories: Array<{ name: string; description?: string }> }
+
+    const cat = product_categories[0]
+    if (cat) {
+      return {
+        title: `${cat.name} | BrightSign.cz`,
+        description: cat.description || `${cat.name} — BrightSign digital signage`,
+      }
+    }
+  } catch {
+    // fallback
+  }
+  return { title: `${handle} | BrightSign.cz` }
 }
 
 export default async function CategoryPage({ params, searchParams }: Props) {

@@ -435,6 +435,15 @@
     "name": "Imię",
     "subject": "Temat",
     "message": "Wiadomość",
-    "send": "Wyślij wiadomość"
+    "send": "Wyślij wiadomość",
+    "submitting": "Wysyłanie...",
+    "submitError": "Coś poszło nie tak, spróbuj ponownie.",
+    "submitSuccess": "Dziękujemy za wiadomość! Odezwiemy się jak najszybciej."
+  },
+  "search": {
+    "title": "Wyszukiwanie",
+    "noResults": "Brak wyników dla \u201E{query}\u201D",
+    "resultsFor": "Wyniki dla \u201E{query}\u201D",
+    "placeholder": "Szukaj produktów..."
   }
 }

@@ -435,6 +435,15 @@
     "name": "Meno",
     "subject": "Predmet",
     "message": "Správa",
-    "send": "Odoslať správu"
+    "send": "Odoslať správu",
+    "submitting": "Odosielam...",
+    "submitError": "Niečo sa pokazilo, skúste to prosím znova.",
+    "submitSuccess": "Ďakujeme za správu! Ozveme sa vám čo najskôr."
+  },
+  "search": {
+    "title": "Vyhľadávanie",
+    "noResults": "Žiadne výsledky pre \u201E{query}\u201D",
+    "resultsFor": "Výsledky pre \u201E{query}\u201D",
+    "placeholder": "Hľadať produkty..."
   }
 }

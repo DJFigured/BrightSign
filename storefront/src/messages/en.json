@@ -424,6 +424,15 @@
     "name": "Name",
     "subject": "Subject",
     "message": "Message",
-    "send": "Send Message"
+    "send": "Send Message",
+    "submitting": "Sending...",
+    "submitError": "Something went wrong, please try again.",
+    "submitSuccess": "Thank you for your message! We'll get back to you soon."
+  },
+  "search": {
+    "title": "Search",
+    "noResults": "No results for \"{query}\"",
+    "resultsFor": "Results for \"{query}\"",
+    "placeholder": "Search products..."
   }
 }

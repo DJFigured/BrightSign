@@ -21,7 +21,8 @@ export default function B2BRegistracePage() {
     contactName: '',
     email: '',
     phone: '',
-    message: ''
+    message: '',
+    website: '', // honeypot
   })
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState('')
@@ -48,6 +49,7 @@ export default function B2BRegistracePage() {
           email: form.email,
           phone: form.phone || undefined,
           message: form.message || undefined,
+          website: form.website || undefined,
         }),
       })
 
@@ -106,6 +108,20 @@ export default function B2BRegistracePage() {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Honeypot - hidden from humans */}
+            <div className="hidden" aria-hidden="true">
+              <label htmlFor="b2b-website">Website</label>
+              <input
+                type="text"
+                id="b2b-website"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                value={form.website}
+                onChange={e => setForm({ ...form, website: e.target.value })}
+              />
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <Label>{t('companyName')} *</Label>

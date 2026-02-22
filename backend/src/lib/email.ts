@@ -116,6 +116,23 @@ export async function sendB2BInquiryAdmin(inquiry: {
   })
 }
 
+export async function sendContactAdmin(data: {
+  name: string
+  email: string
+  subject?: string
+  message: string
+}): Promise<void> {
+  const { contactAdminTemplate } = await import("./email-templates/contact-admin.js")
+  const html = contactAdminTemplate(data)
+  const adminEmail = process.env.ADMIN_EMAIL || "obchod@brightsign.cz"
+  await sendEmail({
+    to: adminEmail,
+    subject: `Zpráva z webu: ${data.subject || "Kontaktní formulář"}`,
+    html,
+    replyTo: data.email,
+  })
+}
+
 export async function sendB2BInquiryConfirmation(inquiry: {
   contact_name: string
   company_name: string

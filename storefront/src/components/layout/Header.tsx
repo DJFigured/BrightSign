@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { useTranslations, useMessages } from "next-intl"
-import { Link } from "@/i18n/navigation"
+import { Link, useRouter } from "@/i18n/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
@@ -39,10 +39,19 @@ export function Header({ navData }: HeaderProps) {
   const messages = useMessages()
   const navLabels = (messages as Record<string, unknown>).nav as Record<string, string> | undefined
   const catName = (handle: string, fallback: string) => navLabels?.[handle] ?? fallback
+  const router = useRouter()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState("")
   const { cart } = useCart()
+
+  const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && searchQuery.trim()) {
+      router.push(`/hledani?q=${encodeURIComponent(searchQuery.trim())}`)
+      setSearchOpen(false)
+    }
+  }
 
   const itemCount = cart?.items?.length ?? 0
 
@@ -78,6 +87,9 @@ export function Header({ navData }: HeaderProps) {
             <Input
               placeholder={tc("search")}
               className="pl-9"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={handleSearch}
             />
           </div>
 
@@ -133,6 +145,9 @@ export function Header({ navData }: HeaderProps) {
                 placeholder={tc("search")}
                 className="pl-9"
                 autoFocus
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={handleSearch}
               />
             </div>
           </div>

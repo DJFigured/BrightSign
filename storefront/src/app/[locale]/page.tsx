@@ -1,8 +1,28 @@
-import { getLocale } from "next-intl/server"
+import { getLocale, getTranslations } from "next-intl/server"
 import { regionMap, type Locale } from "@/i18n/config"
 import { getRegionId } from "@/lib/medusa-helpers"
 import { sdk } from "@/lib/sdk"
 import { HomepageClient } from "@/components/home/HomepageClient"
+import type { Metadata } from "next"
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://brightsign.cz"
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("home")
+  const title = `BrightSign.cz — ${t("hero.title")}`
+  const description = t("hero.subtitle")
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "website",
+      url: SITE_URL,
+    },
+  }
+}
 
 export default async function HomePage() {
   const locale = await getLocale() as Locale

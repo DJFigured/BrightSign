@@ -441,6 +441,15 @@
     "name": "Jméno",
     "subject": "Předmět",
     "message": "Zpráva",
-    "send": "Odeslat zprávu"
+    "send": "Odeslat zprávu",
+    "submitting": "Odesílám...",
+    "submitError": "Něco se pokazilo, zkuste to prosím znovu.",
+    "submitSuccess": "Děkujeme za zprávu! Ozveme se vám co nejdříve."
+  },
+  "search": {
+    "title": "Vyhledávání",
+    "noResults": "Žádné výsledky pro \u201E{query}\u201D",
+    "resultsFor": "Výsledky pro \u201E{query}\u201D",
+    "placeholder": "Hledat produkty..."
   }
 }

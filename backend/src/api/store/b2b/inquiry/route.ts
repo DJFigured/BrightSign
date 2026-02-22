@@ -2,6 +2,7 @@ import { MedusaRequest, MedusaResponse } from "@medusajs/framework/http"
 import { ContainerRegistrationKeys } from "@medusajs/framework/utils"
 import { parseVatId, validateVatNumber } from "../../../../lib/vies"
 import { sendB2BInquiryAdmin, sendB2BInquiryConfirmation } from "../../../../lib/email"
+import { checkRateLimit } from "../../../../lib/rate-limit"
 
 /**
  * POST /store/b2b/inquiry
@@ -18,6 +19,18 @@ export async function POST(req: MedusaRequest, res: MedusaResponse) {
     email: string
     phone?: string
     message?: string
+    website?: string // honeypot
+  }
+
+  // Honeypot — if filled, silently return success (bot trap)
+  if (body.website) {
+    return res.status(201).json({ success: true, vat_status: "not_provided" })
+  }
+
+  // Rate limit: 5 requests per hour per IP
+  const ip = req.ip || req.headers["x-forwarded-for"]?.toString() || "unknown"
+  if (!checkRateLimit(ip, 5, 3600000)) {
+    return res.status(429).json({ error: "Too many requests. Please try again later." })
   }
 
   // Required fields
