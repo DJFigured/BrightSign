@@ -1,9 +1,42 @@
 import { defineMiddlewares } from "@medusajs/medusa"
+import type { MedusaNextFunction, MedusaRequest, MedusaResponse } from "@medusajs/framework/http"
 
 /**
- * No custom middlewares needed.
- * File serving is handled via /uploads/[filename] route.
+ * AI Buddy bearer token auth middleware.
+ * Checks Authorization header against AI_BUDDY_API_KEY env var.
  */
+function aiBuddyAuth(req: MedusaRequest, res: MedusaResponse, next: MedusaNextFunction) {
+  const token = req.headers.authorization?.replace("Bearer ", "")
+  const valid = process.env.AI_BUDDY_API_KEY
+  if (!valid || !token || token !== valid) {
+    res.status(401).json({ error: "Unauthorized" })
+    return
+  }
+  next()
+}
+
 export default defineMiddlewares({
-  routes: [],
+  routes: [
+    // AI Buddy endpoints — all require bearer auth EXCEPT health
+    {
+      matcher: "/store/ai-buddy/dashboard",
+      middlewares: [aiBuddyAuth],
+    },
+    {
+      matcher: "/store/ai-buddy/inventory",
+      middlewares: [aiBuddyAuth],
+    },
+    {
+      matcher: "/store/ai-buddy/orders",
+      middlewares: [aiBuddyAuth],
+    },
+    {
+      matcher: "/store/ai-buddy/revenue",
+      middlewares: [aiBuddyAuth],
+    },
+    {
+      matcher: "/store/ai-buddy/b2b",
+      middlewares: [aiBuddyAuth],
+    },
+  ],
 })

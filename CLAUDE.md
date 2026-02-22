@@ -133,6 +133,28 @@ claude mcp add supabase -- npx -y @anthropic/mcp-server@latest supabase
 | Resend | Email | 🔧 Setup needed |
 | Hetzner | Hosting | 🔧 Setup needed |
 
+## AI Buddy Integration
+
+Custom API at `/store/ai-buddy/` for personal command center dashboard.
+Full docs: `docs/ai-buddy-api.md`
+
+### Endpoints
+- `GET /store/ai-buddy/health` — connection test (no auth)
+- `GET /store/ai-buddy/dashboard` — main aggregated overview (orders, revenue, inventory, B2B)
+- `GET /store/ai-buddy/orders` — filtered/paginated orders
+- `GET /store/ai-buddy/revenue` — revenue breakdown (timeline, region, product, serie)
+- `GET /store/ai-buddy/inventory` — stock levels + alerts
+- `GET /store/ai-buddy/b2b` — B2B customers + groups
+
+### Auth
+Bearer token: `AI_BUDDY_API_KEY` from `.env`. Health check has no auth.
+
+### Data
+- Prices in minor units (CZK halere, EUR cents, PLN grosze)
+- SKU → Serie: last digit (4=S4, 5=S5, 6=S6)
+- Stock threshold: S5/S6=10, S4 clearance=3
+- 24 products, 4 regions, 3 currencies, 5 customer groups
+
 ## 🗣️ Communication
 
 - **Language:** Czech preferred, English OK
