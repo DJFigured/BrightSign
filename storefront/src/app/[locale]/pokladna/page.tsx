@@ -12,11 +12,12 @@ import { Badge } from "@/components/ui/badge"
 import { useCart } from "@/lib/cart-context"
 import { sdk } from "@/lib/sdk"
 import { formatPrice } from "@/lib/medusa-helpers"
-import { Check, Loader2, Package, MapPin, CreditCard, ShoppingBag } from "lucide-react"
+import { Check, Loader2, Package, MapPin, CreditCard, ShoppingBag, Building2, FileText } from "lucide-react"
 import { trackEcommerce, mapCartItemToGA4 } from "@/lib/analytics"
 import StripePayment from "@/components/checkout/StripePayment"
 
 type Step = "contact" | "address" | "shipping" | "payment" | "confirmation"
+type PaymentMethod = "card" | "bank_transfer"
 
 interface ShippingOption {
   id: string
@@ -37,8 +38,11 @@ export default function CheckoutPage() {
   const [loading, setLoading] = useState(false)
   const [shippingOptions, setShippingOptions] = useState<ShippingOption[]>([])
   const [orderId, setOrderId] = useState<string | null>(null)
+  const [orderDisplayId, setOrderDisplayId] = useState<number | null>(null)
   const [stripeClientSecret, setStripeClientSecret] = useState<string | null>(null)
   const [paymentError, setPaymentError] = useState<string | null>(null)
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("card")
+  const [bankTransferData, setBankTransferData] = useState<Record<string, unknown> | null>(null)
 
   // Map locale to default country code
   const localeCountryMap: Record<string, string> = {
@@ -86,14 +90,42 @@ export default function CheckoutPage() {
     }
   }, [step, cartId])
 
-  // Initiate Stripe payment session when entering payment step
+  // Initiate payment session when entering payment step
   useEffect(() => {
     if (step !== "payment" || !cartId || !cart) return
 
     async function initPayment() {
+      if (paymentMethod === "bank_transfer") {
+        // Bank transfer: initiate with bank-transfer provider
+        try {
+          const result = await sdk.store.payment.initiatePaymentSession(
+            cart as Parameters<typeof sdk.store.payment.initiatePaymentSession>[0],
+            { provider_id: "pp_bank-transfer_bank-transfer" }
+          )
+          const collection = result?.payment_collection ?? (result as Record<string, unknown>)?.payment_collection
+          const sessions = (collection as Record<string, unknown>)?.payment_sessions as Array<Record<string, unknown>> | undefined
+          const btSession = sessions?.find((s) => s.provider_id === "pp_bank-transfer_bank-transfer")
+          if (btSession?.data) {
+            setBankTransferData(btSession.data as Record<string, unknown>)
+          }
+        } catch (err) {
+          console.error("Bank transfer init failed:", err)
+          // Fallback to system_default
+          try {
+            await sdk.store.payment.initiatePaymentSession(
+              cart as Parameters<typeof sdk.store.payment.initiatePaymentSession>[0],
+              { provider_id: "pp_system_default" }
+            )
+          } catch (err2) {
+            console.error("Fallback payment init failed:", err2)
+          }
+        }
+        return
+      }
+
+      // Card payment: try Stripe
       try {
         if (STRIPE_KEY) {
-          // Try Stripe first
           const result = await sdk.store.payment.initiatePaymentSession(
             cart as Parameters<typeof sdk.store.payment.initiatePaymentSession>[0],
             { provider_id: "pp_stripe_stripe" }
@@ -107,13 +139,12 @@ export default function CheckoutPage() {
             return
           }
         }
-        // Fallback to system_default (no Stripe key or Stripe not configured in backend)
+        // Fallback to system_default
         await sdk.store.payment.initiatePaymentSession(
           cart as Parameters<typeof sdk.store.payment.initiatePaymentSession>[0],
           { provider_id: "pp_system_default" }
         )
       } catch {
-        // If Stripe fails, try system_default
         try {
           await sdk.store.payment.initiatePaymentSession(
             cart as Parameters<typeof sdk.store.payment.initiatePaymentSession>[0],
@@ -126,11 +157,11 @@ export default function CheckoutPage() {
     }
 
     initPayment()
-  }, [step, cartId, cart])
+  }, [step, cartId, cart, paymentMethod])
 
   if (!cart || items.length === 0) {
     if (orderId) {
-      return <ConfirmationView orderId={orderId} />
+      return <ConfirmationView orderId={orderId} orderDisplayId={orderDisplayId} paymentMethod={paymentMethod} bankTransferData={bankTransferData} />
     }
     return (
       <div className="mx-auto max-w-2xl px-4 py-16 text-center">
@@ -195,7 +226,6 @@ export default function CheckoutPage() {
         option_id: selectedShipping,
       })
       await refreshCart()
-      // Track add_shipping_info
       const option = shippingOptions.find((o) => o.id === selectedShipping)
       const ga4Items = items.map((item) => mapCartItemToGA4(item as unknown as Record<string, unknown>))
       trackEcommerce("add_shipping_info", ga4Items, {
@@ -215,20 +245,20 @@ export default function CheckoutPage() {
     const ga4Items = items.map((item) => mapCartItemToGA4(item as unknown as Record<string, unknown>))
     const result = await sdk.store.cart.complete(cartId!) as Record<string, unknown>
     if (result.type === "order") {
-      const order = result.order as { id: string }
+      const order = result.order as { id: string; display_id?: number }
       trackEcommerce("purchase", ga4Items, {
         transactionId: order.id,
         value: (cart?.total as number | undefined) ?? undefined,
         currency,
       })
       setOrderId(order.id)
+      setOrderDisplayId(order.display_id ?? null)
       setStep("confirmation")
     } else {
       console.error("Cart completion failed:", result)
     }
   }
 
-  // Called after Stripe payment succeeds
   async function handleStripeSuccess() {
     setLoading(true)
     try {
@@ -240,21 +270,19 @@ export default function CheckoutPage() {
     }
   }
 
-  // Called for system_default (no Stripe) orders
   async function handlePlaceOrder() {
     setLoading(true)
     const ga4Items = items.map((item) => mapCartItemToGA4(item as unknown as Record<string, unknown>))
     trackEcommerce("add_payment_info", ga4Items, {
       value: (cart?.total as number | undefined) ?? undefined,
       currency,
-      paymentType: stripeClientSecret ? "stripe" : "system_default",
+      paymentType: paymentMethod === "bank_transfer" ? "bank_transfer" : stripeClientSecret ? "stripe" : "system_default",
     })
 
     try {
       await completeOrder()
     } catch (err) {
       console.error("Failed to place order:", err)
-      // Fallback: try completing anyway
       try {
         await completeOrder()
       } catch (err2) {
@@ -269,7 +297,7 @@ export default function CheckoutPage() {
   const shippingTotal = cart?.shipping_total as number | undefined
   const total = cart?.total as number | undefined
 
-  const useStripe = !!STRIPE_KEY && !!stripeClientSecret
+  const useStripe = paymentMethod === "card" && !!STRIPE_KEY && !!stripeClientSecret
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
@@ -478,15 +506,91 @@ export default function CheckoutPage() {
                   </div>
                 )}
 
-                {useStripe ? (
-                  <StripePayment
-                    clientSecret={stripeClientSecret!}
-                    onSuccess={handleStripeSuccess}
-                    onError={(msg) => setPaymentError(msg)}
-                  />
-                ) : (
+                {/* Payment method selection */}
+                <div className="space-y-2">
+                  <label
+                    className={`flex cursor-pointer items-center gap-3 rounded-lg border p-4 transition-colors ${
+                      paymentMethod === "card"
+                        ? "border-brand-accent bg-brand-accent/5"
+                        : "border-border hover:border-brand-accent/50"
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value="card"
+                      checked={paymentMethod === "card"}
+                      onChange={() => { setPaymentMethod("card"); setBankTransferData(null) }}
+                      className="accent-brand-accent"
+                    />
+                    <CreditCard className="h-5 w-5 text-brand-primary" />
+                    <div>
+                      <span className="font-medium">{t("payByCard")}</span>
+                      <p className="text-xs text-muted-foreground">{t("payByCardDesc")}</p>
+                    </div>
+                  </label>
+
+                  <label
+                    className={`flex cursor-pointer items-center gap-3 rounded-lg border p-4 transition-colors ${
+                      paymentMethod === "bank_transfer"
+                        ? "border-brand-accent bg-brand-accent/5"
+                        : "border-border hover:border-brand-accent/50"
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value="bank_transfer"
+                      checked={paymentMethod === "bank_transfer"}
+                      onChange={() => { setPaymentMethod("bank_transfer"); setStripeClientSecret(null) }}
+                      className="accent-brand-accent"
+                    />
+                    <Building2 className="h-5 w-5 text-brand-primary" />
+                    <div>
+                      <span className="font-medium">{t("payByTransfer")}</span>
+                      <p className="text-xs text-muted-foreground">{t("payByTransferDesc")}</p>
+                    </div>
+                  </label>
+                </div>
+
+                {/* Card payment */}
+                {paymentMethod === "card" && (
                   <>
-                    <StripePayment />
+                    {useStripe ? (
+                      <StripePayment
+                        clientSecret={stripeClientSecret!}
+                        onSuccess={handleStripeSuccess}
+                        onError={(msg) => setPaymentError(msg)}
+                      />
+                    ) : (
+                      <>
+                        <StripePayment />
+                        <div className="flex gap-2">
+                          <Button type="button" variant="outline" onClick={() => setStep("shipping")}>
+                            {t("back")}
+                          </Button>
+                          <Button
+                            onClick={handlePlaceOrder}
+                            disabled={loading}
+                            className="flex-1 bg-brand-accent hover:bg-brand-accent-dark text-white"
+                            size="lg"
+                          >
+                            {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                            {t("placeOrder")}
+                          </Button>
+                        </div>
+                      </>
+                    )}
+                  </>
+                )}
+
+                {/* Bank transfer */}
+                {paymentMethod === "bank_transfer" && (
+                  <>
+                    <div className="rounded-lg border border-blue-200 bg-blue-50 p-4 space-y-2">
+                      <p className="text-sm font-medium text-blue-900">{t("bankTransferInfo")}</p>
+                      <p className="text-xs text-blue-700">{t("bankTransferNote")}</p>
+                    </div>
                     <div className="flex gap-2">
                       <Button type="button" variant="outline" onClick={() => setStep("shipping")}>
                         {t("back")}
@@ -498,7 +602,7 @@ export default function CheckoutPage() {
                         size="lg"
                       >
                         {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                        {t("placeOrder")}
+                        {t("placeOrderTransfer")}
                       </Button>
                     </div>
                   </>
@@ -555,6 +659,8 @@ export default function CheckoutPage() {
   )
 }
 
+// ─── Confirmation View ──────────────────────────────────────────────────────
+
 interface OrderData {
   id: string
   display_id: number
@@ -583,7 +689,17 @@ interface OrderData {
   shipping_methods?: Array<{ name: string; amount: number }> | null
 }
 
-function ConfirmationView({ orderId }: { orderId: string }) {
+function ConfirmationView({
+  orderId,
+  orderDisplayId,
+  paymentMethod,
+  bankTransferData,
+}: {
+  orderId: string
+  orderDisplayId: number | null
+  paymentMethod: PaymentMethod
+  bankTransferData: Record<string, unknown> | null
+}) {
   const t = useTranslations("checkout")
   const tCart = useTranslations("cart")
   const [order, setOrder] = useState<OrderData | null>(null)
@@ -600,6 +716,14 @@ function ConfirmationView({ orderId }: { orderId: string }) {
   }, [orderId])
 
   const currency = order?.currency_code?.toUpperCase() ?? "CZK"
+  const isBankTransfer = paymentMethod === "bank_transfer"
+  const variableSymbol = String(order?.display_id || orderDisplayId || "")
+
+  // Determine bank account from env or bankTransferData
+  const isCZK = currency === "CZK"
+  const accountNumber = (bankTransferData?.account_number as string)
+    || (isCZK ? "335584589/0300" : "335645089/0300")
+  const iban = (bankTransferData?.iban as string) || ""
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-12">
@@ -609,11 +733,44 @@ function ConfirmationView({ orderId }: { orderId: string }) {
           <Check className="h-8 w-8 text-green-600" />
         </div>
         <h1 className="mb-2 text-2xl font-bold">{t("orderPlaced")}</h1>
-        <p className="text-muted-foreground">{t("orderSuccess")}</p>
+        <p className="text-muted-foreground">
+          {isBankTransfer ? t("orderSuccessTransfer") : t("orderSuccess")}
+        </p>
         <p className="mt-1 text-sm text-muted-foreground">
           {t("orderNumber")}: <span className="font-mono font-medium">{order?.display_id ?? orderId}</span>
         </p>
       </div>
+
+      {/* Bank transfer payment instructions */}
+      {isBankTransfer && (
+        <Card className="mb-4 border-blue-200 bg-blue-50">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-base text-blue-900">
+              <Building2 className="h-4 w-4" />
+              {t("bankTransferInstructions")}
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3 text-sm">
+            <div className="grid grid-cols-2 gap-2">
+              <span className="text-blue-700">{t("bankAccount")}:</span>
+              <span className="font-mono font-medium text-blue-900">{accountNumber}</span>
+              {iban && (
+                <>
+                  <span className="text-blue-700">IBAN:</span>
+                  <span className="font-mono text-sm text-blue-900">{iban}</span>
+                </>
+              )}
+              <span className="text-blue-700">{t("variableSymbol")}:</span>
+              <span className="font-mono font-bold text-blue-900">{variableSymbol}</span>
+              <span className="text-blue-700">{t("amountToPay")}:</span>
+              <span className="font-bold text-blue-900">
+                {order ? formatPrice(order.total, currency) : "..."}
+              </span>
+            </div>
+            <p className="text-xs text-blue-600 mt-2">{t("bankTransferEmailNote")}</p>
+          </CardContent>
+        </Card>
+      )}
 
       {orderLoading ? (
         <div className="flex items-center justify-center py-8">
@@ -711,14 +868,31 @@ function ConfirmationView({ orderId }: { orderId: string }) {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-base">
-                <CreditCard className="h-4 w-4" />
+                {isBankTransfer ? <Building2 className="h-4 w-4" /> : <CreditCard className="h-4 w-4" />}
                 {t("paymentMethod")}
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <Badge variant="secondary">
-                {order.status === "completed" ? t("paid") : t("pending")}
-              </Badge>
+              {isBankTransfer ? (
+                <Badge variant="secondary">{t("pendingTransfer")}</Badge>
+              ) : (
+                <Badge variant="secondary">
+                  {order.status === "completed" ? t("paid") : t("pending")}
+                </Badge>
+              )}
+            </CardContent>
+          </Card>
+
+          {/* Invoice note */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-base">
+                <FileText className="h-4 w-4" />
+                {t("invoiceTitle")}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="text-sm text-muted-foreground">
+              {isBankTransfer ? t("invoiceProformaNote") : t("invoiceEmailNote")}
             </CardContent>
           </Card>
         </div>

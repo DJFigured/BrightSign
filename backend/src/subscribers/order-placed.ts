@@ -3,6 +3,7 @@ import {
   SubscriberConfig,
 } from "@medusajs/framework"
 import { sendOrderConfirmation } from "../lib/email"
+import { createProformaForOrder, createInvoiceForOrder } from "../lib/invoice-service"
 
 export default async function orderPlacedHandler({
   event: { data },
@@ -24,6 +25,7 @@ export default async function orderPlacedHandler({
     `[Order] #${order.display_id} placed by ${order.email} — ${totalFormatted} — ${order.items?.length ?? 0} item(s)`
   )
 
+  // Send order confirmation email
   if (order.email) {
     await sendOrderConfirmation({
       id: order.id,
@@ -37,6 +39,54 @@ export default async function orderPlacedHandler({
         unit_price: Number(item.unit_price),
       })),
     }).catch((err: any) => logger.error(`[Order Email] Failed to send confirmation: ${err.message}`))
+  }
+
+  // Generate invoice/proforma based on payment method
+  try {
+    const paymentModule = container.resolve("payment") as any
+    let isBankTransfer = false
+
+    try {
+      // Try to detect bank transfer via payment collections
+      // Use order.id to find related payment collections
+      const paymentCollections = await paymentModule.listPaymentCollections(
+        {},
+        { relations: ["payment_sessions"] }
+      )
+      // Find the most recent collection that matches
+      for (const collection of paymentCollections || []) {
+        const sessions = collection?.payment_sessions || []
+        if (sessions.some((s: any) => s.provider_id === "pp_bank-transfer_bank-transfer")) {
+          isBankTransfer = true
+          break
+        }
+      }
+    } catch {
+      logger.info("[Invoice] Could not determine payment method, generating final invoice")
+    }
+
+    const orderData = {
+      id: order.id,
+      display_id: order.display_id ?? null,
+      email: order.email || "",
+      currency_code: order.currency_code || "CZK",
+      subtotal: order.subtotal,
+      tax_total: order.tax_total,
+      total: order.total,
+      items: (order.items ?? []) as any[],
+      shipping_address: order.shipping_address as any,
+      metadata: (order.metadata as Record<string, unknown>) || null,
+    }
+
+    if (isBankTransfer) {
+      const result = await createProformaForOrder(container, orderData)
+      logger.info(`[Invoice] Proforma ${result.number} created for order #${order.display_id}`)
+    } else {
+      const result = await createInvoiceForOrder(container, orderData)
+      logger.info(`[Invoice] Invoice ${result.number} created for order #${order.display_id}`)
+    }
+  } catch (err: any) {
+    logger.error(`[Invoice] Failed to generate invoice for order #${order.display_id}: ${err.message}`)
   }
 }
 

@@ -103,8 +103,15 @@ module.exports = defineConfig({
               capture: true,
             },
           },
+          {
+            resolve: "./src/modules/bank-transfer",
+            id: "bank-transfer",
+          },
         ],
       },
+    },
+    {
+      resolve: "./src/modules/invoice",
     },
   ],
 })
