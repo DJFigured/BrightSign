@@ -61,7 +61,7 @@ const SPEC_LABELS: Record<string, string> = {
   "Shipping weight / Player weight": "Weight",
 }
 
-export function ComparePageClient() {
+export function ComparePageClient({ regionId }: { regionId: string }) {
   const t = useTranslations("compare")
   const { items, removeItem, clear } = useCompare()
   const [products, setProducts] = useState<FullProduct[]>([])
@@ -85,6 +85,7 @@ export function ComparePageClient() {
         const { products: fetched } = (await sdk.store.product.list({
           handle: items.map((i) => i.handle),
           fields: "+variants.calculated_price,+metadata",
+          region_id: regionId,
           limit: 4,
         })) as { products: FullProduct[] }
 
@@ -108,7 +109,7 @@ export function ComparePageClient() {
     return () => {
       cancelled = true
     }
-  }, [items])
+  }, [items, regionId])
 
   // Collect all spec rows that exist in at least one product
   const specRows = useMemo(() => {

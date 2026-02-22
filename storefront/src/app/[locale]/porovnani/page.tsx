@@ -1,6 +1,9 @@
-import { getTranslations } from "next-intl/server"
+import { getTranslations, getLocale } from "next-intl/server"
 import type { Metadata } from "next"
 import { ComparePageClient } from "./client"
+import { regionMap } from "@/i18n/config"
+import { getRegionId } from "@/lib/medusa-helpers"
+import type { Locale } from "@/i18n/config"
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("compare")
@@ -8,5 +11,8 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function ComparePage() {
-  return <ComparePageClient />
+  const locale = await getLocale() as Locale
+  const regionCode = regionMap[locale]
+  const regionId = getRegionId(regionCode)
+  return <ComparePageClient regionId={regionId} />
 }
