@@ -7,6 +7,8 @@ import { Header, type HeaderNavData } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
 import { CartProvider } from "@/lib/cart-context"
 import { AuthProvider } from "@/lib/auth-context"
+import { CompareProvider } from "@/lib/compare-context"
+import { CompareBar } from "@/components/product/CompareBar"
 import { getNavigationData } from "@/lib/categories"
 
 const inter = Inter({
@@ -60,11 +62,14 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           <AuthProvider>
             <CartProvider>
-              <div className="flex min-h-screen flex-col">
-                <Header navData={navData} />
-                <main className="flex-1">{children}</main>
-                <Footer navData={navData} />
-              </div>
+              <CompareProvider>
+                <div className="flex min-h-screen flex-col">
+                  <Header navData={navData} />
+                  <main className="flex-1">{children}</main>
+                  <Footer navData={navData} />
+                </div>
+                <CompareBar />
+              </CompareProvider>
             </CartProvider>
           </AuthProvider>
         </NextIntlClientProvider>

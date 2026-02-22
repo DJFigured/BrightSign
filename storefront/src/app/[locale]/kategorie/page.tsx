@@ -5,18 +5,14 @@ import { getRegionId } from "@/lib/medusa-helpers"
 import { CategoryPageClient } from "./[handle]/client"
 
 interface Props {
-  searchParams: Promise<{ page?: string }>
+  searchParams: Promise<Record<string, string | undefined>>
 }
 
 export default async function AllProductsPage({ searchParams }: Props) {
-  const { page } = await searchParams
+  const sp = await searchParams
   const locale = await getLocale() as Locale
   const regionCode = regionMap[locale]
   const regionId = getRegionId(regionCode)
-
-  const currentPage = parseInt(page ?? "1", 10)
-  const limit = 12
-  const offset = (currentPage - 1) * limit
 
   const { product_categories } = await sdk.store.category.list({
     fields: "id,name,handle,parent_category_id",
@@ -38,23 +34,24 @@ export default async function AllProductsPage({ searchParams }: Props) {
   }))
 
   const { products, count } = await sdk.store.product.list({
-    limit,
-    offset,
+    limit: 100,
+    offset: 0,
     fields: "+variants.calculated_price",
     region_id: regionId,
   }) as { products: Array<Record<string, unknown>>; count: number }
-
-  const totalPages = Math.ceil(count / limit)
 
   return (
     <CategoryPageClient
       products={products}
       categories={categoriesWithChildren}
       currentCategory={null}
-      currentPage={currentPage}
-      totalPages={totalPages}
       totalProducts={count}
       handle=""
+      initialFilters={{
+        sort: sp.sort,
+        series: sp.series,
+        line: sp.line,
+      }}
     />
   )
 }

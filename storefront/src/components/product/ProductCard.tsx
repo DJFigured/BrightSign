@@ -8,8 +8,10 @@ import { Badge } from "@/components/ui/badge"
 import { ShoppingCart } from "lucide-react"
 import { formatPrice } from "@/lib/medusa-helpers"
 import { useCart } from "@/lib/cart-context"
+import { useCompare } from "@/lib/compare-context"
 import { useTranslations } from "next-intl"
 import { useState } from "react"
+import { GitCompareArrows } from "lucide-react"
 
 interface ProductCardProps {
   product: {
@@ -41,8 +43,11 @@ const SEGMENT_LABELS: Record<string, string> = {
 
 export function ProductCard({ product }: ProductCardProps) {
   const t = useTranslations("common")
+  const tc = useTranslations("compare")
   const [adding, setAdding] = useState(false)
   const { addItem } = useCart()
+  const { toggleItem, isInCompare } = useCompare()
+  const inCompare = isInCompare(product.id)
 
   const variant = product.variants?.[0]
   const price = variant?.calculated_price
@@ -128,6 +133,28 @@ export function ProductCard({ product }: ProductCardProps) {
               {warranty}
             </Badge>
           )}
+
+          {/* Compare toggle */}
+          <button
+            onClick={(e) => {
+              e.preventDefault()
+              toggleItem({
+                id: product.id,
+                handle: product.handle,
+                title: product.title,
+                thumbnail: product.thumbnail,
+              })
+            }}
+            className={`absolute bottom-2 right-2 flex items-center gap-1 rounded-full px-2 py-1 text-[10px] font-medium transition-colors ${
+              inCompare
+                ? "bg-brand-accent text-white"
+                : "bg-white/80 text-muted-foreground hover:bg-white hover:text-foreground"
+            }`}
+            title={tc("toggleCompare")}
+          >
+            <GitCompareArrows className="h-3 w-3" />
+            {inCompare ? tc("inCompare") : tc("addToCompare")}
+          </button>
         </div>
         <CardContent className="p-4">
           <h3 className="mb-2 line-clamp-2 text-sm font-medium leading-tight">

@@ -70,6 +70,11 @@ export function Footer({ navData }: FooterProps) {
                   {tc("returns")}
                 </Link>
               </li>
+              <li>
+                <Link href="/kontakt" className="hover:text-brand-accent transition-colors">
+                  {tc("contact")}
+                </Link>
+              </li>
             </ul>
           </div>
 

@@ -6,19 +6,18 @@ import { CategoryPageClient } from "./client"
 
 interface Props {
   params: Promise<{ handle: string; locale: string }>
-  searchParams: Promise<{ page?: string }>
+  searchParams: Promise<Record<string, string | undefined>>
 }
 
 export default async function CategoryPage({ params, searchParams }: Props) {
   const { handle } = await params
-  const { page } = await searchParams
+  const sp = await searchParams
   const locale = await getLocale() as Locale
   const regionCode = regionMap[locale]
   const regionId = getRegionId(regionCode)
 
-  const currentPage = parseInt(page ?? "1", 10)
-  const limit = 12
-  const offset = (currentPage - 1) * limit
+  const limit = 100
+  const offset = 0
 
   // Fetch categories (flat list - we build the tree from parent_category_id)
   const { product_categories } = await sdk.store.category.list({
@@ -74,17 +73,18 @@ export default async function CategoryPage({ params, searchParams }: Props) {
     count: number
   }
 
-  const totalPages = Math.ceil(count / limit)
-
   return (
     <CategoryPageClient
       products={products}
       categories={categoriesWithChildren}
       currentCategory={category ?? null}
-      currentPage={currentPage}
-      totalPages={totalPages}
       totalProducts={count}
       handle={handle}
+      initialFilters={{
+        sort: sp.sort,
+        series: sp.series,
+        line: sp.line,
+      }}
     />
   )
 }
