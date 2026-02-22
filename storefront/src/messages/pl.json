@@ -296,6 +296,13 @@
     "submitButton": "Wyślij wniosek o współpracę B2B",
     "successTitle": "Wniosek wysłany",
     "successMessage": "Otrzymaliśmy Twój wniosek o współpracę B2B. Skontaktujemy się w ciągu 24 godzin.",
+    "vatValid": "NIP zweryfikowany w systemie VIES",
+    "vatPending": "NIP zostanie zweryfikowany w ciągu 24 godzin",
+    "vatInvalid": "NIP nie został zweryfikowany — skontaktujemy się z Tobą",
+    "vatHint": "Format: PL1234567890",
+    "submitting": "Wysyłanie...",
+    "submitError": "Coś poszło nie tak, spróbuj ponownie",
+    "inquiryConfirmation": "Skontaktujemy się w ciągu 24 godzin na {email}",
     "benefits": {
       "title": "Korzyści konta B2B",
       "discount": "Zniżki od 10% do 20%",

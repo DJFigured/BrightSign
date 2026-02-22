@@ -92,3 +92,40 @@ export async function sendB2BValidated(customer: {
     html,
   })
 }
+
+export async function sendB2BInquiryAdmin(inquiry: {
+  company_name: string
+  registration_number: string
+  vat_id?: string
+  contact_name: string
+  email: string
+  phone?: string
+  message?: string
+  vat_status: "valid" | "invalid" | "pending" | "not_provided"
+  vat_company_name?: string
+  vat_company_address?: string
+}): Promise<void> {
+  const { b2bInquiryAdminTemplate } = await import("./email-templates/b2b-inquiry-admin.js")
+  const html = b2bInquiryAdminTemplate(inquiry)
+  const adminEmail = process.env.ADMIN_EMAIL || "obchod@brightsign.cz"
+  await sendEmail({
+    to: adminEmail,
+    subject: `Nová B2B poptávka: ${inquiry.company_name}`,
+    html,
+    replyTo: inquiry.email,
+  })
+}
+
+export async function sendB2BInquiryConfirmation(inquiry: {
+  contact_name: string
+  company_name: string
+  email: string
+}): Promise<void> {
+  const { b2bInquiryConfirmationTemplate } = await import("./email-templates/b2b-inquiry-confirmation.js")
+  const html = b2bInquiryConfirmationTemplate(inquiry)
+  await sendEmail({
+    to: inquiry.email,
+    subject: "Děkujeme za poptávku — BrightSign B2B",
+    html,
+  })
+}

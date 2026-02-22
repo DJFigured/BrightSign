@@ -296,6 +296,13 @@
     "submitButton": "B2B-Partnerschaftsanfrage senden",
     "successTitle": "Anfrage gesendet",
     "successMessage": "Wir haben Ihre B2B-Partnerschaftsanfrage erhalten. Wir melden uns innerhalb von 24 Stunden.",
+    "vatValid": "USt-IdNr. im VIES-System verifiziert",
+    "vatPending": "USt-IdNr. wird innerhalb von 24 Stunden verifiziert",
+    "vatInvalid": "USt-IdNr. konnte nicht verifiziert werden — wir kontaktieren Sie",
+    "vatHint": "Format: DE123456789",
+    "submitting": "Wird gesendet...",
+    "submitError": "Etwas ist schiefgelaufen, bitte versuchen Sie es erneut",
+    "inquiryConfirmation": "Wir melden uns innerhalb von 24 Stunden unter {email}",
     "benefits": {
       "title": "Vorteile des B2B-Kontos",
       "discount": "Rabatte von 10% bis 20%",

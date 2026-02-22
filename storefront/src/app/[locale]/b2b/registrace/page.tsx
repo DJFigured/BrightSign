@@ -7,6 +7,10 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 
+const MEDUSA_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || 'http://localhost:9000'
+
+type VatStatus = 'valid' | 'invalid' | 'pending' | 'not_provided'
+
 export default function B2BRegistracePage() {
   const t = useTranslations('b2b')
   const [form, setForm] = useState({
@@ -18,21 +22,72 @@ export default function B2BRegistracePage() {
     phone: '',
     message: ''
   })
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [vatStatus, setVatStatus] = useState<VatStatus>('not_provided')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // TODO: Connect to backend B2B registration endpoint
-    setSubmitted(true)
+    setError('')
+    setSubmitting(true)
+
+    try {
+      const res = await fetch(`${MEDUSA_URL}/store/b2b/inquiry`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          company_name: form.company,
+          registration_number: form.ico,
+          vat_id: form.dic || undefined,
+          contact_name: form.contactName,
+          email: form.email,
+          phone: form.phone || undefined,
+          message: form.message || undefined,
+        }),
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) {
+        setError(data.error || t('submitError'))
+        return
+      }
+
+      setVatStatus(data.vat_status)
+      setSubmitted(true)
+    } catch {
+      setError(t('submitError'))
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   if (submitted) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center max-w-md">
-          <div className="text-5xl mb-4">✓</div>
+          <div className="text-5xl mb-4">&#10003;</div>
           <h1 className="text-2xl font-bold text-brand-primary mb-4">{t('successTitle')}</h1>
-          <p className="text-muted-foreground">{t('successMessage')}</p>
+          <p className="text-muted-foreground mb-6">
+            {t('inquiryConfirmation', { email: form.email })}
+          </p>
+
+          {vatStatus === 'valid' && (
+            <div className="inline-flex items-center gap-2 bg-green-50 text-green-700 border border-green-200 rounded-lg px-4 py-3 text-sm font-medium">
+              <span>&#10003;</span> {t('vatValid')}
+            </div>
+          )}
+          {vatStatus === 'pending' && (
+            <div className="inline-flex items-center gap-2 bg-amber-50 text-amber-700 border border-amber-200 rounded-lg px-4 py-3 text-sm font-medium">
+              <span>&#8987;</span> {t('vatPending')}
+            </div>
+          )}
+          {vatStatus === 'invalid' && (
+            <div className="inline-flex items-center gap-2 bg-red-50 text-red-700 border border-red-200 rounded-lg px-4 py-3 text-sm font-medium">
+              <span>&#9888;</span> {t('vatInvalid')}
+            </div>
+          )}
         </div>
       </div>
     )
@@ -70,9 +125,11 @@ export default function B2BRegistracePage() {
                 <Label>{t('vatId')}</Label>
                 <Input
                   type="text"
+                  placeholder="CZ12345678"
                   value={form.dic}
                   onChange={e => setForm({...form, dic: e.target.value})}
                 />
+                <p className="text-xs text-muted-foreground mt-1">{t('vatHint')}</p>
               </div>
               <div>
                 <Label>{t('contactName')} *</Label>
@@ -111,12 +168,20 @@ export default function B2BRegistracePage() {
                 className="w-full border border-input rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-accent"
               />
             </div>
+
+            {error && (
+              <div className="bg-red-50 text-red-700 border border-red-200 rounded-lg px-4 py-3 text-sm">
+                {error}
+              </div>
+            )}
+
             <Button
               type="submit"
               className="w-full bg-brand-accent hover:bg-brand-accent-dark text-white"
               size="lg"
+              disabled={submitting}
             >
-              {t('submitButton')}
+              {submitting ? t('submitting') : t('submitButton')}
             </Button>
           </form>
         </CardContent>

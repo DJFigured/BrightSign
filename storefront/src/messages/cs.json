@@ -302,6 +302,13 @@
     "submitButton": "Odeslat žádost o B2B spolupráci",
     "successTitle": "Žádost odeslána",
     "successMessage": "Váš zájem o B2B spolupráci jsme přijali. Ozveme se vám do 24 hodin.",
+    "vatValid": "DIČ ověřeno v systému VIES",
+    "vatPending": "DIČ bude ověřeno do 24 hodin",
+    "vatInvalid": "DIČ nebylo ověřeno — budeme vás kontaktovat",
+    "vatHint": "Formát: CZ12345678",
+    "submitting": "Odesílám...",
+    "submitError": "Něco se pokazilo, zkuste to znovu",
+    "inquiryConfirmation": "Ozveme se vám do 24 hodin na {email}",
     "benefits": {
       "title": "Výhody B2B účtu",
       "discount": "Slevy od 10 % do 20 %",

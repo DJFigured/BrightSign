@@ -296,6 +296,13 @@
     "submitButton": "Odoslať žiadosť o B2B spoluprácu",
     "successTitle": "Žiadosť odoslaná",
     "successMessage": "Váš záujem o B2B spoluprácu sme prijali. Ozveme sa vám do 24 hodín.",
+    "vatValid": "DIČ overené v systéme VIES",
+    "vatPending": "DIČ bude overené do 24 hodín",
+    "vatInvalid": "DIČ nebolo overené — budeme vás kontaktovať",
+    "vatHint": "Formát: SK1234567890",
+    "submitting": "Odosielam...",
+    "submitError": "Niečo sa pokazilo, skúste to znova",
+    "inquiryConfirmation": "Ozveme sa vám do 24 hodín na {email}",
     "benefits": {
       "title": "Výhody B2B účtu",
       "discount": "Zľavy od 10 % do 20 %",

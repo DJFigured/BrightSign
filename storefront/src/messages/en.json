@@ -285,6 +285,13 @@
     "submitButton": "Submit B2B Partnership Request",
     "successTitle": "Request Submitted",
     "successMessage": "We have received your B2B partnership request. We will contact you within 24 hours.",
+    "vatValid": "VAT ID verified in the VIES system",
+    "vatPending": "VAT ID will be verified within 24 hours",
+    "vatInvalid": "VAT ID could not be verified — we will contact you",
+    "vatHint": "Format: CZ12345678",
+    "submitting": "Submitting...",
+    "submitError": "Something went wrong, please try again",
+    "inquiryConfirmation": "We will contact you within 24 hours at {email}",
     "benefits": {
       "title": "B2B Account Benefits",
       "discount": "Discounts from 10% to 20%",
