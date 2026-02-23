@@ -1,7 +1,7 @@
 import { sdk } from "@/lib/sdk"
 import { getLocale, getTranslations } from "next-intl/server"
 import { regionMap, type Locale } from "@/i18n/config"
-import { getRegionId } from "@/lib/medusa-helpers"
+import { getRegionId, getLocalizedDescription } from "@/lib/medusa-helpers"
 import { notFound } from "next/navigation"
 import { ProductDetailClient } from "./client"
 import type { Metadata } from "next"
@@ -32,12 +32,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const meta = product.metadata as Record<string, unknown> | undefined
   const seo = meta?.seo as { title?: string; description?: string } | undefined
 
+  // Use localized description for SEO meta tags
+  const localizedDesc = getLocalizedDescription(
+    { description: product.description as string | undefined, metadata: meta },
+    locale,
+  )
+  // Strip HTML tags for meta description
+  const plainDesc = localizedDesc?.replace(/<[^>]*>/g, "").slice(0, 160)
+
   return {
     title: seo?.title || (product.title as string),
-    description: seo?.description || (product.subtitle as string) || undefined,
+    description: seo?.description || plainDesc || (product.subtitle as string) || undefined,
     openGraph: {
       title: seo?.title || (product.title as string),
-      description: seo?.description || (product.subtitle as string) || undefined,
+      description: seo?.description || plainDesc || (product.subtitle as string) || undefined,
       images: product.thumbnail ? [{ url: product.thumbnail as string }] : undefined,
     },
   }

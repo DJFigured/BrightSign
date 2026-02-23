@@ -33,3 +33,27 @@ export const currencyMap: Record<string, string> = {
   PL: "pln",
   EU: "eur",
 }
+
+/**
+ * Returns localized product description from metadata translations.
+ * Main product.description is always Czech (cs).
+ * Other locales fall back to Czech if translation is missing.
+ */
+export function getLocalizedDescription(
+  product: { description?: string | null; metadata?: Record<string, unknown> | null },
+  locale: string,
+): string | undefined {
+  const description = product.description ?? undefined
+
+  // Czech is the primary language stored in product.description
+  if (locale === "cs") return description
+
+  // Try to get translation from metadata
+  const translations = product.metadata?.translations as
+    | Record<string, { description?: string }> | undefined
+  const translated = translations?.[locale]?.description
+  if (translated) return translated
+
+  // Fallback to Czech
+  return description
+}

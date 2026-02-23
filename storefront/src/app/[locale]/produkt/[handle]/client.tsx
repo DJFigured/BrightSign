@@ -2,14 +2,14 @@
 
 import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
-import { useTranslations } from "next-intl"
+import { useTranslations, useLocale } from "next-intl"
 import { Link } from "@/i18n/navigation"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { ProductCard } from "@/components/product/ProductCard"
 import { useCart } from "@/lib/cart-context"
-import { formatPrice } from "@/lib/medusa-helpers"
+import { formatPrice, getLocalizedDescription } from "@/lib/medusa-helpers"
 import { Minus, Plus, ShoppingCart, ChevronRight, Shield, Truck, FileDown } from "lucide-react"
 import { trackEcommerce, mapProductToItem } from "@/lib/analytics"
 
@@ -64,13 +64,17 @@ const SPEC_LABELS: Record<string, string> = {
 export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: Props) {
   const t = useTranslations("product")
   const tc = useTranslations("common")
+  const locale = useLocale()
   const { addItem } = useCart()
   const [quantity, setQuantity] = useState(1)
   const [adding, setAdding] = useState(false)
   const [selectedImage, setSelectedImage] = useState(0)
 
   const title = product.title as string
-  const description = product.description as string | undefined
+  const description = getLocalizedDescription(
+    { description: product.description as string | undefined, metadata: product.metadata as Record<string, unknown> | undefined },
+    locale,
+  )
   const thumbnail = product.thumbnail as string | undefined
   const images = (product.images as ProductImage[] | undefined) ?? []
   const variants = product.variants as Array<{
