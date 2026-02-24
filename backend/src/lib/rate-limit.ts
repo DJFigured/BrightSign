@@ -23,17 +23,20 @@ setInterval(() => {
 /**
  * Check if IP is within rate limit.
  * Returns true if request is ALLOWED, false if rate limited.
+ * @param namespace - Optional prefix to separate rate limit counters per endpoint
  */
 export function checkRateLimit(
   ip: string,
   maxRequests = 5,
-  windowMs = 3600000
+  windowMs = 3600000,
+  namespace = "default"
 ): boolean {
+  const key = `${namespace}:${ip}`
   const now = Date.now()
-  const entry = store.get(ip)
+  const entry = store.get(key)
 
   if (!entry || entry.resetAt <= now) {
-    store.set(ip, { count: 1, resetAt: now + windowMs })
+    store.set(key, { count: 1, resetAt: now + windowMs })
     return true
   }
 

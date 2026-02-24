@@ -24,7 +24,7 @@ export async function POST(req: MedusaRequest, res: MedusaResponse) {
 
   // Rate limit: 5 requests per hour per IP
   const ip = req.ip || req.headers["x-forwarded-for"]?.toString() || "unknown"
-  if (!checkRateLimit(ip, 5, 3600000)) {
+  if (!checkRateLimit(ip, 5, 3600000, "contact")) {
     return res.status(429).json({ error: "Too many requests. Please try again later." })
   }
 
