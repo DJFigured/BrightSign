@@ -66,7 +66,9 @@
       "title": "News & Deals",
       "placeholder": "Your email",
       "subscribe": "Subscribe"
-    }
+    },
+    "series4": "BrightSign Series 4",
+    "series5": "BrightSign Series 5"
   },
   "cart": {
     "title": "Cart",
@@ -162,7 +164,14 @@
     "pendingTransfer": "Awaiting bank transfer",
     "invoiceTitle": "Documents",
     "invoiceEmailNote": "Invoice will be sent to your email.",
-    "invoiceProformaNote": "A proforma invoice with payment details has been sent to your email. After payment, you will receive the final invoice."
+    "invoiceProformaNote": "A proforma invoice with payment details has been sent to your email. After payment, you will receive the final invoice.",
+    "packetaNote": "Select a Packeta pickup point",
+    "packetaNote2": "You can change the pickup point later",
+    "packetaSelect": "Vybrať výdajné miesto Zásielkovňa",
+    "packetaLoading": "Loading pickup points...",
+    "packetaChange": "Change pickup point",
+    "packetaLoadError": "Failed to load Packeta widget",
+    "packetaPickupPoint": "Výdajné miesto Zásielkovňa"
   },
   "auth": {
     "login": "Sign In",
@@ -210,7 +219,9 @@
     "prev": "Previous",
     "next": "Next",
     "page": "Page",
-    "allProductsDescription": "Complete range of BrightSign digital signage players. Series 4, 5, and 6."
+    "allProductsDescription": "Complete range of BrightSign digital signage players. Series 4, 5, and 6.",
+    "noProductsInCategory": "No products in this category.",
+    "productsCount": "{count, plural, one {product} other {products}}"
   },
   "product": {
     "description": "Description",
@@ -371,7 +382,20 @@
       "invoice": "Company invoicing",
       "support": "Dedicated support",
       "volume": "Volume discounts"
-    }
+    },
+    "endUser": "End user",
+    "formNote": "After submitting the form, we will contact you to confirm your B2B account.",
+    "integrator": "Integrator / AV technician",
+    "other": "Other",
+    "reseller": "Reseller",
+    "selectBusinessType": "Select business type",
+    "selectCountry": "Select country",
+    "selectVolume": "Select expected volume",
+    "viesNote": "VAT ID will be verified via the VIES system.",
+    "volume1_5": "1-5 units / year",
+    "volume20_50": "20-50 units / year",
+    "volume50plus": "50+ units / year",
+    "volume5_20": "5-20 units / year"
   },
   "compare": {
     "title": "Product Comparison",

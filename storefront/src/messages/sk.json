@@ -66,7 +66,9 @@
       "title": "Novinky a akcie",
       "placeholder": "Váš e-mail",
       "subscribe": "Odoberať"
-    }
+    },
+    "series4": "BrightSign Séria 4",
+    "series5": "BrightSign Séria 5"
   },
   "cart": {
     "title": "Košík",
@@ -217,7 +219,9 @@
     "prev": "Predchádzajúce",
     "next": "Ďalšie",
     "page": "Stránka",
-    "allProductsDescription": "Kompletná ponuka BrightSign digital signage prehrávačov. Séria 4, 5 aj 6."
+    "allProductsDescription": "Kompletná ponuka BrightSign digital signage prehrávačov. Séria 4, 5 aj 6.",
+    "noProductsInCategory": "V tejto kategórii nie sú žiadne produkty.",
+    "productsCount": "{count, plural, one {produkt} few {produkty} other {produktov}}"
   },
   "product": {
     "description": "Popis",
@@ -378,7 +382,20 @@
       "invoice": "Fakturácia na firmu",
       "support": "Dedikovaná podpora",
       "volume": "Množstvové zľavy"
-    }
+    },
+    "endUser": "Koncový zákazník",
+    "formNote": "Po odoslaní formulára vás budeme kontaktovať s potvrdením B2B účtu.",
+    "integrator": "Integrátor / AV technik",
+    "other": "Iný",
+    "reseller": "Predajca",
+    "selectBusinessType": "Vyberte typ podnikania",
+    "selectCountry": "Vyberte krajinu",
+    "selectVolume": "Vyberte očakávaný objem",
+    "viesNote": "DIČ bude overené cez systém VIES.",
+    "volume1_5": "1-5 kusov / rok",
+    "volume20_50": "20-50 kusov / rok",
+    "volume50plus": "50+ kusov / rok",
+    "volume5_20": "5-20 kusov / rok"
   },
   "compare": {
     "title": "Porovnanie produktov",

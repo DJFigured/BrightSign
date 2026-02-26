@@ -66,7 +66,9 @@
       "title": "Aktualności i promocje",
       "placeholder": "Twój e-mail",
       "subscribe": "Subskrybuj"
-    }
+    },
+    "series4": "BrightSign Seria 4",
+    "series5": "BrightSign Seria 5"
   },
   "cart": {
     "title": "Koszyk",
@@ -217,7 +219,9 @@
     "prev": "Poprzednia",
     "next": "Następna",
     "page": "Strona",
-    "allProductsDescription": "Pełna oferta odtwarzaczy digital signage BrightSign. Serie 4, 5 i 6."
+    "allProductsDescription": "Pełna oferta odtwarzaczy digital signage BrightSign. Serie 4, 5 i 6.",
+    "noProductsInCategory": "W tej kategorii nie ma żadnych produktów.",
+    "productsCount": "{count, plural, one {produkt} few {produkty} other {produktów}}"
   },
   "product": {
     "description": "Opis",
@@ -378,7 +382,20 @@
       "invoice": "Fakturowanie firmowe",
       "support": "Dedykowane wsparcie",
       "volume": "Rabaty ilościowe"
-    }
+    },
+    "endUser": "Klient końcowy",
+    "formNote": "Po wysłaniu formularza skontaktujemy się z Tobą w celu potwierdzenia konta B2B.",
+    "integrator": "Integrator / Technik AV",
+    "other": "Inny",
+    "reseller": "Sprzedawca",
+    "selectBusinessType": "Wybierz typ działalności",
+    "selectCountry": "Wybierz kraj",
+    "selectVolume": "Wybierz oczekiwany wolumen",
+    "viesNote": "NIP zostanie zweryfikowany przez system VIES.",
+    "volume1_5": "1-5 sztuk / rok",
+    "volume20_50": "20-50 sztuk / rok",
+    "volume50plus": "50+ sztuk / rok",
+    "volume5_20": "5-20 sztuk / rok"
   },
   "compare": {
     "title": "Porównanie produktów",
