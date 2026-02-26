@@ -31,8 +31,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       const { customer } = await sdk.store.customer.retrieve() as { customer: Customer }
       setCustomer(customer)
+      document.cookie = "_bs_auth=1; path=/; max-age=604800; SameSite=Lax"
     } catch {
       setCustomer(null)
+      document.cookie = "_bs_auth=; path=/; max-age=0"
     }
   }, [])
 
@@ -43,6 +45,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const login = useCallback(async (email: string, password: string) => {
     await sdk.auth.login("customer", "emailpass", { email, password })
     await refreshCustomer()
+    document.cookie = "_bs_auth=1; path=/; max-age=604800; SameSite=Lax"
   }, [refreshCustomer])
 
   const register = useCallback(async (email: string, password: string, firstName: string, lastName: string) => {
@@ -61,6 +64,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     } catch {
       // Ignore errors
     }
+    document.cookie = "_bs_auth=; path=/; max-age=0"
     setCustomer(null)
   }, [])
 
