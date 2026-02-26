@@ -548,5 +548,25 @@
     "marketingLabel": "Marketingové cookies",
     "marketingDesc": "Umožňujú zobrazovať relevantné reklamy (Meta Pixel, Google Ads).",
     "save": "Uložiť nastavenia"
+  },
+  "specs": {
+    "I/O package": "I/O balíček",
+    "Neural processing unit (NPU)": "Neurálny procesor (NPU)",
+    "4K video decoding": "4K video dekódovanie",
+    "4K60p video decoding": "4K60p video dekódovanie",
+    "Full HD at 60p video decoding": "Full HD dekódovanie",
+    "4K video rotation": "4K rotácia videa",
+    "4K full resolution images & graphics": "4K grafika",
+    "HD images & graphics": "HD grafika",
+    "HTML5 performance": "HTML5 výkon",
+    "HTML resolution": "HTML rozlíšenie",
+    "10-bit HDR support": "10-bit HDR podpora",
+    "Supports 4K IP streaming": "4K IP streaming",
+    "Operating temperature range": "Prevádzková teplota",
+    "Dimensions (W x D x H)": "Rozmery (Š x H x V)",
+    "Shipping weight / Player weight": "Hmotnosť",
+    "Player weight": "Hmotnosť",
+    "Locking power supply": "Napájanie",
+    "Wi-Fi": "Wi-Fi"
   }
 }

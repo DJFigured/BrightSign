@@ -5,7 +5,17 @@ export const alt = "BrightSign.cz — Digital Signage Solutions"
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
-export default function Image() {
+const OG_SUBTITLES: Record<string, string> = {
+  cs: "Profesionální digital signage řešení pro střední Evropu",
+  sk: "Profesionálne digital signage riešenia pre strednú Európu",
+  pl: "Profesjonalne rozwiązania digital signage dla Europy Środkowej",
+  en: "Professional digital signage solutions for Central Europe",
+  de: "Professionelle Digital-Signage-Lösungen für Mitteleuropa",
+}
+
+export default function Image({ params }: { params: { locale: string } }) {
+  const subtitle = OG_SUBTITLES[params.locale] || OG_SUBTITLES.en
+
   return new ImageResponse(
     (
       <div
@@ -64,7 +74,7 @@ export default function Image() {
             textAlign: "center",
           }}
         >
-          Profesionální digital signage řešení pro střední Evropu
+          {subtitle}
         </div>
         <div
           style={{

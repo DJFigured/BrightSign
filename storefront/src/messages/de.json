@@ -548,5 +548,25 @@
     "marketingLabel": "Marketing-Cookies",
     "marketingDesc": "Ermöglichen relevante Werbung (Meta Pixel, Google Ads).",
     "save": "Einstellungen speichern"
+  },
+  "specs": {
+    "I/O package": "I/O-Paket",
+    "Neural processing unit (NPU)": "Neuronaler Prozessor (NPU)",
+    "4K video decoding": "4K-Videodekodierung",
+    "4K60p video decoding": "4K60p-Videodekodierung",
+    "Full HD at 60p video decoding": "Full-HD-Dekodierung",
+    "4K video rotation": "4K-Videorotation",
+    "4K full resolution images & graphics": "4K-Grafik",
+    "HD images & graphics": "HD-Grafik",
+    "HTML5 performance": "HTML5-Leistung",
+    "HTML resolution": "HTML-Auflösung",
+    "10-bit HDR support": "10-Bit-HDR-Unterstützung",
+    "Supports 4K IP streaming": "4K-IP-Streaming",
+    "Operating temperature range": "Betriebstemperatur",
+    "Dimensions (W x D x H)": "Abmessungen (B x T x H)",
+    "Shipping weight / Player weight": "Gewicht",
+    "Player weight": "Gewicht",
+    "Locking power supply": "Stromversorgung",
+    "Wi-Fi": "Wi-Fi"
   }
 }

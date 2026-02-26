@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
-import { useTranslations, useLocale } from "next-intl"
+import { useTranslations, useLocale, useMessages } from "next-intl"
 import { Link } from "@/i18n/navigation"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -39,32 +39,13 @@ const SEGMENT_LABELS: Record<string, string> = {
   XC: "Video Wall",
 }
 
-// Map raw spec keys to Czech labels
-const SPEC_LABELS: Record<string, string> = {
-  "I/O package": "I/O balíček",
-  "Neural processing unit (NPU)": "Neurální procesor (NPU)",
-  "4K video decoding": "4K video dekódování",
-  "4K60p video decoding": "4K60p video dekódování",
-  "Full HD at 60p video decoding": "Full HD dekódování",
-  "4K video rotation": "4K rotace videa",
-  "4K full resolution images & graphics": "4K grafika",
-  "HD images & graphics": "HD grafika",
-  "HTML5 performance": "HTML5 výkon",
-  "HTML resolution": "HTML rozlišení",
-  "10-bit HDR support": "10-bit HDR podpora",
-  "Supports 4K IP streaming": "4K IP streaming",
-  "Operating temperature range": "Provozní teplota",
-  "Dimensions (W x D x H)": "Rozměry (Š x H x V)",
-  "Shipping weight / Player weight": "Hmotnost",
-  "Player weight": "Hmotnost",
-  "Locking power supply": "Napájení",
-  "Wi-Fi": "Wi-Fi",
-}
 
 export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: Props) {
   const t = useTranslations("product")
   const tc = useTranslations("common")
   const locale = useLocale()
+  const messages = useMessages()
+  const specLabels = (messages.specs ?? {}) as Record<string, string>
   const { addItem } = useCart()
   const [quantity, setQuantity] = useState(1)
   const [adding, setAdding] = useState(false)
@@ -191,11 +172,11 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
                         : "bg-brand-primary text-white"
                   }`}
                 >
-                  Série {series}
+                  {t("seriesN", { n: series })}
                 </Badge>
               )}
               {isClearance && (
-                <Badge className="bg-orange-500 text-white text-xs">Doprodej</Badge>
+                <Badge className="bg-orange-500 text-white text-xs">{t("clearance")}</Badge>
               )}
               {segment && (
                 <Badge variant="outline" className="bg-white/90 text-xs">
@@ -326,7 +307,7 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
                 <table className="w-full text-sm">
                   <tbody>
                     {Object.entries(specs).map(([key, value], idx) => {
-                      const label = SPEC_LABELS[key] || key
+                      const label = specLabels[key] || key
                       return (
                         <tr
                           key={key}

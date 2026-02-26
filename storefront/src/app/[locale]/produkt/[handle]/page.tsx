@@ -27,7 +27,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const regionId = getRegionId(regionCode)
 
   const product = await getProduct(handle, regionId)
-  if (!product) return { title: "Produkt nenalezen" }
+  if (!product) {
+    const t = await getTranslations("notFound")
+    return { title: t("title") }
+  }
 
   const meta = product.metadata as Record<string, unknown> | undefined
   const seo = meta?.seo as { title?: string; description?: string } | undefined
