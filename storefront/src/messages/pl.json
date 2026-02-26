@@ -171,7 +171,11 @@
     "pendingTransfer": "Oczekuje na przelew bankowy",
     "invoiceTitle": "Dokumenty",
     "invoiceEmailNote": "Faktura zostanie wysłana na Twój e-mail.",
-    "invoiceProformaNote": "Faktura proforma z danymi do przelewu została wysłana na Twój e-mail. Po opłaceniu otrzymasz fakturę końcową."
+    "invoiceProformaNote": "Faktura proforma z danymi do przelewu została wysłana na Twój e-mail. Po opłaceniu otrzymasz fakturę końcową.",
+    "checkoutSteps": "Kroki zamówienia",
+    "stepComplete": "ukończone",
+    "stepCurrent": "bieżący krok",
+    "stepUpcoming": "nadchodzący"
   },
   "auth": {
     "login": "Logowanie",

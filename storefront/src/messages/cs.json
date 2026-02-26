@@ -164,7 +164,11 @@
     "pendingTransfer": "Čeká na bankovní převod",
     "invoiceTitle": "Doklady",
     "invoiceEmailNote": "Faktura vám bude zaslána e-mailem.",
-    "invoiceProformaNote": "Zálohová faktura s platebními údaji vám byla zaslána e-mailem. Po zaplacení obdržíte finální fakturu."
+    "invoiceProformaNote": "Zálohová faktura s platebními údaji vám byla zaslána e-mailem. Po zaplacení obdržíte finální fakturu.",
+    "checkoutSteps": "Kroky objednávky",
+    "stepComplete": "dokončeno",
+    "stepCurrent": "aktuální krok",
+    "stepUpcoming": "nadcházející"
   },
   "auth": {
     "login": "Přihlášení",

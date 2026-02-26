@@ -304,29 +304,36 @@ export function CheckoutPageClient() {
       <h1 className="mb-6 text-2xl font-bold">{tc("checkout")}</h1>
 
       {/* Step indicator */}
-      <div className="mb-8 flex items-center gap-2">
-        {steps.map((s, i) => (
-          <div key={s.key} className="flex items-center gap-2">
-            {i > 0 && <div className="h-px w-8 bg-border" />}
-            <div
-              className={`flex h-8 w-8 items-center justify-center rounded-full text-sm font-medium ${
-                step === s.key
-                  ? "bg-brand-accent text-white"
-                  : steps.findIndex((st) => st.key === step) > i
-                    ? "bg-brand-primary text-white"
-                    : "bg-muted text-muted-foreground"
-              }`}
-            >
-              {steps.findIndex((st) => st.key === step) > i ? (
-                <Check className="h-4 w-4" />
-              ) : (
-                i + 1
-              )}
+      <nav aria-label={t("checkoutSteps")} className="mb-8 flex items-center gap-2">
+        {steps.map((s, i) => {
+          const currentIdx = steps.findIndex((st) => st.key === step)
+          const isComplete = currentIdx > i
+          const isCurrent = step === s.key
+          return (
+            <div key={s.key} className="flex items-center gap-2">
+              {i > 0 && <div className="h-px w-8 bg-border" aria-hidden="true" />}
+              <div
+                aria-current={isCurrent ? "step" : undefined}
+                aria-label={`${s.label} — ${isComplete ? t("stepComplete") : isCurrent ? t("stepCurrent") : t("stepUpcoming")}`}
+                className={`flex h-8 w-8 items-center justify-center rounded-full text-sm font-medium ${
+                  isCurrent
+                    ? "bg-brand-accent text-white"
+                    : isComplete
+                      ? "bg-brand-primary text-white"
+                      : "bg-muted text-muted-foreground"
+                }`}
+              >
+                {isComplete ? (
+                  <Check className="h-4 w-4" />
+                ) : (
+                  i + 1
+                )}
+              </div>
+              <span className="hidden text-sm sm:inline">{s.label}</span>
             </div>
-            <span className="hidden text-sm sm:inline">{s.label}</span>
-          </div>
-        ))}
-      </div>
+          )
+        })}
+      </nav>
 
       <div className="grid gap-8 lg:grid-cols-3">
         {/* Form */}
@@ -343,6 +350,7 @@ export function CheckoutPageClient() {
                     <Input
                       id="email"
                       type="email"
+                      autoComplete="email"
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
@@ -353,6 +361,7 @@ export function CheckoutPageClient() {
                     <Input
                       id="phone"
                       type="tel"
+                      autoComplete="tel"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                     />
@@ -378,6 +387,7 @@ export function CheckoutPageClient() {
                       <Label htmlFor="firstName">{t("firstName")}</Label>
                       <Input
                         id="firstName"
+                        autoComplete="given-name"
                         required
                         value={firstName}
                         onChange={(e) => setFirstName(e.target.value)}
@@ -387,6 +397,7 @@ export function CheckoutPageClient() {
                       <Label htmlFor="lastName">{t("lastName")}</Label>
                       <Input
                         id="lastName"
+                        autoComplete="family-name"
                         required
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
@@ -397,6 +408,7 @@ export function CheckoutPageClient() {
                     <Label htmlFor="address1">{t("address")}</Label>
                     <Input
                       id="address1"
+                      autoComplete="street-address"
                       required
                       value={address1}
                       onChange={(e) => setAddress1(e.target.value)}
@@ -407,6 +419,7 @@ export function CheckoutPageClient() {
                       <Label htmlFor="city">{t("city")}</Label>
                       <Input
                         id="city"
+                        autoComplete="address-level2"
                         required
                         value={city}
                         onChange={(e) => setCity(e.target.value)}
@@ -416,6 +429,7 @@ export function CheckoutPageClient() {
                       <Label htmlFor="postalCode">{t("postalCode")}</Label>
                       <Input
                         id="postalCode"
+                        autoComplete="postal-code"
                         required
                         value={postalCode}
                         onChange={(e) => setPostalCode(e.target.value)}

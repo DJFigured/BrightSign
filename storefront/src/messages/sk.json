@@ -171,7 +171,11 @@
     "pendingTransfer": "Čaká na bankový prevod",
     "invoiceTitle": "Doklady",
     "invoiceEmailNote": "Faktúra vám bude zaslaná e-mailom.",
-    "invoiceProformaNote": "Zálohová faktúra s platobnými údajmi vám bola zaslaná e-mailom. Po zaplatení dostanete finálnu faktúru."
+    "invoiceProformaNote": "Zálohová faktúra s platobnými údajmi vám bola zaslaná e-mailom. Po zaplatení dostanete finálnu faktúru.",
+    "checkoutSteps": "Kroky objednávky",
+    "stepComplete": "dokončené",
+    "stepCurrent": "aktuálny krok",
+    "stepUpcoming": "nadchádzajúci"
   },
   "auth": {
     "login": "Prihlásenie",

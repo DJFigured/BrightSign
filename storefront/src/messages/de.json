@@ -171,7 +171,11 @@
     "pendingTransfer": "Warten auf Banküberweisung",
     "invoiceTitle": "Dokumente",
     "invoiceEmailNote": "Die Rechnung wird Ihnen per E-Mail zugesandt.",
-    "invoiceProformaNote": "Eine Proformarechnung mit Zahlungsdaten wurde an Ihre E-Mail gesendet. Nach der Zahlung erhalten Sie die Endrechnung."
+    "invoiceProformaNote": "Eine Proformarechnung mit Zahlungsdaten wurde an Ihre E-Mail gesendet. Nach der Zahlung erhalten Sie die Endrechnung.",
+    "checkoutSteps": "Bestellschritte",
+    "stepComplete": "abgeschlossen",
+    "stepCurrent": "aktueller Schritt",
+    "stepUpcoming": "bevorstehend"
   },
   "auth": {
     "login": "Anmelden",

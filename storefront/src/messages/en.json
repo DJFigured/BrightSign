@@ -171,7 +171,11 @@
     "packetaLoading": "Loading pickup points...",
     "packetaChange": "Change pickup point",
     "packetaLoadError": "Failed to load Packeta widget",
-    "packetaPickupPoint": "Výdajné miesto Zásielkovňa"
+    "packetaPickupPoint": "Výdajné miesto Zásielkovňa",
+    "checkoutSteps": "Checkout steps",
+    "stepComplete": "complete",
+    "stepCurrent": "current step",
+    "stepUpcoming": "upcoming"
   },
   "auth": {
     "login": "Sign In",
