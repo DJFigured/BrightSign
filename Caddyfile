@@ -1,26 +1,27 @@
 # BrightSign EU E-shop - Caddy Reverse Proxy
 #
-# Currently serving on :80 (IP-based, no HTTPS).
-# To enable auto-HTTPS with a domain, replace the :80 block with:
+# Security hardened after incident L0029DB12 (2026-02-22)
 #
+# To enable auto-HTTPS with a domain, replace :80 with:
 #   brightsign.cz {
-#       handle /app* {
-#           reverse_proxy backend:9000
-#       }
-#       handle /api/* {
-#           reverse_proxy backend:9000
-#       }
-#       handle /admin/* {
-#           reverse_proxy backend:9000
-#       }
-#       handle {
-#           reverse_proxy storefront:3000
-#       }
+#       ...same handles...
 #   }
-#
-# Caddy will automatically obtain and renew TLS certificates via Let's Encrypt.
 
 :80 {
+    # Security headers
+    header {
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "SAMEORIGIN"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        X-XSS-Protection "1; mode=block"
+        Permissions-Policy "camera=(), microphone=(), geolocation=()"
+        -Server
+    }
+
+    # Block common exploit paths
+    @blocked path /wp-admin* /wp-login* /xmlrpc* /.env* /.git* /phpmyadmin* /actuator*
+    respond @blocked 404
+
     # Medusa admin panel
     handle /app* {
         reverse_proxy backend:9000
