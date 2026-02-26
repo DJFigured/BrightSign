@@ -1,5 +1,5 @@
 import { sdk } from "@/lib/sdk"
-import { getLocale } from "next-intl/server"
+import { getLocale, getTranslations } from "next-intl/server"
 import { regionMap, type Locale } from "@/i18n/config"
 import { getRegionId } from "@/lib/medusa-helpers"
 import { CategoryPageClient } from "./client"
@@ -98,9 +98,10 @@ export default async function CategoryPage({ params, searchParams }: Props) {
 
   // Build breadcrumb path for structured data
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://brightsign.cz"
+  const tc = await getTranslations("common")
   const breadcrumbItems: Array<{ name: string; url: string }> = [
     { name: "BrightSign.cz", url: `${SITE_URL}/${locale}` },
-    { name: "Produkty", url: `${SITE_URL}/${locale}/kategorie` },
+    { name: tc("products"), url: `${SITE_URL}/${locale}/kategorie` },
   ]
 
   if (category) {
@@ -131,11 +132,35 @@ export default async function CategoryPage({ params, searchParams }: Props) {
     })),
   }
 
+  // CollectionPage + ItemList schema for category product listing
+  const collectionJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: category?.name ?? handle,
+    description: category ? `${category.name} — BrightSign digital signage` : undefined,
+    url: `${SITE_URL}/${locale}/kategorie/${handle}`,
+    numberOfItems: count,
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: count,
+      itemListElement: products.slice(0, 10).map((p, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: `${SITE_URL}/${locale}/produkt/${p.handle as string}`,
+        name: p.title as string,
+      })),
+    },
+  }
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }}
       />
       <CategoryPageClient
         products={products}
