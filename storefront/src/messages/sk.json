@@ -535,7 +535,8 @@
     "title": "Vyhľadávanie",
     "noResults": "Žiadne výsledky pre „{query}”",
     "resultsFor": "Výsledky pre „{query}”",
-    "placeholder": "Hľadať produkty..."
+    "placeholder": "Hľadať produkty...",
+    "browseAll": "Prezrieť všetky produkty"
   },
   "cookies": {
     "title": "Súbory cookie",

@@ -528,7 +528,8 @@
     "title": "Vyhledávání",
     "noResults": "Žádné výsledky pro „{query}”",
     "resultsFor": "Výsledky pro „{query}”",
-    "placeholder": "Hledat produkty..."
+    "placeholder": "Hledat produkty...",
+    "browseAll": "Prohlédnout všechny produkty"
   },
   "cookies": {
     "title": "Soubory cookie",

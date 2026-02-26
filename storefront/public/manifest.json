@@ -1,0 +1,16 @@
+{
+  "name": "BrightSign.cz — Digital Signage Solutions",
+  "short_name": "BrightSign",
+  "description": "Professional digital signage solutions for Central Europe",
+  "start_url": "/cs",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1a2b4a",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}

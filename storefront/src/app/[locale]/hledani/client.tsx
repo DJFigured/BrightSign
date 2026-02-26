@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react"
 import { useTranslations } from "next-intl"
+import { Link } from "@/i18n/navigation"
 import { ProductCard } from "@/components/product/ProductCard"
 import { trackEvent, trackEcommerce, mapProductToItem } from "@/lib/analytics"
 
@@ -32,7 +33,15 @@ export function SearchResultsClient({ products, query }: SearchResultsClientProp
       </h1>
 
       {query && products.length === 0 && (
-        <p className="text-muted-foreground">{t("noResults", { query })}</p>
+        <div className="text-center py-12">
+          <p className="text-muted-foreground mb-4">{t("noResults", { query })}</p>
+          <Link
+            href="/kategorie/prehravace"
+            className="inline-block bg-brand-accent text-white px-6 py-3 rounded-lg hover:bg-brand-accent-dark transition-colors"
+          >
+            {t("browseAll")}
+          </Link>
+        </div>
       )}
 
       {products.length > 0 && (

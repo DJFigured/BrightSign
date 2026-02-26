@@ -6,6 +6,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("auth")
   return {
     title: `${t("login")} | BrightSign.cz`,
+    description: t("loginSubtitle"),
     robots: { index: false },
   }
 }

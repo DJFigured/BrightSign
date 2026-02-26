@@ -51,9 +51,18 @@ export async function generateMetadata({
   languages["x-default"] = `${SITE_URL}/cs`
 
   return {
+    metadataBase: new URL(SITE_URL),
     alternates: {
       canonical: `${SITE_URL}/${locale}`,
       languages,
+    },
+    openGraph: {
+      siteName: "BrightSign.cz",
+      type: "website",
+      locale: hreflangMap[locale] || locale,
+    },
+    other: {
+      "theme-color": "#1a2b4a",
     },
   }
 }

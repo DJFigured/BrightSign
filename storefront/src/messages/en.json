@@ -535,7 +535,8 @@
     "title": "Search",
     "noResults": "No results for \"{query}\"",
     "resultsFor": "Results for \"{query}\"",
-    "placeholder": "Search products..."
+    "placeholder": "Search products...",
+    "browseAll": "Browse all products"
   },
   "cookies": {
     "title": "Cookies",

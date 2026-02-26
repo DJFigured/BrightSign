@@ -535,7 +535,8 @@
     "title": "Wyszukiwanie",
     "noResults": "Brak wyników dla „{query}”",
     "resultsFor": "Wyniki dla „{query}”",
-    "placeholder": "Szukaj produktów..."
+    "placeholder": "Szukaj produktów...",
+    "browseAll": "Przeglądaj wszystkie produkty"
   },
   "cookies": {
     "title": "Pliki cookie",
