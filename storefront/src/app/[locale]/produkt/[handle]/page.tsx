@@ -40,12 +40,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // Strip HTML tags for meta description
   const plainDesc = localizedDesc?.replace(/<[^>]*>/g, "").slice(0, 160)
 
+  // SEO description override is Czech-only — skip for other locales
+  const seoDesc = locale === "cs" ? seo?.description : undefined
+  const desc = seoDesc || plainDesc || (product.subtitle as string) || undefined
+
   return {
     title: seo?.title || (product.title as string),
-    description: seo?.description || plainDesc || (product.subtitle as string) || undefined,
+    description: desc,
     openGraph: {
       title: seo?.title || (product.title as string),
-      description: seo?.description || plainDesc || (product.subtitle as string) || undefined,
+      description: desc,
       images: product.thumbnail ? [{ url: product.thumbnail as string }] : undefined,
     },
   }
