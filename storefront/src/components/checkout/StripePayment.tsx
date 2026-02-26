@@ -79,13 +79,13 @@ function StripeForm({
         }}
       />
       {errorMsg && (
-        <div className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+        <div role="alert" className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700">
           {errorMsg}
         </div>
       )}
       <Button
         type="submit"
-        disabled={!stripe || loading}
+        disabled={!stripe || !elements || loading}
         className="w-full bg-brand-accent hover:bg-brand-accent-dark text-white"
         size="lg"
       >

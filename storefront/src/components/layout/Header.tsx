@@ -83,9 +83,10 @@ export function Header({ navData }: HeaderProps) {
 
           {/* Search - desktop */}
           <div className="relative hidden max-w-md flex-1 md:block">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" aria-hidden="true" />
             <Input
               placeholder={tc("search")}
+              aria-label={tc("search")}
               className="pl-9"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -101,23 +102,25 @@ export function Header({ navData }: HeaderProps) {
               size="icon"
               className="md:hidden"
               onClick={() => setSearchOpen(!searchOpen)}
+              aria-label={t("search")}
+              aria-expanded={searchOpen}
             >
               <Search className="h-5 w-5" />
             </Button>
 
             {/* Account */}
             <Button variant="ghost" size="icon" asChild>
-              <Link href="/prihlaseni">
+              <Link href="/prihlaseni" aria-label={t("account")}>
                 <User className="h-5 w-5" />
               </Link>
             </Button>
 
             {/* Cart */}
             <Button variant="ghost" size="icon" className="relative" asChild>
-              <Link href="/kosik">
+              <Link href="/kosik" aria-label={itemCount > 0 ? `${t("cart")} (${itemCount})` : t("cart")}>
                 <ShoppingCart className="h-5 w-5" />
                 {itemCount > 0 && (
-                  <Badge className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-accent p-0 text-[10px] text-white">
+                  <Badge className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-accent p-0 text-[10px] text-white" aria-hidden="true">
                     {itemCount}
                   </Badge>
                 )}
@@ -130,6 +133,8 @@ export function Header({ navData }: HeaderProps) {
               size="icon"
               className="md:hidden"
               onClick={() => setMobileOpen(true)}
+              aria-label="Menu"
+              aria-expanded={mobileOpen}
             >
               <Menu className="h-5 w-5" />
             </Button>
@@ -172,7 +177,7 @@ export function Header({ navData }: HeaderProps) {
 
               {/* Mega dropdown */}
               {dropdownOpen && (series.length > 0 || lines.length > 0) && (
-                <div className="absolute left-0 top-full z-50 w-[520px] rounded-b-lg border border-t-0 border-border bg-white p-4 shadow-lg">
+                <div className="absolute left-0 top-full z-50 w-[520px] max-w-[calc(100vw-2rem)] rounded-b-lg border border-t-0 border-border bg-white p-4 shadow-lg">
                   <div className="grid grid-cols-2 gap-6">
                     {/* By Series */}
                     {series.length > 0 && (

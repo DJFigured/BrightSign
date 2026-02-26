@@ -50,7 +50,7 @@ export function Footer({ navData }: FooterProps) {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <nav aria-label={t("quickLinks")}>
             <h4 className="mb-3 font-semibold">{t("quickLinks")}</h4>
             <ul className="space-y-2 text-sm text-white/60">
               <li>
@@ -79,13 +79,17 @@ export function Footer({ navData }: FooterProps) {
                 </Link>
               </li>
             </ul>
-          </div>
+          </nav>
 
           {/* Contact */}
           <div>
             <h4 className="mb-3 font-semibold">{tc("contact")}</h4>
             <ul className="space-y-2 text-sm text-white/60">
-              <li>info@brightsign.cz</li>
+              <li>
+                <a href="mailto:info@brightsign.cz" className="hover:text-brand-accent transition-colors">
+                  info@brightsign.cz
+                </a>
+              </li>
               <li>Make more s.r.o.</li>
               <li>IČO: 21890161</li>
             </ul>
