@@ -242,11 +242,11 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
             <div className="mt-4">
               <p className="text-3xl font-bold text-brand-primary">
                 {formatPrice(priceAmount, currencyCode)}
-                <span className="ml-2 text-sm font-normal text-muted-foreground">s DPH</span>
+                <span className="ml-2 text-sm font-normal text-muted-foreground">{t("inclVat")}</span>
               </p>
               {priceExVat != null && (
                 <p className="text-sm text-muted-foreground">
-                  {formatPrice(priceExVat, currencyCode)} bez DPH
+                  {formatPrice(priceExVat, currencyCode)} {t("exclVat")}
                 </p>
               )}
             </div>
@@ -260,12 +260,12 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
             {warranty && (
               <Badge variant="outline" className="gap-1">
                 <Shield className="h-3 w-3" />
-                Záruka {warranty}
+                {t("warranty", { period: warranty })}
               </Badge>
             )}
             <Badge variant="outline" className="gap-1">
               <Truck className="h-3 w-3" />
-              Expedice do 48h
+              {t("shippingBadge")}
             </Badge>
           </div>
 
@@ -301,7 +301,7 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
               className="flex-1 bg-brand-accent hover:bg-brand-accent-dark text-white"
             >
               <ShoppingCart className="mr-2 h-5 w-5" />
-              {adding ? "Přidávám..." : tc("addToCart")}
+              {adding ? t("adding") : tc("addToCart")}
             </Button>
           </div>
 
@@ -337,9 +337,9 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
                           </td>
                           <td className="px-3 py-2 text-muted-foreground">
                             {value === "✔" ? (
-                              <span className="text-green-600">Ano</span>
+                              <span className="text-green-600">{t("specYes")}</span>
                             ) : value === "✘" ? (
-                              <span className="text-red-500">Ne</span>
+                              <span className="text-red-500">{t("specNo")}</span>
                             ) : (
                               value
                             )}
@@ -363,7 +363,7 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
               >
                 <Button variant="outline" className="gap-2">
                   <FileDown className="h-4 w-4" />
-                  Stáhnout datasheet (PDF)
+                  {t("downloadDatasheet")}
                 </Button>
               </a>
             </div>

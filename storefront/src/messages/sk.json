@@ -247,7 +247,12 @@
     "segmentEntry4K": "Entry 4K",
     "segmentPerformance4K": "Performance 4K",
     "segmentEnterprise": "Enterprise",
-    "segmentVideoWall": "Video Wall"
+    "segmentVideoWall": "Video Wall",
+    "warranty": "Záruka {period}",
+    "shippingBadge": "Expedícia do 48h",
+    "downloadDatasheet": "Stiahnuť datasheet (PDF)",
+    "specYes": "Áno",
+    "specNo": "Nie"
   },
   "notFound": {
     "title": "Stránka nenájdená",

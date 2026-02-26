@@ -247,7 +247,12 @@
     "segmentEntry4K": "Entry 4K",
     "segmentPerformance4K": "Performance 4K",
     "segmentEnterprise": "Enterprise",
-    "segmentVideoWall": "Video Wall"
+    "segmentVideoWall": "Video Wall",
+    "warranty": "Warranty {period}",
+    "shippingBadge": "Ships within 48h",
+    "downloadDatasheet": "Download datasheet (PDF)",
+    "specYes": "Yes",
+    "specNo": "No"
   },
   "notFound": {
     "title": "Page Not Found",

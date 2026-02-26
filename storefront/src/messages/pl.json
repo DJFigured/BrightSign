@@ -247,7 +247,12 @@
     "segmentEntry4K": "Entry 4K",
     "segmentPerformance4K": "Performance 4K",
     "segmentEnterprise": "Enterprise",
-    "segmentVideoWall": "Video Wall"
+    "segmentVideoWall": "Video Wall",
+    "warranty": "Gwarancja {period}",
+    "shippingBadge": "Wysyłka do 48h",
+    "downloadDatasheet": "Pobierz kartę katalogową (PDF)",
+    "specYes": "Tak",
+    "specNo": "Nie"
   },
   "notFound": {
     "title": "Strona nie znaleziona",
