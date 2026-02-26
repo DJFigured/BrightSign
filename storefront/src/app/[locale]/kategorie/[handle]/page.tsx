@@ -96,18 +96,59 @@ export default async function CategoryPage({ params, searchParams }: Props) {
     count: number
   }
 
+  // Build breadcrumb path for structured data
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://brightsign.cz"
+  const breadcrumbItems: Array<{ name: string; url: string }> = [
+    { name: "BrightSign.cz", url: `${SITE_URL}/${locale}` },
+    { name: "Produkty", url: `${SITE_URL}/${locale}/kategorie` },
+  ]
+
+  if (category) {
+    // If has parent, add parent first
+    if (category.parent_category_id) {
+      const parent = product_categories.find((c) => c.id === category.parent_category_id)
+      if (parent) {
+        breadcrumbItems.push({
+          name: parent.name,
+          url: `${SITE_URL}/${locale}/kategorie/${parent.handle}`,
+        })
+      }
+    }
+    breadcrumbItems.push({
+      name: category.name,
+      url: `${SITE_URL}/${locale}/kategorie/${handle}`,
+    })
+  }
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: breadcrumbItems.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  }
+
   return (
-    <CategoryPageClient
-      products={products}
-      categories={categoriesWithChildren}
-      currentCategory={category ?? null}
-      totalProducts={count}
-      handle={handle}
-      initialFilters={{
-        sort: sp.sort,
-        series: sp.series,
-        line: sp.line,
-      }}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <CategoryPageClient
+        products={products}
+        categories={categoriesWithChildren}
+        currentCategory={category ?? null}
+        totalProducts={count}
+        handle={handle}
+        initialFilters={{
+          sort: sp.sort,
+          series: sp.series,
+          line: sp.line,
+        }}
+      />
+    </>
   )
 }

@@ -28,7 +28,8 @@
     "save": "Speichern",
     "cancel": "Abbrechen",
     "confirm": "Bestätigen",
-    "close": "Schließen"
+    "close": "Schließen",
+    "errorDescription": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
   },
   "header": {
     "catalog": "Katalog",
@@ -215,7 +216,8 @@
     "showingOf": "Angezeigt",
     "prev": "Vorherige",
     "next": "Nächste",
-    "page": "Seite"
+    "page": "Seite",
+    "allProductsDescription": "Komplettes Sortiment an BrightSign Digital Signage Playern. Serie 4, 5 und 6."
   },
   "product": {
     "description": "Beschreibung",
@@ -274,19 +276,55 @@
     "productLines": {
       "title": "Nach Produktlinie wählen",
       "subtitle": "BrightSign bietet 6 Produktlinien für jeden Installationstyp",
-      "ls": { "name": "LS Player", "label": "Basic", "description": "Einfache Full HD Lösungen für einfache Displays" },
-      "hd": { "name": "HD Player", "label": "Entry 4K", "description": "4K Einstiegs-Player mit HTML5 und HDR" },
-      "xd": { "name": "XD Player", "label": "Performance 4K", "description": "Leistungsstarke 4K Player mit WebGL-Grafik" },
-      "xt": { "name": "XT Player", "label": "Enterprise", "description": "Premium-Player mit dualem 4K/8K Ausgang" },
-      "xc": { "name": "XC Player", "label": "Video Wall", "description": "Multi-Display und Videowand-Lösungen" },
-      "au": { "name": "AU Player", "label": "Audio", "description": "Spezialisierte Audio-Player für Beschallungssysteme" }
+      "ls": {
+        "name": "LS Player",
+        "label": "Basic",
+        "description": "Einfache Full HD Lösungen für einfache Displays"
+      },
+      "hd": {
+        "name": "HD Player",
+        "label": "Entry 4K",
+        "description": "4K Einstiegs-Player mit HTML5 und HDR"
+      },
+      "xd": {
+        "name": "XD Player",
+        "label": "Performance 4K",
+        "description": "Leistungsstarke 4K Player mit WebGL-Grafik"
+      },
+      "xt": {
+        "name": "XT Player",
+        "label": "Enterprise",
+        "description": "Premium-Player mit dualem 4K/8K Ausgang"
+      },
+      "xc": {
+        "name": "XC Player",
+        "label": "Video Wall",
+        "description": "Multi-Display und Videowand-Lösungen"
+      },
+      "au": {
+        "name": "AU Player",
+        "label": "Audio",
+        "description": "Spezialisierte Audio-Player für Beschallungssysteme"
+      }
     },
     "segmentGuide": {
       "title": "Auswahlhilfe",
       "subtitle": "Sie wissen nicht welchen Player Sie brauchen? Wir helfen Ihnen bei der Auswahl.",
-      "beginner": { "level": "Einsteiger", "description": "Einfache Präsentationen, digitale Menüs, Informationstafeln", "recommendation": "LS oder HD Serie" },
-      "standard": { "level": "Standard", "description": "Retail-Displays, Unternehmenskommunikation, interaktive Inhalte", "recommendation": "HD oder XD Serie" },
-      "advanced": { "level": "Fortgeschritten", "description": "Multi-Screen-Installationen, Videowände, 8K-Inhalte, Live-TV", "recommendation": "XT oder XC Serie" }
+      "beginner": {
+        "level": "Einsteiger",
+        "description": "Einfache Präsentationen, digitale Menüs, Informationstafeln",
+        "recommendation": "LS oder HD Serie"
+      },
+      "standard": {
+        "level": "Standard",
+        "description": "Retail-Displays, Unternehmenskommunikation, interaktive Inhalte",
+        "recommendation": "HD oder XD Serie"
+      },
+      "advanced": {
+        "level": "Fortgeschritten",
+        "description": "Multi-Screen-Installationen, Videowände, 8K-Inhalte, Live-TV",
+        "recommendation": "XT oder XC Serie"
+      }
     },
     "whyBrightsign": {
       "title": "Warum BrightSign?",
@@ -473,8 +511,8 @@
   },
   "search": {
     "title": "Suche",
-    "noResults": "Keine Ergebnisse für \u201E{query}\u201D",
-    "resultsFor": "Ergebnisse für \u201E{query}\u201D",
+    "noResults": "Keine Ergebnisse für „{query}”",
+    "resultsFor": "Ergebnisse für „{query}”",
     "placeholder": "Produkte suchen..."
   },
   "cookies": {

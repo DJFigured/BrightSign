@@ -1,8 +1,17 @@
 import { sdk } from "@/lib/sdk"
-import { getLocale } from "next-intl/server"
+import { getLocale, getTranslations } from "next-intl/server"
 import { regionMap, type Locale } from "@/i18n/config"
 import { getRegionId } from "@/lib/medusa-helpers"
 import { CategoryPageClient } from "./[handle]/client"
+import type { Metadata } from "next"
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("category")
+  return {
+    title: `${t("allProducts")} | BrightSign.cz`,
+    description: t("allProductsDescription"),
+  }
+}
 
 interface Props {
   searchParams: Promise<Record<string, string | undefined>>

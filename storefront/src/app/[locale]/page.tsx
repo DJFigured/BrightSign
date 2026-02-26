@@ -50,5 +50,28 @@ export default async function HomePage() {
     // Silently fail — homepage still renders
   }
 
-  return <HomepageClient featuredProducts={featuredProducts} />
+  const orgJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "BrightSign.cz",
+    legalName: "Make more s.r.o.",
+    url: SITE_URL,
+    logo: `${SITE_URL}/favicon.ico`,
+    contactPoint: {
+      "@type": "ContactPoint",
+      email: "info@brightsign.cz",
+      contactType: "customer service",
+      availableLanguage: ["Czech", "Slovak", "English", "German", "Polish"],
+    },
+  }
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+      />
+      <HomepageClient featuredProducts={featuredProducts} />
+    </>
+  )
 }

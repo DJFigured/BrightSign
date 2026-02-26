@@ -28,7 +28,8 @@
     "save": "Zapisz",
     "cancel": "Anuluj",
     "confirm": "Potwierdź",
-    "close": "Zamknij"
+    "close": "Zamknij",
+    "errorDescription": "Coś poszło nie tak. Spróbuj ponownie."
   },
   "header": {
     "catalog": "Katalog",
@@ -215,7 +216,8 @@
     "showingOf": "Wyświetlono",
     "prev": "Poprzednia",
     "next": "Następna",
-    "page": "Strona"
+    "page": "Strona",
+    "allProductsDescription": "Pełna oferta odtwarzaczy digital signage BrightSign. Serie 4, 5 i 6."
   },
   "product": {
     "description": "Opis",
@@ -274,19 +276,55 @@
     "productLines": {
       "title": "Wybierz według linii produktów",
       "subtitle": "BrightSign oferuje 6 linii produktów do każdego typu instalacji",
-      "ls": { "name": "Odtwarzacze LS", "label": "Basic", "description": "Podstawowe rozwiązania Full HD do prostych wyświetlaczy" },
-      "hd": { "name": "Odtwarzacze HD", "label": "Entry 4K", "description": "Odtwarzacze 4K klasy podstawowej z HTML5 i HDR" },
-      "xd": { "name": "Odtwarzacze XD", "label": "Performance 4K", "description": "Wydajne odtwarzacze 4K z grafiką WebGL" },
-      "xt": { "name": "Odtwarzacze XT", "label": "Enterprise", "description": "Odtwarzacze premium z podwójnym wyjściem 4K/8K" },
-      "xc": { "name": "Odtwarzacze XC", "label": "Video Wall", "description": "Rozwiązania multi-display i ściany wideo" },
-      "au": { "name": "Odtwarzacze AU", "label": "Audio", "description": "Specjalistyczne odtwarzacze audio do nagłośnienia" }
+      "ls": {
+        "name": "Odtwarzacze LS",
+        "label": "Basic",
+        "description": "Podstawowe rozwiązania Full HD do prostych wyświetlaczy"
+      },
+      "hd": {
+        "name": "Odtwarzacze HD",
+        "label": "Entry 4K",
+        "description": "Odtwarzacze 4K klasy podstawowej z HTML5 i HDR"
+      },
+      "xd": {
+        "name": "Odtwarzacze XD",
+        "label": "Performance 4K",
+        "description": "Wydajne odtwarzacze 4K z grafiką WebGL"
+      },
+      "xt": {
+        "name": "Odtwarzacze XT",
+        "label": "Enterprise",
+        "description": "Odtwarzacze premium z podwójnym wyjściem 4K/8K"
+      },
+      "xc": {
+        "name": "Odtwarzacze XC",
+        "label": "Video Wall",
+        "description": "Rozwiązania multi-display i ściany wideo"
+      },
+      "au": {
+        "name": "Odtwarzacze AU",
+        "label": "Audio",
+        "description": "Specjalistyczne odtwarzacze audio do nagłośnienia"
+      }
     },
     "segmentGuide": {
       "title": "Przewodnik wyboru",
       "subtitle": "Nie wiesz jaki odtwarzacz potrzebujesz? Pomożemy Ci wybrać.",
-      "beginner": { "level": "Początkujący", "description": "Proste prezentacje, cyfrowe menu, panele informacyjne", "recommendation": "Seria LS lub HD" },
-      "standard": { "level": "Standard", "description": "Wyświetlacze detaliczne, komunikacja korporacyjna, treści interaktywne", "recommendation": "Seria HD lub XD" },
-      "advanced": { "level": "Zaawansowany", "description": "Instalacje multi-screen, ściany wideo, treści 8K, live TV", "recommendation": "Seria XT lub XC" }
+      "beginner": {
+        "level": "Początkujący",
+        "description": "Proste prezentacje, cyfrowe menu, panele informacyjne",
+        "recommendation": "Seria LS lub HD"
+      },
+      "standard": {
+        "level": "Standard",
+        "description": "Wyświetlacze detaliczne, komunikacja korporacyjna, treści interaktywne",
+        "recommendation": "Seria HD lub XD"
+      },
+      "advanced": {
+        "level": "Zaawansowany",
+        "description": "Instalacje multi-screen, ściany wideo, treści 8K, live TV",
+        "recommendation": "Seria XT lub XC"
+      }
     },
     "whyBrightsign": {
       "title": "Dlaczego BrightSign?",
@@ -473,8 +511,8 @@
   },
   "search": {
     "title": "Wyszukiwanie",
-    "noResults": "Brak wyników dla \u201E{query}\u201D",
-    "resultsFor": "Wyniki dla \u201E{query}\u201D",
+    "noResults": "Brak wyników dla „{query}”",
+    "resultsFor": "Wyniki dla „{query}”",
     "placeholder": "Szukaj produktów..."
   },
   "cookies": {

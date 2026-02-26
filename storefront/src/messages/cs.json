@@ -28,7 +28,8 @@
     "save": "Uložit",
     "cancel": "Zrušit",
     "confirm": "Potvrdit",
-    "close": "Zavřít"
+    "close": "Zavřít",
+    "errorDescription": "Něco se pokazilo. Zkuste to prosím znovu."
   },
   "header": {
     "catalog": "Katalog",
@@ -212,7 +213,8 @@
     "showingOf": "Zobrazeno",
     "prev": "Předchozí",
     "next": "Další",
-    "page": "Stránka"
+    "page": "Stránka",
+    "allProductsDescription": "Kompletní nabídka BrightSign digital signage přehrávačů. Série 4, 5 i 6."
   },
   "product": {
     "description": "Popis",
@@ -271,19 +273,55 @@
     "productLines": {
       "title": "Vyberte podle řady",
       "subtitle": "BrightSign nabízí 6 produktových řad pro každý typ instalace",
-      "ls": { "name": "LS Přehrávače", "label": "Basic", "description": "Základní Full HD řešení pro jednoduché displeje" },
-      "hd": { "name": "HD Přehrávače", "label": "Entry 4K", "description": "Vstupní 4K přehrávače s HTML5 a HDR" },
-      "xd": { "name": "XD Přehrávače", "label": "Performance 4K", "description": "Výkonné 4K přehrávače s WebGL grafikou" },
-      "xt": { "name": "XT Přehrávače", "label": "Enterprise", "description": "Prémiové přehrávače s duálním 4K/8K výstupem" },
-      "xc": { "name": "XC Přehrávače", "label": "Video Wall", "description": "Multi-display a video stěny" },
-      "au": { "name": "AU Přehrávače", "label": "Audio", "description": "Specializované audio přehrávače pro ozvučení" }
+      "ls": {
+        "name": "LS Přehrávače",
+        "label": "Basic",
+        "description": "Základní Full HD řešení pro jednoduché displeje"
+      },
+      "hd": {
+        "name": "HD Přehrávače",
+        "label": "Entry 4K",
+        "description": "Vstupní 4K přehrávače s HTML5 a HDR"
+      },
+      "xd": {
+        "name": "XD Přehrávače",
+        "label": "Performance 4K",
+        "description": "Výkonné 4K přehrávače s WebGL grafikou"
+      },
+      "xt": {
+        "name": "XT Přehrávače",
+        "label": "Enterprise",
+        "description": "Prémiové přehrávače s duálním 4K/8K výstupem"
+      },
+      "xc": {
+        "name": "XC Přehrávače",
+        "label": "Video Wall",
+        "description": "Multi-display a video stěny"
+      },
+      "au": {
+        "name": "AU Přehrávače",
+        "label": "Audio",
+        "description": "Specializované audio přehrávače pro ozvučení"
+      }
     },
     "segmentGuide": {
       "title": "Průvodce výběrem",
       "subtitle": "Nevíte jaký přehrávač potřebujete? Pomůžeme vám s výběrem.",
-      "beginner": { "level": "Začátečník", "description": "Jednoduché prezentace, digitální menu, informační panely", "recommendation": "LS nebo HD řada" },
-      "standard": { "level": "Standard", "description": "Retail displeje, korporátní komunikace, interaktivní obsah", "recommendation": "HD nebo XD řada" },
-      "advanced": { "level": "Pokročilý", "description": "Multi-screen instalace, video stěny, 8K obsah, live TV", "recommendation": "XT nebo XC řada" }
+      "beginner": {
+        "level": "Začátečník",
+        "description": "Jednoduché prezentace, digitální menu, informační panely",
+        "recommendation": "LS nebo HD řada"
+      },
+      "standard": {
+        "level": "Standard",
+        "description": "Retail displeje, korporátní komunikace, interaktivní obsah",
+        "recommendation": "HD nebo XD řada"
+      },
+      "advanced": {
+        "level": "Pokročilý",
+        "description": "Multi-screen instalace, video stěny, 8K obsah, live TV",
+        "recommendation": "XT nebo XC řada"
+      }
     },
     "whyBrightsign": {
       "title": "Proč BrightSign?",
@@ -483,8 +521,8 @@
   },
   "search": {
     "title": "Vyhledávání",
-    "noResults": "Žádné výsledky pro \u201E{query}\u201D",
-    "resultsFor": "Výsledky pro \u201E{query}\u201D",
+    "noResults": "Žádné výsledky pro „{query}”",
+    "resultsFor": "Výsledky pro „{query}”",
     "placeholder": "Hledat produkty..."
   },
   "cookies": {

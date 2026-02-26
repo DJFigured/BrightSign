@@ -10,6 +10,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Static pages per locale
   const staticPages = [
     { path: "", changeFrequency: "daily" as const, priority: 1.0 },
+    { path: "/kategorie", changeFrequency: "daily" as const, priority: 0.9 },
     { path: "/kontakt", changeFrequency: "monthly" as const, priority: 0.5 },
     { path: "/b2b/registrace", changeFrequency: "monthly" as const, priority: 0.6 },
     { path: "/obchodni-podminky", changeFrequency: "monthly" as const, priority: 0.3 },
