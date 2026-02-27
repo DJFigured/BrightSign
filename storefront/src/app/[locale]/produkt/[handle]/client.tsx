@@ -205,7 +205,7 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
                 >
                   <Image
                     src={img.url}
-                    alt=""
+                    alt={`${title} — ${idx + 1}`}
                     fill
                     className="object-contain p-1"
                     sizes="64px"

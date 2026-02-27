@@ -16,6 +16,7 @@ import { GoogleTagManager, GoogleTagManagerNoScript } from "@/components/analyti
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics"
 import { MetaPixel } from "@/components/analytics/MetaPixel"
 import { CookieConsent } from "@/components/analytics/CookieConsent"
+import { BackToTop } from "@/components/ui/BackToTop"
 
 const inter = Inter({
   variable: "--font-inter",
@@ -121,6 +122,7 @@ export default async function LocaleLayout({
                   <Footer navData={navData} />
                 </div>
                 <CompareBar />
+                <BackToTop />
               </CompareProvider>
             </CartProvider>
           </AuthProvider>

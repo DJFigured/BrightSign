@@ -159,7 +159,7 @@ export function Header({ navData }: HeaderProps) {
         )}
 
         {/* Desktop category nav */}
-        <nav className="hidden border-t border-border md:block">
+        <nav aria-label={t("players")} className="hidden border-t border-border md:block">
           <div className="mx-auto flex max-w-7xl items-center gap-6 px-4 py-2 text-sm">
             {/* Přehrávače with mega-menu */}
             <div
