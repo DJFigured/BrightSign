@@ -191,7 +191,13 @@
     "errorContact": "Kontaktdaten konnten nicht gespeichert werden. Bitte versuchen Sie es erneut.",
     "errorAddress": "Adresse konnte nicht gespeichert werden. Bitte überprüfen Sie Ihre Angaben.",
     "errorShipping": "Versandmethode konnte nicht gesetzt werden. Bitte versuchen Sie es erneut.",
-    "errorOrder": "Bestellung konnte nicht abgeschlossen werden. Bitte versuchen Sie es erneut."
+    "errorOrder": "Bestellung konnte nicht abgeschlossen werden. Bitte versuchen Sie es erneut.",
+    "companyPurchase": "Firmenkauf",
+    "ico": "Handelsregisternummer",
+    "icoPlaceholder": "z.B. HRB 12345",
+    "dicPlaceholder": "z.B. DE123456789",
+    "differentBillingAddress": "Abweichende Rechnungsadresse",
+    "billingAddress": "Rechnungsadresse"
   },
   "auth": {
     "login": "Anmelden",

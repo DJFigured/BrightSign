@@ -12,7 +12,7 @@ import { Badge } from "@/components/ui/badge"
 import { useCart } from "@/lib/cart-context"
 import { sdk } from "@/lib/sdk"
 import { formatPrice } from "@/lib/medusa-helpers"
-import { Check, Loader2, Package, MapPin, CreditCard, ShoppingBag, Building2, FileText } from "lucide-react"
+import { Check, Loader2, Package, MapPin, CreditCard, ShoppingBag, Building2, FileText, ChevronDown } from "lucide-react"
 import { trackEcommerce, mapCartItemToGA4, trackPixel } from "@/lib/analytics"
 import StripePayment from "@/components/checkout/StripePayment"
 
@@ -54,6 +54,18 @@ export function CheckoutPageClient() {
     de: "de",
   }
 
+  // Supported countries for shipping
+  const supportedCountries = [
+    { code: "cz", label: "Czechia" },
+    { code: "sk", label: "Slovakia" },
+    { code: "pl", label: "Poland" },
+    { code: "de", label: "Deutschland" },
+    { code: "at", label: "Austria" },
+    { code: "hu", label: "Hungary" },
+    { code: "ro", label: "Romania" },
+    { code: "gb", label: "United Kingdom" },
+  ]
+
   // Form state
   const [email, setEmail] = useState("")
   const [phone, setPhone] = useState("")
@@ -62,8 +74,23 @@ export function CheckoutPageClient() {
   const [address1, setAddress1] = useState("")
   const [city, setCity] = useState("")
   const [postalCode, setPostalCode] = useState("")
-  const [countryCode] = useState(localeCountryMap[locale] || "cz")
+  const [countryCode, setCountryCode] = useState(localeCountryMap[locale] || "cz")
   const [selectedShipping, setSelectedShipping] = useState("")
+
+  // Company fields (B2B)
+  const [isCompany, setIsCompany] = useState(false)
+  const [companyName, setCompanyName] = useState("")
+  const [ico, setIco] = useState("")
+  const [dic, setDic] = useState("")
+
+  // Billing address (different from shipping)
+  const [billingDifferent, setBillingDifferent] = useState(false)
+  const [billingFirstName, setBillingFirstName] = useState("")
+  const [billingLastName, setBillingLastName] = useState("")
+  const [billingAddress1, setBillingAddress1] = useState("")
+  const [billingCity, setBillingCity] = useState("")
+  const [billingPostalCode, setBillingPostalCode] = useState("")
+  const [billingCountryCode, setBillingCountryCode] = useState(localeCountryMap[locale] || "cz")
 
   const currencyCode = cart?.currency_code
   const currency = currencyCode?.toUpperCase() ?? "CZK"
@@ -204,18 +231,42 @@ export function CheckoutPageClient() {
     setLoading(true)
     setFormError(null)
     try {
-      const addressData = {
+      const shippingData = {
         first_name: firstName,
         last_name: lastName,
+        company: isCompany ? companyName : undefined,
         address_1: address1,
         city,
         postal_code: postalCode,
         country_code: countryCode,
         phone,
       }
+
+      const billingData = billingDifferent
+        ? {
+            first_name: billingFirstName,
+            last_name: billingLastName,
+            company: isCompany ? companyName : undefined,
+            address_1: billingAddress1,
+            city: billingCity,
+            postal_code: billingPostalCode,
+            country_code: billingCountryCode,
+            phone,
+          }
+        : shippingData
+
+      // Store company/ICO/DIC in cart metadata
+      const metadata: Record<string, string> = {}
+      if (isCompany) {
+        if (companyName) metadata.company_name = companyName
+        if (ico) metadata.company_ico = ico
+        if (dic) metadata.company_dic = dic
+      }
+
       await sdk.store.cart.update(cartId!, {
-        shipping_address: addressData,
-        billing_address: addressData,
+        shipping_address: shippingData,
+        billing_address: billingData,
+        ...(Object.keys(metadata).length > 0 ? { metadata } : {}),
       })
       await refreshCart()
       setStep("shipping")
@@ -417,6 +468,66 @@ export function CheckoutPageClient() {
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleAddressSubmit} className="space-y-4">
+                  {/* Company toggle */}
+                  <div className="flex items-center gap-3">
+                    <button
+                      type="button"
+                      role="switch"
+                      aria-checked={isCompany}
+                      aria-label={t("companyPurchase")}
+                      onClick={() => setIsCompany(!isCompany)}
+                      className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors ${
+                        isCompany ? "bg-brand-accent" : "bg-muted"
+                      }`}
+                    >
+                      <span
+                        className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition-transform ${
+                          isCompany ? "translate-x-5" : "translate-x-0"
+                        }`}
+                      />
+                    </button>
+                    <Label className="cursor-pointer" onClick={() => setIsCompany(!isCompany)}>
+                      {t("companyPurchase")}
+                    </Label>
+                  </div>
+
+                  {/* Company fields */}
+                  {isCompany && (
+                    <div className="space-y-4 rounded-lg border border-brand-accent/20 bg-brand-accent/5 p-4">
+                      <div>
+                        <Label htmlFor="companyName">{t("company")}</Label>
+                        <Input
+                          id="companyName"
+                          autoComplete="organization"
+                          required={isCompany}
+                          value={companyName}
+                          onChange={(e) => setCompanyName(e.target.value)}
+                        />
+                      </div>
+                      <div className="grid gap-4 sm:grid-cols-2">
+                        <div>
+                          <Label htmlFor="ico">{t("ico")}</Label>
+                          <Input
+                            id="ico"
+                            value={ico}
+                            onChange={(e) => setIco(e.target.value)}
+                            placeholder={t("icoPlaceholder")}
+                          />
+                        </div>
+                        <div>
+                          <Label htmlFor="dic">{t("vatId")}</Label>
+                          <Input
+                            id="dic"
+                            value={dic}
+                            onChange={(e) => setDic(e.target.value)}
+                            placeholder={t("dicPlaceholder")}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Name fields */}
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div>
                       <Label htmlFor="firstName">{t("firstName")}</Label>
@@ -439,6 +550,8 @@ export function CheckoutPageClient() {
                       />
                     </div>
                   </div>
+
+                  {/* Street address */}
                   <div>
                     <Label htmlFor="address1">{t("address")}</Label>
                     <Input
@@ -449,6 +562,8 @@ export function CheckoutPageClient() {
                       onChange={(e) => setAddress1(e.target.value)}
                     />
                   </div>
+
+                  {/* City + Postal code */}
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div>
                       <Label htmlFor="city">{t("city")}</Label>
@@ -471,6 +586,132 @@ export function CheckoutPageClient() {
                       />
                     </div>
                   </div>
+
+                  {/* Country selector */}
+                  <div>
+                    <Label htmlFor="countryCode">{t("country")}</Label>
+                    <div className="relative">
+                      <select
+                        id="countryCode"
+                        value={countryCode}
+                        onChange={(e) => setCountryCode(e.target.value)}
+                        className="flex h-10 w-full appearance-none rounded-md border border-input bg-background px-3 py-2 pr-10 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                        aria-label={t("selectCountry")}
+                      >
+                        {supportedCountries.map((c) => (
+                          <option key={c.code} value={c.code}>
+                            {c.label}
+                          </option>
+                        ))}
+                      </select>
+                      <ChevronDown className="pointer-events-none absolute right-3 top-3 h-4 w-4 text-muted-foreground" />
+                    </div>
+                  </div>
+
+                  {/* Different billing address toggle */}
+                  <Separator />
+                  <div className="flex items-center gap-3">
+                    <button
+                      type="button"
+                      role="switch"
+                      aria-checked={billingDifferent}
+                      aria-label={t("differentBillingAddress")}
+                      onClick={() => setBillingDifferent(!billingDifferent)}
+                      className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors ${
+                        billingDifferent ? "bg-brand-accent" : "bg-muted"
+                      }`}
+                    >
+                      <span
+                        className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition-transform ${
+                          billingDifferent ? "translate-x-5" : "translate-x-0"
+                        }`}
+                      />
+                    </button>
+                    <Label className="cursor-pointer" onClick={() => setBillingDifferent(!billingDifferent)}>
+                      {t("differentBillingAddress")}
+                    </Label>
+                  </div>
+
+                  {/* Billing address fields */}
+                  {billingDifferent && (
+                    <div className="space-y-4 rounded-lg border border-muted p-4">
+                      <p className="text-sm font-medium text-muted-foreground">{t("billingAddress")}</p>
+                      <div className="grid gap-4 sm:grid-cols-2">
+                        <div>
+                          <Label htmlFor="billingFirstName">{t("firstName")}</Label>
+                          <Input
+                            id="billingFirstName"
+                            autoComplete="billing given-name"
+                            required={billingDifferent}
+                            value={billingFirstName}
+                            onChange={(e) => setBillingFirstName(e.target.value)}
+                          />
+                        </div>
+                        <div>
+                          <Label htmlFor="billingLastName">{t("lastName")}</Label>
+                          <Input
+                            id="billingLastName"
+                            autoComplete="billing family-name"
+                            required={billingDifferent}
+                            value={billingLastName}
+                            onChange={(e) => setBillingLastName(e.target.value)}
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <Label htmlFor="billingAddress1">{t("address")}</Label>
+                        <Input
+                          id="billingAddress1"
+                          autoComplete="billing street-address"
+                          required={billingDifferent}
+                          value={billingAddress1}
+                          onChange={(e) => setBillingAddress1(e.target.value)}
+                        />
+                      </div>
+                      <div className="grid gap-4 sm:grid-cols-2">
+                        <div>
+                          <Label htmlFor="billingCity">{t("city")}</Label>
+                          <Input
+                            id="billingCity"
+                            autoComplete="billing address-level2"
+                            required={billingDifferent}
+                            value={billingCity}
+                            onChange={(e) => setBillingCity(e.target.value)}
+                          />
+                        </div>
+                        <div>
+                          <Label htmlFor="billingPostalCode">{t("postalCode")}</Label>
+                          <Input
+                            id="billingPostalCode"
+                            autoComplete="billing postal-code"
+                            required={billingDifferent}
+                            value={billingPostalCode}
+                            onChange={(e) => setBillingPostalCode(e.target.value)}
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <Label htmlFor="billingCountryCode">{t("country")}</Label>
+                        <div className="relative">
+                          <select
+                            id="billingCountryCode"
+                            value={billingCountryCode}
+                            onChange={(e) => setBillingCountryCode(e.target.value)}
+                            className="flex h-10 w-full appearance-none rounded-md border border-input bg-background px-3 py-2 pr-10 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                            aria-label={t("selectCountry")}
+                          >
+                            {supportedCountries.map((c) => (
+                              <option key={c.code} value={c.code}>
+                                {c.label}
+                              </option>
+                            ))}
+                          </select>
+                          <ChevronDown className="pointer-events-none absolute right-3 top-3 h-4 w-4 text-muted-foreground" />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
                   <div className="flex gap-2">
                     <Button type="button" variant="outline" onClick={() => setStep("contact")}>
                       {t("back")}

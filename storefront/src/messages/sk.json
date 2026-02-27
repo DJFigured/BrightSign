@@ -191,7 +191,13 @@
     "errorContact": "Nepodarilo sa uložiť kontaktné údaje. Skúste to prosím znova.",
     "errorAddress": "Nepodarilo sa uložiť adresu. Skontrolujte prosím vyplnené údaje.",
     "errorShipping": "Nepodarilo sa nastaviť dopravu. Skúste to prosím znova.",
-    "errorOrder": "Nepodarilo sa dokončiť objednávku. Skúste to prosím znova."
+    "errorOrder": "Nepodarilo sa dokončiť objednávku. Skúste to prosím znova.",
+    "companyPurchase": "Nakupujem na firmu",
+    "ico": "IČO",
+    "icoPlaceholder": "napr. 12345678",
+    "dicPlaceholder": "napr. SK1234567890",
+    "differentBillingAddress": "Odlišná fakturačná adresa",
+    "billingAddress": "Fakturačná adresa"
   },
   "auth": {
     "login": "Prihlásenie",

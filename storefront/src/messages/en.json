@@ -191,7 +191,13 @@
     "errorContact": "Failed to save contact details. Please try again.",
     "errorAddress": "Failed to save address. Please check your details.",
     "errorShipping": "Failed to set shipping method. Please try again.",
-    "errorOrder": "Failed to complete order. Please try again."
+    "errorOrder": "Failed to complete order. Please try again.",
+    "companyPurchase": "Purchasing as a company",
+    "ico": "Company ID",
+    "icoPlaceholder": "e.g. 12345678",
+    "dicPlaceholder": "e.g. CZ12345678",
+    "differentBillingAddress": "Different billing address",
+    "billingAddress": "Billing address"
   },
   "auth": {
     "login": "Sign In",

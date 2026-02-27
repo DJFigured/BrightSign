@@ -191,7 +191,13 @@
     "errorContact": "Nie udało się zapisać danych kontaktowych. Spróbuj ponownie.",
     "errorAddress": "Nie udało się zapisać adresu. Sprawdź wprowadzone dane.",
     "errorShipping": "Nie udało się ustawić dostawy. Spróbuj ponownie.",
-    "errorOrder": "Nie udało się złożyć zamówienia. Spróbuj ponownie."
+    "errorOrder": "Nie udało się złożyć zamówienia. Spróbuj ponownie.",
+    "companyPurchase": "Kupuję na firmę",
+    "ico": "NIP",
+    "icoPlaceholder": "np. 1234567890",
+    "dicPlaceholder": "np. PL1234567890",
+    "differentBillingAddress": "Inny adres fakturowy",
+    "billingAddress": "Adres fakturowy"
   },
   "auth": {
     "login": "Logowanie",
