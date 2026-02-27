@@ -65,10 +65,14 @@
     "newsletter": {
       "title": "Novinky a akcie",
       "placeholder": "Váš e-mail",
-      "subscribe": "Odoberať"
+      "subscribe": "Odoberať",
+      "success": "Ďakujeme za prihlásenie k odberu!",
+      "error": "Niečo sa nepodarilo. Skúste to znova."
     },
     "series4": "BrightSign Séria 4",
-    "series5": "BrightSign Séria 5"
+    "series5": "BrightSign Séria 5",
+    "paymentMethods": "Platobné metódy",
+    "bankTransfer": "Bankový prevod"
   },
   "cart": {
     "title": "Košík",

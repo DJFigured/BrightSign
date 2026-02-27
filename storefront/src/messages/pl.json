@@ -65,10 +65,14 @@
     "newsletter": {
       "title": "Aktualności i promocje",
       "placeholder": "Twój e-mail",
-      "subscribe": "Subskrybuj"
+      "subscribe": "Subskrybuj",
+      "success": "Dziękujemy za zapisanie się do newslettera!",
+      "error": "Coś poszło nie tak. Spróbuj ponownie."
     },
     "series4": "BrightSign Seria 4",
-    "series5": "BrightSign Seria 5"
+    "series5": "BrightSign Seria 5",
+    "paymentMethods": "Metody płatności",
+    "bankTransfer": "Przelew bankowy"
   },
   "cart": {
     "title": "Koszyk",

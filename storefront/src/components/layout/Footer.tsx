@@ -1,5 +1,6 @@
 import { useTranslations, useMessages } from "next-intl"
 import { Link } from "@/i18n/navigation"
+import { NewsletterSignup } from "./NewsletterSignup"
 import type { HeaderNavData } from "./Header"
 
 interface FooterProps {
@@ -18,14 +19,20 @@ export function Footer({ navData }: FooterProps) {
   return (
     <footer className="bg-brand-primary-dark text-white">
       <div className="mx-auto max-w-7xl px-4 py-12">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
-          {/* Company */}
-          <div>
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-5">
+          {/* Company + Newsletter */}
+          <div className="lg:col-span-2">
             <h3 className="mb-3 text-lg font-bold">
               Bright<span className="text-brand-accent">Sign</span>.cz
             </h3>
             <p className="text-sm text-white/60">{t("description")}</p>
             <p className="mt-3 text-sm text-white/60">{t("company")}</p>
+
+            {/* Newsletter */}
+            <div className="mt-6">
+              <h4 className="mb-2 text-sm font-semibold">{t("newsletter.title")}</h4>
+              <NewsletterSignup />
+            </div>
           </div>
 
           {/* Products - dynamic */}
@@ -81,7 +88,7 @@ export function Footer({ navData }: FooterProps) {
             </ul>
           </nav>
 
-          {/* Contact */}
+          {/* Contact + Payment */}
           <div>
             <h4 className="mb-3 font-semibold">{tc("contact")}</h4>
             <ul className="space-y-2 text-sm text-white/60">
@@ -93,6 +100,22 @@ export function Footer({ navData }: FooterProps) {
               <li>Make more s.r.o.</li>
               <li>IČO: 21890161</li>
             </ul>
+
+            {/* Payment methods */}
+            <div className="mt-6">
+              <h4 className="mb-2 text-sm font-semibold">{t("paymentMethods")}</h4>
+              <div className="flex flex-wrap gap-2">
+                <span className="inline-flex items-center rounded border border-white/20 bg-white/10 px-2 py-1 text-xs font-medium">
+                  Visa
+                </span>
+                <span className="inline-flex items-center rounded border border-white/20 bg-white/10 px-2 py-1 text-xs font-medium">
+                  Mastercard
+                </span>
+                <span className="inline-flex items-center rounded border border-white/20 bg-white/10 px-2 py-1 text-xs font-medium">
+                  {t("bankTransfer")}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
 

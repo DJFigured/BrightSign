@@ -67,8 +67,12 @@
     "newsletter": {
       "title": "Novinky a akce",
       "placeholder": "Váš e-mail",
-      "subscribe": "Odebírat"
-    }
+      "subscribe": "Odebírat",
+      "success": "Děkujeme za přihlášení k odběru!",
+      "error": "Něco se nepovedlo. Zkuste to znovu."
+    },
+    "paymentMethods": "Platební metody",
+    "bankTransfer": "Bankovní převod"
   },
   "cart": {
     "title": "Košík",

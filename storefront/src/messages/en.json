@@ -65,10 +65,14 @@
     "newsletter": {
       "title": "News & Deals",
       "placeholder": "Your email",
-      "subscribe": "Subscribe"
+      "subscribe": "Subscribe",
+      "success": "Thank you for subscribing!",
+      "error": "Something went wrong. Please try again."
     },
     "series4": "BrightSign Series 4",
-    "series5": "BrightSign Series 5"
+    "series5": "BrightSign Series 5",
+    "paymentMethods": "Payment Methods",
+    "bankTransfer": "Bank Transfer"
   },
   "cart": {
     "title": "Cart",
