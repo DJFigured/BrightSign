@@ -301,6 +301,7 @@
     "warranty": "Gwarancja {period}",
     "shippingBadge": "Wysyłka do 48h",
     "deliveryTime": "Dostawa w 3-5 dni roboczych",
+    "shippingFrom": "Wysyłka od {price}",
     "downloadDatasheet": "Pobierz kartę katalogową (PDF)",
     "specYes": "Tak",
     "specNo": "Nie",

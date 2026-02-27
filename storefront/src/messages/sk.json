@@ -301,6 +301,7 @@
     "warranty": "Záruka {period}",
     "shippingBadge": "Expedícia do 48h",
     "deliveryTime": "Doručenie za 3-5 pracovných dní",
+    "shippingFrom": "Doprava od {price}",
     "downloadDatasheet": "Stiahnuť datasheet (PDF)",
     "specYes": "Áno",
     "specNo": "Nie",

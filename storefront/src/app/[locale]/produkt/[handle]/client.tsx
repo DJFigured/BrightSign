@@ -31,6 +31,13 @@ interface Props {
   breadcrumbs?: BreadcrumbItem[]
 }
 
+// Minimum shipping price per currency (in minor units) — placeholder until real rates from Packeta
+const SHIPPING_MIN_PRICE: Record<string, number> = {
+  CZK: 8900,  // 89 CZK
+  EUR: 390,   // 3.90 EUR
+  PLN: 1990,  // 19.90 PLN
+}
+
 // Map familyCode prefix to segment translation key
 const SEGMENT_KEYS: Record<string, string> = {
   LS: "segmentBasic",
@@ -298,6 +305,12 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
               <Clock className="h-4 w-4" />
               <span>{t("deliveryTime")}</span>
             </div>
+            {SHIPPING_MIN_PRICE[currencyCode] != null && (
+              <div className="mt-1.5 flex items-center gap-2 text-sm text-green-700">
+                <Truck className="h-4 w-4" />
+                <span>{t("shippingFrom", { price: formatPrice(SHIPPING_MIN_PRICE[currencyCode], currencyCode) })}</span>
+              </div>
+            )}
           </div>
 
           {/* Status badges */}

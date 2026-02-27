@@ -301,6 +301,7 @@
     "warranty": "Garantie {period}",
     "shippingBadge": "Versand innerhalb 48h",
     "deliveryTime": "Lieferung in 3-5 Werktagen",
+    "shippingFrom": "Versand ab {price}",
     "downloadDatasheet": "Datenblatt herunterladen (PDF)",
     "specYes": "Ja",
     "specNo": "Nein",
