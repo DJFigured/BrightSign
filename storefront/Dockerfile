@@ -19,8 +19,6 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Required for Tailwind v4 compatibility
-ENV NODE_OPTIONS="--no-experimental-strip-types"
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
 
