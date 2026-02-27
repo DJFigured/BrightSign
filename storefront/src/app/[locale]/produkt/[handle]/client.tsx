@@ -11,7 +11,7 @@ import { Separator } from "@/components/ui/separator"
 import { ProductCard } from "@/components/product/ProductCard"
 import { useCart } from "@/lib/cart-context"
 import { formatPrice, getLocalizedDescription } from "@/lib/medusa-helpers"
-import { Minus, Plus, ShoppingCart, ChevronRight, Shield, Truck, FileDown } from "lucide-react"
+import { Minus, Plus, ShoppingCart, ChevronRight, Shield, Truck, FileDown, CheckCircle, Clock } from "lucide-react"
 import { trackEcommerce, mapProductToItem, trackPixel } from "@/lib/analytics"
 import { addRecentlyViewed, getRecentlyViewed, type RecentlyViewedItem } from "@/lib/recently-viewed"
 
@@ -173,8 +173,8 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
         </nav>
       )}
 
-      <div className="grid gap-8 md:grid-cols-2">
-        {/* Image gallery */}
+      <div className="grid gap-8 lg:grid-cols-2">
+        {/* Left column: Image gallery */}
         <div>
           <div
             className="relative aspect-square overflow-hidden rounded-lg border border-border bg-white cursor-zoom-in"
@@ -190,7 +190,7 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
                 alt={title}
                 fill
                 className="object-contain p-6"
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 priority
               />
             ) : (
@@ -236,7 +236,7 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
                 >
                   <Image
                     src={img.url}
-                    alt={`${title} — ${idx + 1}`}
+                    alt={`${title} -- ${idx + 1}`}
                     fill
                     className="object-contain p-1"
                     sizes="64px"
@@ -245,9 +245,25 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
               ))}
             </div>
           )}
+
+          {/* Datasheet download — under gallery on desktop */}
+          {datasheetUrl && (
+            <div className="mt-4 hidden lg:block">
+              <a
+                href={datasheetUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="outline" className="gap-2 w-full">
+                  <FileDown className="h-4 w-4" />
+                  {t("downloadDatasheet")}
+                </Button>
+              </a>
+            </div>
+          )}
         </div>
 
-        {/* Product info */}
+        {/* Right column: Product info + specs */}
         <div>
           <h1 className="text-2xl font-bold md:text-3xl">{title}</h1>
 
@@ -272,24 +288,33 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
             </div>
           )}
 
+          {/* Availability + delivery info */}
+          <div className="mt-4 rounded-lg border border-green-200 bg-green-50 p-3">
+            <div className="flex items-center gap-2">
+              <CheckCircle className="h-5 w-5 text-green-600" />
+              <span className="font-semibold text-green-800">{tc("inStock")}</span>
+            </div>
+            <div className="mt-1.5 flex items-center gap-2 text-sm text-green-700">
+              <Clock className="h-4 w-4" />
+              <span>{t("deliveryTime")}</span>
+            </div>
+          </div>
+
           {/* Status badges */}
           <div className="mt-3 flex flex-wrap gap-2">
-            <Badge className="bg-green-100 text-green-800">
-              {tc("inStock")}
-            </Badge>
             {warranty && (
-              <Badge variant="outline" className="gap-1">
-                <Shield className="h-3 w-3" />
+              <Badge variant="outline" className="gap-1 px-3 py-1">
+                <Shield className="h-3.5 w-3.5" />
                 {t("warranty", { period: warranty })}
               </Badge>
             )}
-            <Badge variant="outline" className="gap-1">
-              <Truck className="h-3 w-3" />
+            <Badge variant="outline" className="gap-1 px-3 py-1">
+              <Truck className="h-3.5 w-3.5" />
               {t("shippingBadge")}
             </Badge>
           </div>
 
-          <Separator className="my-6" />
+          <Separator className="my-5" />
 
           {/* Quantity + Add to Cart */}
           <div className="flex items-center gap-4">
@@ -327,20 +352,7 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
             </Button>
           </div>
 
-          <Separator className="my-6" />
-
-          {/* Description */}
-          {description && (
-            <div>
-              <h2 className="mb-3 text-lg font-semibold">{t("description")}</h2>
-              <div
-                className="prose prose-sm max-w-none text-muted-foreground"
-                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}
-              />
-            </div>
-          )}
-
-          {/* Structured specs table */}
+          {/* Specs panel — inline on desktop, below CTA */}
           {specs && Object.keys(specs).length > 0 && (
             <div className="mt-6">
               <h2 className="mb-3 text-lg font-semibold">{t("specifications")}</h2>
@@ -358,9 +370,9 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
                             {label}
                           </td>
                           <td className="px-3 py-2 text-muted-foreground">
-                            {value === "✔" ? (
+                            {value === "Ano" || value === "\u2714" ? (
                               <span className="text-green-600">{t("specYes")}</span>
-                            ) : value === "✘" ? (
+                            ) : value === "Ne" || value === "\u2718" ? (
                               <span className="text-red-500">{t("specNo")}</span>
                             ) : (
                               value
@@ -375,15 +387,15 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
             </div>
           )}
 
-          {/* Datasheet download */}
+          {/* Datasheet download — visible on mobile only (desktop shown under gallery) */}
           {datasheetUrl && (
-            <div className="mt-6">
+            <div className="mt-4 lg:hidden">
               <a
                 href={datasheetUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button variant="outline" className="gap-2">
+                <Button variant="outline" className="gap-2 w-full">
                   <FileDown className="h-4 w-4" />
                   {t("downloadDatasheet")}
                 </Button>
@@ -392,6 +404,17 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
           )}
         </div>
       </div>
+
+      {/* Full description — below the two-column grid */}
+      {description && (
+        <div className="mt-10">
+          <h2 className="mb-3 text-xl font-semibold">{t("description")}</h2>
+          <div
+            className="prose prose-sm max-w-none text-muted-foreground lg:prose-base"
+            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}
+          />
+        </div>
+      )}
 
       {/* Related products */}
       {relatedProducts.length > 0 && (
