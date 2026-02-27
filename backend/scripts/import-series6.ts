@@ -139,7 +139,7 @@ const SERIES_6_PRODUCTS: Series6Product[] = [
     powerSupply: "12V / 3A (uzamykatelny adapter)",
     datasheetUrl:
       "https://www.brightsign.biz/wp-content/uploads/2025/06/HD6-datasheet-20250604.pdf",
-    imageUrl: null,
+    imageUrl: "/products/hd6-front.png",
     translations: {
       sk: {
         title: "BrightSign HD226 -- Vstupny 4K prehravac s HDR",
@@ -240,7 +240,7 @@ const SERIES_6_PRODUCTS: Series6Product[] = [
     powerSupply: "12V / 3A (uzamykatelny adapter)",
     datasheetUrl:
       "https://www.brightsign.biz/wp-content/uploads/2025/06/HD6-datasheet-20250604.pdf",
-    imageUrl: null,
+    imageUrl: "/products/hd6-front.png",
     translations: {
       sk: {
         title: "BrightSign HD1026 -- 4K prehravac s rozsirenym I/O",
@@ -343,7 +343,7 @@ const SERIES_6_PRODUCTS: Series6Product[] = [
     powerSupply: "PoE+ nebo 12V / 3A",
     datasheetUrl:
       "https://www.brightsign.biz/wp-content/uploads/2025/06/XD6-datasheet-20250604.pdf",
-    imageUrl: null,
+    imageUrl: "/products/xd6-front.png",
     translations: {
       sk: {
         title: "BrightSign XD236 -- Vykonny 4K prehravac s PoE+",
@@ -448,7 +448,7 @@ const SERIES_6_PRODUCTS: Series6Product[] = [
     powerSupply: "PoE+ nebo 12V / 3A",
     datasheetUrl:
       "https://www.brightsign.biz/wp-content/uploads/2025/06/XD6-datasheet-20250604.pdf",
-    imageUrl: null,
+    imageUrl: "/products/xd6-front.png",
     translations: {
       sk: {
         title: "BrightSign XD1036 -- Vykonny 4K prehravac s rozsirenym I/O",

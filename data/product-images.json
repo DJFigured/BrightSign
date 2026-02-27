@@ -1,0 +1,28 @@
+{
+  "_comment": "Mapping product model numbers to local image paths. Use with import scripts or manual Medusa admin update.",
+  "series5": {
+    "HD225": "/products/hd5-front.png",
+    "HD1025": "/products/hd5-front.png",
+    "XD235": "/products/xd5-front.jpg",
+    "XD1035": "/products/xd5-front.jpg",
+    "XT245": "/products/xt5-front.png",
+    "XT1145": "/products/xt5-front.png",
+    "XT2145": "/products/xt5-front.png",
+    "LS425": "/products/ls5-front.png",
+    "LS445": "/products/ls5-front.png"
+  },
+  "series6": {
+    "HD226": "/products/hd6-front.png",
+    "HD1026": "/products/hd6-front.png",
+    "XD236": "/products/xd6-front.png",
+    "XD1036": "/products/xd6-front.png"
+  },
+  "heroImages": {
+    "HD5": "/products/hd5-hero.png",
+    "XD5": "/products/xd5-hero.png",
+    "XT5": "/products/xt5-hero.png",
+    "LS5": "/products/ls5-hero.png",
+    "HD6": "/products/hd6-hero.png",
+    "XD6": "/products/xd6-hero.png"
+  }
+}
