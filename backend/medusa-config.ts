@@ -123,5 +123,21 @@ module.exports = defineConfig({
     {
       resolve: "./src/modules/invoice",
     },
+    {
+      resolve: "@medusajs/medusa/fulfillment",
+      options: {
+        providers: [
+          {
+            resolve: "./src/modules/packeta",
+            id: "packeta",
+            options: {
+              api_password: process.env.PACKETA_API_PASSWORD,
+              sender_id: process.env.PACKETA_SENDER_ID,
+              api_key: process.env.PACKETA_API_KEY,
+            },
+          },
+        ],
+      },
+    },
   ],
 })
