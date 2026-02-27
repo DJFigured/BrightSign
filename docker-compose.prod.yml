@@ -1,24 +1,4 @@
 services:
-  caddy:
-    image: caddy:latest
-    container_name: brightsign-caddy
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-      - "443:443/udp"
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile:ro
-      - caddy_data:/data
-      - caddy_config:/config
-    depends_on:
-      backend:
-        condition: service_healthy
-      storefront:
-        condition: service_healthy
-    networks:
-      - brightsign
-
   backend:
     build:
       context: ./backend
@@ -31,10 +11,21 @@ services:
       NODE_ENV: production
       DATABASE_URL: postgresql://${POSTGRES_USER:-medusa}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-medusa}?sslmode=disable
       REDIS_URL: redis://:${REDIS_PASSWORD:-}@redis:6379
-      BACKEND_URL: ${BACKEND_URL:-http://localhost:9000}
+      BACKEND_URL: ${BACKEND_URL:-https://api.brightsign.cz}
       FILE_UPLOAD_DIR: /app/uploads
     expose:
       - "9000"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.bs-backend.rule=Host(`api.brightsign.cz`)"
+      - "traefik.http.routers.bs-backend.entrypoints=https"
+      - "traefik.http.routers.bs-backend.tls=true"
+      - "traefik.http.routers.bs-backend.tls.certresolver=letsencrypt"
+      - "traefik.http.services.bs-backend.loadbalancer.server.port=9000"
+      - "traefik.http.routers.bs-backend-http.rule=Host(`api.brightsign.cz`)"
+      - "traefik.http.routers.bs-backend-http.entrypoints=http"
+      - "traefik.http.routers.bs-backend-http.middlewares=redirect-to-https"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
     depends_on:
       postgres:
         condition: service_healthy
@@ -44,26 +35,68 @@ services:
       - backend_uploads:/app/uploads
     networks:
       - brightsign
+      - coolify
 
   storefront:
     build:
       context: ./storefront
       dockerfile: Dockerfile
       args:
-        NEXT_PUBLIC_MEDUSA_BACKEND_URL: ${BACKEND_URL:-http://91.99.49.122:9000}
+        NEXT_PUBLIC_MEDUSA_BACKEND_URL: ${BACKEND_URL:-https://api.brightsign.cz}
         NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY: ${NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY}
-        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_BASE_URL:-http://91.99.49.122}
+        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_BASE_URL:-https://brightsign.cz}
     container_name: brightsign-storefront
     restart: unless-stopped
     environment:
       NODE_ENV: production
     expose:
       - "3000"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.bs-storefront.rule=Host(`brightsign.cz`) || Host(`www.brightsign.cz`)"
+      - "traefik.http.routers.bs-storefront.entrypoints=https"
+      - "traefik.http.routers.bs-storefront.tls=true"
+      - "traefik.http.routers.bs-storefront.tls.certresolver=letsencrypt"
+      - "traefik.http.services.bs-storefront.loadbalancer.server.port=3000"
+      - "traefik.http.routers.bs-storefront-http.rule=Host(`brightsign.cz`) || Host(`www.brightsign.cz`)"
+      - "traefik.http.routers.bs-storefront-http.entrypoints=http"
+      - "traefik.http.routers.bs-storefront-http.middlewares=redirect-to-https"
     depends_on:
       backend:
         condition: service_healthy
     networks:
       - brightsign
+      - coolify
+
+  minio:
+    image: minio/minio:latest
+    container_name: brightsign-minio
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-brightsign}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+    expose:
+      - "9000"
+      - "9001"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.bs-minio.rule=Host(`minio.brightsign.cz`)"
+      - "traefik.http.routers.bs-minio.entrypoints=https"
+      - "traefik.http.routers.bs-minio.tls=true"
+      - "traefik.http.routers.bs-minio.tls.certresolver=letsencrypt"
+      - "traefik.http.services.bs-minio.loadbalancer.server.port=9000"
+    volumes:
+      - minio_data:/data
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    networks:
+      - brightsign
+      - coolify
 
   postgres:
     image: postgres:16-alpine
@@ -103,36 +136,14 @@ services:
     networks:
       - brightsign
 
-  minio:
-    image: minio/minio:latest
-    container_name: brightsign-minio
-    restart: unless-stopped
-    command: server /data --console-address ":9001"
-    environment:
-      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-brightsign}
-      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
-    expose:
-      - "9000"
-      - "9001"
-    volumes:
-      - minio_data:/data
-    healthcheck:
-      test: ["CMD", "mc", "ready", "local"]
-      interval: 30s
-      timeout: 5s
-      retries: 3
-      start_period: 10s
-    networks:
-      - brightsign
-
 volumes:
   postgres_data:
   redis_data:
-  caddy_data:
-  caddy_config:
   backend_uploads:
   minio_data:
 
 networks:
   brightsign:
     driver: bridge
+  coolify:
+    external: true
