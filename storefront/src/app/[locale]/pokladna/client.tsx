@@ -799,6 +799,64 @@ export function CheckoutPageClient() {
                   </div>
                 )}
 
+                {/* Order review summary */}
+                <div className="space-y-3 rounded-lg border border-border bg-muted/20 p-4">
+                  <h3 className="text-sm font-semibold">{t("reviewTitle")}</h3>
+
+                  {/* Shipping address */}
+                  <div className="flex items-start justify-between text-sm">
+                    <div>
+                      <p className="font-medium text-muted-foreground">{t("shipping")}</p>
+                      <p>{firstName} {lastName}</p>
+                      {isCompany && companyName && <p className="text-muted-foreground">{companyName}</p>}
+                      <p className="text-muted-foreground">{address1}, {city} {postalCode}</p>
+                    </div>
+                    <button type="button" onClick={() => setStep("address")} className="text-xs text-brand-accent hover:underline shrink-0">{t("edit")}</button>
+                  </div>
+
+                  {/* Billing address (if different) */}
+                  {billingDifferent && (
+                    <div className="flex items-start justify-between text-sm">
+                      <div>
+                        <p className="font-medium text-muted-foreground">{t("billingAddress")}</p>
+                        <p>{billingFirstName} {billingLastName}</p>
+                        <p className="text-muted-foreground">{billingAddress1}, {billingCity} {billingPostalCode}</p>
+                      </div>
+                      <button type="button" onClick={() => setStep("address")} className="text-xs text-brand-accent hover:underline shrink-0">{t("edit")}</button>
+                    </div>
+                  )}
+
+                  {/* Shipping method */}
+                  {selectedShipping && (
+                    <div className="flex items-start justify-between text-sm">
+                      <div>
+                        <p className="font-medium text-muted-foreground">{t("shippingMethod")}</p>
+                        <p>{shippingOptions.find(o => o.id === selectedShipping)?.name ?? "—"}{shippingTotal != null && shippingTotal > 0 ? ` — ${formatPrice(shippingTotal, currency)}` : ""}</p>
+                      </div>
+                      <button type="button" onClick={() => setStep("shipping")} className="text-xs text-brand-accent hover:underline shrink-0">{t("edit")}</button>
+                    </div>
+                  )}
+
+                  <Separator />
+
+                  {/* Items summary */}
+                  <div className="text-sm">
+                    <p className="font-medium text-muted-foreground mb-1">{t("reviewItems", { count: items.length.toString() })}</p>
+                    {items.map((item) => (
+                      <div key={item.id} className="flex justify-between text-muted-foreground">
+                        <span>{item.quantity}x {item.title}</span>
+                        <span>{formatPrice(item.unit_price * item.quantity, currency)}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <Separator />
+                  <div className="flex justify-between text-sm font-semibold">
+                    <span>{tCart("total")}</span>
+                    <span className="text-brand-primary">{formatPrice(total ?? subtotal ?? 0, currency)}</span>
+                  </div>
+                </div>
+
                 {/* Payment method selection */}
                 <div className="space-y-2">
                   <label
