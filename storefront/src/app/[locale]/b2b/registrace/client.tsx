@@ -129,6 +129,7 @@ export function B2BRegistracePageClient() {
                 <Label>{t('companyName')} *</Label>
                 <Input
                   type="text"
+                  autoComplete="organization"
                   required
                   value={form.company}
                   onChange={e => setForm({...form, company: e.target.value})}
@@ -157,6 +158,7 @@ export function B2BRegistracePageClient() {
                 <Label>{t('contactName')} *</Label>
                 <Input
                   type="text"
+                  autoComplete="name"
                   required
                   value={form.contactName}
                   onChange={e => setForm({...form, contactName: e.target.value})}
@@ -166,6 +168,7 @@ export function B2BRegistracePageClient() {
                 <Label>{t('email')} *</Label>
                 <Input
                   type="email"
+                  autoComplete="email"
                   required
                   value={form.email}
                   onChange={e => setForm({...form, email: e.target.value})}
@@ -175,6 +178,7 @@ export function B2BRegistracePageClient() {
                 <Label>{t('phone')}</Label>
                 <Input
                   type="tel"
+                  autoComplete="tel"
                   value={form.phone}
                   onChange={e => setForm({...form, phone: e.target.value})}
                 />
@@ -192,7 +196,7 @@ export function B2BRegistracePageClient() {
             </div>
 
             {error && (
-              <div className="bg-red-50 text-red-700 border border-red-200 rounded-lg px-4 py-3 text-sm">
+              <div role="alert" className="bg-red-50 text-red-700 border border-red-200 rounded-lg px-4 py-3 text-sm">
                 {error}
               </div>
             )}

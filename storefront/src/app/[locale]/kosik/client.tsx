@@ -53,6 +53,7 @@ export function CartPageClient() {
 
   const subtotal = cart?.subtotal as number | undefined
   const shippingTotal = cart?.shipping_total as number | undefined
+  const taxTotal = cart?.tax_total as number | undefined
   const total = cart?.total as number | undefined
 
   return (
@@ -154,6 +155,12 @@ export function CartPageClient() {
                 <span className="text-muted-foreground">{tc("shipping")}</span>
                 <span>{shippingTotal ? formatPrice(shippingTotal, currency) : tc("shippingCalculated")}</span>
               </div>
+              {taxTotal != null && taxTotal > 0 && (
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">{tc("vat")}</span>
+                  <span>{formatPrice(taxTotal, currency)}</span>
+                </div>
+              )}
               <Separator />
               <div className="flex justify-between text-base font-semibold">
                 <span>{tc("total")}</span>

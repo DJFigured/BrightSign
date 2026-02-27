@@ -175,7 +175,11 @@
     "checkoutSteps": "Kroky objednávky",
     "stepComplete": "dokončené",
     "stepCurrent": "aktuálny krok",
-    "stepUpcoming": "nadchádzajúci"
+    "stepUpcoming": "nadchádzajúci",
+    "errorContact": "Nepodarilo sa uložiť kontaktné údaje. Skúste to prosím znova.",
+    "errorAddress": "Nepodarilo sa uložiť adresu. Skontrolujte prosím vyplnené údaje.",
+    "errorShipping": "Nepodarilo sa nastaviť dopravu. Skúste to prosím znova.",
+    "errorOrder": "Nepodarilo sa dokončiť objednávku. Skúste to prosím znova."
   },
   "auth": {
     "login": "Prihlásenie",

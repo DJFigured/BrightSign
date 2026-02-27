@@ -175,7 +175,11 @@
     "checkoutSteps": "Bestellschritte",
     "stepComplete": "abgeschlossen",
     "stepCurrent": "aktueller Schritt",
-    "stepUpcoming": "bevorstehend"
+    "stepUpcoming": "bevorstehend",
+    "errorContact": "Kontaktdaten konnten nicht gespeichert werden. Bitte versuchen Sie es erneut.",
+    "errorAddress": "Adresse konnte nicht gespeichert werden. Bitte überprüfen Sie Ihre Angaben.",
+    "errorShipping": "Versandmethode konnte nicht gesetzt werden. Bitte versuchen Sie es erneut.",
+    "errorOrder": "Bestellung konnte nicht abgeschlossen werden. Bitte versuchen Sie es erneut."
   },
   "auth": {
     "login": "Anmelden",

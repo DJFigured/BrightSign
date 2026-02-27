@@ -156,6 +156,7 @@ export function ContactPageClient() {
                 type="text"
                 id="name"
                 name="name"
+                autoComplete="name"
                 required
                 value={form.name}
                 onChange={e => setForm({ ...form, name: e.target.value })}
@@ -170,6 +171,7 @@ export function ContactPageClient() {
                 type="email"
                 id="email"
                 name="email"
+                autoComplete="email"
                 required
                 value={form.email}
                 onChange={e => setForm({ ...form, email: e.target.value })}
@@ -205,7 +207,7 @@ export function ContactPageClient() {
             </div>
 
             {error && (
-              <div className="bg-red-50 text-red-700 border border-red-200 rounded-lg px-4 py-3 text-sm">
+              <div role="alert" className="bg-red-50 text-red-700 border border-red-200 rounded-lg px-4 py-3 text-sm">
                 {error}
               </div>
             )}

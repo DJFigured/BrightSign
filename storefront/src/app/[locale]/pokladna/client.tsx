@@ -43,6 +43,7 @@ export function CheckoutPageClient() {
   const [paymentError, setPaymentError] = useState<string | null>(null)
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("card")
   const [bankTransferData, setBankTransferData] = useState<Record<string, unknown> | null>(null)
+  const [formError, setFormError] = useState<string | null>(null)
 
   // Map locale to default country code
   const localeCountryMap: Record<string, string> = {
@@ -180,12 +181,13 @@ export function CheckoutPageClient() {
   async function handleContactSubmit(e: React.FormEvent) {
     e.preventDefault()
     setLoading(true)
+    setFormError(null)
     try {
       await sdk.store.cart.update(cartId!, { email })
       await refreshCart()
       setStep("address")
-    } catch (err) {
-      console.error("Failed to update contact:", err)
+    } catch {
+      setFormError(t("errorContact"))
     } finally {
       setLoading(false)
     }
@@ -194,6 +196,7 @@ export function CheckoutPageClient() {
   async function handleAddressSubmit(e: React.FormEvent) {
     e.preventDefault()
     setLoading(true)
+    setFormError(null)
     try {
       const addressData = {
         first_name: firstName,
@@ -210,8 +213,8 @@ export function CheckoutPageClient() {
       })
       await refreshCart()
       setStep("shipping")
-    } catch (err) {
-      console.error("Failed to update address:", err)
+    } catch {
+      setFormError(t("errorAddress"))
     } finally {
       setLoading(false)
     }
@@ -221,6 +224,7 @@ export function CheckoutPageClient() {
     e.preventDefault()
     if (!selectedShipping) return
     setLoading(true)
+    setFormError(null)
     try {
       await sdk.store.cart.addShippingMethod(cartId!, {
         option_id: selectedShipping,
@@ -234,8 +238,8 @@ export function CheckoutPageClient() {
         shippingTier: option?.name,
       })
       setStep("payment")
-    } catch (err) {
-      console.error("Failed to add shipping:", err)
+    } catch {
+      setFormError(t("errorShipping"))
     } finally {
       setLoading(false)
     }
@@ -255,16 +259,17 @@ export function CheckoutPageClient() {
       setOrderDisplayId(order.display_id ?? null)
       setStep("confirmation")
     } else {
-      console.error("Cart completion failed:", result)
+      setFormError(t("errorOrder"))
     }
   }
 
   async function handleStripeSuccess() {
     setLoading(true)
+    setFormError(null)
     try {
       await completeOrder()
-    } catch (err) {
-      console.error("Complete after Stripe failed:", err)
+    } catch {
+      setFormError(t("errorOrder"))
     } finally {
       setLoading(false)
     }
@@ -281,12 +286,12 @@ export function CheckoutPageClient() {
 
     try {
       await completeOrder()
-    } catch (err) {
-      console.error("Failed to place order:", err)
+    } catch {
+      // Retry once
       try {
         await completeOrder()
-      } catch (err2) {
-        console.error("Fallback also failed:", err2)
+      } catch {
+        setFormError(t("errorOrder"))
       }
     } finally {
       setLoading(false)
@@ -338,6 +343,12 @@ export function CheckoutPageClient() {
       <div className="grid gap-8 lg:grid-cols-3">
         {/* Form */}
         <div className="lg:col-span-2">
+          {formError && (
+            <div role="alert" className="mb-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+              {formError}
+            </div>
+          )}
+
           {step === "contact" && (
             <Card>
               <CardHeader>

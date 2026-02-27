@@ -175,7 +175,11 @@
     "checkoutSteps": "Kroki zamówienia",
     "stepComplete": "ukończone",
     "stepCurrent": "bieżący krok",
-    "stepUpcoming": "nadchodzący"
+    "stepUpcoming": "nadchodzący",
+    "errorContact": "Nie udało się zapisać danych kontaktowych. Spróbuj ponownie.",
+    "errorAddress": "Nie udało się zapisać adresu. Sprawdź wprowadzone dane.",
+    "errorShipping": "Nie udało się ustawić dostawy. Spróbuj ponownie.",
+    "errorOrder": "Nie udało się złożyć zamówienia. Spróbuj ponownie."
   },
   "auth": {
     "login": "Logowanie",
