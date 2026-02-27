@@ -201,7 +201,7 @@ export default async function syncProducts({ container }: ExecArgs) {
       familyName: content.familyCode.toUpperCase(),
       lineCode: linePrefix.toUpperCase(),
       clearance: isClearance ? "true" : "false",
-      warranty: content.specs.warranty || (content.series === "6" ? "5 let" : content.series === "5" ? "3 roky" : "2 roky"),
+      warranty: content.specs.warranty || (content.series === "6" ? "5 let" : content.series === "5" ? "5 let" : "2 roky"),
       datasheetUrl,
       specs: content.specs.raw || {},
       seo: {

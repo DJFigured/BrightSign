@@ -259,7 +259,7 @@ Serazeno podle priority (P0 = nutne pred launch, P1 = brzy po launchi, P2 = opti
 
 +-------------------------------------------------------+
 | TRUST BAR:                                             |
-| [icon] Doruceni    | [icon] 3 roky    | [icon] Bez    |
+| [icon] Doruceni    | [icon] 5 let     | [icon] Bez    |
 |    3-5 dni          |    zaruka         |    licenci   |
 | [icon] B2B slevy   | [icon] 200+       | [icon] Lok.  |
 |    10-20%           |    zakazniku      |    podpora   |
@@ -329,7 +329,7 @@ Serazeno podle priority (P0 = nutne pred launch, P1 = brzy po launchi, P2 = opti
 |                        | HTML5: Plny                    |
 |                        | PoE+: Ano                      |
 |                        | HDMI: 2.0                      |
-|                        | Zaruka: 3 roky                 |
+|                        | Zaruka: 5 let                  |
 |                        |                                |
 |                        | [Stahnout datasheet PDF]       |
 +-------------------------------------------------------+

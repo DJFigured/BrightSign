@@ -52,7 +52,7 @@ Max 155 znaků.
 ## Pravidla:
 - Produktové číslo (PN) uváděj PŘESNĚ jak je v datech (HD226, ne HD-226 nebo HD 226)
 - "Série 6" / "Série 5" - vždy s velkým S, česky
-- Záruka: Série 6 = 5 let, Série 5 = 3 roky, Série 4 = 2 roky
+- Záruka: Série 6 = 5 let, Série 5 = 5 let, Série 4 = 2 roky
 - BrightSign je vždy s velkým B a S (camelCase)
 - Nepoužívej emoji
 - Nepiš "nejlepší", "revoluční" nebo jiné superlativy bez konkrétního podkladu

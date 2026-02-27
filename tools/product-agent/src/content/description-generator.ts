@@ -26,7 +26,7 @@ function parseSpecs(raw: Record<string, string>, series: string): ParsedSpecs {
 
   const warrantyMap: Record<string, string> = {
     "6": "5 let",
-    "5": "3 roky",
+    "5": "5 let",
     "4": "2 roky",
   }
 
