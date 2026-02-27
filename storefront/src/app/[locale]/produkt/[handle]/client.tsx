@@ -284,10 +284,11 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
                 size="icon"
                 onClick={() => setQuantity(Math.max(1, quantity - 1))}
                 className="h-10 w-10 rounded-r-none"
+                aria-label={t("decreaseQuantity")}
               >
                 <Minus className="h-4 w-4" />
               </Button>
-              <span className="flex h-10 w-12 items-center justify-center text-sm font-medium">
+              <span className="flex h-10 w-12 items-center justify-center text-sm font-medium" aria-live="polite">
                 {quantity}
               </span>
               <Button
@@ -295,6 +296,7 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
                 size="icon"
                 onClick={() => setQuantity(quantity + 1)}
                 className="h-10 w-10 rounded-l-none"
+                aria-label={t("increaseQuantity")}
               >
                 <Plus className="h-4 w-4" />
               </Button>

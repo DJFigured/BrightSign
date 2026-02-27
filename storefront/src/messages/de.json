@@ -96,7 +96,10 @@
     "item": "Artikel",
     "summary": "Bestellübersicht",
     "decreaseQuantity": "Menge verringern",
-    "increaseQuantity": "Menge erhöhen"
+    "increaseQuantity": "Menge erhöhen",
+    "addedToCart": "In den Warenkorb gelegt",
+    "viewCart": "Warenkorb anzeigen",
+    "dismiss": "Schließen"
   },
   "checkout": {
     "title": "Kasse",
@@ -280,7 +283,9 @@
     "specNo": "Nein",
     "zoomImage": "Bild vergrößern",
     "previousImage": "Vorheriges Bild",
-    "nextImage": "Nächstes Bild"
+    "nextImage": "Nächstes Bild",
+    "decreaseQuantity": "Menge verringern",
+    "increaseQuantity": "Menge erhöhen"
   },
   "notFound": {
     "title": "Seite nicht gefunden",

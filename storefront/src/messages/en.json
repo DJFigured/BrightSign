@@ -96,7 +96,10 @@
     "item": "item",
     "summary": "Order Summary",
     "decreaseQuantity": "Decrease quantity",
-    "increaseQuantity": "Increase quantity"
+    "increaseQuantity": "Increase quantity",
+    "addedToCart": "Added to cart",
+    "viewCart": "View cart",
+    "dismiss": "Dismiss"
   },
   "checkout": {
     "title": "Checkout",
@@ -280,7 +283,9 @@
     "specNo": "No",
     "zoomImage": "Zoom image",
     "previousImage": "Previous image",
-    "nextImage": "Next image"
+    "nextImage": "Next image",
+    "decreaseQuantity": "Decrease quantity",
+    "increaseQuantity": "Increase quantity"
   },
   "notFound": {
     "title": "Page Not Found",

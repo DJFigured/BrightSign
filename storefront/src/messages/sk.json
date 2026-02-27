@@ -96,7 +96,10 @@
     "item": "položka",
     "summary": "Prehľad objednávky",
     "decreaseQuantity": "Znížiť množstvo",
-    "increaseQuantity": "Zvýšiť množstvo"
+    "increaseQuantity": "Zvýšiť množstvo",
+    "addedToCart": "Pridané do košíka",
+    "viewCart": "Zobraziť košík",
+    "dismiss": "Zavrieť"
   },
   "checkout": {
     "title": "Pokladňa",
@@ -280,7 +283,9 @@
     "specNo": "Nie",
     "zoomImage": "Zväčšiť obrázok",
     "previousImage": "Predchádzajúci obrázok",
-    "nextImage": "Ďalší obrázok"
+    "nextImage": "Ďalší obrázok",
+    "decreaseQuantity": "Znížiť množstvo",
+    "increaseQuantity": "Zvýšiť množstvo"
   },
   "notFound": {
     "title": "Stránka nenájdená",

@@ -96,7 +96,10 @@
     "item": "pozycja",
     "summary": "Podsumowanie zamówienia",
     "decreaseQuantity": "Zmniejsz ilość",
-    "increaseQuantity": "Zwiększ ilość"
+    "increaseQuantity": "Zwiększ ilość",
+    "addedToCart": "Dodano do koszyka",
+    "viewCart": "Zobacz koszyk",
+    "dismiss": "Zamknij"
   },
   "checkout": {
     "title": "Kasa",
@@ -280,7 +283,9 @@
     "specNo": "Nie",
     "zoomImage": "Powiększ zdjęcie",
     "previousImage": "Poprzednie zdjęcie",
-    "nextImage": "Następne zdjęcie"
+    "nextImage": "Następne zdjęcie",
+    "decreaseQuantity": "Zmniejsz ilość",
+    "increaseQuantity": "Zwiększ ilość"
   },
   "notFound": {
     "title": "Strona nie znaleziona",
