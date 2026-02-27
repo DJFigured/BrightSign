@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ShoppingCart } from "lucide-react"
-import { formatPrice } from "@/lib/medusa-helpers"
+import { formatPrice, calcExVat } from "@/lib/medusa-helpers"
 import { useCart } from "@/lib/cart-context"
 import { useCompare } from "@/lib/compare-context"
 import { useTranslations } from "next-intl"
@@ -66,8 +66,8 @@ export function ProductCard({ product, listName, index }: ProductCardProps) {
   const warranty = meta?.warranty
   const segmentKey = lineCode ? SEGMENT_KEYS[lineCode] : undefined
 
-  // Price without VAT (Czech DPH 21%)
-  const priceExVat = priceAmount != null ? Math.round(priceAmount / 1.21) : null
+  // Price without VAT (dynamic rate by currency)
+  const priceExVat = priceAmount != null ? calcExVat(priceAmount, currencyCode) : null
 
   async function handleAddToCart(e: React.MouseEvent) {
     e.preventDefault()

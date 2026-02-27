@@ -35,6 +35,35 @@ export const currencyMap: Record<string, string> = {
 }
 
 /**
+ * VAT rates by currency code.
+ * Used to calculate ex-VAT prices from gross prices.
+ */
+const VAT_RATES: Record<string, number> = {
+  CZK: 0.21,  // Czech Republic 21%
+  EUR: 0.20,  // Slovakia / Austria 20% (default for EUR zone)
+  PLN: 0.23,  // Poland 23%
+  GBP: 0.20,  // United Kingdom 20%
+  HUF: 0.27,  // Hungary 27%
+  RON: 0.19,  // Romania 19%
+}
+
+/**
+ * Get VAT rate for a currency code. Defaults to 21% (CZ).
+ */
+export function getVatRate(currencyCode: string): number {
+  return VAT_RATES[currencyCode.toUpperCase()] ?? 0.21
+}
+
+/**
+ * Calculate price excluding VAT based on currency code.
+ * Returns rounded amount in smallest currency unit.
+ */
+export function calcExVat(amount: number, currencyCode: string): number {
+  const rate = getVatRate(currencyCode)
+  return Math.round(amount / (1 + rate))
+}
+
+/**
  * Returns localized product description from metadata translations.
  * Main product.description is always Czech (cs).
  * Other locales fall back to Czech if translation is missing.

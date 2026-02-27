@@ -10,7 +10,7 @@ import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { ProductCard } from "@/components/product/ProductCard"
 import { useCart } from "@/lib/cart-context"
-import { formatPrice, getLocalizedDescription } from "@/lib/medusa-helpers"
+import { formatPrice, getLocalizedDescription, calcExVat } from "@/lib/medusa-helpers"
 import { Minus, Plus, ShoppingCart, ChevronRight, Shield, Truck, FileDown, CheckCircle, Clock } from "lucide-react"
 import { trackEcommerce, mapProductToItem, trackPixel } from "@/lib/analytics"
 import { addRecentlyViewed, getRecentlyViewed, type RecentlyViewedItem } from "@/lib/recently-viewed"
@@ -77,7 +77,7 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
   const price = variant?.calculated_price
   const priceAmount = price?.calculated_amount
   const currencyCode = price?.currency_code?.toUpperCase() ?? "CZK"
-  const priceExVat = priceAmount != null ? Math.round(priceAmount / 1.21) : null
+  const priceExVat = priceAmount != null ? calcExVat(priceAmount, currencyCode) : null
 
   // Metadata values
   const series = metadata?.series as string | undefined
