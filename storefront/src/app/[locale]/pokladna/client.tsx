@@ -54,16 +54,16 @@ export function CheckoutPageClient() {
     de: "de",
   }
 
-  // Supported countries for shipping
+  // Supported countries for shipping (localized labels)
   const supportedCountries = [
-    { code: "cz", label: "Czechia" },
-    { code: "sk", label: "Slovakia" },
-    { code: "pl", label: "Poland" },
-    { code: "de", label: "Deutschland" },
-    { code: "at", label: "Austria" },
-    { code: "hu", label: "Hungary" },
-    { code: "ro", label: "Romania" },
-    { code: "gb", label: "United Kingdom" },
+    { code: "cz", label: t("countryCZ") },
+    { code: "sk", label: t("countrySK") },
+    { code: "pl", label: t("countryPL") },
+    { code: "de", label: t("countryDE") },
+    { code: "at", label: t("countryAT") },
+    { code: "hu", label: t("countryHU") },
+    { code: "ro", label: t("countryRO") },
+    { code: "gb", label: t("countryGB") },
   ]
 
   // Form state
