@@ -29,7 +29,8 @@
     "cancel": "Abbrechen",
     "confirm": "Bestätigen",
     "close": "Schließen",
-    "errorDescription": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
+    "errorDescription": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
+    "skipToContent": "Zum Inhalt springen"
   },
   "header": {
     "catalog": "Katalog",

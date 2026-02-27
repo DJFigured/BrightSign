@@ -6,6 +6,7 @@ import { NextIntlClientProvider, hasLocale } from "next-intl"
 import { getMessages } from "next-intl/server"
 import { routing } from "@/i18n/routing"
 import { locales } from "@/i18n/config"
+import { getTranslations } from "next-intl/server"
 import { Header, type HeaderNavData } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
 import { CartProvider } from "@/lib/cart-context"
@@ -24,11 +25,13 @@ const BackToTop = dynamic(() => import("@/components/ui/BackToTop").then((m) => 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin", "latin-ext"],
+  display: "swap",
 })
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin"],
+  display: "swap",
 })
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://brightsign.cz"
@@ -84,9 +87,10 @@ export default async function LocaleLayout({
     notFound()
   }
 
-  const [messages, navRaw] = await Promise.all([
+  const [messages, navRaw, tc] = await Promise.all([
     getMessages(),
     getNavigationData(),
+    getTranslations("common"),
   ])
 
   // Transform to serializable HeaderNavData
@@ -115,13 +119,19 @@ export default async function LocaleLayout({
       >
         <GoogleTagManagerNoScript />
         <MetaPixel />
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded focus:bg-brand-primary focus:px-4 focus:py-2 focus:text-white focus:shadow-lg"
+        >
+          {tc("skipToContent")}
+        </a>
         <NextIntlClientProvider messages={messages}>
           <AuthProvider>
             <CartProvider>
               <CompareProvider>
                 <div className="flex min-h-screen flex-col">
                   <Header navData={navData} />
-                  <main className="flex-1">{children}</main>
+                  <main id="main-content" className="flex-1">{children}</main>
                   <Footer navData={navData} />
                 </div>
                 <CompareBar />

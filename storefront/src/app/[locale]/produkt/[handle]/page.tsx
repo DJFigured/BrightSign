@@ -104,7 +104,23 @@ export default async function ProductPage({ params }: Props) {
   }
   breadcrumbs.push({ name: product.title as string, href: `/produkt/${handle}` })
 
-  // JSON-LD structured data
+  // BreadcrumbList JSON-LD
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://brightsign.cz"
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "BrightSign.cz", item: `${SITE_URL}/${locale}` },
+      ...breadcrumbs.map((bc, i) => ({
+        "@type": "ListItem",
+        position: i + 2,
+        name: bc.name,
+        item: `${SITE_URL}/${locale}${bc.href}`,
+      })),
+    ],
+  }
+
+  // Product JSON-LD structured data
   const variant = (product.variants as Array<{ calculated_price?: { calculated_amount?: number; currency_code?: string } }> | undefined)?.[0]
   const priceAmount = variant?.calculated_price?.calculated_amount
   const currencyCode = variant?.calculated_price?.currency_code?.toUpperCase() ?? "CZK"
@@ -133,6 +149,10 @@ export default async function ProductPage({ params }: Props) {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

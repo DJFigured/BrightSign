@@ -49,6 +49,7 @@ export function Header({ navData }: HeaderProps) {
   const [suggestions, setSuggestions] = useState<Array<{ id: string; title: string; handle: string; thumbnail?: string | null; price?: number; currency?: string }>>([])
   const [suggestionsLoading, setSuggestionsLoading] = useState(false)
   const [suggestionsOpen, setSuggestionsOpen] = useState(false)
+  const [selectedIdx, setSelectedIdx] = useState(-1)
   const searchDebounce = useRef<ReturnType<typeof setTimeout>>(undefined)
   const searchRef = useRef<HTMLDivElement>(null)
   const { cart } = useCart()
@@ -104,18 +105,36 @@ export function Header({ navData }: HeaderProps) {
   }, [])
 
   const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" && searchQuery.trim()) {
-      router.push(`/hledani?q=${encodeURIComponent(searchQuery.trim())}`)
-      setSearchOpen(false)
+    if (e.key === "ArrowDown" && suggestionsOpen) {
+      e.preventDefault()
+      setSelectedIdx((prev) => (prev < suggestions.length - 1 ? prev + 1 : 0))
+    } else if (e.key === "ArrowUp" && suggestionsOpen) {
+      e.preventDefault()
+      setSelectedIdx((prev) => (prev > 0 ? prev - 1 : suggestions.length - 1))
+    } else if (e.key === "Enter") {
+      if (selectedIdx >= 0 && selectedIdx < suggestions.length) {
+        e.preventDefault()
+        const item = suggestions[selectedIdx]
+        router.push(`/produkt/${item.handle}`)
+        setSuggestionsOpen(false)
+        setSearchOpen(false)
+        setSearchQuery("")
+        setSelectedIdx(-1)
+      } else if (searchQuery.trim()) {
+        router.push(`/hledani?q=${encodeURIComponent(searchQuery.trim())}`)
+        setSearchOpen(false)
+        setSuggestionsOpen(false)
+        setSelectedIdx(-1)
+      }
+    } else if (e.key === "Escape") {
       setSuggestionsOpen(false)
-    }
-    if (e.key === "Escape") {
-      setSuggestionsOpen(false)
+      setSelectedIdx(-1)
     }
   }
 
   function handleSearchChange(value: string) {
     setSearchQuery(value)
+    setSelectedIdx(-1)
     fetchSuggestions(value)
   }
 
@@ -167,13 +186,15 @@ export function Header({ navData }: HeaderProps) {
             />
             {/* Search suggestions dropdown */}
             {suggestionsOpen && (
-              <div className="absolute left-0 top-full z-50 mt-1 w-full rounded-lg border bg-white shadow-lg">
-                {suggestions.map((item) => (
+              <div className="absolute left-0 top-full z-50 mt-1 w-full rounded-lg border bg-white shadow-lg" role="listbox">
+                {suggestions.map((item, idx) => (
                   <Link
                     key={item.id}
                     href={`/produkt/${item.handle}`}
-                    onClick={() => { setSuggestionsOpen(false); setSearchQuery("") }}
-                    className="flex items-center gap-3 px-3 py-2 transition-colors hover:bg-muted/50 first:rounded-t-lg last:rounded-b-lg"
+                    onClick={() => { setSuggestionsOpen(false); setSearchQuery(""); setSelectedIdx(-1) }}
+                    className={`flex items-center gap-3 px-3 py-2 transition-colors first:rounded-t-lg last:rounded-b-lg ${idx === selectedIdx ? "bg-muted" : "hover:bg-muted/50"}`}
+                    role="option"
+                    aria-selected={idx === selectedIdx}
                   >
                     {item.thumbnail ? (
                       <Image src={item.thumbnail} alt="" width={32} height={32} className="h-8 w-8 shrink-0 rounded object-contain" />
@@ -253,13 +274,15 @@ export function Header({ navData }: HeaderProps) {
                 onKeyDown={handleSearch}
               />
               {suggestionsOpen && (
-                <div className="absolute left-0 top-full z-50 mt-1 w-full rounded-lg border bg-white shadow-lg">
-                  {suggestions.map((item) => (
+                <div className="absolute left-0 top-full z-50 mt-1 w-full rounded-lg border bg-white shadow-lg" role="listbox">
+                  {suggestions.map((item, idx) => (
                     <Link
                       key={item.id}
                       href={`/produkt/${item.handle}`}
-                      onClick={() => { setSuggestionsOpen(false); setSearchOpen(false); setSearchQuery("") }}
-                      className="flex items-center gap-3 px-3 py-2 transition-colors hover:bg-muted/50 first:rounded-t-lg last:rounded-b-lg"
+                      onClick={() => { setSuggestionsOpen(false); setSearchOpen(false); setSearchQuery(""); setSelectedIdx(-1) }}
+                      className={`flex items-center gap-3 px-3 py-2 transition-colors first:rounded-t-lg last:rounded-b-lg ${idx === selectedIdx ? "bg-muted" : "hover:bg-muted/50"}`}
+                      role="option"
+                      aria-selected={idx === selectedIdx}
                     >
                       {item.thumbnail ? (
                         <Image src={item.thumbnail} alt="" width={32} height={32} className="h-8 w-8 shrink-0 rounded object-contain" />

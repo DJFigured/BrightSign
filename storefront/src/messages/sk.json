@@ -29,7 +29,8 @@
     "cancel": "Zrušiť",
     "confirm": "Potvrdiť",
     "close": "Zavrieť",
-    "errorDescription": "Niečo sa pokazilo. Skúste to prosím znova."
+    "errorDescription": "Niečo sa pokazilo. Skúste to prosím znova.",
+    "skipToContent": "Preskočiť na obsah"
   },
   "header": {
     "catalog": "Katalóg",

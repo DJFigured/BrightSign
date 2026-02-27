@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl"
 import { Link } from "@/i18n/navigation"
 import { ProductCard } from "@/components/product/ProductCard"
 import { trackEvent, trackEcommerce, mapProductToItem } from "@/lib/analytics"
+import { SearchX } from "lucide-react"
 
 interface SearchResultsClientProps {
   products: Array<Record<string, unknown>>
@@ -33,11 +34,12 @@ export function SearchResultsClient({ products, query }: SearchResultsClientProp
       </h1>
 
       {query && products.length === 0 && (
-        <div className="text-center py-12">
-          <p className="text-muted-foreground mb-4">{t("noResults", { query })}</p>
+        <div className="text-center py-16">
+          <SearchX className="mx-auto mb-4 h-16 w-16 text-muted-foreground" />
+          <p className="text-lg text-muted-foreground mb-6">{t("noResults", { query })}</p>
           <Link
             href="/kategorie/prehravace"
-            className="inline-block bg-brand-accent text-white px-6 py-3 rounded-lg hover:bg-brand-accent-dark transition-colors"
+            className="inline-block bg-brand-accent text-white px-6 py-3 rounded-lg hover:bg-brand-accent-dark transition-colors font-medium"
           >
             {t("browseAll")}
           </Link>

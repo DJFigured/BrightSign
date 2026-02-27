@@ -29,7 +29,8 @@
     "cancel": "Cancel",
     "confirm": "Confirm",
     "close": "Close",
-    "errorDescription": "Something went wrong. Please try again."
+    "errorDescription": "Something went wrong. Please try again.",
+    "skipToContent": "Skip to content"
   },
   "header": {
     "catalog": "Catalog",

@@ -1,6 +1,8 @@
-import { getTranslations } from "next-intl/server"
+import { getTranslations, getLocale } from "next-intl/server"
 import type { Metadata } from "next"
 import { ContactPageClient } from "./client"
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://brightsign.cz"
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("contactPage")
@@ -35,12 +37,28 @@ const localBusinessJsonLd = {
   ],
 }
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const t = await getTranslations("contactPage")
+  const locale = await getLocale()
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "BrightSign.cz", item: `${SITE_URL}/${locale}` },
+      { "@type": "ListItem", position: 2, name: t("title"), item: `${SITE_URL}/${locale}/kontakt` },
+    ],
+  }
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <ContactPageClient />
     </>

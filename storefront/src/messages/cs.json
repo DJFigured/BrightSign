@@ -29,7 +29,8 @@
     "cancel": "Zrušit",
     "confirm": "Potvrdit",
     "close": "Zavřít",
-    "errorDescription": "Něco se pokazilo. Zkuste to prosím znovu."
+    "errorDescription": "Něco se pokazilo. Zkuste to prosím znovu.",
+    "skipToContent": "Přeskočit na obsah"
   },
   "header": {
     "catalog": "Katalog",

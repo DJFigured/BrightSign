@@ -5,6 +5,8 @@ import { getRegionId } from "@/lib/medusa-helpers"
 import { CategoryPageClient } from "./[handle]/client"
 import type { Metadata } from "next"
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://brightsign.cz"
+
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("category")
   const title = `${t("allProducts")} | BrightSign.cz`
@@ -32,6 +34,7 @@ interface Props {
 export default async function AllProductsPage({ searchParams }: Props) {
   const sp = await searchParams
   const locale = await getLocale() as Locale
+  const tc = await getTranslations("category")
   const regionCode = regionMap[locale]
   const regionId = getRegionId(regionCode)
 
@@ -61,7 +64,21 @@ export default async function AllProductsPage({ searchParams }: Props) {
     region_id: regionId,
   }) as { products: Array<Record<string, unknown>>; count: number }
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "BrightSign.cz", item: `${SITE_URL}/${locale}` },
+      { "@type": "ListItem", position: 2, name: tc("allProducts"), item: `${SITE_URL}/${locale}/kategorie` },
+    ],
+  }
+
   return (
+    <>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+    />
     <CategoryPageClient
       products={products}
       categories={categoriesWithChildren}
@@ -74,5 +91,6 @@ export default async function AllProductsPage({ searchParams }: Props) {
         line: sp.line,
       }}
     />
+    </>
   )
 }

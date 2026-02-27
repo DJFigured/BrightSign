@@ -29,7 +29,8 @@
     "cancel": "Anuluj",
     "confirm": "Potwierdź",
     "close": "Zamknij",
-    "errorDescription": "Coś poszło nie tak. Spróbuj ponownie."
+    "errorDescription": "Coś poszło nie tak. Spróbuj ponownie.",
+    "skipToContent": "Przejdź do treści"
   },
   "header": {
     "catalog": "Katalog",
