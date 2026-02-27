@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import { Inter, JetBrains_Mono } from "next/font/google"
 import { notFound } from "next/navigation"
-import dynamic from "next/dynamic"
 import { NextIntlClientProvider, hasLocale } from "next-intl"
 import { getMessages } from "next-intl/server"
 import { routing } from "@/i18n/routing"
@@ -16,12 +15,7 @@ import { getNavigationData } from "@/lib/categories"
 import { GoogleTagManager, GoogleTagManagerNoScript } from "@/components/analytics/GoogleTagManager"
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics"
 import { MetaPixel } from "@/components/analytics/MetaPixel"
-
-// Lazy-load non-critical UI components
-const CompareBar = dynamic(() => import("@/components/product/CompareBar").then((m) => m.CompareBar), { ssr: false })
-const CookieConsent = dynamic(() => import("@/components/analytics/CookieConsent").then((m) => m.CookieConsent), { ssr: false })
-const BackToTop = dynamic(() => import("@/components/ui/BackToTop").then((m) => m.BackToTop), { ssr: false })
-const CartToast = dynamic(() => import("@/components/ui/CartToast").then((m) => m.CartToast), { ssr: false })
+import { ClientOverlays, ClientCookieConsent } from "@/components/layout/ClientOverlays"
 
 const inter = Inter({
   variable: "--font-inter",
@@ -135,13 +129,11 @@ export default async function LocaleLayout({
                   <main id="main-content" className="flex-1">{children}</main>
                   <Footer navData={navData} />
                 </div>
-                <CompareBar />
-                <CartToast />
-                <BackToTop />
+                <ClientOverlays />
               </CompareProvider>
             </CartProvider>
           </AuthProvider>
-          <CookieConsent />
+          <ClientCookieConsent />
         </NextIntlClientProvider>
       </body>
     </html>
