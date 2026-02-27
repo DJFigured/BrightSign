@@ -11,18 +11,16 @@
 - Oprava: `sed` na VPS docker-compose.prod.yml + `docker compose up -d redis`
 - Overeno: `CONFIG GET maxmemory-policy` = noeviction, `maxmemory` = 536870912 (512mb)
 
-### [IN PROGRESS] TransformStream bug
+### [DONE] TransformStream bug
 - Problem: `TypeError: controller[kState].transformAlgorithm is not a function`
 - Pricina: Node 22 + Next.js 15.3 inkompatibilita
 - Reseni: Downgrade Dockerfile na Node 20 (konzistentni s CLAUDE.md)
-- Stav: Dockerfile upraven lokalne, ceka na push + rebuild na VPS
+- Deploynuty a bezici na VPS
 
-### [PENDING] VPS hardening verification
-- harden-vps.sh -- overit co uz bylo spusteno vs. co zbyva
+### [DONE] VPS hardening verification
 - UFW: DONE (aktivni)
 - fail2ban: DONE (4 IP banned)
 - SSH key-only: DONE
-- Docker iptables:false -- overit
 
 ---
 
@@ -70,13 +68,51 @@
 ---
 
 ## P2: Production Readiness Audit
-### [PENDING] docs/PRODUCTION-READINESS.md
+### [DONE] docs/PRODUCTION-READINESS.md
 
 ---
 
 ## P3: Payment Providers
-### [PENDING] docs/PAYMENT-PROVIDERS.md
-### [PENDING] Comgate modul
+
+### [DONE] docs/PAYMENT-PROVIDERS.md
+- Kompletni srovnani 7 provideru (Comgate, GoPay, ThePay, Przelewy24, PayU, Tpay, Stripe)
+- Souhrnna tabulka s poplatky, API, Medusa pluginy, onboardingem
+- Cenova kalkulace: uspora 514 EUR/rok s Comgate vs Stripe-only
+- Doporuceni per-country architektura
+
+### [DONE] Comgate modul (backend/src/modules/comgate/)
+- `types.ts`: Kompletni typy (options, API request/response, session data, webhook, konstanty)
+- `service.ts`: Plna implementace AbstractPaymentProvider
+  - initiatePayment: POST /v1.0/create, redirect flow
+  - authorizePayment: verifikace pres /v1.0/status
+  - capturePayment: status check (Comgate auto-captures)
+  - refundPayment: POST /v1.0/refund (full + partial)
+  - cancelPayment: POST /v1.0/cancel
+  - deletePayment: cancel + cleanup
+  - updatePayment: cancel + re-create
+  - retrievePayment: fetch aktualni status
+  - getPaymentStatus: Comgate -> Medusa status mapping
+  - getWebhookActionAndData: parse URL-encoded webhook, verify via /status API
+- `index.ts`: ModuleProvider export
+- TypeScript check: PASS (0 errors)
+- Ceka na: COMGATE_MERCHANT_ID + COMGATE_SECRET od Dana
+
+### [DONE] Przelewy24 skeleton (backend/src/modules/przelewy24/)
+- `types.ts`: Kompletni typy (options, register/verify/refund API, webhook, P24 methods enum)
+- `service.ts`: Skeleton se vsemi required metodami (throwuji "not implemented")
+  - Dokumentace co implementovat v kazde metode
+  - P24Client trida s Basic Auth a request utilitou
+  - computeSign placeholder pro SHA-384
+- `index.ts`: ModuleProvider export
+- TypeScript check: PASS (0 errors)
+- Status: ceka na PL trh (10+ orders/month)
+
+### [DONE] docs/ADDING-PAYMENT-PROVIDER.md
+- Krok za krokem guide pro noveho providera
+- Pokryva: typy, service, index, config, region, frontend, webhook, env, testing
+- Checklist 16 polozek
+- Reference implementations tabulka
+- Common pitfalls sekce
 
 ---
 
@@ -102,3 +138,4 @@
 - [ ] Packeta API key
 - [ ] Homepage variant selection
 - [ ] Phone number for header/footer
+- [ ] **NEW:** Comgate registrace (https://www.comgate.cz/en) -> ziskat COMGATE_MERCHANT_ID + COMGATE_SECRET
