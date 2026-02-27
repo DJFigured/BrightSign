@@ -228,10 +228,12 @@ export function CategoryPageClient({
             </div>
           ) : (
             <div className="grid grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-4">
-              {paginatedProducts.map((product) => (
+              {paginatedProducts.map((product, idx) => (
                 <ProductCard
                   key={product.id}
                   product={product as Parameters<typeof ProductCard>[0]["product"]}
+                  listName="category"
+                  index={idx}
                 />
               ))}
             </div>

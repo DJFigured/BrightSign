@@ -11,7 +11,7 @@ import { useCart } from "@/lib/cart-context"
 import { useCompare } from "@/lib/compare-context"
 import { useTranslations } from "next-intl"
 import { useState } from "react"
-import { trackEcommerce, mapProductToItem } from "@/lib/analytics"
+import { trackEcommerce, mapProductToItem, trackPixel } from "@/lib/analytics"
 import { GitCompareArrows } from "lucide-react"
 
 interface ProductCardProps {
@@ -30,6 +30,8 @@ interface ProductCardProps {
       }
     }>
   }
+  listName?: string
+  index?: number
 }
 
 // Map familyCode prefix to segment label translation key
@@ -42,7 +44,7 @@ const SEGMENT_KEYS: Record<string, string> = {
   XC: "segmentVideoWall",
 }
 
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product, listName, index }: ProductCardProps) {
   const t = useTranslations("common")
   const tp = useTranslations("product")
   const tc = useTranslations("compare")
@@ -79,6 +81,13 @@ export function ProductCard({ product }: ProductCardProps) {
         value: priceAmount ?? undefined,
         currency: currencyCode,
       })
+      trackPixel("AddToCart", {
+        content_name: product.title,
+        content_ids: [product.id],
+        content_type: "product",
+        value: priceAmount != null ? priceAmount / 100 : undefined,
+        currency: currencyCode,
+      })
     } catch (err) {
       console.error("Failed to add to cart:", err)
     } finally {
@@ -86,8 +95,15 @@ export function ProductCard({ product }: ProductCardProps) {
     }
   }
 
+  function handleSelectItem() {
+    const item = mapProductToItem(product as Record<string, unknown>, { index, listName })
+    trackEcommerce("select_item", [item], {
+      listName,
+    })
+  }
+
   return (
-    <Link href={`/produkt/${product.handle}`}>
+    <Link href={`/produkt/${product.handle}`} onClick={handleSelectItem}>
       <Card className="group h-full overflow-hidden transition-shadow hover:shadow-lg">
         <div className="relative aspect-square overflow-hidden bg-white">
           {product.thumbnail ? (

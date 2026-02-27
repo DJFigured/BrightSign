@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
-import { trackLead } from '@/lib/analytics'
+import { trackLead, trackPixel } from '@/lib/analytics'
 
 const MEDUSA_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || 'http://localhost:9000'
 const API_KEY = process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY || ''
@@ -50,6 +50,7 @@ export function ContactPageClient() {
 
       setSubmitted(true)
       trackLead('contact_form')
+      trackPixel('Lead', { content_name: 'contact_form' })
     } catch {
       setError(t('submitError'))
     } finally {

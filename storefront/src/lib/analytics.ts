@@ -4,6 +4,9 @@
  * All tracking goes through window.dataLayer.push().
  * GTM then routes events to GA4, Meta, Google Ads, Sklik, etc.
  * If GTM is not configured, events are silently dropped (graceful degradation).
+ *
+ * Every event automatically includes `locale` (extracted from URL path).
+ * Meta Pixel events are fired alongside GA4 events where applicable.
  */
 
 // ──── Types ────
@@ -21,6 +24,7 @@ interface GA4Item {
 
 interface EcommerceEvent {
   event: string
+  locale: string
   ecommerce: {
     transaction_id?: string
     value?: number
@@ -35,22 +39,41 @@ interface EcommerceEvent {
 
 interface CustomEvent {
   event: string
+  locale: string
   [key: string]: unknown
 }
 
-// Extend window with dataLayer
+// Extend window with dataLayer + fbq
 declare global {
   interface Window {
     dataLayer?: Array<EcommerceEvent | CustomEvent | Record<string, unknown>>
+    fbq?: (...args: unknown[]) => void
   }
 }
 
 // ──── Helpers ────
 
+/** Extract locale from URL path (first segment, e.g. /sk/produkt → "sk") */
+function getLocale(): string {
+  if (typeof window === "undefined") return "unknown"
+  const segment = window.location.pathname.split("/")[1]
+  return segment && /^(cs|sk|pl|en|de)$/.test(segment) ? segment : "cs"
+}
+
 function push(data: EcommerceEvent | CustomEvent | Record<string, unknown>) {
   if (typeof window === "undefined") return
   window.dataLayer = window.dataLayer || []
   window.dataLayer.push(data)
+}
+
+/**
+ * Fire a Meta Pixel standard event.
+ * Only fires if fbq is loaded (graceful degradation).
+ */
+export function trackPixel(event: string, params?: Record<string, unknown>) {
+  if (typeof window !== "undefined" && window.fbq) {
+    window.fbq("track", event, params)
+  }
 }
 
 /**
@@ -93,15 +116,15 @@ export function mapCartItemToGA4(item: Record<string, unknown>): GA4Item {
 // ──── Event Tracking ────
 
 /**
- * Push a custom event to dataLayer.
+ * Push a custom event to dataLayer. Locale is injected automatically.
  */
 export function trackEvent(eventName: string, params?: Record<string, unknown>) {
-  push({ event: eventName, ...params })
+  push({ event: eventName, locale: getLocale(), ...params })
 }
 
 /**
  * Push an ecommerce event (GA4 enhanced e-commerce format).
- * Clears previous ecommerce data before pushing.
+ * Clears previous ecommerce data before pushing. Locale is injected automatically.
  */
 export function trackEcommerce(
   eventName: string,
@@ -113,6 +136,7 @@ export function trackEcommerce(
     shippingTier?: string
     paymentType?: string
     listName?: string
+    searchTerm?: string
   }
 ) {
   // GA4 best practice: clear ecommerce object before new event
@@ -126,8 +150,9 @@ export function trackEcommerce(
   if (opts?.shippingTier) ecommerce.shipping_tier = opts.shippingTier
   if (opts?.paymentType) ecommerce.payment_type = opts.paymentType
   if (opts?.listName) ecommerce.item_list_name = opts.listName
+  if (opts?.searchTerm) ecommerce.search_term = opts.searchTerm
 
-  push({ event: eventName, ecommerce })
+  push({ event: eventName, locale: getLocale(), ecommerce })
 }
 
 /**
@@ -136,6 +161,7 @@ export function trackEcommerce(
 export function trackLead(formType: string, data?: Record<string, unknown>) {
   push({
     event: "generate_lead",
+    locale: getLocale(),
     form_type: formType,
     ...data,
   })

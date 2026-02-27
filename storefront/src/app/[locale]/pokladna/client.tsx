@@ -13,7 +13,7 @@ import { useCart } from "@/lib/cart-context"
 import { sdk } from "@/lib/sdk"
 import { formatPrice } from "@/lib/medusa-helpers"
 import { Check, Loader2, Package, MapPin, CreditCard, ShoppingBag, Building2, FileText } from "lucide-react"
-import { trackEcommerce, mapCartItemToGA4 } from "@/lib/analytics"
+import { trackEcommerce, mapCartItemToGA4, trackPixel } from "@/lib/analytics"
 import StripePayment from "@/components/checkout/StripePayment"
 
 type Step = "contact" | "address" | "shipping" | "payment" | "confirmation"
@@ -77,6 +77,12 @@ export function CheckoutPageClient() {
     const ga4Items = items.map((item) => mapCartItemToGA4(item as unknown as Record<string, unknown>))
     const total = (cart?.total as number | undefined) ?? (cart?.subtotal as number | undefined)
     trackEcommerce("begin_checkout", ga4Items, { value: total ?? undefined, currency })
+    trackPixel("InitiateCheckout", {
+      content_ids: items.map((item) => item.variant_id || item.id),
+      num_items: items.length,
+      value: total != null ? total / 100 : undefined,
+      currency,
+    })
   }, [items, cart, currency])
 
   // Load shipping options when on shipping step
@@ -253,6 +259,13 @@ export function CheckoutPageClient() {
       trackEcommerce("purchase", ga4Items, {
         transactionId: order.id,
         value: (cart?.total as number | undefined) ?? undefined,
+        currency,
+      })
+      trackPixel("Purchase", {
+        content_ids: items.map((item) => item.variant_id || item.id),
+        content_type: "product",
+        num_items: items.length,
+        value: (cart?.total as number | undefined) != null ? (cart!.total as number) / 100 : undefined,
         currency,
       })
       setOrderId(order.id)

@@ -16,6 +16,7 @@ import { GoogleTagManager, GoogleTagManagerNoScript } from "@/components/analyti
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics"
 import { MetaPixel } from "@/components/analytics/MetaPixel"
 import { ClientOverlays, ClientCookieConsent } from "@/components/layout/ClientOverlays"
+import { AnalyticsPageMeta } from "@/components/analytics/AnalyticsPageMeta"
 
 const inter = Inter({
   variable: "--font-inter",
@@ -114,6 +115,7 @@ export default async function LocaleLayout({
       >
         <GoogleTagManagerNoScript />
         <MetaPixel />
+        <AnalyticsPageMeta locale={locale} />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded focus:bg-brand-primary focus:px-4 focus:py-2 focus:text-white focus:shadow-lg"

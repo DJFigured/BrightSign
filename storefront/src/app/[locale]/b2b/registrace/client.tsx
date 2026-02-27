@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
-import { trackLead } from '@/lib/analytics'
+import { trackLead, trackPixel } from '@/lib/analytics'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -64,6 +64,7 @@ export function B2BRegistracePageClient() {
       setVatStatus(data.vat_status)
       setSubmitted(true)
       trackLead('b2b_inquiry', { company: form.company })
+      trackPixel('Lead', { content_name: 'b2b_inquiry' })
     } catch {
       setError(t('submitError'))
     } finally {

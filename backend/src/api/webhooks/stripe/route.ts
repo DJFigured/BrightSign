@@ -3,8 +3,14 @@ import { MedusaRequest, MedusaResponse } from "@medusajs/framework/http"
 /**
  * POST /webhooks/stripe
  *
- * Stripe webhook handler. Verifies signature and processes payment events.
- * Gracefully degrades if STRIPE_WEBHOOK_SECRET is not set.
+ * Backup Stripe webhook logger. The PRIMARY webhook handler is Medusa's
+ * built-in endpoint at /hooks/payment/stripe_stripe — configure that URL
+ * in your Stripe Dashboard:
+ *
+ *   https://api.brightsign.cz/hooks/payment/stripe_stripe
+ *
+ * This custom endpoint only logs events for debugging/monitoring.
+ * It does NOT process payments — Medusa's built-in handler does that.
  */
 export async function POST(req: MedusaRequest, res: MedusaResponse) {
   const logger = req.scope.resolve("logger")
@@ -33,34 +39,26 @@ export async function POST(req: MedusaRequest, res: MedusaResponse) {
     return res.status(400).json({ error: `Webhook signature verification failed` })
   }
 
-  logger.info(`[Stripe Webhook] Event: ${event.type}`)
-
-  try {
-    switch (event.type) {
-      case "payment_intent.succeeded": {
-        const pi = event.data.object
-        logger.info(`[Stripe] Payment succeeded: ${pi.id} (${pi.amount / 100} ${(pi.currency || "").toUpperCase()})`)
-        break
-      }
-
-      case "payment_intent.payment_failed": {
-        const pi = event.data.object
-        const reason = pi.last_payment_error?.message || "unknown"
-        logger.warn(`[Stripe] Payment failed: ${pi.id} — ${reason}`)
-        break
-      }
-
-      case "charge.refunded": {
-        const charge = event.data.object
-        logger.info(`[Stripe] Charge refunded: ${charge.id} — ${charge.amount_refunded / 100} ${(charge.currency || "").toUpperCase()}`)
-        break
-      }
-
-      default:
-        logger.debug(`[Stripe Webhook] Unhandled event type: ${event.type}`)
+  // Log only — payment processing is handled by /hooks/payment/stripe_stripe
+  switch (event.type) {
+    case "payment_intent.succeeded": {
+      const pi = event.data.object
+      logger.info(`[Stripe Backup] Payment succeeded: ${pi.id} (${pi.amount / 100} ${(pi.currency || "").toUpperCase()})`)
+      break
     }
-  } catch (err: any) {
-    logger.error(`[Stripe Webhook] Handler error for ${event.type}: ${err.message}`)
+    case "payment_intent.payment_failed": {
+      const pi = event.data.object
+      const reason = pi.last_payment_error?.message || "unknown"
+      logger.warn(`[Stripe Backup] Payment failed: ${pi.id} — ${reason}`)
+      break
+    }
+    case "charge.refunded": {
+      const charge = event.data.object
+      logger.info(`[Stripe Backup] Refund: ${charge.id} — ${charge.amount_refunded / 100} ${(charge.currency || "").toUpperCase()}`)
+      break
+    }
+    default:
+      logger.debug(`[Stripe Backup] Unhandled event: ${event.type}`)
   }
 
   return res.sendStatus(200)

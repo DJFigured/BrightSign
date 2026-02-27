@@ -12,7 +12,7 @@ import { ProductCard } from "@/components/product/ProductCard"
 import { useCart } from "@/lib/cart-context"
 import { formatPrice, getLocalizedDescription } from "@/lib/medusa-helpers"
 import { Minus, Plus, ShoppingCart, ChevronRight, Shield, Truck, FileDown } from "lucide-react"
-import { trackEcommerce, mapProductToItem } from "@/lib/analytics"
+import { trackEcommerce, mapProductToItem, trackPixel } from "@/lib/analytics"
 import { addRecentlyViewed, getRecentlyViewed, type RecentlyViewedItem } from "@/lib/recently-viewed"
 
 interface ProductImage {
@@ -105,6 +105,13 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
       value: priceAmount ?? undefined,
       currency: currencyCode,
     })
+    trackPixel("ViewContent", {
+      content_name: product.title as string,
+      content_ids: [product.id as string],
+      content_type: "product",
+      value: priceAmount != null ? priceAmount / 100 : undefined,
+      currency: currencyCode,
+    })
   }, [product, priceAmount, currencyCode])
 
   // Track recently viewed + load list
@@ -130,6 +137,13 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
       const item = mapProductToItem(product, { quantity })
       trackEcommerce("add_to_cart", [item], {
         value: priceAmount != null ? priceAmount * quantity : undefined,
+        currency: currencyCode,
+      })
+      trackPixel("AddToCart", {
+        content_name: product.title as string,
+        content_ids: [product.id as string],
+        content_type: "product",
+        value: priceAmount != null ? (priceAmount * quantity) / 100 : undefined,
         currency: currencyCode,
       })
     } catch (err) {
@@ -384,10 +398,12 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
         <div className="mt-16">
           <h2 className="mb-6 text-xl font-bold">{t("related")}</h2>
           <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-            {relatedProducts.map((p) => (
+            {relatedProducts.map((p, idx) => (
               <ProductCard
                 key={p.id as string}
                 product={p as Parameters<typeof ProductCard>[0]["product"]}
+                listName="related_products"
+                index={idx}
               />
             ))}
           </div>

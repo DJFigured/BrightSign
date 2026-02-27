@@ -123,10 +123,12 @@ export function HomepageClient({ featuredProducts }: Props) {
               </Button>
             </div>
             <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-              {featuredProducts.slice(0, 8).map((product) => (
+              {featuredProducts.slice(0, 8).map((product, idx) => (
                 <ProductCard
                   key={product.id as string}
                   product={product as Parameters<typeof ProductCard>[0]["product"]}
+                  listName="featured"
+                  index={idx}
                 />
               ))}
             </div>

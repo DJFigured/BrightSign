@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from "react"
 import { sdk } from "./sdk"
+import { trackEvent, trackPixel } from "./analytics"
 
 /** Set or clear the _bs_auth cookie via the server-side API route (HttpOnly). */
 async function setAuthCookie(value: boolean) {
@@ -58,6 +59,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const login = useCallback(async (email: string, password: string) => {
     await sdk.auth.login("customer", "emailpass", { email, password })
     await refreshCustomer()
+    trackEvent("login", { method: "email" })
   }, [refreshCustomer])
 
   const register = useCallback(async (email: string, password: string, firstName: string, lastName: string) => {
@@ -68,6 +70,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       last_name: lastName,
     })
     await refreshCustomer()
+    trackEvent("sign_up", { method: "email" })
+    trackPixel("CompleteRegistration", { status: true })
   }, [refreshCustomer])
 
   const logout = useCallback(async () => {

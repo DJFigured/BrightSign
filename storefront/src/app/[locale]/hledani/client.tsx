@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react"
 import { useTranslations } from "next-intl"
 import { Link } from "@/i18n/navigation"
 import { ProductCard } from "@/components/product/ProductCard"
-import { trackEvent, trackEcommerce, mapProductToItem } from "@/lib/analytics"
+import { trackEvent, trackEcommerce, mapProductToItem, trackPixel } from "@/lib/analytics"
 import { SearchX } from "lucide-react"
 
 interface SearchResultsClientProps {
@@ -20,7 +20,8 @@ export function SearchResultsClient({ products, query }: SearchResultsClientProp
   useEffect(() => {
     if (!query || trackedRef.current === query) return
     trackedRef.current = query
-    trackEvent("search", { search_term: query })
+    trackEvent("search", { search_term: query, search_results_count: products.length })
+    trackPixel("Search", { search_string: query })
     if (products.length > 0) {
       const items = products.map((p, i) => mapProductToItem(p, { index: i, listName: "search_results" }))
       trackEcommerce("view_item_list", items, { listName: "search_results" })
@@ -48,8 +49,8 @@ export function SearchResultsClient({ products, query }: SearchResultsClientProp
 
       {products.length > 0 && (
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {products.map((product) => (
-            <ProductCard key={product.id as string} product={product as Parameters<typeof ProductCard>[0]["product"]} />
+          {products.map((product, idx) => (
+            <ProductCard key={product.id as string} product={product as Parameters<typeof ProductCard>[0]["product"]} listName="search_results" index={idx} />
           ))}
         </div>
       )}
