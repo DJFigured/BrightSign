@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrightSight -- Varianta 4: Premium</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'bs-purple': '#2D1B69',
+            'bs-violet': '#6B3FA0',
+            'bs-cyan': '#00C4CC',
+            'bs-dark': '#0d0520',
+            'bs-magenta': '#c850c0',
+            'bs-light': '#f8f6fc',
+            'bs-deep': '#08021a',
+          },
+          fontFamily: {
+            'heading': ['Sora', 'system-ui', 'sans-serif'],
+            'body': ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 300;
+      background: #08021a;
+      color: #e0dce8;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Sora', system-ui, sans-serif;
+      font-weight: 600;
+    }
+    .glow-cyan {
+      text-shadow: 0 0 40px rgba(0, 196, 204, 0.4);
+    }
+    .glow-magenta {
+      text-shadow: 0 0 40px rgba(200, 80, 192, 0.4);
+    }
+    .glow-box-cyan {
+      box-shadow: 0 0 60px rgba(0, 196, 204, 0.15), 0 0 120px rgba(0, 196, 204, 0.05);
+    }
+    .glow-box-violet {
+      box-shadow: 0 0 60px rgba(107, 63, 160, 0.2), 0 0 120px rgba(107, 63, 160, 0.05);
+    }
+    .animated-gradient {
+      background: linear-gradient(270deg, #2D1B69, #6B3FA0, #c850c0, #00C4CC, #6B3FA0, #2D1B69);
+      background-size: 600% 600%;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .animated-gradient {
+        animation: gradientShift 12s ease infinite;
+      }
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .line-gradient {
+      background: linear-gradient(90deg, transparent, rgba(0, 196, 204, 0.3), transparent);
+      height: 1px;
+    }
+    .product-glow {
+      position: relative;
+    }
+    .product-glow::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(135deg, #6B3FA0, #00C4CC, #c850c0);
+      border-radius: 1.25rem;
+      z-index: -1;
+      opacity: 0;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .product-glow::before {
+        transition: opacity 0.4s ease;
+      }
+    }
+    .product-glow:hover::before {
+      opacity: 1;
+    }
+    .scroll-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .fade-in {
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .fade-in {
+        opacity: 1;
+        transform: none;
+      }
+      .animate-pulse,
+      .animate-bounce {
+        animation: none !important;
+      }
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* A11y: Focus styles */
+    a:focus-visible, button:focus-visible, input:focus-visible {
+      outline: 2px solid #00C4CC;
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-bs-deep/80 backdrop-blur-xl border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex items-center justify-between h-16">
+        <a href="#" class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg animated-gradient flex items-center justify-center">
+            <i data-lucide="monitor" class="w-5 h-5 text-white"></i>
+          </div>
+          <span class="text-xl font-heading font-bold text-white">Bright<span class="text-bs-cyan">Sight</span></span>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="#hd226" class="text-white/50 hover:text-white text-sm font-light transition-colors">HD226</a>
+          <a href="#hd1026" class="text-white/50 hover:text-white text-sm font-light transition-colors">HD1026</a>
+          <a href="#xd236" class="text-white/50 hover:text-white text-sm font-light transition-colors">XD236</a>
+          <a href="#xd1036" class="text-white/50 hover:text-white text-sm font-light transition-colors">XD1036</a>
+        </nav>
+
+        <div class="flex items-center gap-4">
+          <a href="#" class="text-white/50 hover:text-white" aria-label="Košík">
+            <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+          </a>
+          <a href="#kontakt" class="hidden sm:inline-flex items-center px-5 py-2 border border-bs-cyan/40 text-bs-cyan text-sm font-medium rounded-full hover:bg-bs-cyan/10 transition-all">
+            Kontakt
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="scroll-section relative overflow-hidden pt-16">
+    <div class="absolute inset-0">
+      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-bs-violet/10 rounded-full blur-[200px]"></div>
+      <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-bs-magenta/5 rounded-full blur-[150px]"></div>
+      <div class="absolute top-0 right-0 w-[300px] h-[300px] bg-bs-cyan/5 rounded-full blur-[100px]"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center relative z-10">
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 border border-white/10 rounded-full px-5 py-2 mb-8">
+        <span class="w-1.5 h-1.5 bg-bs-cyan rounded-full animate-pulse"></span>
+        <span class="text-white/60 text-sm font-light tracking-wide">Exkluzivní dealer pro CZ / SK / PL</span>
+      </div>
+
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-heading font-bold text-white leading-none mb-6">
+        The Power<br>
+        of <span class="glow-cyan text-bs-cyan">Purple</span>
+      </h1>
+
+      <p class="text-lg md:text-xl text-white/40 font-light max-w-xl mx-auto mb-12 leading-relaxed">
+        BrightSign Serie 6. Profesionální digital signage přehrávače s neuronovým procesorem, 4K HDR a 5letou zárukou.
+      </p>
+
+      <a href="#hd226" class="inline-flex items-center gap-2 text-bs-cyan hover:text-white transition-colors text-sm font-medium">
+        Prozkoumat kolekci
+        <i data-lucide="chevron-down" class="w-4 h-4 animate-bounce"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- Separator -->
+  <div class="line-gradient max-w-3xl mx-auto"></div>
+
+  <!-- HD226 - Full viewport -->
+  <section id="hd226" class="scroll-section relative py-20 md:py-0">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div class="fade-in">
+          <div class="text-bs-cyan text-sm font-medium tracking-widest uppercase mb-4">Entry 4K</div>
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6">HD226</h2>
+          <p class="text-white/40 text-lg font-light leading-relaxed mb-8">
+            Vstupní model Serie 6. 4K Single s 10-bit HDR, neuronový procesor a HTML5 podpora.
+            Pro základní instalace kde stačí jeden 4K výstup.
+          </p>
+          <ul class="space-y-3 mb-10">
+            <li class="flex items-center gap-3 text-white/60">
+              <span class="w-1 h-1 bg-bs-cyan rounded-full"></span>
+              4K Single HDR 10-bit při 60fps
+            </li>
+            <li class="flex items-center gap-3 text-white/60">
+              <span class="w-1 h-1 bg-bs-cyan rounded-full"></span>
+              Neuronový procesor (NPU) pro AI
+            </li>
+            <li class="flex items-center gap-3 text-white/60">
+              <span class="w-1 h-1 bg-bs-cyan rounded-full"></span>
+              HTML5 + Chromium engine
+            </li>
+            <li class="flex items-center gap-3 text-white/60">
+              <span class="w-1 h-1 bg-bs-cyan rounded-full"></span>
+              4K video rotace (portrait/landscape)
+            </li>
+          </ul>
+          <div class="flex items-end gap-4 mb-8">
+            <div>
+              <div class="text-white/60 text-sm font-light">od</div>
+              <div class="text-4xl font-heading font-bold text-bs-cyan glow-cyan">6 900 Kč</div>
+              <div class="text-white/60 text-xs font-light">bez DPH</div>
+            </div>
+          </div>
+          <a href="#" class="inline-flex items-center px-8 py-3.5 border border-bs-cyan text-bs-cyan font-medium rounded-full hover:bg-bs-cyan hover:text-white transition-all text-sm">
+            Přidat do košíku
+            <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+          </a>
+        </div>
+        <div class="fade-in flex items-center justify-center">
+          <div class="relative">
+            <div class="w-72 h-72 md:w-80 md:h-80 rounded-3xl bg-gradient-to-br from-bs-purple/30 to-bs-dark border border-white/5 flex items-center justify-center glow-box-violet">
+              <div class="text-center">
+                <div class="text-5xl md:text-6xl font-heading font-bold text-white/90">HD226</div>
+                <div class="text-white/50 text-sm font-light mt-2 tracking-widest">SERIE 6</div>
+              </div>
+            </div>
+            <div class="absolute -bottom-4 -right-4 w-20 h-20 rounded-xl bg-bs-cyan/10 border border-bs-cyan/20 flex items-center justify-center">
+              <div class="text-center">
+                <div class="text-bs-cyan text-xs font-bold">NPU</div>
+                <div class="text-white/50 text-[10px]">AI ready</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="line-gradient max-w-3xl mx-auto"></div>
+
+  <!-- HD1026 -->
+  <section id="hd1026" class="scroll-section relative py-20 md:py-0">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div class="fade-in flex items-center justify-center md:order-first order-last">
+          <div class="relative">
+            <div class="w-72 h-72 md:w-80 md:h-80 rounded-3xl bg-gradient-to-br from-bs-violet/30 to-bs-purple/20 border border-white/5 flex items-center justify-center glow-box-violet">
+              <div class="text-center">
+                <div class="text-5xl md:text-6xl font-heading font-bold text-white/90">HD1026</div>
+                <div class="text-white/50 text-sm font-light mt-2 tracking-widest">EXPANDED I/O</div>
+              </div>
+            </div>
+            <div class="absolute -top-4 -left-4 w-20 h-20 rounded-xl bg-bs-violet/10 border border-bs-violet/20 flex items-center justify-center">
+              <div class="text-center">
+                <div class="text-bs-violet text-xs font-bold">HDMI</div>
+                <div class="text-white/50 text-[10px]">Live TV</div>
+              </div>
+            </div>
+            <div class="absolute -bottom-4 -right-4 w-20 h-20 rounded-xl bg-bs-cyan/10 border border-bs-cyan/20 flex items-center justify-center">
+              <div class="text-center">
+                <div class="text-bs-cyan text-xs font-bold">2x</div>
+                <div class="text-white/50 text-[10px]">Ethernet</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="fade-in">
+          <div class="text-bs-violet text-sm font-medium tracking-widest uppercase mb-4">4K + Live TV</div>
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6">HD1026</h2>
+          <p class="text-white/40 text-lg font-light leading-relaxed mb-8">
+            Všechno co nabízí HD226, plus HDMI vstup pro live TV, dual Ethernet a GPIO porty.
+            Profesionální model pro instalace s externími zdroji.
+          </p>
+          <ul class="space-y-3 mb-10">
+            <li class="flex items-center gap-3 text-white/60">
+              <span class="w-1 h-1 bg-bs-violet rounded-full"></span>
+              HDMI vstup pro Live TV / kamera
+            </li>
+            <li class="flex items-center gap-3 text-white/60">
+              <span class="w-1 h-1 bg-bs-violet rounded-full"></span>
+              Dual Ethernet pro redundanci
+            </li>
+            <li class="flex items-center gap-3 text-white/60">
+              <span class="w-1 h-1 bg-bs-violet rounded-full"></span>
+              USB-C + GPIO porty
+            </li>
+            <li class="flex items-center gap-3 text-white/60">
+              <span class="w-1 h-1 bg-bs-violet rounded-full"></span>
+              Všechny funkce HD226 zahrnuty
+            </li>
+          </ul>
+          <div class="flex items-end gap-4 mb-8">
+            <div>
+              <div class="text-white/60 text-sm font-light">od</div>
+              <div class="text-4xl font-heading font-bold text-white">8 500 Kč</div>
+              <div class="text-white/60 text-xs font-light">bez DPH</div>
+            </div>
+          </div>
+          <a href="#" class="inline-flex items-center px-8 py-3.5 border border-white/20 text-white font-medium rounded-full hover:bg-white/5 transition-all text-sm">
+            Přidat do košíku
+            <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="line-gradient max-w-3xl mx-auto"></div>
+
+  <!-- XD236 - Hero product -->
+  <section id="xd236" class="scroll-section relative py-20 md:py-0">
+    <div class="absolute inset-0">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-bs-cyan/5 rounded-full blur-[200px]"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div class="fade-in">
+          <div class="text-bs-cyan text-sm font-medium tracking-widest uppercase mb-4">Dual 4K Performance</div>
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-2">XD236</h2>
+          <div class="inline-block bg-bs-cyan/10 border border-bs-cyan/20 rounded-full px-3 py-1 text-bs-cyan text-xs font-medium mb-6">
+            Nejprodávanější model
+          </div>
+          <p class="text-white/40 text-lg font-light leading-relaxed mb-8">
+            Výkonný dual 4K přehrávač s PoE+ napájením a M.2 SSD slotem. Pro 90% profesionálních instalací je to správná volba.
+          </p>
+          <ul class="space-y-3 mb-10">
+            <li class="flex items-center gap-3 text-white/60">
+              <span class="w-1 h-1 bg-bs-cyan rounded-full"></span>
+              Dual 4K HDR 10-bit při 60fps
+            </li>
+            <li class="flex items-center gap-3 text-white/60">
+              <span class="w-1 h-1 bg-bs-cyan rounded-full"></span>
+              Power over Ethernet Plus (PoE+)
+            </li>
+            <li class="flex items-center gap-3 text-white/60">
+              <span class="w-1 h-1 bg-bs-cyan rounded-full"></span>
+              M.2 SSD rozšiřitelné úložiště
+            </li>
+            <li class="flex items-center gap-3 text-white/60">
+              <span class="w-1 h-1 bg-bs-cyan rounded-full"></span>
+              Full-screen 2D WebGL grafika
+            </li>
+            <li class="flex items-center gap-3 text-white/60">
+              <span class="w-1 h-1 bg-bs-cyan rounded-full"></span>
+              NPU pro AI aplikace
+            </li>
+          </ul>
+          <div class="flex items-end gap-4 mb-8">
+            <div>
+              <div class="text-white/60 text-sm font-light">od</div>
+              <div class="text-5xl font-heading font-bold text-bs-cyan glow-cyan">12 500 Kč</div>
+              <div class="text-white/60 text-xs font-light">bez DPH</div>
+            </div>
+          </div>
+          <a href="#" class="inline-flex items-center px-10 py-4 bg-bs-cyan text-white font-semibold rounded-full hover:bg-opacity-90 transition-all text-base shadow-lg shadow-bs-cyan/20">
+            Přidat do košíku
+            <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+          </a>
+        </div>
+        <div class="fade-in flex items-center justify-center">
+          <div class="relative">
+            <div class="w-80 h-80 md:w-96 md:h-96 rounded-3xl bg-gradient-to-br from-bs-cyan/10 to-bs-violet/20 border border-bs-cyan/10 flex items-center justify-center glow-box-cyan">
+              <div class="text-center">
+                <div class="text-6xl md:text-7xl font-heading font-bold text-white">XD236</div>
+                <div class="text-bs-cyan/50 text-sm font-light mt-2 tracking-[0.3em]">DUAL 4K</div>
+              </div>
+            </div>
+            <div class="absolute -top-6 -right-6 w-24 h-24 rounded-2xl bg-bs-dark border border-bs-cyan/20 flex items-center justify-center">
+              <div class="text-center">
+                <div class="text-bs-cyan text-lg font-bold">PoE+</div>
+                <div class="text-white/50 text-[10px]">1 kabel</div>
+              </div>
+            </div>
+            <div class="absolute -bottom-6 -left-6 w-24 h-24 rounded-2xl bg-bs-dark border border-bs-violet/20 flex items-center justify-center">
+              <div class="text-center">
+                <div class="text-bs-violet text-lg font-bold">M.2</div>
+                <div class="text-white/50 text-[10px]">SSD slot</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="line-gradient max-w-3xl mx-auto"></div>
+
+  <!-- XD1036 -->
+  <section id="xd1036" class="scroll-section relative py-20 md:py-0">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div class="fade-in flex items-center justify-center order-last md:order-first">
+          <div class="relative">
+            <div class="w-80 h-80 md:w-96 md:h-96 rounded-3xl bg-gradient-to-br from-bs-magenta/15 to-bs-violet/20 border border-bs-magenta/10 flex items-center justify-center glow-box-violet">
+              <div class="text-center">
+                <div class="text-5xl md:text-6xl font-heading font-bold text-white">XD1036</div>
+                <div class="text-bs-magenta/50 text-sm font-light mt-2 tracking-[0.3em]">FLAGSHIP</div>
+              </div>
+            </div>
+            <div class="absolute -top-4 -left-4 w-20 h-20 rounded-xl bg-bs-dark border border-bs-magenta/20 flex items-center justify-center">
+              <div class="text-center">
+                <div class="text-bs-magenta text-xs font-bold">HDMI In</div>
+                <div class="text-white/50 text-[10px]">Live TV</div>
+              </div>
+            </div>
+            <div class="absolute -top-4 -right-4 w-20 h-20 rounded-xl bg-bs-dark border border-bs-cyan/20 flex items-center justify-center">
+              <div class="text-center">
+                <div class="text-bs-cyan text-xs font-bold">2x LAN</div>
+                <div class="text-white/50 text-[10px]">Redundant</div>
+              </div>
+            </div>
+            <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-20 h-20 rounded-xl bg-bs-dark border border-bs-violet/20 flex items-center justify-center">
+              <div class="text-center">
+                <div class="text-bs-violet text-xs font-bold">SPDIF</div>
+                <div class="text-white/50 text-[10px]">Audio out</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="fade-in">
+          <div class="text-bs-magenta text-sm font-medium tracking-widest uppercase mb-4">Flagship</div>
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6">XD1036</h2>
+          <p class="text-white/40 text-lg font-light leading-relaxed mb-8">
+            Vše co XD236 nabízí, plus HDMI vstup, dual Ethernet, SPDIF audio a GPIO.
+            Pro enterprise instalace bez kompromisů.
+          </p>
+          <ul class="space-y-3 mb-10">
+            <li class="flex items-center gap-3 text-white/60">
+              <span class="w-1 h-1 bg-bs-magenta rounded-full"></span>
+              Dual 4K + HDMI vstup pro Live TV
+            </li>
+            <li class="flex items-center gap-3 text-white/60">
+              <span class="w-1 h-1 bg-bs-magenta rounded-full"></span>
+              Dual Ethernet + PoE+
+            </li>
+            <li class="flex items-center gap-3 text-white/60">
+              <span class="w-1 h-1 bg-bs-magenta rounded-full"></span>
+              M.2 SSD + SPDIF audio
+            </li>
+            <li class="flex items-center gap-3 text-white/60">
+              <span class="w-1 h-1 bg-bs-magenta rounded-full"></span>
+              USB-C + GPIO porty
+            </li>
+          </ul>
+          <div class="flex items-end gap-4 mb-8">
+            <div>
+              <div class="text-white/60 text-sm font-light">od</div>
+              <div class="text-4xl font-heading font-bold glow-magenta text-bs-magenta">24 400 Kč</div>
+              <div class="text-white/60 text-xs font-light">bez DPH</div>
+            </div>
+          </div>
+          <a href="#" class="inline-flex items-center px-8 py-3.5 border border-bs-magenta/40 text-bs-magenta font-medium rounded-full hover:bg-bs-magenta/10 transition-all text-sm">
+            Přidat do košíku
+            <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="line-gradient max-w-3xl mx-auto"></div>
+
+  <!-- WHY BRIGHTSIGHT - Minimal -->
+  <section class="py-24 relative">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-16">
+        Proč <span class="text-bs-cyan">BrightSight</span>
+      </h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div class="fade-in">
+          <div class="w-px h-8 bg-gradient-to-b from-transparent to-bs-cyan/50 mx-auto mb-6"></div>
+          <h3 class="text-white font-heading font-semibold mb-2">Autorizovaný dealer</h3>
+          <p class="text-white/40 text-sm font-light">Oficiální distribuce BrightSign pro CZ, SK a PL s plnou podporou.</p>
+        </div>
+        <div class="fade-in">
+          <div class="w-px h-8 bg-gradient-to-b from-transparent to-bs-violet/50 mx-auto mb-6"></div>
+          <h3 class="text-white font-heading font-semibold mb-2">5 let záruka</h3>
+          <p class="text-white/40 text-sm font-light">Standardní záruka na všechny přehrávače Serie 5 a 6.</p>
+        </div>
+        <div class="fade-in">
+          <div class="w-px h-8 bg-gradient-to-b from-transparent to-bs-magenta/50 mx-auto mb-6"></div>
+          <h3 class="text-white font-heading font-semibold mb-2">Česká podpora</h3>
+          <p class="text-white/40 text-sm font-light">Technické poradenství a pomoc s konfigurací v češtině.</p>
+        </div>
+        <div class="fade-in">
+          <div class="w-px h-8 bg-gradient-to-b from-transparent to-bs-cyan/50 mx-auto mb-6"></div>
+          <h3 class="text-white font-heading font-semibold mb-2">B2B program</h3>
+          <p class="text-white/40 text-sm font-light">Slevy 10-20% pro registrované firmy. Projektové ceny na míru.</p>
+        </div>
+        <div class="fade-in">
+          <div class="w-px h-8 bg-gradient-to-b from-transparent to-bs-violet/50 mx-auto mb-6"></div>
+          <h3 class="text-white font-heading font-semibold mb-2">Doručení 3-5 dnů</h3>
+          <p class="text-white/40 text-sm font-light">Přímo z německého skladu do CZ, SK, PL a AT.</p>
+        </div>
+        <div class="fade-in">
+          <div class="w-px h-8 bg-gradient-to-b from-transparent to-bs-magenta/50 mx-auto mb-6"></div>
+          <h3 class="text-white font-heading font-semibold mb-2">Fakturace</h3>
+          <p class="text-white/40 text-sm font-light">Platba kartou nebo převodem. Automatické faktury s IČO/DIČ.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 relative overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] animated-gradient rounded-full blur-[200px] opacity-10"></div>
+    </div>
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center relative z-10">
+      <h2 class="text-3xl md:text-5xl font-heading font-bold text-white mb-4">
+        Připraveni na <span class="text-bs-cyan glow-cyan">Sérii 6</span>?
+      </h2>
+      <p class="text-white/40 text-lg font-light mb-10">
+        Kontaktujte nás pro konzultaci nebo rovnou objednejte online.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#" class="inline-flex items-center justify-center px-10 py-4 bg-bs-cyan text-white font-semibold rounded-full hover:bg-opacity-90 transition-all shadow-lg shadow-bs-cyan/20">
+          Objednat online
+        </a>
+        <a href="#kontakt" class="inline-flex items-center justify-center px-10 py-4 border border-white/20 text-white font-medium rounded-full hover:bg-white/5 transition-all">
+          Nezávazná konzultace
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="kontakt" class="border-t border-white/5 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-8 h-8 rounded-lg animated-gradient flex items-center justify-center">
+              <i data-lucide="monitor" class="w-5 h-5 text-white"></i>
+            </div>
+            <span class="text-lg font-heading font-bold text-white">Bright<span class="text-bs-cyan">Sight</span></span>
+          </div>
+          <p class="text-white/60 text-sm font-light mb-4">Autorizovaný dealer BrightSign pro CZ/SK/PL.</p>
+        </div>
+        <div>
+          <h4 class="font-heading font-semibold mb-4 text-white/70 text-sm">Produkty</h4>
+          <ul class="space-y-2">
+            <li><a href="#hd226" class="text-sm text-white/50 hover:text-bs-cyan font-light">HD226</a></li>
+            <li><a href="#hd1026" class="text-sm text-white/50 hover:text-bs-cyan font-light">HD1026</a></li>
+            <li><a href="#xd236" class="text-sm text-white/50 hover:text-bs-cyan font-light">XD236</a></li>
+            <li><a href="#xd1036" class="text-sm text-white/50 hover:text-bs-cyan font-light">XD1036</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-heading font-semibold mb-4 text-white/70 text-sm">Podpora</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-sm text-white/50 hover:text-bs-cyan font-light">Časté dotazy</a></li>
+            <li><a href="#" class="text-sm text-white/50 hover:text-bs-cyan font-light">B2B registrace</a></li>
+            <li><a href="#" class="text-sm text-white/50 hover:text-bs-cyan font-light">Obchodní podmínky</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-heading font-semibold mb-4 text-white/70 text-sm">Kontakt</h4>
+          <ul class="space-y-2.5">
+            <li class="flex items-center gap-2 text-sm text-white/50 font-light">
+              <i data-lucide="mail" class="w-4 h-4 text-bs-cyan/50"></i> info@brightsign.cz
+            </li>
+            <li class="flex items-center gap-2 text-sm text-white/50 font-light">
+              <i data-lucide="phone" class="w-4 h-4 text-bs-cyan/50"></i> +420 XXX XXX XXX
+            </li>
+            <li class="flex items-center gap-2 text-sm text-white/50 font-light">
+              <i data-lucide="building-2" class="w-4 h-4 text-bs-cyan/50"></i> Make more s.r.o.
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="text-xs text-white/50 font-light">&copy; 2026 BrightSight (Make more s.r.o.)</div>
+        <div class="flex items-center gap-2">
+          <div class="border border-white/10 rounded px-2 py-1 text-xs text-white/50">Visa</div>
+          <div class="border border-white/10 rounded px-2 py-1 text-xs text-white/50">Mastercard</div>
+          <div class="border border-white/10 rounded px-2 py-1 text-xs text-white/50">Převod</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
+
+<!--
+DESIGN NOTES:
+- Inspirace: Apple.com product pages (full-viewport sections, minimal text), brightsign.biz "Power of Purple" branding,
+  Bang & Olufsen e-shop (premium hardware presentation), Nothing.tech (dark UI with neon accents)
+- Cílová skupina: Premium B2B zákazníci -- architekti, designéři, luxury retail, corporate decision-makeři.
+  Lidé kteří kupují na základě vizuálního dojmu a prestige, ne specifikací.
+- Designový princip: "Dark luxury e-shop". Celá stránka je dark mode s deep purple (#08021a).
+  Produkty prezentovány jako svítící objekty s glow efekty. Každý model zabírá celou obrazovku.
+  Minimální text, maximální vizuální impact. Animované gradienty (CSS only). Sora font pro premium feel.
+  Ceny zobrazeny prominentně v bs-cyan s text-shadow glow.
+- Pro produkci by bylo potřeba: Reálné produktové fotky na tmavém pozadí (profesionální product photography),
+  smooth scroll snap (CSS scroll-snap), paralax efekty, video backgrounds, 3D produktový render,
+  napojení na Medusa API, funkci "Přidat do košíku" s AJAXem, mobile-optimized scroll UX
+-->

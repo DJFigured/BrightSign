@@ -14,12 +14,13 @@
         extend: {
           fontFamily: { sans: ['IBM Plex Sans', 'system-ui', 'sans-serif'] },
           colors: {
-            navy: '#1a2b4a',
-            navyLight: '#2a3d62',
-            navyDark: '#0f1b30',
-            accent: '#2563eb',
-            accentLight: '#3b82f6',
-            warm: '#f8f7f4'
+            'bs-purple': '#2D1B69',
+            'bs-purple-light': '#3d2a80',
+            'bs-violet': '#6B3FA0',
+            'bs-cyan': '#00C4CC',
+            'bs-magenta': '#c850c0',
+            'bs-dark': '#0d0520',
+            'bs-light': '#f8f6fc'
           }
         }
       }
@@ -34,69 +35,69 @@
 <body class="bg-white text-gray-900 antialiased">
 
   <!-- Header -->
-  <header class="bg-navy text-white">
+  <header class="bg-bs-purple text-white">
     <div class="max-w-7xl mx-auto px-6 h-12 flex items-center justify-between text-xs">
-      <span>Autorizovany distributor BrightSign pro CR a EU</span>
+      <span>Autorizovaný distributor BrightSign pro ČR a EU</span>
       <div class="hidden md:flex items-center gap-6">
-        <a href="#" class="hover:text-accent transition-colors">info@brightsign.cz</a>
-        <a href="#b2b" class="bg-accent px-4 py-1 rounded font-semibold hover:bg-accentLight transition-colors">B2B registrace</a>
+        <a href="#" class="hover:text-bs-cyan transition-colors">info@brightsign.cz</a>
+        <a href="#b2b" class="bg-bs-cyan px-4 py-1 rounded font-semibold hover:bg-bs-cyan/80 transition-colors text-bs-dark">B2B registrace</a>
       </div>
     </div>
   </header>
   <nav class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
     <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
       <a href="#" class="flex items-center gap-3">
-        <div class="w-8 h-8 bg-navy rounded-lg flex items-center justify-center">
+        <div class="w-8 h-8 bg-bs-purple rounded-lg flex items-center justify-center">
           <i data-lucide="monitor" class="w-4 h-4 text-white"></i>
         </div>
-        <span class="text-xl font-bold text-navy">BrightSign<span class="text-accent">.cz</span></span>
+        <span class="text-xl font-bold text-bs-purple">BrightSign<span class="text-bs-cyan">.cz</span></span>
       </a>
       <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
-        <a href="#produkty" class="hover:text-navy transition-colors">Produkty</a>
-        <a href="#porovnani" class="hover:text-navy transition-colors">Porovnani</a>
-        <a href="#b2b" class="hover:text-navy transition-colors">B2B</a>
-        <a href="#proc-my" class="hover:text-navy transition-colors">Proc my</a>
-        <a href="#" class="bg-navy text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-navyLight transition-colors">Ziskat nabidku</a>
+        <a href="#produkty" class="hover:text-bs-purple transition-colors">Produkty</a>
+        <a href="#porovnani" class="hover:text-bs-purple transition-colors">Porovnání</a>
+        <a href="#b2b" class="hover:text-bs-purple transition-colors">B2B</a>
+        <a href="#proc-my" class="hover:text-bs-purple transition-colors">Proč my</a>
+        <a href="#" class="bg-bs-purple text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-bs-purple-light transition-colors">Získat nabídku</a>
       </div>
       <button class="md:hidden p-2"><i data-lucide="menu" class="w-5 h-5"></i></button>
     </div>
   </nav>
 
   <!-- Hero -->
-  <section class="bg-gradient-to-br from-navy via-navyLight to-navy text-white py-20 md:py-28">
+  <section class="bg-gradient-to-br from-bs-purple via-bs-violet to-bs-purple text-white py-20 md:py-28">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <div>
           <div class="flex items-center gap-3 mb-6">
-            <span class="bg-accent/20 text-accent text-xs font-bold px-3 py-1 rounded-full border border-accent/30">SERIE 6 — NOVINKA</span>
+            <span class="bg-bs-cyan/20 text-bs-cyan text-xs font-bold px-3 py-1 rounded-full border border-bs-cyan/30">SÉRIE 6 — NOVINKA</span>
           </div>
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-            Profesionalni digital signage pro vasi firmu
+            Profesionální digital signage pro vaši firmu
           </h1>
-          <p class="text-lg text-blue-200 mb-8 leading-relaxed">
-            BrightSign prehravace Serie 6 s neuralnim procesorem, 4K HDR a 5letou zarukou. Pouzivaji je tisice firem po celem svete.
+          <p class="text-lg text-purple-200 mb-8 leading-relaxed">
+            BrightSign přehrávače Série 6 s neurálním procesorem, 4K HDR a 5letou zárukou. #1 globální podíl na trhu digital signage s 500 000+ instalacemi ve 100+ zemích.
           </p>
           <div class="flex flex-wrap gap-4 mb-12">
-            <a href="#porovnani" class="bg-accent hover:bg-accentLight text-white px-8 py-3.5 rounded-lg font-semibold transition-colors">
+            <a href="#porovnani" class="bg-bs-cyan hover:bg-bs-cyan/80 text-bs-dark px-8 py-3.5 rounded-lg font-semibold transition-colors">
               Porovnat modely
             </a>
             <a href="#b2b" class="bg-white/10 border border-white/20 hover:bg-white/20 text-white px-8 py-3.5 rounded-lg font-semibold transition-colors">
-              B2B nabidka
+              B2B nabídka
             </a>
           </div>
           <!-- Trust stats -->
           <div class="grid grid-cols-3 gap-8">
             <div>
               <p class="text-3xl font-bold stat-number">5 let</p>
-              <p class="text-sm text-blue-300">zaruka na vsechny modely</p>
+              <p class="text-sm text-purple-300">záruka na všechny modely</p>
             </div>
             <div>
-              <p class="text-3xl font-bold stat-number">48h</p>
-              <p class="text-sm text-blue-300">expedice skladovych polozek</p>
+              <p class="text-3xl font-bold stat-number">500k+</p>
+              <p class="text-sm text-purple-300">instalací po celém světě</p>
             </div>
             <div>
-              <p class="text-3xl font-bold stat-number">20%</p>
-              <p class="text-sm text-blue-300">sleva pro B2B partnery</p>
+              <p class="text-3xl font-bold stat-number">100+</p>
+              <p class="text-sm text-purple-300">zemí kde se používá</p>
             </div>
           </div>
         </div>
@@ -105,7 +106,7 @@
             <div class="w-64 h-64 bg-white/10 rounded-xl flex items-center justify-center">
               <i data-lucide="monitor" class="w-24 h-24 text-white/30"></i>
             </div>
-            <p class="text-center text-sm text-blue-300 mt-4">BrightSign Serie 6</p>
+            <p class="text-center text-sm text-purple-300 mt-4">BrightSign Série 6</p>
           </div>
         </div>
       </div>
@@ -113,88 +114,88 @@
   </section>
 
   <!-- Product Cards -->
-  <section id="produkty" class="py-20 bg-warm">
+  <section id="produkty" class="py-20 bg-bs-light">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-bold text-navy mb-4">Nabidka Serie 6 prehravace</h2>
-        <p class="text-gray-500 max-w-2xl mx-auto">Vsechny modely obsahuji neuralni procesor (NPU), 10-bit HDR podporu a 5letou zaruku. Vyrobeny pro nepretrzity provoz 24/7.</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-bs-purple mb-4">Nabídka Série 6 přehrávače</h2>
+        <p class="text-gray-500 max-w-2xl mx-auto">Všechny modely obsahují neurální procesor (NPU), 10-bit HDR podporu a 5letou záruku. Vyrobeny pro nepřetržitý provoz 24/7.</p>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
         <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg transition-shadow">
-          <span class="text-xs font-bold text-accent bg-accent/10 px-2 py-0.5 rounded">ENTRY</span>
+          <span class="text-xs font-bold text-bs-violet bg-bs-violet/10 px-2 py-0.5 rounded">ENTRY</span>
           <h3 class="text-xl font-bold mt-3 mb-1">HD226</h3>
-          <p class="text-sm text-gray-500 mb-4">Vstupni 4K prehravac</p>
+          <p class="text-sm text-gray-500 mb-4">Vstupní 4K přehrávač</p>
           <div class="bg-gray-50 rounded-lg p-6 flex items-center justify-center mb-4">
             <i data-lucide="monitor" class="w-12 h-12 text-gray-300"></i>
           </div>
           <ul class="space-y-1.5 mb-6 text-xs text-gray-600">
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-accent"></i>Single 4K HDR 10-bit</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-accent"></i>NPU (AI ready)</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-accent"></i>HTML5 + Chromium</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-bs-violet"></i>Single 4K HDR 10-bit</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-bs-violet"></i>NPU (AI ready)</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-bs-violet"></i>HTML5 + Chromium</li>
           </ul>
           <div class="border-t border-gray-100 pt-4">
-            <p class="text-2xl font-bold text-navy">17 100 Kc</p>
-            <p class="text-xs text-gray-400 mb-4">670 EUR | 2 799 PLN</p>
-            <a href="#" class="block text-center bg-navy text-white py-2.5 rounded-lg text-sm font-semibold hover:bg-navyLight transition-colors">Objednat</a>
+            <p class="text-2xl font-bold text-bs-purple">6 900 Kč</p>
+            <p class="text-xs text-gray-400 mb-4">bez DPH</p>
+            <a href="#" class="block text-center bg-bs-purple text-white py-2.5 rounded-lg text-sm font-semibold hover:bg-bs-purple-light transition-colors">Objednat</a>
           </div>
         </div>
 
         <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg transition-shadow">
-          <span class="text-xs font-bold text-accent bg-accent/10 px-2 py-0.5 rounded">EXPANDED</span>
+          <span class="text-xs font-bold text-bs-violet bg-bs-violet/10 px-2 py-0.5 rounded">EXPANDED</span>
           <h3 class="text-xl font-bold mt-3 mb-1">HD1026</h3>
           <p class="text-sm text-gray-500 mb-4">4K + Live TV vstup</p>
           <div class="bg-gray-50 rounded-lg p-6 flex items-center justify-center mb-4">
             <i data-lucide="monitor" class="w-12 h-12 text-gray-300"></i>
           </div>
           <ul class="space-y-1.5 mb-6 text-xs text-gray-600">
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-accent"></i>HDMI In (Live TV)</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-accent"></i>Dual Ethernet</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-accent"></i>USB-C + GPIO</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-bs-violet"></i>HDMI In (Live TV)</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-bs-violet"></i>Dual Ethernet</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-bs-violet"></i>USB-C + GPIO</li>
           </ul>
           <div class="border-t border-gray-100 pt-4">
-            <p class="text-2xl font-bold text-navy">20 600 Kc</p>
-            <p class="text-xs text-gray-400 mb-4">808 EUR | 3 399 PLN</p>
-            <a href="#" class="block text-center bg-navy text-white py-2.5 rounded-lg text-sm font-semibold hover:bg-navyLight transition-colors">Objednat</a>
+            <p class="text-2xl font-bold text-bs-purple">8 500 Kč</p>
+            <p class="text-xs text-gray-400 mb-4">bez DPH</p>
+            <a href="#" class="block text-center bg-bs-purple text-white py-2.5 rounded-lg text-sm font-semibold hover:bg-bs-purple-light transition-colors">Objednat</a>
           </div>
         </div>
 
         <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg transition-shadow">
-          <span class="text-xs font-bold text-accent bg-accent/10 px-2 py-0.5 rounded">PERFORMANCE</span>
+          <span class="text-xs font-bold text-bs-violet bg-bs-violet/10 px-2 py-0.5 rounded">PERFORMANCE</span>
           <h3 class="text-xl font-bold mt-3 mb-1">XD236</h3>
           <p class="text-sm text-gray-500 mb-4">Dual 4K + PoE+</p>
           <div class="bg-gray-50 rounded-lg p-6 flex items-center justify-center mb-4">
             <i data-lucide="monitor" class="w-12 h-12 text-gray-300"></i>
           </div>
           <ul class="space-y-1.5 mb-6 text-xs text-gray-600">
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-accent"></i>Dual 4K HDR 10-bit</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-accent"></i>PoE+ napajeni</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-accent"></i>M.2 SSD slot</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-bs-violet"></i>Dual 4K HDR 10-bit</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-bs-violet"></i>PoE+ napájení</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-bs-violet"></i>M.2 SSD slot</li>
           </ul>
           <div class="border-t border-gray-100 pt-4">
-            <p class="text-2xl font-bold text-navy">22 300 Kc</p>
-            <p class="text-xs text-gray-400 mb-4">875 EUR | 3 699 PLN</p>
-            <a href="#" class="block text-center bg-navy text-white py-2.5 rounded-lg text-sm font-semibold hover:bg-navyLight transition-colors">Objednat</a>
+            <p class="text-2xl font-bold text-bs-purple">12 500 Kč</p>
+            <p class="text-xs text-gray-400 mb-4">bez DPH</p>
+            <a href="#" class="block text-center bg-bs-purple text-white py-2.5 rounded-lg text-sm font-semibold hover:bg-bs-purple-light transition-colors">Objednat</a>
           </div>
         </div>
 
-        <div class="bg-white rounded-xl border-2 border-accent p-6 hover:shadow-lg transition-shadow relative">
-          <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-white text-[10px] font-bold px-4 py-1 rounded-full">DOPORUCUJEME</div>
-          <span class="text-xs font-bold text-white bg-accent px-2 py-0.5 rounded">FLAGSHIP</span>
+        <div class="bg-white rounded-xl border-2 border-bs-cyan p-6 hover:shadow-lg transition-shadow relative">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-bs-cyan text-bs-dark text-[10px] font-bold px-4 py-1 rounded-full">DOPORUČUJEME</div>
+          <span class="text-xs font-bold text-white bg-bs-cyan px-2 py-0.5 rounded">FLAGSHIP</span>
           <h3 class="text-xl font-bold mt-3 mb-1">XD1036</h3>
-          <p class="text-sm text-gray-500 mb-4">Vlajkova lod Serie 6</p>
-          <div class="bg-accent/5 rounded-lg p-6 flex items-center justify-center mb-4">
-            <i data-lucide="monitor" class="w-12 h-12 text-accent/40"></i>
+          <p class="text-sm text-gray-500 mb-4">Vlajková loď Série 6</p>
+          <div class="bg-bs-cyan/5 rounded-lg p-6 flex items-center justify-center mb-4">
+            <i data-lucide="monitor" class="w-12 h-12 text-bs-cyan/40"></i>
           </div>
           <ul class="space-y-1.5 mb-6 text-xs text-gray-600">
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-accent"></i>Dual 4K + Live TV</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-accent"></i>PoE+ + Dual ETH</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-accent"></i>M.2 SSD + NPU</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-bs-cyan"></i>Dual 4K + Live TV</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-bs-cyan"></i>PoE+ + Dual ETH</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-bs-cyan"></i>M.2 SSD + NPU</li>
           </ul>
           <div class="border-t border-gray-100 pt-4">
-            <p class="text-2xl font-bold text-accent">25 800 Kc</p>
-            <p class="text-xs text-gray-400 mb-4">1 012 EUR | 4 249 PLN</p>
-            <a href="#" class="block text-center bg-accent text-white py-2.5 rounded-lg text-sm font-semibold hover:bg-accentLight transition-colors">Objednat</a>
+            <p class="text-2xl font-bold text-bs-cyan">24 400 Kč</p>
+            <p class="text-xs text-gray-400 mb-4">bez DPH</p>
+            <a href="#" class="block text-center bg-bs-cyan text-bs-dark py-2.5 rounded-lg text-sm font-semibold hover:bg-bs-cyan/80 transition-colors">Objednat</a>
           </div>
         </div>
 
@@ -205,29 +206,29 @@
   <!-- Comparison Table -->
   <section id="porovnani" class="py-20">
     <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-3xl font-bold text-navy mb-4">Detailni porovnani</h2>
-      <p class="text-gray-500 mb-10">Vsechny modely Serie 6. Vyberte ten pravy pro vasi instalaci.</p>
+      <h2 class="text-3xl font-bold text-bs-purple mb-4">Detailní porovnání</h2>
+      <p class="text-gray-500 mb-10">Všechny modely Série 6. Vyberte ten pravý pro vaši instalaci.</p>
       <div class="overflow-x-auto border border-gray-200 rounded-xl">
         <table class="w-full text-sm">
-          <thead class="bg-navy text-white">
+          <thead class="bg-bs-purple text-white">
             <tr>
               <th class="text-left py-4 px-5 font-semibold">Funkce</th>
-              <th class="text-center py-4 px-5 font-semibold">HD226<br><span class="font-normal text-blue-200 text-xs">17 100 Kc</span></th>
-              <th class="text-center py-4 px-5 font-semibold">HD1026<br><span class="font-normal text-blue-200 text-xs">20 600 Kc</span></th>
-              <th class="text-center py-4 px-5 font-semibold">XD236<br><span class="font-normal text-blue-200 text-xs">22 300 Kc</span></th>
-              <th class="text-center py-4 px-5 font-semibold bg-accent">XD1036<br><span class="font-normal text-blue-100 text-xs">25 800 Kc</span></th>
+              <th class="text-center py-4 px-5 font-semibold">HD226<br><span class="font-normal text-purple-200 text-xs">6 900 Kč</span></th>
+              <th class="text-center py-4 px-5 font-semibold">HD1026<br><span class="font-normal text-purple-200 text-xs">8 500 Kč</span></th>
+              <th class="text-center py-4 px-5 font-semibold">XD236<br><span class="font-normal text-purple-200 text-xs">12 500 Kč</span></th>
+              <th class="text-center py-4 px-5 font-semibold bg-bs-cyan text-bs-dark">XD1036<br><span class="font-normal text-bs-dark/70 text-xs">24 400 Kč</span></th>
             </tr>
           </thead>
           <tbody>
-            <tr class="border-b border-gray-100"><td class="py-3 px-5 font-medium">4K dekodovani</td><td class="text-center py-3 px-5">Single 60p</td><td class="text-center py-3 px-5">Single 60p</td><td class="text-center py-3 px-5 font-semibold text-accent">Dual 60p</td><td class="text-center py-3 px-5 font-semibold text-accent bg-accent/5">Dual 60p</td></tr>
-            <tr class="border-b border-gray-100 bg-gray-50/50"><td class="py-3 px-5 font-medium">10-bit HDR</td><td class="text-center py-3 px-5 text-green-600">Ano</td><td class="text-center py-3 px-5 text-green-600">Ano</td><td class="text-center py-3 px-5 text-green-600">Ano</td><td class="text-center py-3 px-5 text-green-600 bg-accent/5">Ano</td></tr>
-            <tr class="border-b border-gray-100"><td class="py-3 px-5 font-medium">NPU (AI)</td><td class="text-center py-3 px-5 text-green-600">Ano</td><td class="text-center py-3 px-5 text-green-600">Ano</td><td class="text-center py-3 px-5 text-green-600">Ano</td><td class="text-center py-3 px-5 text-green-600 bg-accent/5">Ano</td></tr>
-            <tr class="border-b border-gray-100 bg-gray-50/50"><td class="py-3 px-5 font-medium">PoE+ napajeni</td><td class="text-center py-3 px-5 text-gray-300">—</td><td class="text-center py-3 px-5 text-gray-300">—</td><td class="text-center py-3 px-5 text-green-600">Ano</td><td class="text-center py-3 px-5 text-green-600 bg-accent/5">Ano</td></tr>
-            <tr class="border-b border-gray-100"><td class="py-3 px-5 font-medium">HDMI vstup (Live TV)</td><td class="text-center py-3 px-5 text-gray-300">—</td><td class="text-center py-3 px-5 text-green-600">Ano</td><td class="text-center py-3 px-5 text-gray-300">—</td><td class="text-center py-3 px-5 text-green-600 bg-accent/5">Ano</td></tr>
-            <tr class="border-b border-gray-100 bg-gray-50/50"><td class="py-3 px-5 font-medium">Dual Ethernet</td><td class="text-center py-3 px-5 text-gray-300">—</td><td class="text-center py-3 px-5 text-green-600">Ano</td><td class="text-center py-3 px-5 text-gray-300">—</td><td class="text-center py-3 px-5 text-green-600 bg-accent/5">Ano</td></tr>
-            <tr class="border-b border-gray-100"><td class="py-3 px-5 font-medium">M.2 SSD slot</td><td class="text-center py-3 px-5 text-gray-300">—</td><td class="text-center py-3 px-5 text-gray-300">—</td><td class="text-center py-3 px-5 text-green-600">Ano</td><td class="text-center py-3 px-5 text-green-600 bg-accent/5">Ano</td></tr>
-            <tr class="border-b border-gray-100 bg-gray-50/50"><td class="py-3 px-5 font-medium">HTML5 vykon</td><td class="text-center py-3 px-5 text-sm">Modularni 2D</td><td class="text-center py-3 px-5 text-sm">Modularni 2D</td><td class="text-center py-3 px-5 text-sm">Full 2D WebGL</td><td class="text-center py-3 px-5 text-sm bg-accent/5">Full 2D WebGL</td></tr>
-            <tr><td class="py-3 px-5 font-medium">Zaruka</td><td class="text-center py-3 px-5">5 let</td><td class="text-center py-3 px-5">5 let</td><td class="text-center py-3 px-5">5 let</td><td class="text-center py-3 px-5 bg-accent/5">5 let</td></tr>
+            <tr class="border-b border-gray-100"><td class="py-3 px-5 font-medium">4K dekódování</td><td class="text-center py-3 px-5">Single 60p</td><td class="text-center py-3 px-5">Single 60p</td><td class="text-center py-3 px-5 font-semibold text-bs-violet">Dual 60p</td><td class="text-center py-3 px-5 font-semibold text-bs-violet bg-bs-cyan/5">Dual 60p</td></tr>
+            <tr class="border-b border-gray-100 bg-gray-50/50"><td class="py-3 px-5 font-medium">10-bit HDR</td><td class="text-center py-3 px-5 text-green-600">Ano</td><td class="text-center py-3 px-5 text-green-600">Ano</td><td class="text-center py-3 px-5 text-green-600">Ano</td><td class="text-center py-3 px-5 text-green-600 bg-bs-cyan/5">Ano</td></tr>
+            <tr class="border-b border-gray-100"><td class="py-3 px-5 font-medium">NPU (AI)</td><td class="text-center py-3 px-5 text-green-600">Ano</td><td class="text-center py-3 px-5 text-green-600">Ano</td><td class="text-center py-3 px-5 text-green-600">Ano</td><td class="text-center py-3 px-5 text-green-600 bg-bs-cyan/5">Ano</td></tr>
+            <tr class="border-b border-gray-100 bg-gray-50/50"><td class="py-3 px-5 font-medium">PoE+ napájení</td><td class="text-center py-3 px-5 text-gray-300">—</td><td class="text-center py-3 px-5 text-gray-300">—</td><td class="text-center py-3 px-5 text-green-600">Ano</td><td class="text-center py-3 px-5 text-green-600 bg-bs-cyan/5">Ano</td></tr>
+            <tr class="border-b border-gray-100"><td class="py-3 px-5 font-medium">HDMI vstup (Live TV)</td><td class="text-center py-3 px-5 text-gray-300">—</td><td class="text-center py-3 px-5 text-green-600">Ano</td><td class="text-center py-3 px-5 text-gray-300">—</td><td class="text-center py-3 px-5 text-green-600 bg-bs-cyan/5">Ano</td></tr>
+            <tr class="border-b border-gray-100 bg-gray-50/50"><td class="py-3 px-5 font-medium">Dual Ethernet</td><td class="text-center py-3 px-5 text-gray-300">—</td><td class="text-center py-3 px-5 text-green-600">Ano</td><td class="text-center py-3 px-5 text-gray-300">—</td><td class="text-center py-3 px-5 text-green-600 bg-bs-cyan/5">Ano</td></tr>
+            <tr class="border-b border-gray-100"><td class="py-3 px-5 font-medium">M.2 SSD slot</td><td class="text-center py-3 px-5 text-gray-300">—</td><td class="text-center py-3 px-5 text-gray-300">—</td><td class="text-center py-3 px-5 text-green-600">Ano</td><td class="text-center py-3 px-5 text-green-600 bg-bs-cyan/5">Ano</td></tr>
+            <tr class="border-b border-gray-100 bg-gray-50/50"><td class="py-3 px-5 font-medium">HTML5 výkon</td><td class="text-center py-3 px-5 text-sm">Modulární 2D</td><td class="text-center py-3 px-5 text-sm">Modulární 2D</td><td class="text-center py-3 px-5 text-sm">Full 2D WebGL</td><td class="text-center py-3 px-5 text-sm bg-bs-cyan/5">Full 2D WebGL</td></tr>
+            <tr><td class="py-3 px-5 font-medium">Záruka</td><td class="text-center py-3 px-5">5 let</td><td class="text-center py-3 px-5">5 let</td><td class="text-center py-3 px-5">5 let</td><td class="text-center py-3 px-5 bg-bs-cyan/5">5 let</td></tr>
           </tbody>
         </table>
       </div>
@@ -235,136 +236,136 @@
   </section>
 
   <!-- B2B Section -->
-  <section id="b2b" class="py-20 bg-navy text-white">
+  <section id="b2b" class="py-20 bg-bs-purple text-white">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid md:grid-cols-2 gap-16 items-center">
         <div>
-          <span class="text-accent text-sm font-semibold">B2B PROGRAM</span>
-          <h2 class="text-3xl md:text-4xl font-bold mt-3 mb-6">Specialni podminky pro firemni zakazniky</h2>
-          <p class="text-blue-200 mb-8 leading-relaxed">Registrujte se jako B2B zakaznik a ziskejte pristup ke zvyhodnenym cenam, fakturacnim podminkam a projektove podpore.</p>
+          <span class="text-bs-cyan text-sm font-semibold">B2B PROGRAM</span>
+          <h2 class="text-3xl md:text-4xl font-bold mt-3 mb-6">Speciální podmínky pro firemní zákazníky</h2>
+          <p class="text-purple-200 mb-8 leading-relaxed">Registrujte se jako B2B zákazník a získejte přístup ke zvýhodněným cenám, fakturačním podmínkám a projektové podpoře.</p>
           <div class="space-y-4 mb-10">
             <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center shrink-0">
-                <i data-lucide="tag" class="w-5 h-5 text-accent"></i>
+              <div class="w-10 h-10 rounded-lg bg-bs-cyan/20 flex items-center justify-center shrink-0">
+                <i data-lucide="tag" class="w-5 h-5 text-bs-cyan"></i>
               </div>
               <div>
-                <h4 class="font-semibold">Slevovy program az 20%</h4>
-                <p class="text-sm text-blue-300">Standard 10%, Volume 15%, Partner/Integrator 20%</p>
+                <h4 class="font-semibold">Slevový program až 20%</h4>
+                <p class="text-sm text-purple-300">Standard 10%, Volume 15%, Partner/Integrator 20%</p>
               </div>
             </div>
             <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center shrink-0">
-                <i data-lucide="file-text" class="w-5 h-5 text-accent"></i>
+              <div class="w-10 h-10 rounded-lg bg-bs-cyan/20 flex items-center justify-center shrink-0">
+                <i data-lucide="file-text" class="w-5 h-5 text-bs-cyan"></i>
               </div>
               <div>
-                <h4 class="font-semibold">Fakturacni podminky</h4>
-                <p class="text-sm text-blue-300">Platba na fakturu se splatnosti 14/30 dni</p>
+                <h4 class="font-semibold">Fakturační podmínky</h4>
+                <p class="text-sm text-purple-300">Platba na fakturu se splatností 14/30 dní</p>
               </div>
             </div>
             <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center shrink-0">
-                <i data-lucide="headphones" class="w-5 h-5 text-accent"></i>
+              <div class="w-10 h-10 rounded-lg bg-bs-cyan/20 flex items-center justify-center shrink-0">
+                <i data-lucide="headphones" class="w-5 h-5 text-bs-cyan"></i>
               </div>
               <div>
-                <h4 class="font-semibold">Projektova podpora</h4>
-                <p class="text-sm text-blue-300">Pomoc s naplánováním a realizaci digital signage projektu</p>
+                <h4 class="font-semibold">Projektová podpora</h4>
+                <p class="text-sm text-purple-300">Pomoc s naplánováním a realizací digital signage projektů</p>
               </div>
             </div>
           </div>
-          <a href="#" class="inline-flex items-center gap-2 bg-accent text-white px-8 py-3.5 rounded-lg font-semibold hover:bg-accentLight transition-colors">
+          <a href="#" class="inline-flex items-center gap-2 bg-bs-cyan text-bs-dark px-8 py-3.5 rounded-lg font-semibold hover:bg-bs-cyan/80 transition-colors">
             <i data-lucide="user-plus" class="w-4 h-4"></i>
             Registrovat se jako B2B
           </a>
         </div>
         <div class="bg-white/5 border border-white/10 rounded-xl p-8">
-          <h3 class="font-bold text-lg mb-6">B2B cenova kalkulace</h3>
+          <h3 class="font-bold text-lg mb-6">B2B cenová kalkulace</h3>
           <table class="w-full text-sm">
-            <thead><tr class="border-b border-white/10"><th class="text-left py-2 text-blue-300 font-normal">Model</th><th class="text-right py-2 text-blue-300 font-normal">Zakladni</th><th class="text-right py-2 text-blue-300 font-normal">B2B -10%</th><th class="text-right py-2 text-blue-300 font-normal">Volume -15%</th></tr></thead>
+            <thead><tr class="border-b border-white/10"><th class="text-left py-2 text-purple-300 font-normal">Model</th><th class="text-right py-2 text-purple-300 font-normal">Základní</th><th class="text-right py-2 text-purple-300 font-normal">B2B -10%</th><th class="text-right py-2 text-purple-300 font-normal">Volume -15%</th></tr></thead>
             <tbody>
-              <tr class="border-b border-white/5"><td class="py-3 font-semibold">HD226</td><td class="text-right py-3 text-blue-200">17 100 Kc</td><td class="text-right py-3 text-accent">15 390 Kc</td><td class="text-right py-3 text-accent font-semibold">14 535 Kc</td></tr>
-              <tr class="border-b border-white/5"><td class="py-3 font-semibold">HD1026</td><td class="text-right py-3 text-blue-200">20 600 Kc</td><td class="text-right py-3 text-accent">18 540 Kc</td><td class="text-right py-3 text-accent font-semibold">17 510 Kc</td></tr>
-              <tr class="border-b border-white/5"><td class="py-3 font-semibold">XD236</td><td class="text-right py-3 text-blue-200">22 300 Kc</td><td class="text-right py-3 text-accent">20 070 Kc</td><td class="text-right py-3 text-accent font-semibold">18 955 Kc</td></tr>
-              <tr><td class="py-3 font-semibold">XD1036</td><td class="text-right py-3 text-blue-200">25 800 Kc</td><td class="text-right py-3 text-accent">23 220 Kc</td><td class="text-right py-3 text-accent font-semibold">21 930 Kc</td></tr>
+              <tr class="border-b border-white/5"><td class="py-3 font-semibold">HD226</td><td class="text-right py-3 text-purple-200">6 900 Kč</td><td class="text-right py-3 text-bs-cyan">6 210 Kč</td><td class="text-right py-3 text-bs-cyan font-semibold">5 865 Kč</td></tr>
+              <tr class="border-b border-white/5"><td class="py-3 font-semibold">HD1026</td><td class="text-right py-3 text-purple-200">8 500 Kč</td><td class="text-right py-3 text-bs-cyan">7 650 Kč</td><td class="text-right py-3 text-bs-cyan font-semibold">7 225 Kč</td></tr>
+              <tr class="border-b border-white/5"><td class="py-3 font-semibold">XD236</td><td class="text-right py-3 text-purple-200">12 500 Kč</td><td class="text-right py-3 text-bs-cyan">11 250 Kč</td><td class="text-right py-3 text-bs-cyan font-semibold">10 625 Kč</td></tr>
+              <tr><td class="py-3 font-semibold">XD1036</td><td class="text-right py-3 text-purple-200">24 400 Kč</td><td class="text-right py-3 text-bs-cyan">21 960 Kč</td><td class="text-right py-3 text-bs-cyan font-semibold">20 740 Kč</td></tr>
             </tbody>
           </table>
-          <p class="text-xs text-blue-300 mt-4">* Ceny s DPH. Partner sleva 20% na zadost.</p>
+          <p class="text-xs text-purple-300 mt-4">* Ceny bez DPH. Partner sleva 20% na žádost.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Why Us -->
-  <section id="proc-my" class="py-20 bg-warm">
+  <section id="proc-my" class="py-20 bg-bs-light">
     <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-3xl font-bold text-navy mb-12 text-center">Proc nakupovat u nas</h2>
+      <h2 class="text-3xl font-bold text-bs-purple mb-12 text-center">Proč nakupovat u nás</h2>
       <div class="grid md:grid-cols-3 lg:grid-cols-6 gap-6 text-center">
         <div class="bg-white p-5 rounded-xl border border-gray-200">
-          <i data-lucide="shield-check" class="w-8 h-8 text-navy mx-auto mb-3"></i>
-          <p class="text-sm font-semibold text-navy">Autorizovany distributor</p>
+          <i data-lucide="shield-check" class="w-8 h-8 text-bs-purple mx-auto mb-3"></i>
+          <p class="text-sm font-semibold text-bs-purple">Autorizovaný distributor</p>
         </div>
         <div class="bg-white p-5 rounded-xl border border-gray-200">
-          <i data-lucide="truck" class="w-8 h-8 text-navy mx-auto mb-3"></i>
-          <p class="text-sm font-semibold text-navy">Expedice do 48h</p>
+          <i data-lucide="trophy" class="w-8 h-8 text-bs-purple mx-auto mb-3"></i>
+          <p class="text-sm font-semibold text-bs-purple">#1 na trhu digital signage</p>
         </div>
         <div class="bg-white p-5 rounded-xl border border-gray-200">
-          <i data-lucide="globe" class="w-8 h-8 text-navy mx-auto mb-3"></i>
-          <p class="text-sm font-semibold text-navy">Doprava po EU</p>
+          <i data-lucide="globe" class="w-8 h-8 text-bs-purple mx-auto mb-3"></i>
+          <p class="text-sm font-semibold text-bs-purple">Doprava po EU</p>
         </div>
         <div class="bg-white p-5 rounded-xl border border-gray-200">
-          <i data-lucide="credit-card" class="w-8 h-8 text-navy mx-auto mb-3"></i>
-          <p class="text-sm font-semibold text-navy">Bezpecne platby</p>
+          <i data-lucide="cpu" class="w-8 h-8 text-bs-purple mx-auto mb-3"></i>
+          <p class="text-sm font-semibold text-bs-purple">Vlastní OS, žádné pády</p>
         </div>
         <div class="bg-white p-5 rounded-xl border border-gray-200">
-          <i data-lucide="headphones" class="w-8 h-8 text-navy mx-auto mb-3"></i>
-          <p class="text-sm font-semibold text-navy">Technicka podpora</p>
+          <i data-lucide="headphones" class="w-8 h-8 text-bs-purple mx-auto mb-3"></i>
+          <p class="text-sm font-semibold text-bs-purple">Technická podpora</p>
         </div>
         <div class="bg-white p-5 rounded-xl border border-gray-200">
-          <i data-lucide="award" class="w-8 h-8 text-navy mx-auto mb-3"></i>
-          <p class="text-sm font-semibold text-navy">5 let zaruka</p>
+          <i data-lucide="award" class="w-8 h-8 text-bs-purple mx-auto mb-3"></i>
+          <p class="text-sm font-semibold text-bs-purple">5 let záruka</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-navyDark text-white py-12">
+  <footer class="bg-bs-dark text-white py-12">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid md:grid-cols-4 gap-10 mb-10">
         <div>
-          <p class="font-bold text-lg mb-3">BrightSign<span class="text-accent">.cz</span></p>
-          <p class="text-sm text-blue-300">Autorizovany distributor BrightSign pro CR a EU.</p>
-          <p class="text-sm text-blue-300 mt-2">Make more s.r.o.</p>
+          <p class="font-bold text-lg mb-3">BrightSign<span class="text-bs-cyan">.cz</span></p>
+          <p class="text-sm text-purple-300">Autorizovaný distributor BrightSign pro ČR a EU.</p>
+          <p class="text-sm text-purple-300 mt-2">Make more s.r.o.</p>
         </div>
         <div>
-          <h4 class="font-semibold mb-3 text-sm">Serie 6</h4>
-          <ul class="space-y-1.5 text-sm text-blue-300">
-            <li>HD226 — 17 100 Kc</li>
-            <li>HD1026 — 20 600 Kc</li>
-            <li>XD236 — 22 300 Kc</li>
-            <li>XD1036 — 25 800 Kc</li>
+          <h4 class="font-semibold mb-3 text-sm">Série 6</h4>
+          <ul class="space-y-1.5 text-sm text-purple-300">
+            <li>HD226 — 6 900 Kč</li>
+            <li>HD1026 — 8 500 Kč</li>
+            <li>XD236 — 12 500 Kč</li>
+            <li>XD1036 — 24 400 Kč</li>
           </ul>
         </div>
         <div>
-          <h4 class="font-semibold mb-3 text-sm">Dalsi serie</h4>
-          <ul class="space-y-1.5 text-sm text-blue-300">
-            <li>Serie 5 (od 5 800 Kc)</li>
-            <li>Serie 4 (od 6 700 Kc)</li>
-            <li>Prislusenstvi</li>
+          <h4 class="font-semibold mb-3 text-sm">Další série</h4>
+          <ul class="space-y-1.5 text-sm text-purple-300">
+            <li>Série 5</li>
+            <li>Série 4</li>
+            <li>Příslušenství</li>
           </ul>
         </div>
         <div>
           <h4 class="font-semibold mb-3 text-sm">Kontakt</h4>
-          <ul class="space-y-1.5 text-sm text-blue-300">
+          <ul class="space-y-1.5 text-sm text-purple-300">
             <li>info@brightsign.cz</li>
-            <li>Obchodni podminky</li>
-            <li>Ochrana udaju</li>
+            <li>Obchodní podmínky</li>
+            <li>Ochrana údajů</li>
             <li>FAQ</li>
           </ul>
         </div>
       </div>
-      <div class="border-t border-white/10 pt-6 text-xs text-blue-400 flex flex-wrap justify-between gap-4">
-        <p>&copy; 2026 Make more s.r.o. IC: 21890161. Vsechna prava vyhrazena.</p>
-        <p>Oficialni BrightSign partner</p>
+      <div class="border-t border-white/10 pt-6 text-xs text-purple-400 flex flex-wrap justify-between gap-4">
+        <p>&copy; 2026 Make more s.r.o. IČ: 21890161. Všechna práva vyhrazena.</p>
+        <p>Oficiální BrightSign partner</p>
       </div>
     </div>
   </footer>

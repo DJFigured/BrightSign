@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrightSight -- Varianta 2: Product Focus</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'bs-purple': '#2D1B69',
+            'bs-violet': '#6B3FA0',
+            'bs-cyan': '#00C4CC',
+            'bs-dark': '#0d0520',
+            'bs-magenta': '#c850c0',
+            'bs-light': '#f8f6fc',
+            'bs-gray': '#e8e4f0',
+          },
+          fontFamily: {
+            'heading': ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            'mono': ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+    .font-mono, .spec-value, .price-tag { font-family: 'JetBrains Mono', monospace; }
+    .hero-gradient {
+      background: linear-gradient(135deg, #0d0520 0%, #2D1B69 40%, #6B3FA0 80%, #c850c0 100%);
+    }
+    .product-card-bg {
+      background: linear-gradient(160deg, #1a0a3e 0%, #2D1B69 60%, #3d2578 100%);
+    }
+    .sticky-product-bar {
+      backdrop-filter: blur(12px);
+      background: rgba(13, 5, 32, 0.92);
+    }
+    .compare-table th { position: sticky; top: 0; }
+    .spec-highlight { background: linear-gradient(90deg, rgba(0,196,204,0.08) 0%, transparent 100%); }
+    .filter-btn.active {
+      background-color: #2D1B69;
+      color: white;
+    }
+    /* Mobile comparison: card layout */
+    @media (max-width: 639px) {
+      .compare-table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .compare-table-wrapper table { min-width: 640px; }
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-900">
+
+  <!-- Sticky Top Bar -->
+  <div class="bg-bs-dark text-white text-xs py-1.5 px-4">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <span class="flex items-center gap-1.5">
+          <i data-lucide="truck" class="w-3.5 h-3.5 text-bs-cyan"></i>
+          Doručení 3&ndash;5 dnů
+        </span>
+        <span class="hidden sm:flex items-center gap-1.5">
+          <i data-lucide="shield-check" class="w-3.5 h-3.5 text-bs-cyan"></i>
+          5 let záruka
+        </span>
+      </div>
+      <div class="flex items-center gap-4">
+        <span class="text-white/50">Ceny bez DPH</span>
+        <span class="text-white/30">|</span>
+        <a href="#" class="hover:text-bs-cyan transition-colors">B2B registrace</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex items-center justify-between h-14">
+        <a href="#" class="flex items-center gap-2">
+          <div class="w-7 h-7 rounded-md bg-bs-purple flex items-center justify-center">
+            <i data-lucide="monitor" class="w-4 h-4 text-white"></i>
+          </div>
+          <span class="text-lg font-bold text-bs-purple">Bright<span class="text-bs-violet">Sight</span></span>
+        </a>
+
+        <!-- Search -->
+        <div class="hidden md:flex flex-1 max-w-md mx-8">
+          <div class="relative w-full">
+            <input type="text" placeholder="Hledat model, SKU nebo specifikaci..." class="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-bs-violet/30 focus:border-bs-violet">
+            <i data-lucide="search" class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <a href="#" class="hidden sm:flex items-center gap-1 text-sm text-gray-600 hover:text-bs-purple">
+            <i data-lucide="user" class="w-4 h-4"></i>
+            <span class="hidden lg:inline">Účet</span>
+          </a>
+          <a href="#" class="flex items-center gap-1 text-sm text-gray-600 hover:text-bs-purple relative">
+            <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+            <span class="hidden lg:inline">Košík</span>
+            <span class="absolute -top-1.5 -right-2 w-4 h-4 bg-bs-cyan text-white text-[10px] font-bold rounded-full flex items-center justify-center">0</span>
+          </a>
+          <a href="#kontakt" class="hidden md:inline-flex items-center px-4 py-1.5 bg-bs-cyan text-white text-sm font-semibold rounded-lg hover:bg-opacity-90 transition-all">
+            Kontakt
+          </a>
+          <!-- Mobile menu button -->
+          <button class="md:hidden text-gray-700" id="mobile-menu-btn">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="fixed inset-0 z-50 bg-white transform translate-x-full transition-transform duration-300 md:hidden overflow-y-auto">
+    <div class="p-4 flex items-center justify-between border-b">
+      <span class="text-lg font-bold text-bs-purple">BrightSight</span>
+      <button id="mobile-menu-close"><i data-lucide="x" class="w-6 h-6"></i></button>
+    </div>
+    <nav class="p-6 space-y-1">
+      <div class="relative w-full mb-4">
+        <input type="text" placeholder="Hledat model..." class="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm">
+        <i data-lucide="search" class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+      </div>
+      <a href="#" class="block text-base font-medium text-gray-900 py-2.5">HD226 &ndash; 6 900 Kč</a>
+      <a href="#" class="block text-base font-medium text-gray-900 py-2.5">HD1026 &ndash; 8 500 Kč</a>
+      <a href="#" class="block text-base font-medium text-bs-purple py-2.5 font-bold">XD236 &ndash; 12 500 Kč</a>
+      <a href="#" class="block text-base font-medium text-gray-900 py-2.5">XD1036 &ndash; 24 400 Kč</a>
+      <div class="border-t border-gray-100 mt-4 pt-4 space-y-2.5">
+        <a href="#porovnani" class="block text-base text-gray-600 py-2">Porovnání modelů</a>
+        <a href="#doporuceni" class="block text-base text-gray-600 py-2">Který model je pro vás?</a>
+        <a href="#kontakt" class="block text-base text-gray-600 py-2">Kontakt</a>
+      </div>
+      <div class="pt-4 space-y-3">
+        <a href="#" class="flex items-center gap-2 text-gray-600 py-2">
+          <i data-lucide="user" class="w-5 h-5"></i> Účet
+        </a>
+        <a href="#" class="flex items-center gap-2 text-gray-600 py-2">
+          <i data-lucide="shopping-cart" class="w-5 h-5"></i> Košík (0)
+        </a>
+      </div>
+      <a href="#kontakt" class="block w-full text-center px-5 py-3 bg-bs-cyan text-white font-semibold rounded-lg mt-4">Kontakt</a>
+    </nav>
+  </div>
+
+  <!-- HERO: 4 Products Side by Side -->
+  <section class="hero-gradient py-12 md:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-3">
+          BrightSign Serie 6
+        </h1>
+        <p class="text-white/60 text-lg">4 modely. Všechny s 4K HDR, NPU a 5letou zárukou. Vyberte si.</p>
+      </div>
+
+      <!-- 4 Product Cards -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+
+        <!-- HD226 -->
+        <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 md:p-5 hover:bg-white/10 transition-all group">
+          <div class="text-center mb-4">
+            <div class="w-full aspect-square rounded-xl bg-gradient-to-br from-bs-purple/50 to-bs-dark border border-white/10 flex items-center justify-center mb-3">
+              <div>
+                <div class="text-white text-xl sm:text-2xl md:text-3xl font-bold">HD226</div>
+                <div class="text-white/40 text-xs mt-1">Standard I/O</div>
+              </div>
+            </div>
+            <div class="text-xs text-bs-cyan font-semibold uppercase tracking-wider mb-1">Entry 4K</div>
+            <h3 class="text-white font-bold text-sm md:text-base">BrightSign HD226</h3>
+          </div>
+          <div class="space-y-1.5 text-xs text-white/50 mb-4">
+            <div class="flex justify-between"><span>Rozlišení</span><span class="spec-value text-white/80">4K Single</span></div>
+            <div class="flex justify-between"><span>HDR</span><span class="spec-value text-white/80">10-bit</span></div>
+            <div class="flex justify-between"><span>NPU</span><span class="spec-value text-bs-cyan">Ano</span></div>
+            <div class="flex justify-between"><span>PoE+</span><span class="spec-value text-white/40">Ne</span></div>
+          </div>
+          <div class="border-t border-white/10 pt-3">
+            <div class="text-center">
+              <div class="spec-value text-lg sm:text-xl md:text-2xl font-bold text-white">6 900 Kč</div>
+              <div class="text-white/40 text-xs">bez DPH</div>
+            </div>
+            <a href="#" class="mt-3 w-full flex items-center justify-center px-4 py-2.5 bg-bs-cyan text-white text-sm font-semibold rounded-lg hover:bg-opacity-90 transition-all">
+              <i data-lucide="shopping-cart" class="w-4 h-4 mr-1.5"></i>
+              Koupit
+            </a>
+          </div>
+        </div>
+
+        <!-- HD1026 -->
+        <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 md:p-5 hover:bg-white/10 transition-all group">
+          <div class="text-center mb-4">
+            <div class="w-full aspect-square rounded-xl bg-gradient-to-br from-bs-purple/50 to-bs-dark border border-white/10 flex items-center justify-center mb-3">
+              <div>
+                <div class="text-white text-xl sm:text-2xl md:text-3xl font-bold">HD1026</div>
+                <div class="text-white/40 text-xs mt-1">Expanded I/O</div>
+              </div>
+            </div>
+            <div class="text-xs text-bs-cyan font-semibold uppercase tracking-wider mb-1">4K + Live TV</div>
+            <h3 class="text-white font-bold text-sm md:text-base">BrightSign HD1026</h3>
+          </div>
+          <div class="space-y-1.5 text-xs text-white/50 mb-4">
+            <div class="flex justify-between"><span>Rozlišení</span><span class="spec-value text-white/80">4K Single</span></div>
+            <div class="flex justify-between"><span>HDMI In</span><span class="spec-value text-bs-cyan">Ano</span></div>
+            <div class="flex justify-between"><span>Dual LAN</span><span class="spec-value text-bs-cyan">Ano</span></div>
+            <div class="flex justify-between"><span>NPU</span><span class="spec-value text-bs-cyan">Ano</span></div>
+          </div>
+          <div class="border-t border-white/10 pt-3">
+            <div class="text-center">
+              <div class="spec-value text-lg sm:text-xl md:text-2xl font-bold text-white">8 500 Kč</div>
+              <div class="text-white/40 text-xs">bez DPH</div>
+            </div>
+            <a href="#" class="mt-3 w-full flex items-center justify-center px-4 py-2.5 bg-bs-cyan text-white text-sm font-semibold rounded-lg hover:bg-opacity-90 transition-all">
+              <i data-lucide="shopping-cart" class="w-4 h-4 mr-1.5"></i>
+              Koupit
+            </a>
+          </div>
+        </div>
+
+        <!-- XD236 - Bestseller -->
+        <div class="bg-white/10 backdrop-blur-sm border-2 border-bs-cyan/40 rounded-2xl p-4 md:p-5 relative hover:bg-white/15 transition-all group">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-bs-cyan text-white text-xs font-bold px-3 py-1 rounded-full">
+            Bestseller
+          </div>
+          <div class="text-center mb-4">
+            <div class="w-full aspect-square rounded-xl bg-gradient-to-br from-bs-violet to-bs-magenta border border-white/20 flex items-center justify-center mb-3">
+              <div>
+                <div class="text-white text-xl sm:text-2xl md:text-3xl font-bold">XD236</div>
+                <div class="text-white/60 text-xs mt-1">PoE+ | M.2 SSD</div>
+              </div>
+            </div>
+            <div class="text-xs text-bs-cyan font-semibold uppercase tracking-wider mb-1">Dual 4K</div>
+            <h3 class="text-white font-bold text-sm md:text-base">BrightSign XD236</h3>
+          </div>
+          <div class="space-y-1.5 text-xs text-white/50 mb-4">
+            <div class="flex justify-between"><span>Rozlišení</span><span class="spec-value text-white/80">Dual 4K</span></div>
+            <div class="flex justify-between"><span>PoE+</span><span class="spec-value text-bs-cyan">Ano</span></div>
+            <div class="flex justify-between"><span>M.2 SSD</span><span class="spec-value text-bs-cyan">Ano</span></div>
+            <div class="flex justify-between"><span>NPU</span><span class="spec-value text-bs-cyan">Ano</span></div>
+          </div>
+          <div class="border-t border-white/10 pt-3">
+            <div class="text-center">
+              <div class="spec-value text-lg sm:text-xl md:text-2xl font-bold text-bs-cyan">12 500 Kč</div>
+              <div class="text-white/40 text-xs">bez DPH</div>
+            </div>
+            <a href="#" class="mt-3 w-full flex items-center justify-center px-4 py-2.5 bg-bs-cyan text-white text-sm font-semibold rounded-lg hover:bg-opacity-90 transition-all shadow-lg shadow-bs-cyan/20">
+              <i data-lucide="shopping-cart" class="w-4 h-4 mr-1.5"></i>
+              Koupit
+            </a>
+          </div>
+        </div>
+
+        <!-- XD1036 -->
+        <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 md:p-5 hover:bg-white/10 transition-all group">
+          <div class="text-center mb-4">
+            <div class="w-full aspect-square rounded-xl bg-gradient-to-br from-bs-purple/50 to-bs-dark border border-white/10 flex items-center justify-center mb-3">
+              <div>
+                <div class="text-white text-xl sm:text-2xl md:text-3xl font-bold">XD1036</div>
+                <div class="text-white/40 text-xs mt-1">Full Expanded I/O</div>
+              </div>
+            </div>
+            <div class="text-xs text-bs-magenta font-semibold uppercase tracking-wider mb-1">Flagship</div>
+            <h3 class="text-white font-bold text-sm md:text-base">BrightSign XD1036</h3>
+          </div>
+          <div class="space-y-1.5 text-xs text-white/50 mb-4">
+            <div class="flex justify-between"><span>Rozlišení</span><span class="spec-value text-white/80">Dual 4K</span></div>
+            <div class="flex justify-between"><span>HDMI In</span><span class="spec-value text-bs-cyan">Ano</span></div>
+            <div class="flex justify-between"><span>PoE+ / SSD</span><span class="spec-value text-bs-cyan">Ano / Ano</span></div>
+            <div class="flex justify-between"><span>SPDIF</span><span class="spec-value text-bs-cyan">Ano</span></div>
+          </div>
+          <div class="border-t border-white/10 pt-3">
+            <div class="text-center">
+              <div class="spec-value text-lg sm:text-xl md:text-2xl font-bold text-white">24 400 Kč</div>
+              <div class="text-white/40 text-xs">bez DPH</div>
+            </div>
+            <a href="#" class="mt-3 w-full flex items-center justify-center px-4 py-2.5 bg-bs-cyan text-white text-sm font-semibold rounded-lg hover:bg-opacity-90 transition-all">
+              <i data-lucide="shopping-cart" class="w-4 h-4 mr-1.5"></i>
+              Koupit
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON TABLE -->
+  <section id="porovnani" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold text-bs-purple mb-2">Porovnání modelů Serie 6</h2>
+        <p class="text-gray-500">Všechny specifikace na jednom místě. Žádné klikání.</p>
+      </div>
+
+      <!-- Filter tabs -->
+      <div class="flex flex-wrap gap-2 justify-center mb-8">
+        <button class="filter-btn active px-4 py-2 rounded-lg text-sm font-medium border border-gray-200 transition-all" data-filter="all">
+          Všechny
+        </button>
+        <button class="filter-btn px-4 py-2 rounded-lg text-sm font-medium border border-gray-200 text-gray-600 hover:bg-gray-50 transition-all" data-filter="retail">
+          Retail
+        </button>
+        <button class="filter-btn px-4 py-2 rounded-lg text-sm font-medium border border-gray-200 text-gray-600 hover:bg-gray-50 transition-all" data-filter="restaurace">
+          Restaurace
+        </button>
+        <button class="filter-btn px-4 py-2 rounded-lg text-sm font-medium border border-gray-200 text-gray-600 hover:bg-gray-50 transition-all" data-filter="kancelare">
+          Kanceláře
+        </button>
+        <button class="filter-btn px-4 py-2 rounded-lg text-sm font-medium border border-gray-200 text-gray-600 hover:bg-gray-50 transition-all" data-filter="muzea">
+          Muzea
+        </button>
+      </div>
+
+      <!-- Mobile scroll hint -->
+      <div class="sm:hidden flex items-center justify-center gap-2 text-xs text-gray-400 mb-3">
+        <i data-lucide="move-horizontal" class="w-4 h-4"></i>
+        <span>Posuňte pro zobrazení všech modelů</span>
+      </div>
+
+      <div class="compare-table-wrapper rounded-2xl border border-gray-200">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-bs-purple text-white">
+              <th class="text-left p-4 font-semibold min-w-[180px]">Specifikace</th>
+              <th class="p-4 font-semibold text-center min-w-[140px]" data-product="hd226">
+                <div>HD226</div>
+                <div class="font-mono text-bs-cyan text-xs mt-0.5">6 900 Kč</div>
+              </th>
+              <th class="p-4 font-semibold text-center min-w-[140px]" data-product="hd1026">
+                <div>HD1026</div>
+                <div class="font-mono text-bs-cyan text-xs mt-0.5">8 500 Kč</div>
+              </th>
+              <th class="p-4 font-semibold text-center min-w-[140px] bg-bs-violet" data-product="xd236">
+                <div>XD236</div>
+                <div class="font-mono text-bs-cyan text-xs mt-0.5">12 500 Kč</div>
+              </th>
+              <th class="p-4 font-semibold text-center min-w-[140px]" data-product="xd1036">
+                <div>XD1036</div>
+                <div class="font-mono text-bs-cyan text-xs mt-0.5">24 400 Kč</div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t border-gray-100 spec-highlight">
+              <td class="p-3.5 font-medium text-gray-700">4K video dekódování</td>
+              <td class="p-3.5 text-center font-mono text-sm">Single 10-bit</td>
+              <td class="p-3.5 text-center font-mono text-sm">Single 10-bit</td>
+              <td class="p-3.5 text-center font-mono text-sm font-semibold text-bs-purple bg-bs-light/50">Dual 10-bit</td>
+              <td class="p-3.5 text-center font-mono text-sm">Dual 10-bit</td>
+            </tr>
+            <tr class="border-t border-gray-100">
+              <td class="p-3.5 font-medium text-gray-700">HDR podpora</td>
+              <td class="p-3.5 text-center"><span class="text-bs-violet font-bold">&#10003;</span></td>
+              <td class="p-3.5 text-center"><span class="text-bs-violet font-bold">&#10003;</span></td>
+              <td class="p-3.5 text-center bg-bs-light/50"><span class="text-bs-violet font-bold">&#10003;</span></td>
+              <td class="p-3.5 text-center"><span class="text-bs-violet font-bold">&#10003;</span></td>
+            </tr>
+            <tr class="border-t border-gray-100 spec-highlight">
+              <td class="p-3.5 font-medium text-gray-700">NPU (AI ready)</td>
+              <td class="p-3.5 text-center"><span class="text-bs-violet font-bold">&#10003;</span></td>
+              <td class="p-3.5 text-center"><span class="text-bs-violet font-bold">&#10003;</span></td>
+              <td class="p-3.5 text-center bg-bs-light/50"><span class="text-bs-violet font-bold">&#10003;</span></td>
+              <td class="p-3.5 text-center"><span class="text-bs-violet font-bold">&#10003;</span></td>
+            </tr>
+            <tr class="border-t border-gray-100">
+              <td class="p-3.5 font-medium text-gray-700">HTML5 výkon</td>
+              <td class="p-3.5 text-center font-mono text-xs">2D motion</td>
+              <td class="p-3.5 text-center font-mono text-xs">2D motion</td>
+              <td class="p-3.5 text-center font-mono text-xs font-semibold text-bs-purple bg-bs-light/50">Full 2D WebGL</td>
+              <td class="p-3.5 text-center font-mono text-xs">Full 2D WebGL</td>
+            </tr>
+            <tr class="border-t border-gray-100 spec-highlight">
+              <td class="p-3.5 font-medium text-gray-700">PoE+ napájení</td>
+              <td class="p-3.5 text-center text-gray-300">&ndash;</td>
+              <td class="p-3.5 text-center text-gray-300">&ndash;</td>
+              <td class="p-3.5 text-center bg-bs-light/50"><span class="text-bs-violet font-bold">&#10003;</span></td>
+              <td class="p-3.5 text-center"><span class="text-bs-violet font-bold">&#10003;</span></td>
+            </tr>
+            <tr class="border-t border-gray-100">
+              <td class="p-3.5 font-medium text-gray-700">HDMI vstup (Live TV)</td>
+              <td class="p-3.5 text-center text-gray-300">&ndash;</td>
+              <td class="p-3.5 text-center"><span class="text-bs-violet font-bold">&#10003;</span></td>
+              <td class="p-3.5 text-center bg-bs-light/50 text-gray-300">&ndash;</td>
+              <td class="p-3.5 text-center"><span class="text-bs-violet font-bold">&#10003;</span></td>
+            </tr>
+            <tr class="border-t border-gray-100 spec-highlight">
+              <td class="p-3.5 font-medium text-gray-700">Dual Ethernet</td>
+              <td class="p-3.5 text-center text-gray-300">&ndash;</td>
+              <td class="p-3.5 text-center"><span class="text-bs-violet font-bold">&#10003;</span></td>
+              <td class="p-3.5 text-center bg-bs-light/50 text-gray-300">&ndash;</td>
+              <td class="p-3.5 text-center"><span class="text-bs-violet font-bold">&#10003;</span></td>
+            </tr>
+            <tr class="border-t border-gray-100">
+              <td class="p-3.5 font-medium text-gray-700">M.2 SSD slot</td>
+              <td class="p-3.5 text-center text-gray-300">&ndash;</td>
+              <td class="p-3.5 text-center text-gray-300">&ndash;</td>
+              <td class="p-3.5 text-center bg-bs-light/50"><span class="text-bs-violet font-bold">&#10003;</span></td>
+              <td class="p-3.5 text-center"><span class="text-bs-violet font-bold">&#10003;</span></td>
+            </tr>
+            <tr class="border-t border-gray-100 spec-highlight">
+              <td class="p-3.5 font-medium text-gray-700">SPDIF audio</td>
+              <td class="p-3.5 text-center text-gray-300">&ndash;</td>
+              <td class="p-3.5 text-center text-gray-300">&ndash;</td>
+              <td class="p-3.5 text-center bg-bs-light/50 text-gray-300">&ndash;</td>
+              <td class="p-3.5 text-center"><span class="text-bs-violet font-bold">&#10003;</span></td>
+            </tr>
+            <tr class="border-t border-gray-100">
+              <td class="p-3.5 font-medium text-gray-700">I/O balíček</td>
+              <td class="p-3.5 text-center font-mono text-xs">Standard</td>
+              <td class="p-3.5 text-center font-mono text-xs">Expanded</td>
+              <td class="p-3.5 text-center font-mono text-xs bg-bs-light/50">Standard</td>
+              <td class="p-3.5 text-center font-mono text-xs">Expanded</td>
+            </tr>
+            <tr class="border-t border-gray-100 spec-highlight">
+              <td class="p-3.5 font-medium text-gray-700">Záruka</td>
+              <td class="p-3.5 text-center font-mono text-sm">5 let</td>
+              <td class="p-3.5 text-center font-mono text-sm">5 let</td>
+              <td class="p-3.5 text-center font-mono text-sm bg-bs-light/50">5 let</td>
+              <td class="p-3.5 text-center font-mono text-sm">5 let</td>
+            </tr>
+            <!-- CTA row -->
+            <tr class="border-t-2 border-bs-purple/20 bg-gray-50">
+              <td class="p-4 font-bold text-bs-purple">Cena bez DPH</td>
+              <td class="p-4 text-center">
+                <div class="font-mono font-bold text-lg text-bs-purple">6 900 Kč</div>
+                <a href="#" class="inline-block mt-2 px-4 py-1.5 bg-bs-cyan text-white text-xs font-bold rounded-lg">Koupit</a>
+              </td>
+              <td class="p-4 text-center">
+                <div class="font-mono font-bold text-lg text-bs-purple">8 500 Kč</div>
+                <a href="#" class="inline-block mt-2 px-4 py-1.5 bg-bs-cyan text-white text-xs font-bold rounded-lg">Koupit</a>
+              </td>
+              <td class="p-4 text-center bg-bs-light">
+                <div class="font-mono font-bold text-lg text-bs-purple">12 500 Kč</div>
+                <a href="#" class="inline-block mt-2 px-4 py-2 bg-bs-cyan text-white text-sm font-bold rounded-lg shadow-lg shadow-bs-cyan/20">Koupit</a>
+              </td>
+              <td class="p-4 text-center">
+                <div class="font-mono font-bold text-lg text-bs-purple">24 400 Kč</div>
+                <a href="#" class="inline-block mt-2 px-4 py-1.5 bg-bs-cyan text-white text-xs font-bold rounded-lg">Koupit</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-6 text-center">
+        <p class="text-sm text-gray-400">Všechny ceny jsou uvedeny bez DPH. B2B zákazníci získají další slevu 10&ndash;20%.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Recommendation -->
+  <section id="doporuceni" class="py-16 bg-bs-light">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl md:text-3xl font-bold text-bs-purple text-center mb-10">Který model je pro vás?</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white rounded-2xl p-6 border border-gray-100 hover:border-bs-violet/30 hover:shadow-lg transition-all">
+          <div class="w-12 h-12 rounded-xl bg-bs-violet/10 flex items-center justify-center mb-4">
+            <i data-lucide="store" class="w-6 h-6 text-bs-violet"></i>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Retail obchod</h3>
+          <p class="text-sm text-gray-500 mb-4">Menu boardy, promo displeje, výstražní informace pro zákazníky.</p>
+          <div class="flex items-center gap-2 text-bs-purple font-semibold text-sm">
+            <span>Doporučeno:</span>
+            <span class="font-mono bg-bs-light px-2 py-0.5 rounded text-bs-violet">HD226</span>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-6 border border-gray-100 hover:border-bs-violet/30 hover:shadow-lg transition-all">
+          <div class="w-12 h-12 rounded-xl bg-bs-violet/10 flex items-center justify-center mb-4">
+            <i data-lucide="utensils" class="w-6 h-6 text-bs-violet"></i>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Restaurace / Hotel</h3>
+          <p class="text-sm text-gray-500 mb-4">Menu boardy, informační displeje, TV integrace v restauraci.</p>
+          <div class="flex items-center gap-2 text-bs-purple font-semibold text-sm">
+            <span>Doporučeno:</span>
+            <span class="font-mono bg-bs-light px-2 py-0.5 rounded text-bs-violet">HD1026</span>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-6 border border-gray-100 hover:border-bs-violet/30 hover:shadow-lg transition-all">
+          <div class="w-12 h-12 rounded-xl bg-bs-violet/10 flex items-center justify-center mb-4">
+            <i data-lucide="building-2" class="w-6 h-6 text-bs-violet"></i>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Korporát / Kancelář</h3>
+          <p class="text-sm text-gray-500 mb-4">Zasedací místnosti, lobby displeje, interní komunikace.</p>
+          <div class="flex items-center gap-2 text-bs-purple font-semibold text-sm">
+            <span>Doporučeno:</span>
+            <span class="font-mono bg-bs-light px-2 py-0.5 rounded text-bs-violet">XD236</span>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-6 border border-gray-100 hover:border-bs-violet/30 hover:shadow-lg transition-all">
+          <div class="w-12 h-12 rounded-xl bg-bs-violet/10 flex items-center justify-center mb-4">
+            <i data-lucide="landmark" class="w-6 h-6 text-bs-violet"></i>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Muzeum / Galerie</h3>
+          <p class="text-sm text-gray-500 mb-4">Interaktivní exponáty, multi-display instalace, 4K projekce.</p>
+          <div class="flex items-center gap-2 text-bs-purple font-semibold text-sm">
+            <span>Doporučeno:</span>
+            <span class="font-mono bg-bs-light px-2 py-0.5 rounded text-bs-violet">XD1036</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY BRIGHTSIGHT (Trust Points) -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl md:text-3xl font-bold text-bs-purple text-center mb-10">Proč nakupovat u BrightSight</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="flex items-start gap-3 p-4">
+          <span class="text-bs-violet font-bold text-xl mt-0.5">&#10003;</span>
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-1">Autorizovaný dealer BrightSign</h3>
+            <p class="text-sm text-gray-500">Oficiální distribuce pro CZ, SK a PL. Plná záruka a podpora.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 p-4">
+          <span class="text-bs-violet font-bold text-xl mt-0.5">&#10003;</span>
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-1">5 let záruka na všechny produkty</h3>
+            <p class="text-sm text-gray-500">Standardní záruka bez registrace na Serie 5 a 6.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 p-4">
+          <span class="text-bs-violet font-bold text-xl mt-0.5">&#10003;</span>
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-1">Technické poradenství zdarma</h3>
+            <p class="text-sm text-gray-500">Pomůžeme vám vybrat správný model pro vaši instalaci.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 p-4">
+          <span class="text-bs-violet font-bold text-xl mt-0.5">&#10003;</span>
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-1">B2B slevy 10&ndash;20%</h3>
+            <p class="text-sm text-gray-500">Registrace zdarma. Volume a projektové ceny.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 p-4">
+          <span class="text-bs-violet font-bold text-xl mt-0.5">&#10003;</span>
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-1">Doručení 3&ndash;5 pracovních dnů</h3>
+            <p class="text-sm text-gray-500">Packeta, PPL, DPD do CZ, SK, PL a AT.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 p-4">
+          <span class="text-bs-violet font-bold text-xl mt-0.5">&#10003;</span>
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-1">Fakturace pro firmy</h3>
+            <p class="text-sm text-gray-500">Platba převodem, automatické faktury s IČO a DIČ.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- B2B Pricing CTA -->
+  <section class="bg-bs-purple py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-2xl md:text-3xl font-bold text-white mb-3">Potřebujete projektovou cenu?</h2>
+      <p class="text-white/60 text-lg mb-8">
+        Pro objednávky 5+ kusů nabízíme individuální ceny. Registrujte se jako B2B partner.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#" class="inline-flex items-center justify-center px-8 py-3.5 bg-bs-cyan text-white font-semibold rounded-lg hover:bg-opacity-90 transition-all">
+          B2B registrace
+        </a>
+        <a href="#kontakt" class="inline-flex items-center justify-center px-8 py-3.5 border-2 border-white/30 text-white font-medium rounded-lg hover:bg-white/10 transition-all">
+          Kontaktujte nás
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="kontakt" class="bg-bs-dark text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-7 h-7 rounded-md bg-bs-violet flex items-center justify-center">
+              <i data-lucide="monitor" class="w-4 h-4 text-white"></i>
+            </div>
+            <span class="text-lg font-bold">Bright<span class="text-bs-cyan">Sight</span></span>
+          </div>
+          <p class="text-white/50 text-sm mb-4">Autorizovaný dealer BrightSign pro CZ/SK/PL.</p>
+          <div class="inline-flex items-center gap-2 bg-bs-violet/20 rounded-lg px-3 py-2">
+            <i data-lucide="award" class="w-4 h-4 text-bs-cyan"></i>
+            <span class="text-xs text-white/70">Authorized Dealer</span>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4 text-white/90">Produkty</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-sm text-white/50 hover:text-bs-cyan">HD226</a></li>
+            <li><a href="#" class="text-sm text-white/50 hover:text-bs-cyan">HD1026</a></li>
+            <li><a href="#" class="text-sm text-white/50 hover:text-bs-cyan">XD236</a></li>
+            <li><a href="#" class="text-sm text-white/50 hover:text-bs-cyan">XD1036</a></li>
+            <li><a href="#" class="text-sm text-white/50 hover:text-bs-cyan">Serie 5</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4 text-white/90">Podpora</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-sm text-white/50 hover:text-bs-cyan">Časté dotazy</a></li>
+            <li><a href="#" class="text-sm text-white/50 hover:text-bs-cyan">Kontakt</a></li>
+            <li><a href="#" class="text-sm text-white/50 hover:text-bs-cyan">B2B registrace</a></li>
+            <li><a href="#" class="text-sm text-white/50 hover:text-bs-cyan">Obchodní podmínky</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4 text-white/90">Kontakt</h4>
+          <ul class="space-y-2.5">
+            <li class="flex items-center gap-2 text-sm text-white/50">
+              <i data-lucide="mail" class="w-4 h-4 text-bs-cyan"></i> info@brightsign.cz
+            </li>
+            <li class="flex items-center gap-2 text-sm text-white/50">
+              <i data-lucide="phone" class="w-4 h-4 text-bs-cyan"></i> +420 XXX XXX XXX
+            </li>
+            <li class="flex items-center gap-2 text-sm text-white/50">
+              <i data-lucide="building-2" class="w-4 h-4 text-bs-cyan"></i> Make more s.r.o.
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="text-sm text-white/40">&copy; 2026 BrightSight (Make more s.r.o.)</div>
+        <div class="flex items-center gap-2">
+          <div class="bg-white/10 rounded px-2 py-1 text-xs text-white/60">Visa</div>
+          <div class="bg-white/10 rounded px-2 py-1 text-xs text-white/60">Mastercard</div>
+          <div class="bg-white/10 rounded px-2 py-1 text-xs text-white/60">Převod</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sticky Product Bar (on scroll) - shows ALL products -->
+  <div id="sticky-bar" class="fixed bottom-0 left-0 right-0 z-40 sticky-product-bar border-t border-white/10 transform translate-y-full transition-transform duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3">
+      <div class="flex items-center justify-between gap-4">
+        <!-- Desktop: all 4 products -->
+        <div class="hidden sm:flex items-center gap-6">
+          <span class="text-white/60 text-sm">Serie 6:</span>
+          <span class="text-white text-sm">HD226 <span class="font-mono text-bs-cyan ml-1">6 900 Kč</span></span>
+          <span class="text-white text-sm">HD1026 <span class="font-mono text-bs-cyan ml-1">8 500 Kč</span></span>
+          <span class="text-white text-sm font-semibold">XD236 <span class="font-mono text-bs-cyan ml-1">12 500 Kč</span></span>
+          <span class="text-white text-sm">XD1036 <span class="font-mono text-bs-cyan ml-1">24 400 Kč</span></span>
+        </div>
+        <!-- Mobile: scrollable list of all products -->
+        <div class="sm:hidden flex items-center gap-3 overflow-x-auto flex-1 pr-2 -mx-1 px-1">
+          <a href="#" class="flex-shrink-0 text-white text-xs whitespace-nowrap bg-white/10 rounded-lg px-2.5 py-1.5">
+            HD226 <span class="font-mono text-bs-cyan">6 900 Kč</span>
+          </a>
+          <a href="#" class="flex-shrink-0 text-white text-xs whitespace-nowrap bg-white/10 rounded-lg px-2.5 py-1.5">
+            HD1026 <span class="font-mono text-bs-cyan">8 500 Kč</span>
+          </a>
+          <a href="#" class="flex-shrink-0 text-white text-xs whitespace-nowrap bg-bs-cyan/20 border border-bs-cyan/30 rounded-lg px-2.5 py-1.5 font-semibold">
+            XD236 <span class="font-mono text-bs-cyan">12 500 Kč</span>
+          </a>
+          <a href="#" class="flex-shrink-0 text-white text-xs whitespace-nowrap bg-white/10 rounded-lg px-2.5 py-1.5">
+            XD1036 <span class="font-mono text-bs-cyan">24 400 Kč</span>
+          </a>
+        </div>
+        <a href="#" class="flex-shrink-0 inline-flex items-center px-5 py-2 bg-bs-cyan text-white text-sm font-bold rounded-lg">
+          <i data-lucide="shopping-cart" class="w-4 h-4 mr-1.5"></i>
+          Koupit
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.remove('translate-x-full');
+      document.body.style.overflow = 'hidden';
+    });
+    document.getElementById('mobile-menu-close')?.addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.add('translate-x-full');
+      document.body.style.overflow = '';
+    });
+    // Close mobile menu on link click
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobile-menu').classList.add('translate-x-full');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Sticky bar on scroll
+    const stickyBar = document.getElementById('sticky-bar');
+    const heroSection = document.querySelector('section');
+
+    window.addEventListener('scroll', () => {
+      const heroBottom = heroSection.getBoundingClientRect().bottom;
+      if (heroBottom < 0) {
+        stickyBar.classList.remove('translate-y-full');
+      } else {
+        stickyBar.classList.add('translate-y-full');
+      }
+    });
+
+    // Filter buttons - highlight recommended columns
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const filterRecommendations = {
+      'all': [],
+      'retail': ['hd226'],
+      'restaurace': ['hd1026'],
+      'kancelare': ['xd236'],
+      'muzea': ['xd1036']
+    };
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active state
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        const recommended = filterRecommendations[filter] || [];
+
+        // Reset all header cells
+        document.querySelectorAll('th[data-product]').forEach(th => {
+          th.classList.remove('bg-bs-violet');
+          th.classList.remove('bg-bs-cyan/20');
+        });
+
+        if (recommended.length === 0) {
+          // "All" filter: highlight XD236 as bestseller
+          document.querySelector('th[data-product="xd236"]')?.classList.add('bg-bs-violet');
+        } else {
+          // Highlight recommended product
+          recommended.forEach(product => {
+            document.querySelector(`th[data-product="${product}"]`)?.classList.add('bg-bs-violet');
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+
+<!--
+DESIGN NOTES:
+- Inspirace: brightsign.biz/series-6/ (product lineup), visunext.de (spec-heavy product pages), McMaster-Carr (comparison-first UX)
+- Cilova skupina: Tech-savvy B2B zakaznici, AV integratori, IT oddeleni -- lide kteri vedi co hledaji a chteji videt specs+ceny okamzite
+- Designovy princip: "Specification-first e-commerce". Produkty primo v hero, interaktivni comparison tabulka,
+  JetBrains Mono pro specifikace a ceny (technicka estetika), filtr podle pouziti, sticky product bar.
+  Zakaznik NEVIDI zadny marketingovy obsah pred produkty -- ceny a specs jsou prvni vec na strance.
+- Pro produkci by bylo potreba: Napojeni na realne produktove data z Medusa,
+  AJAXove "Pridat do kosiku", real produktove fotky,
+  quick-view modal pro detaily, sorting, PDF datasheet download linky
+-->

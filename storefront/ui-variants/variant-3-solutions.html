@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrightSight -- Varianta 3: Solutions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'bs-purple': '#2D1B69',
+            'bs-violet': '#6B3FA0',
+            'bs-cyan': '#00C4CC',
+            'bs-dark': '#0d0520',
+            'bs-magenta': '#c850c0',
+            'bs-light': '#f8f6fc',
+            'bs-gray': '#e8e4f0',
+          },
+          fontFamily: {
+            'heading': ['Manrope', 'system-ui', 'sans-serif'],
+            'body': ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Manrope', system-ui, sans-serif; }
+    .hero-gradient {
+      background: linear-gradient(135deg, #0d0520 0%, #2D1B69 35%, #6B3FA0 70%, #c850c0 100%);
+    }
+    .solution-card {
+      transition: all 0.3s ease;
+    }
+    .solution-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(45, 27, 105, 0.12);
+    }
+    .step-connector {
+      background: linear-gradient(90deg, #00C4CC, #6B3FA0);
+      height: 2px;
+    }
+    .testimonial-bg {
+      background: linear-gradient(135deg, #f8f6fc 0%, #ede8f5 100%);
+    }
+    .configurator-bg {
+      background: linear-gradient(135deg, #2D1B69 0%, #6B3FA0 50%, #c850c0 100%);
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-900">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex items-center justify-between h-16">
+        <a href="#" class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-bs-purple flex items-center justify-center">
+            <i data-lucide="monitor" class="w-5 h-5 text-white"></i>
+          </div>
+          <span class="text-xl font-extrabold text-bs-purple font-heading">Bright<span class="text-bs-violet">Sight</span></span>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="#reseni" class="text-gray-600 hover:text-bs-purple font-medium text-sm">Řešení</a>
+          <a href="#produkty" class="text-gray-600 hover:text-bs-purple font-medium text-sm">Produkty</a>
+          <a href="#jak-to-funguje" class="text-gray-600 hover:text-bs-purple font-medium text-sm">Jak to funguje</a>
+          <a href="#proc" class="text-gray-600 hover:text-bs-purple font-medium text-sm">Proč BrightSign</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+          <a href="#" class="hidden sm:flex items-center gap-1 text-sm text-gray-500 hover:text-bs-purple">
+            <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+          </a>
+          <a href="#kontakt" class="inline-flex items-center px-5 py-2 bg-bs-cyan text-white text-sm font-semibold rounded-full hover:bg-opacity-90 transition-all">
+            Kontakt
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO: "Jaký displej potřebujete?" -->
+  <section class="hero-gradient py-20 md:py-28 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-5">
+      <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-bs-cyan rounded-full blur-[120px]"></div>
+      <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-bs-magenta rounded-full blur-[100px]"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center relative z-10">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 font-heading">
+        Jaký digital signage<br>
+        <span class="text-bs-cyan">potřebujete?</span>
+      </h1>
+      <p class="text-lg text-white/70 max-w-2xl mx-auto mb-12">
+        BrightSign přehrávače pro každou situaci. Vyberte odvětví a doporučíme vám správné řešení.
+      </p>
+
+      <!-- 6 Industry Icons -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 max-w-5xl mx-auto">
+        <a href="#reseni" class="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-5 hover:bg-white/10 transition-all text-center">
+          <div class="w-14 h-14 mx-auto rounded-xl bg-white/10 flex items-center justify-center mb-3 group-hover:bg-bs-cyan/20 transition-colors">
+            <i data-lucide="store" class="w-7 h-7 text-white group-hover:text-bs-cyan transition-colors"></i>
+          </div>
+          <div class="text-white font-semibold text-sm">Retail</div>
+          <div class="text-white/40 text-xs mt-1">Obchody a shopping centra</div>
+        </a>
+        <a href="#reseni" class="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-5 hover:bg-white/10 transition-all text-center">
+          <div class="w-14 h-14 mx-auto rounded-xl bg-white/10 flex items-center justify-center mb-3 group-hover:bg-bs-cyan/20 transition-colors">
+            <i data-lucide="utensils" class="w-7 h-7 text-white group-hover:text-bs-cyan transition-colors"></i>
+          </div>
+          <div class="text-white font-semibold text-sm">Restaurace</div>
+          <div class="text-white/40 text-xs mt-1">Menu boardy a QSR</div>
+        </a>
+        <a href="#reseni" class="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-5 hover:bg-white/10 transition-all text-center">
+          <div class="w-14 h-14 mx-auto rounded-xl bg-white/10 flex items-center justify-center mb-3 group-hover:bg-bs-cyan/20 transition-colors">
+            <i data-lucide="building-2" class="w-7 h-7 text-white group-hover:text-bs-cyan transition-colors"></i>
+          </div>
+          <div class="text-white font-semibold text-sm">Kanceláře</div>
+          <div class="text-white/40 text-xs mt-1">Meeting rooms a lobby</div>
+        </a>
+        <a href="#reseni" class="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-5 hover:bg-white/10 transition-all text-center">
+          <div class="w-14 h-14 mx-auto rounded-xl bg-white/10 flex items-center justify-center mb-3 group-hover:bg-bs-cyan/20 transition-colors">
+            <i data-lucide="landmark" class="w-7 h-7 text-white group-hover:text-bs-cyan transition-colors"></i>
+          </div>
+          <div class="text-white font-semibold text-sm">Muzea</div>
+          <div class="text-white/40 text-xs mt-1">Interaktivní exponáty</div>
+        </a>
+        <a href="#reseni" class="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-5 hover:bg-white/10 transition-all text-center">
+          <div class="w-14 h-14 mx-auto rounded-xl bg-white/10 flex items-center justify-center mb-3 group-hover:bg-bs-cyan/20 transition-colors">
+            <i data-lucide="train-front" class="w-7 h-7 text-white group-hover:text-bs-cyan transition-colors"></i>
+          </div>
+          <div class="text-white font-semibold text-sm">Transport</div>
+          <div class="text-white/40 text-xs mt-1">Letiště a stanice</div>
+        </a>
+        <a href="#reseni" class="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-5 hover:bg-white/10 transition-all text-center">
+          <div class="w-14 h-14 mx-auto rounded-xl bg-white/10 flex items-center justify-center mb-3 group-hover:bg-bs-cyan/20 transition-colors">
+            <i data-lucide="heart-pulse" class="w-7 h-7 text-white group-hover:text-bs-cyan transition-colors"></i>
+          </div>
+          <div class="text-white font-semibold text-sm">Zdravotnictví</div>
+          <div class="text-white/40 text-xs mt-1">Čekárny a navigace</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTIONS BY INDUSTRY -->
+  <section id="reseni" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-bs-purple mb-4 font-heading">Řešení podle odvětví</h2>
+        <p class="text-gray-500 text-lg max-w-2xl mx-auto">
+          Každá instalace je jiná. BrightSign nabízí správný model pro každý typ použití.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- Retail -->
+        <div class="solution-card bg-white rounded-2xl border border-gray-100 overflow-hidden">
+          <div class="h-40 bg-gradient-to-br from-bs-purple/5 to-bs-violet/10 flex items-center justify-center relative">
+            <i data-lucide="store" class="w-16 h-16 text-bs-violet/30"></i>
+            <div class="absolute top-4 right-4 bg-bs-cyan text-white text-xs font-bold px-2.5 py-1 rounded-full">
+              Nejčastější
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-bold text-xl text-gray-900 mb-2 font-heading">Retail a obchody</h3>
+            <p class="text-sm text-gray-500 mb-4">
+              Promo displeje, výlohy, info kiosky, price tags na velkých obrazovkách. BrightSign běží 24/7 bez údržby.
+            </p>
+            <div class="mb-4">
+              <div class="text-xs text-bs-violet font-semibold uppercase tracking-wider mb-2">Doporučený model</div>
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-bs-purple to-bs-violet flex items-center justify-center text-white text-sm font-bold">
+                  HD226
+                </div>
+                <div>
+                  <div class="font-semibold text-sm text-gray-900">BrightSign HD226</div>
+                  <div class="text-xs text-gray-500">od 6 900 Kč bez DPH</div>
+                </div>
+              </div>
+            </div>
+            <a href="#" class="text-bs-cyan hover:text-bs-violet font-semibold text-sm flex items-center gap-1">
+              Více o retail řešení <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Restaurace -->
+        <div class="solution-card bg-white rounded-2xl border border-gray-100 overflow-hidden">
+          <div class="h-40 bg-gradient-to-br from-bs-purple/5 to-bs-violet/10 flex items-center justify-center">
+            <i data-lucide="utensils" class="w-16 h-16 text-bs-violet/30"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="font-bold text-xl text-gray-900 mb-2 font-heading">Restaurace a hospitality</h3>
+            <p class="text-sm text-gray-500 mb-4">
+              Digitální menu boardy, hotelové informační systémy, TV integrace v baru. HDMI vstup pro live TV.
+            </p>
+            <div class="mb-4">
+              <div class="text-xs text-bs-violet font-semibold uppercase tracking-wider mb-2">Doporučený model</div>
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-bs-purple to-bs-violet flex items-center justify-center text-white text-sm font-bold">
+                  HD1026
+                </div>
+                <div>
+                  <div class="font-semibold text-sm text-gray-900">BrightSign HD1026</div>
+                  <div class="text-xs text-gray-500">od 8 500 Kč bez DPH</div>
+                </div>
+              </div>
+            </div>
+            <a href="#" class="text-bs-cyan hover:text-bs-violet font-semibold text-sm flex items-center gap-1">
+              Více o hospitality řešení <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Kancelare -->
+        <div class="solution-card bg-white rounded-2xl border border-gray-100 overflow-hidden">
+          <div class="h-40 bg-gradient-to-br from-bs-purple/5 to-bs-violet/10 flex items-center justify-center">
+            <i data-lucide="building-2" class="w-16 h-16 text-bs-violet/30"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="font-bold text-xl text-gray-900 mb-2 font-heading">Korporát a kanceláře</h3>
+            <p class="text-sm text-gray-500 mb-4">
+              Zasedací místnosti, lobby displeje, interní komunikace. Dual 4K pro prezentace, PoE+ pro čistou instalaci.
+            </p>
+            <div class="mb-4">
+              <div class="text-xs text-bs-violet font-semibold uppercase tracking-wider mb-2">Doporučený model</div>
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-bs-violet to-bs-magenta flex items-center justify-center text-white text-sm font-bold">
+                  XD236
+                </div>
+                <div>
+                  <div class="font-semibold text-sm text-gray-900">BrightSign XD236</div>
+                  <div class="text-xs text-gray-500">od 12 500 Kč bez DPH</div>
+                </div>
+              </div>
+            </div>
+            <a href="#" class="text-bs-cyan hover:text-bs-violet font-semibold text-sm flex items-center gap-1">
+              Více o corporate řešení <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Muzea -->
+        <div class="solution-card bg-white rounded-2xl border border-gray-100 overflow-hidden">
+          <div class="h-40 bg-gradient-to-br from-bs-purple/5 to-bs-violet/10 flex items-center justify-center">
+            <i data-lucide="landmark" class="w-16 h-16 text-bs-violet/30"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="font-bold text-xl text-gray-900 mb-2 font-heading">Muzea a galerie</h3>
+            <p class="text-sm text-gray-500 mb-4">
+              Interaktivní exponáty, multi-display videowall, 4K projekce. NPU pro touchless interakce a AI analýzu.
+            </p>
+            <div class="mb-4">
+              <div class="text-xs text-bs-violet font-semibold uppercase tracking-wider mb-2">Doporučený model</div>
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-bs-violet to-bs-magenta flex items-center justify-center text-white text-sm font-bold">
+                  XD1036
+                </div>
+                <div>
+                  <div class="font-semibold text-sm text-gray-900">BrightSign XD1036</div>
+                  <div class="text-xs text-gray-500">od 24 400 Kč bez DPH</div>
+                </div>
+              </div>
+            </div>
+            <a href="#" class="text-bs-cyan hover:text-bs-violet font-semibold text-sm flex items-center gap-1">
+              Více o kulturní řešení <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Transport -->
+        <div class="solution-card bg-white rounded-2xl border border-gray-100 overflow-hidden">
+          <div class="h-40 bg-gradient-to-br from-bs-purple/5 to-bs-violet/10 flex items-center justify-center">
+            <i data-lucide="train-front" class="w-16 h-16 text-bs-violet/30"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="font-bold text-xl text-gray-900 mb-2 font-heading">Transport a logistika</h3>
+            <p class="text-sm text-gray-500 mb-4">
+              Informační tabule na nádraží, letiště, autobusové stanice. 24/7 provoz, PoE+ pro jednoduchou instalaci.
+            </p>
+            <div class="mb-4">
+              <div class="text-xs text-bs-violet font-semibold uppercase tracking-wider mb-2">Doporučený model</div>
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-bs-violet to-bs-magenta flex items-center justify-center text-white text-sm font-bold">
+                  XD236
+                </div>
+                <div>
+                  <div class="font-semibold text-sm text-gray-900">BrightSign XD236</div>
+                  <div class="text-xs text-gray-500">od 12 500 Kč bez DPH</div>
+                </div>
+              </div>
+            </div>
+            <a href="#" class="text-bs-cyan hover:text-bs-violet font-semibold text-sm flex items-center gap-1">
+              Více o transport řešení <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Zdravotnictvi -->
+        <div class="solution-card bg-white rounded-2xl border border-gray-100 overflow-hidden">
+          <div class="h-40 bg-gradient-to-br from-bs-purple/5 to-bs-violet/10 flex items-center justify-center">
+            <i data-lucide="heart-pulse" class="w-16 h-16 text-bs-violet/30"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="font-bold text-xl text-gray-900 mb-2 font-heading">Zdravotnictví</h3>
+            <p class="text-sm text-gray-500 mb-4">
+              Čekárna informace, navigace po nemocnici, digitální nástěnky. Bezpečný uzavřený OS bez malware rizika.
+            </p>
+            <div class="mb-4">
+              <div class="text-xs text-bs-violet font-semibold uppercase tracking-wider mb-2">Doporučený model</div>
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-bs-purple to-bs-violet flex items-center justify-center text-white text-sm font-bold">
+                  HD226
+                </div>
+                <div>
+                  <div class="font-semibold text-sm text-gray-900">BrightSign HD226</div>
+                  <div class="text-xs text-gray-500">od 6 900 Kč bez DPH</div>
+                </div>
+              </div>
+            </div>
+            <a href="#" class="text-bs-cyan hover:text-bs-violet font-semibold text-sm flex items-center gap-1">
+              Více o healthcare řešení <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="jak-to-funguje" class="py-20 bg-bs-light">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-bs-purple mb-4 font-heading">Jak to funguje</h2>
+        <p class="text-gray-500 text-lg">3 kroky od výběru po instalaci. Většina zákazníků začíná během jednoho dne.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 relative">
+        <!-- Connector line (desktop only) -->
+        <div class="hidden md:block absolute top-16 left-[calc(16.67%+32px)] right-[calc(16.67%+32px)] step-connector"></div>
+
+        <!-- Step 1 -->
+        <div class="text-center relative">
+          <div class="w-14 h-14 mx-auto rounded-full bg-bs-purple text-white flex items-center justify-center text-xl font-bold mb-6 relative z-10 ring-4 ring-bs-light">
+            1
+          </div>
+          <h3 class="font-bold text-xl text-gray-900 mb-3 font-heading">Vyberte model</h3>
+          <p class="text-sm text-gray-500">
+            Použijte našeho průvodce nebo nás kontaktujte. Doporučíme správný model podle vaší instalace, počtu displejů a rozpočtu.
+          </p>
+          <div class="mt-4 inline-flex items-center gap-1 text-bs-cyan text-sm font-semibold">
+            <i data-lucide="mouse-pointer-click" class="w-4 h-4"></i>
+            Online nebo telefonicky
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="text-center relative">
+          <div class="w-14 h-14 mx-auto rounded-full bg-bs-violet text-white flex items-center justify-center text-xl font-bold mb-6 relative z-10 ring-4 ring-bs-light">
+            2
+          </div>
+          <h3 class="font-bold text-xl text-gray-900 mb-3 font-heading">Objednejte online</h3>
+          <p class="text-sm text-gray-500">
+            Přidejte do košíku, zaplaťte kartou nebo převodem. B2B zákazníci získají automatickou slevu. Faktura s IČO a DIČ.
+          </p>
+          <div class="mt-4 inline-flex items-center gap-1 text-bs-cyan text-sm font-semibold">
+            <i data-lucide="credit-card" class="w-4 h-4"></i>
+            Karta nebo převod
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="text-center relative">
+          <div class="w-14 h-14 mx-auto rounded-full bg-bs-magenta text-white flex items-center justify-center text-xl font-bold mb-6 relative z-10 ring-4 ring-bs-light">
+            3
+          </div>
+          <h3 class="font-bold text-xl text-gray-900 mb-3 font-heading">Nainstalujte</h3>
+          <p class="text-sm text-gray-500">
+            Doručení za 3-5 dnů. BrightSign zapojíte, nahrajete obsah přes SD kartu nebo cloud a hned to běží. Bez IT oddělení.
+          </p>
+          <div class="mt-4 inline-flex items-center gap-1 text-bs-cyan text-sm font-semibold">
+            <i data-lucide="plug" class="w-4 h-4"></i>
+            Plug & play
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY BRIGHTSIGN -->
+  <section id="proc" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-bs-purple mb-6 font-heading">
+            Proč BrightSign?
+          </h2>
+          <p class="text-gray-600 text-lg mb-8">
+            BrightSign je světový lídr v digital signage. Přehrávače se používají ve více než 100 zemích světa.
+          </p>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <span class="text-bs-violet font-bold text-lg mt-0.5">&#10003;</span>
+              <div>
+                <div class="font-semibold text-gray-900">Číslo 1 ve světě</div>
+                <div class="text-sm text-gray-500">Nejprodávanější značka digital signage přehrávačů globálně.</div>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-bs-violet font-bold text-lg mt-0.5">&#10003;</span>
+              <div>
+                <div class="font-semibold text-gray-900">5 let záruka</div>
+                <div class="text-sm text-gray-500">Standardní záruka na všechny přehrávače Serie 5 a 6.</div>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-bs-violet font-bold text-lg mt-0.5">&#10003;</span>
+              <div>
+                <div class="font-semibold text-gray-900">Zabezpečený OS</div>
+                <div class="text-sm text-gray-500">Uzavřený BrightSignOS bez virů, malware a nucených aktualizací.</div>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-bs-violet font-bold text-lg mt-0.5">&#10003;</span>
+              <div>
+                <div class="font-semibold text-gray-900">Bez licenčních poplatků</div>
+                <div class="text-sm text-gray-500">Zaplaťte jednou, používejte navždy. Žádné měsíční poplatky za BrightAuthor.</div>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-bs-violet font-bold text-lg mt-0.5">&#10003;</span>
+              <div>
+                <div class="font-semibold text-gray-900">Spotřeba od 5 wattů</div>
+                <div class="text-sm text-gray-500">Žádný ventilátor, žádný hluk. Provoz za pár korun měsíčně na elektřině.</div>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-bs-violet font-bold text-lg mt-0.5">&#10003;</span>
+              <div>
+                <div class="font-semibold text-gray-900">NPU pro AI aplikace</div>
+                <div class="text-sm text-gray-500">Neuronový procesor v každém modelu Serie 6 pro pokročilé interakce.</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="space-y-6">
+          <!-- Product cards stack -->
+          <div class="bg-gradient-to-br from-bs-purple to-bs-violet rounded-2xl p-8 text-white">
+            <div class="text-sm text-white/60 mb-1">Naše doporučení</div>
+            <div class="text-2xl font-bold mb-2 font-heading">BrightSign XD236</div>
+            <p class="text-white/70 text-sm mb-4">Nejoblíbenější model. Dual 4K, PoE+, M.2 SSD, NPU. Pro 90% instalací je to správná volba.</p>
+            <div class="flex items-end justify-between">
+              <div>
+                <div class="text-3xl font-bold text-bs-cyan">12 500 Kč</div>
+                <div class="text-white/50 text-xs">bez DPH</div>
+              </div>
+              <a href="#" class="px-5 py-2.5 bg-bs-cyan text-white font-semibold rounded-full text-sm hover:bg-opacity-90 transition-all">
+                Koupit XD236
+              </a>
+            </div>
+          </div>
+          <div class="grid grid-cols-3 gap-4">
+            <div class="bg-bs-light rounded-xl p-4 text-center">
+              <div class="text-2xl font-bold text-bs-purple font-heading">4</div>
+              <div class="text-xs text-gray-500 mt-1">modely Serie 6</div>
+            </div>
+            <div class="bg-bs-light rounded-xl p-4 text-center">
+              <div class="text-2xl font-bold text-bs-purple font-heading">5 let</div>
+              <div class="text-xs text-gray-500 mt-1">záruka</div>
+            </div>
+            <div class="bg-bs-light rounded-xl p-4 text-center">
+              <div class="text-2xl font-bold text-bs-purple font-heading">3-5</div>
+              <div class="text-xs text-gray-500 mt-1">dní doručení</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proč BrightSign - Real Trust Signals -->
+  <section class="testimonial-bg py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl font-extrabold text-bs-purple text-center mb-4 font-heading">Proč právě BrightSign?</h2>
+      <p class="text-gray-500 text-center mb-10 max-w-2xl mx-auto">Světový lídr v digital signage s více než 500 000 instalacemi ve 100+ zemích.</p>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-2xl p-6 shadow-sm text-center">
+          <div class="w-14 h-14 mx-auto rounded-full bg-bs-purple/10 flex items-center justify-center mb-4">
+            <i data-lucide="globe" class="w-7 h-7 text-bs-purple"></i>
+          </div>
+          <h3 class="font-bold text-lg text-gray-900 mb-2 font-heading">#1 na světě</h3>
+          <p class="text-sm text-gray-500">
+            BrightSign je globální jednička v digital signage. Největší podíl na trhu mezi dedicatedými přehrávači.
+          </p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow-sm text-center">
+          <div class="w-14 h-14 mx-auto rounded-full bg-bs-violet/10 flex items-center justify-center mb-4">
+            <i data-lucide="cpu" class="w-7 h-7 text-bs-violet"></i>
+          </div>
+          <h3 class="font-bold text-lg text-gray-900 mb-2 font-heading">Účelový OS</h3>
+          <p class="text-sm text-gray-500">
+            BrightSignOS je uzavřený operační systém bez Windows problémů. Žádné viry, žádné nucené aktualizace, žádné pády.
+          </p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow-sm text-center">
+          <div class="w-14 h-14 mx-auto rounded-full bg-bs-magenta/10 flex items-center justify-center mb-4">
+            <i data-lucide="fan" class="w-7 h-7 text-bs-magenta"></i>
+          </div>
+          <h3 class="font-bold text-lg text-gray-900 mb-2 font-heading">Bez ventilátorů</h3>
+          <p class="text-sm text-gray-500">
+            Fanless design bez jediného pohyblivého dílu. Nulový hluk, minimální spotřeba od 5 W, maximální spolehlivost.
+          </p>
+        </div>
+      </div>
+      <div class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+        <div class="bg-white rounded-xl p-4 shadow-sm">
+          <div class="text-2xl font-bold text-bs-purple font-heading">500 000+</div>
+          <div class="text-xs text-gray-500 mt-1">instalací celosvětově</div>
+        </div>
+        <div class="bg-white rounded-xl p-4 shadow-sm">
+          <div class="text-2xl font-bold text-bs-purple font-heading">100+</div>
+          <div class="text-xs text-gray-500 mt-1">zemí světa</div>
+        </div>
+        <div class="bg-white rounded-xl p-4 shadow-sm">
+          <div class="text-2xl font-bold text-bs-purple font-heading">5 let</div>
+          <div class="text-xs text-gray-500 mt-1">standardní záruka</div>
+        </div>
+        <div class="bg-white rounded-xl p-4 shadow-sm">
+          <div class="text-2xl font-bold text-bs-purple font-heading">0</div>
+          <div class="text-xs text-gray-500 mt-1">licenčních poplatků</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Configurator Teaser -->
+  <section class="configurator-bg py-16 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-bs-cyan rounded-full blur-[120px]"></div>
+    </div>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
+      <div class="inline-flex items-center gap-2 bg-white/10 rounded-full px-4 py-1.5 mb-6">
+        <i data-lucide="wand-2" class="w-4 h-4 text-bs-cyan"></i>
+        <span class="text-white/90 text-sm font-semibold">Konfigurátor</span>
+      </div>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4 font-heading">
+        Nevíte, který model vybrat?
+      </h2>
+      <p class="text-white/70 text-lg mb-8">
+        Odpovězte na 3 otázky a doporučíme vám přesně to, co potřebujete.
+      </p>
+      <a href="#" class="inline-flex items-center px-8 py-4 bg-bs-cyan text-white font-bold rounded-full text-lg hover:bg-opacity-90 transition-all shadow-lg shadow-bs-cyan/30">
+        Spustit konfigurátor
+        <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- Products Overview -->
+  <section id="produkty" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl md:text-3xl font-extrabold text-bs-purple text-center mb-10 font-heading">Všechny modely Serie 6</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="border border-gray-100 rounded-2xl p-5 hover:shadow-lg transition-all">
+          <div class="w-full aspect-[4/3] rounded-xl bg-gradient-to-br from-bs-purple to-bs-violet flex items-center justify-center mb-4">
+            <div class="text-white text-2xl font-bold">HD226</div>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-1">BrightSign HD226</h3>
+          <p class="text-xs text-gray-500 mb-3">Entry 4K | Standard I/O | NPU</p>
+          <div class="text-xl font-bold text-bs-purple">6 900 Kč <span class="text-xs text-gray-400 font-normal">bez DPH</span></div>
+          <a href="#" class="mt-3 w-full flex items-center justify-center py-2.5 bg-bs-cyan text-white text-sm font-semibold rounded-lg">Koupit</a>
+        </div>
+        <div class="border border-gray-100 rounded-2xl p-5 hover:shadow-lg transition-all">
+          <div class="w-full aspect-[4/3] rounded-xl bg-gradient-to-br from-bs-purple to-bs-violet flex items-center justify-center mb-4">
+            <div class="text-white text-2xl font-bold">HD1026</div>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-1">BrightSign HD1026</h3>
+          <p class="text-xs text-gray-500 mb-3">4K | Expanded I/O | HDMI In</p>
+          <div class="text-xl font-bold text-bs-purple">8 500 Kč <span class="text-xs text-gray-400 font-normal">bez DPH</span></div>
+          <a href="#" class="mt-3 w-full flex items-center justify-center py-2.5 bg-bs-cyan text-white text-sm font-semibold rounded-lg">Koupit</a>
+        </div>
+        <div class="border-2 border-bs-cyan/30 rounded-2xl p-5 hover:shadow-lg transition-all relative">
+          <div class="absolute -top-2.5 right-4 bg-bs-cyan text-white text-xs font-bold px-2.5 py-0.5 rounded-full">Bestseller</div>
+          <div class="w-full aspect-[4/3] rounded-xl bg-gradient-to-br from-bs-violet to-bs-magenta flex items-center justify-center mb-4">
+            <div class="text-white text-2xl font-bold">XD236</div>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-1">BrightSign XD236</h3>
+          <p class="text-xs text-gray-500 mb-3">Dual 4K | PoE+ | M.2 SSD</p>
+          <div class="text-xl font-bold text-bs-purple">12 500 Kč <span class="text-xs text-gray-400 font-normal">bez DPH</span></div>
+          <a href="#" class="mt-3 w-full flex items-center justify-center py-2.5 bg-bs-cyan text-white text-sm font-semibold rounded-lg shadow-lg shadow-bs-cyan/20">Koupit</a>
+        </div>
+        <div class="border border-gray-100 rounded-2xl p-5 hover:shadow-lg transition-all">
+          <div class="w-full aspect-[4/3] rounded-xl bg-gradient-to-br from-bs-purple to-bs-violet flex items-center justify-center mb-4">
+            <div class="text-white text-2xl font-bold">XD1036</div>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-1">BrightSign XD1036</h3>
+          <p class="text-xs text-gray-500 mb-3">Dual 4K | Full I/O | PoE+</p>
+          <div class="text-xl font-bold text-bs-purple">24 400 Kč <span class="text-xs text-gray-400 font-normal">bez DPH</span></div>
+          <a href="#" class="mt-3 w-full flex items-center justify-center py-2.5 bg-bs-cyan text-white text-sm font-semibold rounded-lg">Koupit</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="kontakt" class="bg-bs-dark text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-8 h-8 rounded-lg bg-bs-violet flex items-center justify-center">
+              <i data-lucide="monitor" class="w-5 h-5 text-white"></i>
+            </div>
+            <span class="text-lg font-extrabold font-heading">Bright<span class="text-bs-cyan">Sight</span></span>
+          </div>
+          <p class="text-white/50 text-sm mb-4">Autorizovaný dealer BrightSign pro CZ/SK/PL.</p>
+          <div class="inline-flex items-center gap-2 bg-bs-violet/20 rounded-lg px-3 py-2">
+            <i data-lucide="award" class="w-4 h-4 text-bs-cyan"></i>
+            <span class="text-xs text-white/70">Authorized Dealer</span>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4 text-white/90">Řešení</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-sm text-white/50 hover:text-bs-cyan">Retail</a></li>
+            <li><a href="#" class="text-sm text-white/50 hover:text-bs-cyan">Restaurace</a></li>
+            <li><a href="#" class="text-sm text-white/50 hover:text-bs-cyan">Kanceláře</a></li>
+            <li><a href="#" class="text-sm text-white/50 hover:text-bs-cyan">Muzea</a></li>
+            <li><a href="#" class="text-sm text-white/50 hover:text-bs-cyan">Transport</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4 text-white/90">Podpora</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-sm text-white/50 hover:text-bs-cyan">Časté dotazy</a></li>
+            <li><a href="#" class="text-sm text-white/50 hover:text-bs-cyan">B2B registrace</a></li>
+            <li><a href="#" class="text-sm text-white/50 hover:text-bs-cyan">Obchodní podmínky</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4 text-white/90">Kontakt</h4>
+          <ul class="space-y-2.5">
+            <li class="flex items-center gap-2 text-sm text-white/50">
+              <i data-lucide="mail" class="w-4 h-4 text-bs-cyan"></i> info@brightsign.cz
+            </li>
+            <li class="flex items-center gap-2 text-sm text-white/50">
+              <i data-lucide="phone" class="w-4 h-4 text-bs-cyan"></i> +420 XXX XXX XXX
+            </li>
+            <li class="flex items-center gap-2 text-sm text-white/50">
+              <i data-lucide="building-2" class="w-4 h-4 text-bs-cyan"></i> Make more s.r.o.
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="text-sm text-white/40">&copy; 2026 BrightSight (Make more s.r.o.)</div>
+        <div class="flex items-center gap-2">
+          <div class="bg-white/10 rounded px-2 py-1 text-xs text-white/60">Visa</div>
+          <div class="bg-white/10 rounded px-2 py-1 text-xs text-white/60">Mastercard</div>
+          <div class="bg-white/10 rounded px-2 py-1 text-xs text-white/60">Převod</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
+
+<!--
+DESIGN NOTES:
+- Inspirace: brightsign.biz "Find the right player" průvodce, Apple.com industry pages, Shopify industry solutions
+- Cílová skupina: First-time buyers, marketing manažeři, facility manažeři -- lidé kteří NEVĚDÍ jaký model potřebují
+  a hledají "digital signage pro restauraci" ne "BrightSign XD236"
+- Designový princip: "Solutions-first navigation". Hero s 6 industry ikonami místo produktů.
+  Každé odvětví = karta s popisem, doporučeným modelem a cenou. "Jak to funguje" 3 kroky.
+  Konfigurátor teaser ("3 otázky a doporučíme"). Testimonials s konkrétními zákazníky.
+  Produkty jsou až na konci -- zákazník se k nim dostane PŘES kontext, ne přímo.
+- Pro produkci by bylo potřeba: Funkční konfigurátor (3-krokový wizard), reálné testimonials,
+  detailní industry landing pages (/reseni/retail, /reseni/restaurace), video case studies,
+  napojení na Medusa API, reálné produktové fotky, A/B testing hero vs. konfigurátor
+-->
