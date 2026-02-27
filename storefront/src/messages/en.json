@@ -89,7 +89,9 @@
     "updating": "Updating...",
     "items": "items",
     "item": "item",
-    "summary": "Order Summary"
+    "summary": "Order Summary",
+    "decreaseQuantity": "Decrease quantity",
+    "increaseQuantity": "Increase quantity"
   },
   "checkout": {
     "title": "Checkout",
@@ -422,7 +424,22 @@
     "price": "Price",
     "toggleCompare": "Add/remove from comparison",
     "addToCompare": "Compare",
-    "inCompare": "Comparing"
+    "inCompare": "Comparing",
+    "specSeries": "Series",
+    "specLine": "Product line",
+    "specIO": "I/O",
+    "specNPU": "NPU",
+    "spec4K": "4K decoding",
+    "spec4K60p": "4K60p decoding",
+    "spec4KRotation": "4K rotation",
+    "specHDR": "HDR 10-bit",
+    "specHTML5": "HTML5",
+    "specWiFi": "Wi-Fi",
+    "spec4KStream": "4K IP stream",
+    "specTemperature": "Temperature",
+    "specDimensions": "Dimensions",
+    "specWeight": "Weight",
+    "remove": "Remove"
   },
   "filters": {
     "sort": "Sort",
@@ -459,7 +476,8 @@
       "s7title": "7. Privacy",
       "s7content": "The processing of personal data is governed by the Privacy Policy, available on the Privacy Policy page.",
       "s8title": "8. Final Provisions",
-      "s8content": "These Terms are governed by the laws of the Czech Republic. The Seller reserves the right to amend these Terms unilaterally. Changes take effect on the date of publication on the website."
+      "s8content": "These Terms are governed by the laws of the Czech Republic. The Seller reserves the right to amend these Terms unilaterally. Changes take effect on the date of publication on the website.",
+      "metaDescription": "Terms and conditions of BrightSign.cz e-shop — Make more s.r.o."
     },
     "privacy": {
       "title": "Privacy Policy",
@@ -477,7 +495,8 @@
       "s6title": "6. Data Subject Rights",
       "s6content": "As a data subject, you have the right to:\n- Access your personal data\n- Rectification of inaccurate data\n- Erasure of data (right to be forgotten)\n- Restriction of processing\n- Data portability\n- Object to processing\n- Withdraw consent\n\nTo exercise your rights, contact us at info@brightsign.cz. We will respond to your request within 30 days.",
       "s7title": "7. Cookies",
-      "s7content": "Our website uses cookies to ensure functionality, analyze traffic, and improve services.\n\nTypes of cookies:\n- Essential cookies: necessary for the website to function (no consent required)\n- Analytical cookies: traffic measurement (with consent)\n- Marketing cookies: content personalization (with consent)\n\nYou can change cookie settings in your browser. Rejecting essential cookies may affect website functionality."
+      "s7content": "Our website uses cookies to ensure functionality, analyze traffic, and improve services.\n\nTypes of cookies:\n- Essential cookies: necessary for the website to function (no consent required)\n- Analytical cookies: traffic measurement (with consent)\n- Marketing cookies: content personalization (with consent)\n\nYou can change cookie settings in your browser. Rejecting essential cookies may affect website functionality.",
+      "metaDescription": "Privacy policy of BrightSign.cz e-shop — Make more s.r.o."
     },
     "returns": {
       "title": "Complaints Procedure",
@@ -489,7 +508,8 @@
       "s3title": "3. Resolution Deadlines",
       "s3content": "The Seller will decide on the complaint immediately, or within 3 business days for complex cases. The complaint will be resolved no later than 30 days from the date it was filed.",
       "s4title": "4. Complaints Contact",
-      "s4content": "Email: info@brightsign.cz\nCompany: Make more s.r.o.\nCompany ID: 21890161"
+      "s4content": "Email: info@brightsign.cz\nCompany: Make more s.r.o.\nCompany ID: 21890161",
+      "metaDescription": "Returns and complaints policy of BrightSign.cz — Make more s.r.o."
     }
   },
   "nav": {

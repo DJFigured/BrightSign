@@ -89,7 +89,9 @@
     "updating": "Aktualizácia...",
     "items": "položiek",
     "item": "položka",
-    "summary": "Prehľad objednávky"
+    "summary": "Prehľad objednávky",
+    "decreaseQuantity": "Znížiť množstvo",
+    "increaseQuantity": "Zvýšiť množstvo"
   },
   "checkout": {
     "title": "Pokladňa",
@@ -422,7 +424,22 @@
     "price": "Cena",
     "toggleCompare": "Pridať/odobrať z porovnania",
     "addToCompare": "Porovnať",
-    "inCompare": "V porovnaní"
+    "inCompare": "V porovnaní",
+    "specSeries": "Séria",
+    "specLine": "Produktový rad",
+    "specIO": "I/O",
+    "specNPU": "NPU",
+    "spec4K": "4K dekódovanie",
+    "spec4K60p": "4K60p dekódovanie",
+    "spec4KRotation": "4K rotácia",
+    "specHDR": "HDR 10-bit",
+    "specHTML5": "HTML5",
+    "specWiFi": "Wi-Fi",
+    "spec4KStream": "4K IP stream",
+    "specTemperature": "Prevádzková teplota",
+    "specDimensions": "Rozmery",
+    "specWeight": "Hmotnosť",
+    "remove": "Odobrať"
   },
   "filters": {
     "sort": "Zoradenie",
@@ -459,7 +476,8 @@
       "s7title": "7. Ochrana osobných údajov",
       "s7content": "Spracovanie osobných údajov sa riadi Zásadami ochrany osobných údajov, ktoré sú k dispozícii na stránke Ochrana údajov.",
       "s8title": "8. Záverečné ustanovenia",
-      "s8content": "Tieto podmienky sa riadia právnym poriadkom Českej republiky. Predávajúci si vyhradzuje právo podmienky jednostranne meniť. Zmena je účinná dňom zverejnenia na internetových stránkach."
+      "s8content": "Tieto podmienky sa riadia právnym poriadkom Českej republiky. Predávajúci si vyhradzuje právo podmienky jednostranne meniť. Zmena je účinná dňom zverejnenia na internetových stránkach.",
+      "metaDescription": "Obchodné podmienky e-shopu BrightSign.cz — Make more s.r.o."
     },
     "privacy": {
       "title": "Ochrana osobných údajov",
@@ -477,7 +495,8 @@
       "s6title": "6. Práva subjektu údajov",
       "s6content": "Ako subjekt údajov máte právo:\n- Na prístup k osobným údajom\n- Na opravu nepresných údajov\n- Na výmaz údajov (právo byť zabudnutý)\n- Na obmedzenie spracovania\n- Na prenositeľnosť údajov\n- Vzniesť námietku proti spracovaniu\n- Odvolať súhlas so spracovaním\n\nPre uplatnenie práv nás kontaktujte na info@brightsign.cz.",
       "s7title": "7. Cookies",
-      "s7content": "Náš web používa cookies na zabezpečenie funkčnosti, analýzu návštevnosti a zlepšovanie služieb.\n\nTypy cookies:\n- Nevyhnutné cookies: nutné pre fungovanie webu (bez súhlasu)\n- Analytické cookies: meranie návštevnosti (so súhlasom)\n- Marketingové cookies: personalizácia obsahu (so súhlasom)"
+      "s7content": "Náš web používa cookies na zabezpečenie funkčnosti, analýzu návštevnosti a zlepšovanie služieb.\n\nTypy cookies:\n- Nevyhnutné cookies: nutné pre fungovanie webu (bez súhlasu)\n- Analytické cookies: meranie návštevnosti (so súhlasom)\n- Marketingové cookies: personalizácia obsahu (so súhlasom)",
+      "metaDescription": "Zásady ochrany osobných údajov e-shopu BrightSign.cz — Make more s.r.o."
     },
     "returns": {
       "title": "Reklamačný poriadok",
@@ -489,7 +508,8 @@
       "s3title": "3. Lehoty na vybavenie",
       "s3content": "Predávajúci rozhodne o reklamácii ihneď, v zložitých prípadoch do 3 pracovných dní. Reklamácia bude vybavená najneskôr do 30 dní odo dňa uplatnenia.",
       "s4title": "4. Kontakt pre reklamácie",
-      "s4content": "E-mail: info@brightsign.cz\nSpoločnosť: Make more s.r.o.\nIČO: 21890161"
+      "s4content": "E-mail: info@brightsign.cz\nSpoločnosť: Make more s.r.o.\nIČO: 21890161",
+      "metaDescription": "Reklamačný poriadok e-shopu BrightSign.cz — Make more s.r.o."
     }
   },
   "nav": {

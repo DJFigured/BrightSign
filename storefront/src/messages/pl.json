@@ -89,7 +89,9 @@
     "updating": "Aktualizacja...",
     "items": "pozycji",
     "item": "pozycja",
-    "summary": "Podsumowanie zamówienia"
+    "summary": "Podsumowanie zamówienia",
+    "decreaseQuantity": "Zmniejsz ilość",
+    "increaseQuantity": "Zwiększ ilość"
   },
   "checkout": {
     "title": "Kasa",
@@ -422,7 +424,22 @@
     "price": "Cena",
     "toggleCompare": "Dodaj/usuń z porównania",
     "addToCompare": "Porównaj",
-    "inCompare": "Porównywane"
+    "inCompare": "Porównywane",
+    "specSeries": "Seria",
+    "specLine": "Linia produktów",
+    "specIO": "I/O",
+    "specNPU": "NPU",
+    "spec4K": "Dekodowanie 4K",
+    "spec4K60p": "Dekodowanie 4K60p",
+    "spec4KRotation": "Rotacja 4K",
+    "specHDR": "HDR 10-bit",
+    "specHTML5": "HTML5",
+    "specWiFi": "Wi-Fi",
+    "spec4KStream": "4K IP stream",
+    "specTemperature": "Temperatura pracy",
+    "specDimensions": "Wymiary",
+    "specWeight": "Waga",
+    "remove": "Usuń"
   },
   "filters": {
     "sort": "Sortowanie",
@@ -459,7 +476,8 @@
       "s7title": "7. Ochrona danych osobowych",
       "s7content": "Przetwarzanie danych osobowych reguluje Polityka prywatności dostępna na stronie Polityka prywatności.",
       "s8title": "8. Postanowienia końcowe",
-      "s8content": "Niniejszy Regulamin podlega prawu Republiki Czeskiej. Sprzedawca zastrzega sobie prawo do jednostronnej zmiany Regulaminu. Zmiana obowiązuje od dnia publikacji na stronie internetowej."
+      "s8content": "Niniejszy Regulamin podlega prawu Republiki Czeskiej. Sprzedawca zastrzega sobie prawo do jednostronnej zmiany Regulaminu. Zmiana obowiązuje od dnia publikacji na stronie internetowej.",
+      "metaDescription": "Regulamin sklepu internetowego BrightSign.cz — Make more s.r.o."
     },
     "privacy": {
       "title": "Polityka prywatności",
@@ -477,7 +495,8 @@
       "s6title": "6. Prawa osoby, której dane dotyczą",
       "s6content": "Jako osoba, której dane dotyczą, masz prawo do:\n- Dostępu do swoich danych osobowych\n- Sprostowania nieprawidłowych danych\n- Usunięcia danych (prawo do bycia zapomnianym)\n- Ograniczenia przetwarzania\n- Przenoszenia danych\n- Wniesienia sprzeciwu wobec przetwarzania\n- Wycofania zgody\n\nAby skorzystać ze swoich praw, skontaktuj się z nami pod adresem info@brightsign.cz.",
       "s7title": "7. Pliki cookies",
-      "s7content": "Nasza strona używa plików cookies do zapewnienia funkcjonalności, analizy ruchu i doskonalenia usług.\n\nRodzaje cookies:\n- Niezbędne cookies: konieczne do działania strony (bez zgody)\n- Analityczne cookies: pomiar ruchu (za zgodą)\n- Marketingowe cookies: personalizacja treści (za zgodą)"
+      "s7content": "Nasza strona używa plików cookies do zapewnienia funkcjonalności, analizy ruchu i doskonalenia usług.\n\nRodzaje cookies:\n- Niezbędne cookies: konieczne do działania strony (bez zgody)\n- Analityczne cookies: pomiar ruchu (za zgodą)\n- Marketingowe cookies: personalizacja treści (za zgodą)",
+      "metaDescription": "Polityka prywatności sklepu BrightSign.cz — Make more s.r.o."
     },
     "returns": {
       "title": "Procedura reklamacyjna",
@@ -489,7 +508,8 @@
       "s3title": "3. Terminy rozpatrzenia",
       "s3content": "Sprzedawca rozpatrzy reklamację niezwłocznie, w skomplikowanych przypadkach w ciągu 3 dni roboczych. Reklamacja zostanie rozpatrzona najpóźniej w ciągu 30 dni od daty zgłoszenia.",
       "s4title": "4. Kontakt do reklamacji",
-      "s4content": "E-mail: info@brightsign.cz\nFirma: Make more s.r.o.\nNr identyfikacyjny: 21890161"
+      "s4content": "E-mail: info@brightsign.cz\nFirma: Make more s.r.o.\nNr identyfikacyjny: 21890161",
+      "metaDescription": "Regulamin reklamacji sklepu BrightSign.cz — Make more s.r.o."
     }
   },
   "nav": {

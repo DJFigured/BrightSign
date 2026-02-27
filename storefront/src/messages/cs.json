@@ -89,7 +89,9 @@
     "updating": "Aktualizace...",
     "items": "položek",
     "item": "položka",
-    "summary": "Shrnutí objednávky"
+    "summary": "Shrnutí objednávky",
+    "decreaseQuantity": "Snížit množství",
+    "increaseQuantity": "Zvýšit množství"
   },
   "checkout": {
     "title": "Pokladna",
@@ -415,7 +417,22 @@
     "price": "Cena",
     "toggleCompare": "Přidat/odebrat z porovnání",
     "addToCompare": "Porovnat",
-    "inCompare": "V porovnání"
+    "inCompare": "V porovnání",
+    "specSeries": "Série",
+    "specLine": "Produktová řada",
+    "specIO": "I/O",
+    "specNPU": "NPU",
+    "spec4K": "4K dekódování",
+    "spec4K60p": "4K60p dekódování",
+    "spec4KRotation": "4K rotace",
+    "specHDR": "HDR 10-bit",
+    "specHTML5": "HTML5",
+    "specWiFi": "Wi-Fi",
+    "spec4KStream": "4K IP stream",
+    "specTemperature": "Provozní teplota",
+    "specDimensions": "Rozměry",
+    "specWeight": "Hmotnost",
+    "remove": "Odebrat"
   },
   "filters": {
     "sort": "Řazení",
@@ -452,7 +469,8 @@
       "s7title": "7. Ochrana osobních údajů",
       "s7content": "Zpracování osobních údajů se řídí Zásadami ochrany osobních údajů, které jsou k dispozici na stránce Ochrana údajů.",
       "s8title": "8. Závěrečná ustanovení",
-      "s8content": "Tyto podmínky se řídí právním řádem České republiky, zejména zákonem č. 89/2012 Sb. (občanský zákoník) a zákonem č. 634/1992 Sb. (o ochraně spotřebitele).\n\nProdávající si vyhrazuje právo podmínky jednostranně měnit. Změna je účinná dnem zveřejnění na internetových stránkách.\n\nV případě sporu, který se nepodaří vyřešit dohodou, se zákazník může obrátit na Českou obchodní inspekci (www.coi.cz) jako subjekt mimosoudního řešení spotřebitelských sporů."
+      "s8content": "Tyto podmínky se řídí právním řádem České republiky, zejména zákonem č. 89/2012 Sb. (občanský zákoník) a zákonem č. 634/1992 Sb. (o ochraně spotřebitele).\n\nProdávající si vyhrazuje právo podmínky jednostranně měnit. Změna je účinná dnem zveřejnění na internetových stránkách.\n\nV případě sporu, který se nepodaří vyřešit dohodou, se zákazník může obrátit na Českou obchodní inspekci (www.coi.cz) jako subjekt mimosoudního řešení spotřebitelských sporů.",
+      "metaDescription": "Obchodní podmínky e-shopu BrightSign.cz — Make more s.r.o."
     },
     "privacy": {
       "title": "Ochrana osobních údajů",
@@ -470,7 +488,8 @@
       "s6title": "6. Práva subjektu údajů",
       "s6content": "Jako subjekt údajů máte právo:\n- Na přístup k osobním údajům\n- Na opravu nepřesných údajů\n- Na výmaz údajů (právo být zapomenut)\n- Na omezení zpracování\n- Na přenositelnost údajů\n- Vznést námitku proti zpracování\n- Odvolat souhlas se zpracováním\n\nPro uplatnění práv nás kontaktujte na info@brightsign.cz. Na vaši žádost odpovíme do 30 dnů.\n\nMáte rovněž právo podat stížnost u Úřadu pro ochranu osobních údajů (www.uoou.cz).",
       "s7title": "7. Cookies",
-      "s7content": "Náš web používá cookies pro zajištění funkčnosti, analýzu návštěvnosti a zlepšování služeb.\n\nTypy cookies:\n- Nezbytné cookies: nutné pro fungování webu (bez souhlasu)\n- Analytické cookies: měření návštěvnosti (se souhlasem)\n- Marketingové cookies: personalizace obsahu (se souhlasem)\n\nNastavení cookies můžete změnit v prohlížeči. Odmítnutí nezbytných cookies může ovlivnit funkčnost webu."
+      "s7content": "Náš web používá cookies pro zajištění funkčnosti, analýzu návštěvnosti a zlepšování služeb.\n\nTypy cookies:\n- Nezbytné cookies: nutné pro fungování webu (bez souhlasu)\n- Analytické cookies: měření návštěvnosti (se souhlasem)\n- Marketingové cookies: personalizace obsahu (se souhlasem)\n\nNastavení cookies můžete změnit v prohlížeči. Odmítnutí nezbytných cookies může ovlivnit funkčnost webu.",
+      "metaDescription": "Zásady ochrany osobních údajů e-shopu BrightSign.cz — Make more s.r.o."
     },
     "returns": {
       "title": "Reklamační řád",
@@ -482,7 +501,8 @@
       "s3title": "3. Lhůty pro vyřízení",
       "s3content": "Prodávající rozhodne o reklamaci ihned, ve složitých případech do 3 pracovních dnů. Reklamace bude vyřízena nejpozději do 30 dnů ode dne uplatnění, pokud se strany nedohodnou na delší lhůtě.\n\nPo uplynutí 30denní lhůty má zákazník stejná práva, jako by se jednalo o podstatné porušení smlouvy.",
       "s4title": "4. Kontakt pro reklamace",
-      "s4content": "E-mail: info@brightsign.cz\nSpolečnost: Make more s.r.o.\nIČO: 21890161\n\nV případě sporu se zákazník (spotřebitel) může obrátit na Českou obchodní inspekci (www.coi.cz) jako subjekt mimosoudního řešení spotřebitelských sporů."
+      "s4content": "E-mail: info@brightsign.cz\nSpolečnost: Make more s.r.o.\nIČO: 21890161\n\nV případě sporu se zákazník (spotřebitel) může obrátit na Českou obchodní inspekci (www.coi.cz) jako subjekt mimosoudního řešení spotřebitelských sporů.",
+      "metaDescription": "Reklamační řád e-shopu BrightSign.cz — Make more s.r.o."
     }
   },
   "nav": {

@@ -13,8 +13,11 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   const sp = await searchParams
   const t = await getTranslations("search")
   const query = sp.q || ""
+  const ts = await getTranslations("common")
   return {
     title: query ? `${t("resultsFor", { query })} | BrightSign.cz` : `${t("title")} | BrightSign.cz`,
+    description: ts("search"),
+    robots: { index: false },
   }
 }
 

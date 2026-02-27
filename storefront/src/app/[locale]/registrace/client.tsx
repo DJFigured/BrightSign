@@ -45,7 +45,7 @@ export function RegisterPageClient() {
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             {error && (
-              <div className="rounded-md bg-destructive/10 p-3 text-sm text-destructive">
+              <div role="alert" className="rounded-md bg-destructive/10 p-3 text-sm text-destructive">
                 {error}
               </div>
             )}
@@ -54,6 +54,7 @@ export function RegisterPageClient() {
                 <Label htmlFor="firstName">{t("firstName")}</Label>
                 <Input
                   id="firstName"
+                  autoComplete="given-name"
                   required
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
@@ -63,6 +64,7 @@ export function RegisterPageClient() {
                 <Label htmlFor="lastName">{t("lastName")}</Label>
                 <Input
                   id="lastName"
+                  autoComplete="family-name"
                   required
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
@@ -74,6 +76,7 @@ export function RegisterPageClient() {
               <Input
                 id="email"
                 type="email"
+                autoComplete="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -84,6 +87,7 @@ export function RegisterPageClient() {
               <Input
                 id="password"
                 type="password"
+                autoComplete="new-password"
                 required
                 minLength={8}
                 value={password}

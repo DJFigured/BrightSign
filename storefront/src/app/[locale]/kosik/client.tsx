@@ -104,6 +104,7 @@ export function CartPageClient() {
                         size="icon"
                         className="h-8 w-8 rounded-r-none"
                         onClick={() => updateItem(item.id, Math.max(1, item.quantity - 1))}
+                        aria-label={tc("decreaseQuantity")}
                       >
                         <Minus className="h-3 w-3" />
                       </Button>
@@ -115,6 +116,7 @@ export function CartPageClient() {
                         size="icon"
                         className="h-8 w-8 rounded-l-none"
                         onClick={() => updateItem(item.id, item.quantity + 1)}
+                        aria-label={tc("increaseQuantity")}
                       >
                         <Plus className="h-3 w-3" />
                       </Button>

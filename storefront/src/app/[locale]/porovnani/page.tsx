@@ -7,7 +7,10 @@ import type { Locale } from "@/i18n/config"
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("compare")
-  return { title: t("title") }
+  return {
+    title: t("title"),
+    robots: { index: false },
+  }
 }
 
 export default async function ComparePage() {

@@ -89,7 +89,9 @@
     "updating": "Aktualisierung...",
     "items": "Artikel",
     "item": "Artikel",
-    "summary": "Bestellübersicht"
+    "summary": "Bestellübersicht",
+    "decreaseQuantity": "Menge verringern",
+    "increaseQuantity": "Menge erhöhen"
   },
   "checkout": {
     "title": "Kasse",
@@ -422,7 +424,22 @@
     "price": "Preis",
     "toggleCompare": "Zum Vergleich hinzufügen/entfernen",
     "addToCompare": "Vergleichen",
-    "inCompare": "Im Vergleich"
+    "inCompare": "Im Vergleich",
+    "specSeries": "Serie",
+    "specLine": "Produktlinie",
+    "specIO": "I/O",
+    "specNPU": "NPU",
+    "spec4K": "4K-Dekodierung",
+    "spec4K60p": "4K60p-Dekodierung",
+    "spec4KRotation": "4K-Rotation",
+    "specHDR": "HDR 10-bit",
+    "specHTML5": "HTML5",
+    "specWiFi": "Wi-Fi",
+    "spec4KStream": "4K IP Stream",
+    "specTemperature": "Betriebstemperatur",
+    "specDimensions": "Abmessungen",
+    "specWeight": "Gewicht",
+    "remove": "Entfernen"
   },
   "filters": {
     "sort": "Sortierung",
@@ -459,7 +476,8 @@
       "s7title": "7. Datenschutz",
       "s7content": "Die Verarbeitung personenbezogener Daten unterliegt der Datenschutzrichtlinie, die auf der Seite Datenschutz verfügbar ist.",
       "s8title": "8. Schlussbestimmungen",
-      "s8content": "Diese AGB unterliegen dem Recht der Tschechischen Republik. Der Verkäufer behält sich das Recht vor, diese AGB einseitig zu ändern. Änderungen treten am Tag der Veröffentlichung auf der Website in Kraft."
+      "s8content": "Diese AGB unterliegen dem Recht der Tschechischen Republik. Der Verkäufer behält sich das Recht vor, diese AGB einseitig zu ändern. Änderungen treten am Tag der Veröffentlichung auf der Website in Kraft.",
+      "metaDescription": "Allgemeine Geschäftsbedingungen des BrightSign.cz E-Shops — Make more s.r.o."
     },
     "privacy": {
       "title": "Datenschutzrichtlinie",
@@ -477,7 +495,8 @@
       "s6title": "6. Betroffenenrechte",
       "s6content": "Als betroffene Person haben Sie das Recht auf:\n- Zugang zu Ihren personenbezogenen Daten\n- Berichtigung unrichtiger Daten\n- Löschung der Daten (Recht auf Vergessenwerden)\n- Einschränkung der Verarbeitung\n- Datenübertragbarkeit\n- Widerspruch gegen die Verarbeitung\n- Widerruf der Einwilligung\n\nZur Ausübung Ihrer Rechte kontaktieren Sie uns unter info@brightsign.cz.",
       "s7title": "7. Cookies",
-      "s7content": "Unsere Website verwendet Cookies zur Gewährleistung der Funktionalität, Verkehrsanalyse und Serviceverbesserung.\n\nArten von Cookies:\n- Notwendige Cookies: für den Betrieb der Website erforderlich (ohne Einwilligung)\n- Analyse-Cookies: Verkehrsmessung (mit Einwilligung)\n- Marketing-Cookies: Inhaltspersonalisierung (mit Einwilligung)"
+      "s7content": "Unsere Website verwendet Cookies zur Gewährleistung der Funktionalität, Verkehrsanalyse und Serviceverbesserung.\n\nArten von Cookies:\n- Notwendige Cookies: für den Betrieb der Website erforderlich (ohne Einwilligung)\n- Analyse-Cookies: Verkehrsmessung (mit Einwilligung)\n- Marketing-Cookies: Inhaltspersonalisierung (mit Einwilligung)",
+      "metaDescription": "Datenschutzrichtlinie des BrightSign.cz E-Shops — Make more s.r.o."
     },
     "returns": {
       "title": "Reklamationsordnung",
@@ -489,7 +508,8 @@
       "s3title": "3. Bearbeitungsfristen",
       "s3content": "Der Verkäufer entscheidet unverzüglich über die Reklamation, in komplexen Fällen innerhalb von 3 Werktagen. Die Reklamation wird spätestens innerhalb von 30 Tagen ab dem Eingangsdatum bearbeitet.",
       "s4title": "4. Kontakt für Reklamationen",
-      "s4content": "E-Mail: info@brightsign.cz\nUnternehmen: Make more s.r.o.\nFirmennummer: 21890161"
+      "s4content": "E-Mail: info@brightsign.cz\nUnternehmen: Make more s.r.o.\nFirmennummer: 21890161",
+      "metaDescription": "Reklamationsordnung des BrightSign.cz E-Shops — Make more s.r.o."
     }
   },
   "nav": {

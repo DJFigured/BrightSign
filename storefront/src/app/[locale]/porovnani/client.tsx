@@ -43,22 +43,23 @@ const SPEC_KEYS = [
   "Shipping weight / Player weight",
 ] as const
 
-const SPEC_LABELS: Record<string, string> = {
-  series: "Serie",
-  lineCode: "Product line",
-  "I/O package": "I/O",
-  "Neural processing unit (NPU)": "NPU",
-  "4K video decoding": "4K decoding",
-  "4K60p video decoding": "4K60p decoding",
-  "4K video rotation": "4K rotation",
-  "10-bit HDR support": "HDR 10-bit",
-  "HTML5 performance": "HTML5",
-  "Wi-Fi": "Wi-Fi",
-  "Supports 4K IP streaming": "4K IP stream",
-  "Operating temperature range": "Temperature",
-  "Dimensions (W x D x H)": "Dimensions",
-  "Player weight": "Weight",
-  "Shipping weight / Player weight": "Weight",
+// Map raw spec keys to i18n compare keys
+const SPEC_I18N_MAP: Record<string, string> = {
+  series: "specSeries",
+  lineCode: "specLine",
+  "I/O package": "specIO",
+  "Neural processing unit (NPU)": "specNPU",
+  "4K video decoding": "spec4K",
+  "4K60p video decoding": "spec4K60p",
+  "4K video rotation": "spec4KRotation",
+  "10-bit HDR support": "specHDR",
+  "HTML5 performance": "specHTML5",
+  "Wi-Fi": "specWiFi",
+  "Supports 4K IP streaming": "spec4KStream",
+  "Operating temperature range": "specTemperature",
+  "Dimensions (W x D x H)": "specDimensions",
+  "Player weight": "specWeight",
+  "Shipping weight / Player weight": "specWeight",
 }
 
 export function ComparePageClient({ regionId }: { regionId: string }) {
@@ -126,9 +127,10 @@ export function ComparePageClient({ regionId }: { regionId: string }) {
       })
       // Only show row if at least one product has a value
       if (values.some((v) => v !== null)) {
+        const i18nKey = SPEC_I18N_MAP[key]
         rows.push({
           key,
-          label: SPEC_LABELS[key] ?? key,
+          label: i18nKey ? t(i18nKey) : key,
           values,
         })
       }
@@ -186,6 +188,7 @@ export function ComparePageClient({ regionId }: { regionId: string }) {
                       <button
                         onClick={() => removeItem(product.id)}
                         className="absolute -right-1 -top-1 rounded-full bg-gray-200 p-0.5 text-muted-foreground hover:bg-gray-300 hover:text-foreground"
+                        aria-label={`${t("remove")} ${product.title}`}
                       >
                         <X className="h-3 w-3" />
                       </button>
