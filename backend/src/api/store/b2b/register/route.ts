@@ -1,6 +1,7 @@
 import { MedusaRequest, MedusaResponse } from "@medusajs/framework/http"
 import { ContainerRegistrationKeys, Modules } from "@medusajs/framework/utils"
 import { parseVatId, validateVatNumber } from "../../../../lib/vies"
+import { checkRateLimit } from "../../../../lib/rate-limit"
 
 /**
  * POST /store/b2b/register
@@ -20,6 +21,7 @@ export async function POST(req: MedusaRequest, res: MedusaResponse) {
     registration_number?: string
     business_type?: "integrator" | "retailer" | "enterprise" | "other"
     expected_volume?: "low" | "medium" | "high"
+    website?: string // honeypot
     address?: {
       street: string
       city: string
@@ -28,12 +30,32 @@ export async function POST(req: MedusaRequest, res: MedusaResponse) {
     }
   }
 
+  // Honeypot — if filled, silently return success (bot trap)
+  if (body.website) {
+    return res.status(201).json({
+      message: "Vaši registraci zpracujeme. Informace obdržíte na zadaný email.",
+      vat_status: "pending",
+    })
+  }
+
+  // Rate limit: 3 requests per 10 minutes per IP
+  const ip = req.ip || req.headers["x-forwarded-for"]?.toString() || "unknown"
+  if (!checkRateLimit(ip, 3, 600000, "b2b-register")) {
+    return res.status(429).json({ error: "Too many requests. Please try again later." })
+  }
+
   // Basic required field check
   const required = ["email", "password", "first_name", "last_name", "phone", "company_name", "vat_id"]
   for (const field of required) {
     if (!body[field as keyof typeof body]) {
-      return res.status(400).json({ error: `Missing required field: ${field}` })
+      return res.status(400).json({ error: "Vyplňte prosím všechna povinná pole." })
     }
+  }
+
+  // Stricter email validation
+  const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/
+  if (!emailRegex.test(body.email) || body.email.length > 254) {
+    return res.status(400).json({ error: "Neplatný formát emailové adresy." })
   }
 
   // Validate VAT ID format
@@ -48,10 +70,14 @@ export async function POST(req: MedusaRequest, res: MedusaResponse) {
   const logger = req.scope.resolve(ContainerRegistrationKeys.LOGGER)
   const customerModuleService = req.scope.resolve(Modules.CUSTOMER)
 
-  // Check if email already exists
+  // Check if email already exists — return same message to prevent user enumeration
   const existing = await customerModuleService.listCustomers({ email: body.email })
   if (existing.length > 0) {
-    return res.status(409).json({ error: "Email je již zaregistrován." })
+    logger.info(`[B2B] Duplicate registration attempt for ${body.email}`)
+    return res.status(201).json({
+      message: "Vaši registraci zpracujeme. Informace obdržíte na zadaný email.",
+      vat_status: "pending",
+    })
   }
 
   // Attempt VIES validation
@@ -115,18 +141,7 @@ export async function POST(req: MedusaRequest, res: MedusaResponse) {
   }
 
   return res.status(201).json({
-    customer: {
-      id: customer.id,
-      email: customer.email,
-      company_name: customer.company_name,
-      vat_status: viesStatus,
-    },
-    message:
-      viesStatus === "valid"
-        ? "Registrace úspěšná. Váš B2B účet je aktivní s 10% slevou."
-        : viesStatus === "pending"
-        ? "Registrace úspěšná. DIČ bude ověřeno do 24h. Zatím máte dočasný B2B přístup."
-        : "Registrace úspěšná. DIČ nebylo ověřeno — kontaktujte nás pro ruční schválení.",
+    message: "Vaši registraci zpracujeme. Informace obdržíte na zadaný email.",
     vat_status: viesStatus,
   })
 }

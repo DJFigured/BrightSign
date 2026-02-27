@@ -158,6 +158,7 @@ export function ContactPageClient() {
                 name="name"
                 autoComplete="name"
                 required
+                maxLength={100}
                 value={form.name}
                 onChange={e => setForm({ ...form, name: e.target.value })}
                 className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-brand-accent focus:outline-none focus:ring-1 focus:ring-brand-accent"
@@ -173,6 +174,7 @@ export function ContactPageClient() {
                 name="email"
                 autoComplete="email"
                 required
+                maxLength={254}
                 value={form.email}
                 onChange={e => setForm({ ...form, email: e.target.value })}
                 className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-brand-accent focus:outline-none focus:ring-1 focus:ring-brand-accent"
@@ -186,6 +188,7 @@ export function ContactPageClient() {
                 type="text"
                 id="subject"
                 name="subject"
+                maxLength={200}
                 value={form.subject}
                 onChange={e => setForm({ ...form, subject: e.target.value })}
                 className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-brand-accent focus:outline-none focus:ring-1 focus:ring-brand-accent"
@@ -200,6 +203,7 @@ export function ContactPageClient() {
                 name="message"
                 rows={5}
                 required
+                maxLength={5000}
                 value={form.message}
                 onChange={e => setForm({ ...form, message: e.target.value })}
                 className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-brand-accent focus:outline-none focus:ring-1 focus:ring-brand-accent"

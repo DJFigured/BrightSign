@@ -3,6 +3,18 @@
 import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from "react"
 import { sdk } from "./sdk"
 
+/** Set or clear the _bs_auth cookie via the server-side API route (HttpOnly). */
+async function setAuthCookie(value: boolean) {
+  try {
+    await fetch("/api/auth/session", {
+      method: value ? "POST" : "DELETE",
+      credentials: "same-origin",
+    })
+  } catch {
+    // Ignore — middleware hint cookie is non-critical
+  }
+}
+
 interface Customer {
   id: string
   email: string
@@ -32,10 +44,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       const { customer } = await sdk.store.customer.retrieve() as { customer: Customer }
       setCustomer(customer)
-      document.cookie = "_bs_auth=1; path=/; max-age=604800; SameSite=Lax"
+      setAuthCookie(true)
     } catch {
       setCustomer(null)
-      document.cookie = "_bs_auth=; path=/; max-age=0"
+      setAuthCookie(false)
     }
   }, [])
 
@@ -46,7 +58,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const login = useCallback(async (email: string, password: string) => {
     await sdk.auth.login("customer", "emailpass", { email, password })
     await refreshCustomer()
-    document.cookie = "_bs_auth=1; path=/; max-age=604800; SameSite=Lax"
   }, [refreshCustomer])
 
   const register = useCallback(async (email: string, password: string, firstName: string, lastName: string) => {
@@ -65,7 +76,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     } catch {
       // Ignore errors
     }
-    document.cookie = "_bs_auth=; path=/; max-age=0"
+    setAuthCookie(false)
     setCustomer(null)
   }, [])
 

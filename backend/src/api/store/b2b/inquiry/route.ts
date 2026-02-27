@@ -40,9 +40,10 @@ export async function POST(req: MedusaRequest, res: MedusaResponse) {
     })
   }
 
-  // Basic email format check
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email)) {
-    return res.status(400).json({ error: "Invalid email format", field: "email" })
+  // Stricter email validation
+  const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/
+  if (!emailRegex.test(body.email) || body.email.length > 254) {
+    return res.status(400).json({ error: "Invalid email format" })
   }
 
   const logger = req.scope.resolve(ContainerRegistrationKeys.LOGGER)

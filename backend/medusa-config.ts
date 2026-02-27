@@ -10,8 +10,14 @@ module.exports = defineConfig({
       storeCors: process.env.STORE_CORS!,
       adminCors: process.env.ADMIN_CORS!,
       authCors: process.env.AUTH_CORS!,
-      jwtSecret: process.env.JWT_SECRET || (() => { console.warn("⚠️  JWT_SECRET not set — using insecure default. Set it in .env for production!"); return "insecure-jwt-change-me" })(),
-      cookieSecret: process.env.COOKIE_SECRET || (() => { console.warn("⚠️  COOKIE_SECRET not set — using insecure default. Set it in .env for production!"); return "insecure-cookie-change-me" })(),
+      jwtSecret: (() => {
+        if (!process.env.JWT_SECRET) throw new Error("JWT_SECRET is required. Set it in .env or environment variables.")
+        return process.env.JWT_SECRET
+      })(),
+      cookieSecret: (() => {
+        if (!process.env.COOKIE_SECRET) throw new Error("COOKIE_SECRET is required. Set it in .env or environment variables.")
+        return process.env.COOKIE_SECRET
+      })(),
     },
   },
   modules: [

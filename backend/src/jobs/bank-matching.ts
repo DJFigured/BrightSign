@@ -44,7 +44,7 @@ export default async function bankMatchingHandler(container: MedusaContainer) {
       host: imapHost,
       port: imapPort,
       tls: true,
-      tlsOptions: { rejectUnauthorized: false },
+      tlsOptions: { rejectUnauthorized: true },
     })
 
     imap.once("ready", () => {

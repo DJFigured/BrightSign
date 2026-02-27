@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
+import DOMPurify from "isomorphic-dompurify"
 import Image from "next/image"
 import { useTranslations, useLocale, useMessages } from "next-intl"
 import { Link } from "@/i18n/navigation"
@@ -320,7 +321,7 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
               <h2 className="mb-3 text-lg font-semibold">{t("description")}</h2>
               <div
                 className="prose prose-sm max-w-none text-muted-foreground"
-                dangerouslySetInnerHTML={{ __html: description }}
+                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}
               />
             </div>
           )}

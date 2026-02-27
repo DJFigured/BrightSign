@@ -131,6 +131,7 @@ export function B2BRegistracePageClient() {
                   type="text"
                   autoComplete="organization"
                   required
+                  maxLength={200}
                   value={form.company}
                   onChange={e => setForm({...form, company: e.target.value})}
                 />
@@ -140,6 +141,7 @@ export function B2BRegistracePageClient() {
                 <Input
                   type="text"
                   required
+                  maxLength={20}
                   value={form.ico}
                   onChange={e => setForm({...form, ico: e.target.value})}
                 />
@@ -149,6 +151,7 @@ export function B2BRegistracePageClient() {
                 <Input
                   type="text"
                   placeholder="CZ12345678"
+                  maxLength={20}
                   value={form.dic}
                   onChange={e => setForm({...form, dic: e.target.value})}
                 />
@@ -160,6 +163,7 @@ export function B2BRegistracePageClient() {
                   type="text"
                   autoComplete="name"
                   required
+                  maxLength={100}
                   value={form.contactName}
                   onChange={e => setForm({...form, contactName: e.target.value})}
                 />
@@ -170,6 +174,7 @@ export function B2BRegistracePageClient() {
                   type="email"
                   autoComplete="email"
                   required
+                  maxLength={254}
                   value={form.email}
                   onChange={e => setForm({...form, email: e.target.value})}
                 />
@@ -179,6 +184,7 @@ export function B2BRegistracePageClient() {
                 <Input
                   type="tel"
                   autoComplete="tel"
+                  maxLength={20}
                   value={form.phone}
                   onChange={e => setForm({...form, phone: e.target.value})}
                 />
@@ -188,6 +194,7 @@ export function B2BRegistracePageClient() {
               <Label>{t('message')}</Label>
               <textarea
                 rows={4}
+                maxLength={5000}
                 value={form.message}
                 onChange={e => setForm({...form, message: e.target.value})}
                 placeholder={t('messagePlaceholder')}

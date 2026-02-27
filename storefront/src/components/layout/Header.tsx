@@ -176,6 +176,7 @@ export function Header({ navData }: HeaderProps) {
               placeholder={tc("search")}
               aria-label={tc("search")}
               className="pl-9"
+              maxLength={200}
               value={searchQuery}
               onChange={(e) => handleSearchChange(e.target.value)}
               onKeyDown={handleSearch}
@@ -269,6 +270,7 @@ export function Header({ navData }: HeaderProps) {
                 placeholder={tc("search")}
                 className="pl-9"
                 autoFocus
+                maxLength={200}
                 value={searchQuery}
                 onChange={(e) => handleSearchChange(e.target.value)}
                 onKeyDown={handleSearch}
