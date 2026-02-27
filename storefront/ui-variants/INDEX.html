@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrightSign.cz UI Varianty &ndash; Rozcestn&iacute;k</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'bs-purple': '#2D1B69',
+            'bs-violet': '#6B3FA0',
+            'bs-cyan': '#00C4CC',
+            'bs-dark': '#0d0520',
+            'bs-magenta': '#c850c0',
+            'bs-light': '#f8f6fc',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { font-family: 'Inter', system-ui, sans-serif; }
+    .card-hover { transition: all 0.3s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(45, 27, 105, 0.15); }
+    @media (prefers-reduced-motion: reduce) {
+      .card-hover:hover { transform: none; }
+    }
+  </style>
+</head>
+<body class="bg-bs-light min-h-screen">
+
+  <!-- Header -->
+  <div class="bg-bs-dark text-white py-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-xl bg-bs-violet flex items-center justify-center">
+          <i data-lucide="monitor" class="w-6 h-6 text-white"></i>
+        </div>
+        <span class="text-2xl font-bold">Bright<span class="text-bs-cyan">Sign</span>.cz</span>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-bold mb-2">10 UI Design Variant</h1>
+      <p class="text-white/60 max-w-2xl mx-auto">
+        10 designov&yacute;ch variant homepage pro BrightSign.cz e-shop. V&scaron;echny pou&zcaron;&iacute;vaj&iacute; ofici&aacute;ln&iacute;
+        BrightSign brand paletu (purple, cyan, magenta) &ndash; ka&zcaron;d&aacute; interpretuje brand jin&yacute;m zp&uring;sobem.
+      </p>
+    </div>
+  </div>
+
+  <!-- Variants Grid -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+
+    <!-- Brand Colors Reference -->
+    <div class="bg-white rounded-2xl p-6 mb-10 border border-gray-100">
+      <h2 class="font-bold text-bs-purple mb-4">BrightSign Brand barvy (pou&zcaron;it&eacute; ve v&scaron;ech variant&aacute;ch)</h2>
+      <div class="flex flex-wrap gap-4">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-[#2D1B69]"></div>
+          <div>
+            <div class="text-xs font-semibold text-gray-900">BS Purple</div>
+            <div class="text-xs text-gray-500 font-mono">#2D1B69</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-[#6B3FA0]"></div>
+          <div>
+            <div class="text-xs font-semibold text-gray-900">BS Violet</div>
+            <div class="text-xs text-gray-500 font-mono">#6B3FA0</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-[#00C4CC]"></div>
+          <div>
+            <div class="text-xs font-semibold text-gray-900">BS Cyan</div>
+            <div class="text-xs text-gray-500 font-mono">#00C4CC</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-[#c850c0]"></div>
+          <div>
+            <div class="text-xs font-semibold text-gray-900">BS Magenta</div>
+            <div class="text-xs text-gray-500 font-mono">#c850c0</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-[#0d0520]"></div>
+          <div>
+            <div class="text-xs font-semibold text-gray-900">BS Dark</div>
+            <div class="text-xs text-gray-500 font-mono">#0d0520</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SADA 2: Brand Native (5 variant) -->
+    <!-- ============================================ -->
+    <div class="mb-4">
+      <h2 class="text-2xl font-bold text-bs-purple mb-1">Sada 2: Brand Native</h2>
+      <p class="text-gray-500 text-sm">P&uring;vodn&ecaron; navr&zcaron;en&eacute; s BrightSign paletou. Opraveny p&rcaron;eklepy, fake social proof, ceny sjednoceny na bez DPH.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
+
+      <!-- V1: Flagship -->
+      <a href="variant-1-flagship.html" class="card-hover bg-white rounded-2xl overflow-hidden border border-gray-100">
+        <div class="h-40 bg-gradient-to-br from-bs-dark via-bs-purple to-bs-violet flex items-center justify-center relative">
+          <div class="text-center">
+            <div class="text-white text-2xl font-bold">Flagship</div>
+            <div class="text-white/50 text-sm mt-1">V&ecaron;rn&aacute; adaptace brightsign.biz</div>
+          </div>
+          <div class="absolute top-3 right-3 bg-white/20 text-white text-xs font-bold px-2.5 py-1 rounded-full">
+            V1
+          </div>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold text-lg text-bs-purple mb-2">Varianta 1: Flagship</h3>
+          <p class="text-sm text-gray-500 mb-4">
+            Nejbl&iacute;&zcaron;&scaron;&iacute; k ofici&aacute;ln&iacute;mu webu brightsign.biz. Mega menu, tab navigace, BrightSignOS sekce
+            s feature listem, mobiln&iacute; menu s produktov&yacute;m submenu.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="bg-bs-light text-bs-violet text-xs px-2 py-1 rounded-full font-medium">Inter</span>
+            <span class="bg-bs-light text-bs-violet text-xs px-2 py-1 rounded-full font-medium">Corporate</span>
+            <span class="bg-bs-light text-bs-violet text-xs px-2 py-1 rounded-full font-medium">Mega Menu</span>
+          </div>
+          <div class="text-xs text-gray-400">
+            <span class="font-semibold">C&iacute;lov&aacute; skupina:</span> B2B enterprise, AV integr&aacute;to&rcaron;i
+          </div>
+        </div>
+      </a>
+
+      <!-- V2: Product Focus -->
+      <a href="variant-2-product-focus.html" class="card-hover bg-white rounded-2xl overflow-hidden border border-gray-100">
+        <div class="h-40 bg-gradient-to-br from-bs-purple via-bs-violet to-bs-magenta flex items-center justify-center relative">
+          <div class="text-center">
+            <div class="text-white text-2xl font-bold">Product Focus</div>
+            <div class="text-white/50 text-sm mt-1">Specs + ceny na prvn&iacute; pohled</div>
+          </div>
+          <div class="absolute top-3 right-3 bg-white/20 text-white text-xs font-bold px-2.5 py-1 rounded-full">
+            V2
+          </div>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold text-lg text-bs-purple mb-2">Varianta 2: Product Focus</h3>
+          <p class="text-sm text-gray-500 mb-4">
+            4 produkty v hero s cenami. Interaktivn&iacute; comparison tabulka s horizontaln&iacute;m scrollem na mobilu.
+            Sticky product bar se v&scaron;emi modely. Filtr podle pou&zcaron;it&iacute;.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="bg-bs-light text-bs-violet text-xs px-2 py-1 rounded-full font-medium">Jakarta Sans</span>
+            <span class="bg-bs-light text-bs-violet text-xs px-2 py-1 rounded-full font-medium">Monospace ceny</span>
+            <span class="bg-bs-light text-bs-violet text-xs px-2 py-1 rounded-full font-medium">Comparison</span>
+          </div>
+          <div class="text-xs text-gray-400">
+            <span class="font-semibold">C&iacute;lov&aacute; skupina:</span> Tech-savvy IT, AV integr&aacute;to&rcaron;i
+          </div>
+        </div>
+      </a>
+
+      <!-- V3: Solutions -->
+      <a href="variant-3-solutions.html" class="card-hover bg-white rounded-2xl overflow-hidden border border-gray-100">
+        <div class="h-40 bg-gradient-to-br from-bs-violet via-bs-magenta to-bs-cyan flex items-center justify-center relative">
+          <div class="text-center">
+            <div class="text-white text-2xl font-bold">Solutions</div>
+            <div class="text-white/50 text-sm mt-1">&Rcaron;e&scaron;en&iacute; podle odv&ecaron;tv&iacute;</div>
+          </div>
+          <div class="absolute top-3 right-3 bg-white/20 text-white text-xs font-bold px-2.5 py-1 rounded-full">
+            V3
+          </div>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold text-lg text-bs-purple mb-2">Varianta 3: Solutions</h3>
+          <p class="text-sm text-gray-500 mb-4">
+            Hero s industry ikonami. Ka&zcaron;d&eacute; odv&ecaron;tv&iacute; = karta s doporu&ccaron;en&yacute;m produktem. Re&aacute;ln&eacute;
+            trust signaly m&iacute;sto fake testimonials. Konfigurator teaser.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="bg-bs-light text-bs-violet text-xs px-2 py-1 rounded-full font-medium">Manrope</span>
+            <span class="bg-bs-light text-bs-violet text-xs px-2 py-1 rounded-full font-medium">Industry cards</span>
+            <span class="bg-bs-light text-bs-violet text-xs px-2 py-1 rounded-full font-medium">Trust signals</span>
+          </div>
+          <div class="text-xs text-gray-400">
+            <span class="font-semibold">C&iacute;lov&aacute; skupina:</span> First-time buyers, marketing mana&zcaron;e&rcaron;i
+          </div>
+        </div>
+      </a>
+
+      <!-- V4: Premium -->
+      <a href="variant-4-premium.html" class="card-hover bg-white rounded-2xl overflow-hidden border border-gray-100">
+        <div class="h-40 bg-gradient-to-b from-[#08021a] via-bs-dark to-bs-purple flex items-center justify-center relative">
+          <div class="text-center">
+            <div class="text-white text-2xl font-bold" style="text-shadow: 0 0 40px rgba(0,196,204,0.4)">Premium</div>
+            <div class="text-white/50 text-sm mt-1">Dark luxury experience</div>
+          </div>
+          <div class="absolute top-3 right-3 bg-white/10 text-white text-xs font-bold px-2.5 py-1 rounded-full border border-white/10">
+            V4
+          </div>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold text-lg text-bs-purple mb-2">Varianta 4: Premium</h3>
+          <p class="text-sm text-gray-500 mb-4">
+            Full dark mode (#08021a). Ka&zcaron;d&yacute; produkt = cel&aacute; obrazovka. Glow efekty, animovan&eacute;
+            gradienty (CSS). prefers-reduced-motion podpora. WCAG AA kontrast.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="bg-bs-light text-bs-violet text-xs px-2 py-1 rounded-full font-medium">Sora</span>
+            <span class="bg-bs-light text-bs-violet text-xs px-2 py-1 rounded-full font-medium">Dark mode</span>
+            <span class="bg-bs-light text-bs-violet text-xs px-2 py-1 rounded-full font-medium">A11y</span>
+          </div>
+          <div class="text-xs text-gray-400">
+            <span class="font-semibold">C&iacute;lov&aacute; skupina:</span> Premium B2B, architekti, luxury retail
+          </div>
+        </div>
+      </a>
+
+      <!-- V5: Conversion -->
+      <a href="variant-5-conversion.html" class="card-hover bg-white rounded-2xl overflow-hidden border border-gray-100">
+        <div class="h-40 bg-gradient-to-r from-bs-purple to-bs-cyan flex items-center justify-center relative">
+          <div class="text-center">
+            <div class="text-white text-2xl font-bold">Conversion</div>
+            <div class="text-white/50 text-sm mt-1">Maxim&aacute;ln&iacute; prodejnost</div>
+          </div>
+          <div class="absolute top-3 right-3 bg-white/20 text-white text-xs font-bold px-2.5 py-1 rounded-full">
+            V5
+          </div>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold text-lg text-bs-purple mb-2">Varianta 5: Conversion</h3>
+          <p class="text-sm text-gray-500 mb-4">
+            Hero = hlavn&iacute; produkt s cenou a &bdquo;P&rcaron;idat do ko&scaron;&iacute;ku&ldquo; HNED. Profesion&aacute;ln&iacute; urgency
+            (skladem, expedice do 24h), re&aacute;ln&eacute; trust signaly, B2B newsletter CTA.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="bg-bs-light text-bs-violet text-xs px-2 py-1 rounded-full font-medium">DM Sans</span>
+            <span class="bg-bs-light text-bs-violet text-xs px-2 py-1 rounded-full font-medium">Urgency</span>
+            <span class="bg-bs-light text-bs-violet text-xs px-2 py-1 rounded-full font-medium">Trust signals</span>
+          </div>
+          <div class="text-xs text-gray-400">
+            <span class="font-semibold">C&iacute;lov&aacute; skupina:</span> Aktivn&iacute; nakupuj&iacute;c&iacute;, &bdquo;brightsign koupit&ldquo;
+          </div>
+        </div>
+      </a>
+
+      <!-- CEO Recommendation -->
+      <div class="bg-bs-purple rounded-2xl p-6 text-white flex flex-col justify-between">
+        <div>
+          <h3 class="font-bold text-lg mb-4">
+            <i data-lucide="sparkles" class="w-5 h-5 inline-block mr-1 text-bs-cyan"></i>
+            Doporu&ccaron;en&iacute;
+          </h3>
+          <p class="text-white/60 text-sm mb-4">
+            Pro produkci doporu&ccaron;uji kombinaci p&rcaron;&iacute;stup&uring;:
+          </p>
+          <ul class="space-y-2 text-sm text-white/80">
+            <li class="flex items-start gap-2">
+              <span class="text-bs-cyan font-bold mt-0.5">1.</span>
+              <span><b>Konverzn&iacute; z&aacute;klad</b> z V5 (CTA, trust, urgency)</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-bs-cyan font-bold mt-0.5">2.</span>
+              <span><b>Brand vizu&aacute;l</b> z V1 Flagship (gradienty, BrightSignOS)</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-bs-cyan font-bold mt-0.5">3.</span>
+              <span><b>Comparison tabulka</b> z V2 (specs na homepage)</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-bs-cyan font-bold mt-0.5">4.</span>
+              <span><b>Industry sekce</b> z V3 (solutions navigace)</span>
+            </li>
+          </ul>
+        </div>
+        <div class="mt-6 pt-4 border-t border-white/10 text-xs text-white/40">
+          Kter&yacute; design v&aacute;s zaujal? &Rcaron;ekn&ecaron;te a implementujeme.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SADA 1: Rebrandovane varianty (5 variant) -->
+    <!-- ============================================ -->
+    <div class="mb-4">
+      <h2 class="text-2xl font-bold text-bs-purple mb-1">Sada 1: Rebrandov&aacute;no
+        <span class="inline-block ml-2 bg-bs-magenta/10 text-bs-magenta text-xs font-semibold px-2.5 py-1 rounded-full align-middle">P&uring;vodn&ecaron; jin&eacute; barvy</span>
+      </h2>
+      <p class="text-gray-500 text-sm">P&uring;vodn&ecaron; navr&zcaron;en&eacute; s jin&yacute;mi barvami (zelena, navy, terracotta). P&rcaron;ebarveny na BrightSign paletu, opraveny ceny a obsah.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
+
+      <!-- V6: Minimal (rebrand) -->
+      <a href="variant-1-minimal.html" class="card-hover bg-white rounded-2xl overflow-hidden border border-gray-100 relative">
+        <div class="absolute top-3 left-3 z-10 bg-bs-magenta text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+          REBR&Aacute;NDOV&Aacute;NO
+        </div>
+        <div class="h-40 bg-gradient-to-br from-white via-bs-light to-[#e8e4f0] flex items-center justify-center relative">
+          <div class="text-center">
+            <div class="text-bs-purple text-2xl font-bold">Minimal</div>
+            <div class="text-gray-400 text-sm mt-1">Apple-like &ccaron;istota v purple/cyan</div>
+          </div>
+          <div class="absolute top-3 right-3 bg-bs-purple/10 text-bs-purple text-xs font-bold px-2.5 py-1 rounded-full">
+            V6
+          </div>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold text-lg text-bs-purple mb-2">Varianta 6: Minimal</h3>
+          <p class="text-sm text-gray-500 mb-4">
+            Apple minimalism s BrightSign paletou. &Ccaron;ist&yacute;, prostorn&yacute; layout, b&iacute;l&eacute; pozad&iacute;
+            s cyan/violet akcenty. Maxim&aacute;ln&iacute; &ccaron;itelnost, &zcaron;&aacute;dn&yacute; vizualni &scaron;um.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="bg-bs-light text-bs-violet text-xs px-2 py-1 rounded-full font-medium">Inter</span>
+            <span class="bg-bs-light text-bs-violet text-xs px-2 py-1 rounded-full font-medium">Minimalism</span>
+            <span class="bg-bs-light text-bs-violet text-xs px-2 py-1 rounded-full font-medium">Whitespace</span>
+          </div>
+          <div class="text-xs text-gray-400">
+            <span class="font-semibold">C&iacute;lov&aacute; skupina:</span> Design-oriented B2B, premium klienti
+          </div>
+        </div>
+      </a>
+
+      <!-- V7: Dark Tech (rebrand) -->
+      <a href="variant-2-dark-tech.html" class="card-hover bg-white rounded-2xl overflow-hidden border border-gray-100 relative">
+        <div class="absolute top-3 left-3 z-10 bg-bs-magenta text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+          REBR&Aacute;NDOV&Aacute;NO
+        </div>
+        <div class="h-40 bg-gradient-to-br from-[#0d0520] via-[#160a30] to-bs-purple flex items-center justify-center relative">
+          <div class="text-center">
+            <div class="text-bs-cyan text-2xl font-bold" style="text-shadow: 0 0 30px rgba(0,196,204,0.5)">Dark Tech</div>
+            <div class="text-white/40 text-sm mt-1">Neonov&yacute; glow v purple/cyan</div>
+          </div>
+          <div class="absolute top-3 right-3 bg-white/10 text-white text-xs font-bold px-2.5 py-1 rounded-full">
+            V7
+          </div>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold text-lg text-bs-purple mb-2">Varianta 7: Dark Tech</h3>
+          <p class="text-sm text-gray-500 mb-4">
+            Dark mode s cyan/magenta neonov&yacute;mi glow efekty. Space Grotesk font.
+            Technick&yacute;, futuristick&yacute; vibe pro IT publikum.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="bg-bs-light text-bs-violet text-xs px-2 py-1 rounded-full font-medium">Space Grotesk</span>
+            <span class="bg-bs-light text-bs-violet text-xs px-2 py-1 rounded-full font-medium">Dark mode</span>
+            <span class="bg-bs-light text-bs-violet text-xs px-2 py-1 rounded-full font-medium">Neon glow</span>
+          </div>
+          <div class="text-xs text-gray-400">
+            <span class="font-semibold">C&iacute;lov&aacute; skupina:</span> IT admini, tech enthusiasts
+          </div>
+        </div>
+      </a>
+
+      <!-- V8: Enterprise (rebrand) -->
+      <a href="variant-3-enterprise.html" class="card-hover bg-white rounded-2xl overflow-hidden border border-gray-100 relative">
+        <div class="absolute top-3 left-3 z-10 bg-bs-magenta text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+          REBR&Aacute;NDOV&Aacute;NO
+        </div>
+        <div class="h-40 bg-gradient-to-br from-bs-purple via-[#3d2a80] to-bs-violet flex items-center justify-center relative">
+          <div class="text-center">
+            <div class="text-white text-2xl font-bold">Enterprise</div>
+            <div class="text-white/50 text-sm mt-1">B2B trust v purple t&oacute;nech</div>
+          </div>
+          <div class="absolute top-3 right-3 bg-white/20 text-white text-xs font-bold px-2.5 py-1 rounded-full">
+            V8
+          </div>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold text-lg text-bs-purple mb-2">Varianta 8: Enterprise</h3>
+          <p class="text-sm text-gray-500 mb-4">
+            Profesion&aacute;ln&iacute; B2B layout s IBM Plex fontem. B2B cenov&aacute; tabulka,
+            enterprise spolehlivost, korporatn&iacute; d&uring;v&ecaron;ryhodnost.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="bg-bs-light text-bs-violet text-xs px-2 py-1 rounded-full font-medium">IBM Plex Sans</span>
+            <span class="bg-bs-light text-bs-violet text-xs px-2 py-1 rounded-full font-medium">B2B</span>
+            <span class="bg-bs-light text-bs-violet text-xs px-2 py-1 rounded-full font-medium">Trust</span>
+          </div>
+          <div class="text-xs text-gray-400">
+            <span class="font-semibold">C&iacute;lov&aacute; skupina:</span> Enterprise B2B, procurement
+          </div>
+        </div>
+      </a>
+
+      <!-- V9: Editorial (rebrand) -->
+      <a href="variant-4-editorial.html" class="card-hover bg-white rounded-2xl overflow-hidden border border-gray-100 relative">
+        <div class="absolute top-3 left-3 z-10 bg-bs-magenta text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+          REBR&Aacute;NDOV&Aacute;NO
+        </div>
+        <div class="h-40 bg-gradient-to-br from-bs-violet via-bs-magenta to-bs-purple flex items-center justify-center relative">
+          <div class="text-center">
+            <div class="text-white text-2xl font-bold" style="font-family: serif">Editorial</div>
+            <div class="text-white/50 text-sm mt-1">Magaz&iacute;nov&yacute; storytelling</div>
+          </div>
+          <div class="absolute top-3 right-3 bg-white/20 text-white text-xs font-bold px-2.5 py-1 rounded-full">
+            V9
+          </div>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold text-lg text-bs-purple mb-2">Varianta 9: Editorial</h3>
+          <p class="text-sm text-gray-500 mb-4">
+            Magaz&iacute;nov&yacute; layout s Playfair Display serifem. Storytelling p&rcaron;&iacute;stup,
+            use-case karty, editorial linie v purple/magenta.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="bg-bs-light text-bs-violet text-xs px-2 py-1 rounded-full font-medium">Playfair Display</span>
+            <span class="bg-bs-light text-bs-violet text-xs px-2 py-1 rounded-full font-medium">Serif</span>
+            <span class="bg-bs-light text-bs-violet text-xs px-2 py-1 rounded-full font-medium">Magazine</span>
+          </div>
+          <div class="text-xs text-gray-400">
+            <span class="font-semibold">C&iacute;lov&aacute; skupina:</span> Marketing, kreativn&iacute; agentury
+          </div>
+        </div>
+      </a>
+
+      <!-- V10: Bold (rebrand) -->
+      <a href="variant-5-bold.html" class="card-hover bg-white rounded-2xl overflow-hidden border border-gray-100 relative">
+        <div class="absolute top-3 left-3 z-10 bg-bs-magenta text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+          REBR&Aacute;NDOV&Aacute;NO
+        </div>
+        <div class="h-40 bg-gradient-to-r from-bs-purple via-bs-cyan to-bs-magenta flex items-center justify-center relative">
+          <div class="text-center">
+            <div class="text-white text-2xl font-extrabold">BOLD</div>
+            <div class="text-white/50 text-sm mt-1">Vysok&aacute; energie, v&yacute;razn&eacute; barvy</div>
+          </div>
+          <div class="absolute top-3 right-3 bg-white/20 text-white text-xs font-bold px-2.5 py-1 rounded-full">
+            V10
+          </div>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold text-lg text-bs-purple mb-2">Varianta 10: Bold</h3>
+          <p class="text-sm text-gray-500 mb-4">
+            Vysoko-energetick&yacute; layout s Plus Jakarta Sans. T&ecaron;&zcaron;k&eacute; gradienty,
+            velk&eacute; typografick&eacute; bloky, scroll progress bar, marquee.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="bg-bs-light text-bs-violet text-xs px-2 py-1 rounded-full font-medium">Plus Jakarta</span>
+            <span class="bg-bs-light text-bs-violet text-xs px-2 py-1 rounded-full font-medium">High energy</span>
+            <span class="bg-bs-light text-bs-violet text-xs px-2 py-1 rounded-full font-medium">Gradients</span>
+          </div>
+          <div class="text-xs text-gray-400">
+            <span class="font-semibold">C&iacute;lov&aacute; skupina:</span> Mlad&scaron;&iacute; IT, startupy, eventy
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Technical notes -->
+    <div class="mt-10 bg-white rounded-2xl p-6 border border-gray-100">
+      <h2 class="font-bold text-bs-purple mb-4">Technick&eacute; pozn&aacute;mky</h2>
+      <div class="grid sm:grid-cols-2 gap-6 text-sm text-gray-600">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Co je v ka&zcaron;d&eacute;m souboru</h3>
+          <ul class="space-y-1">
+            <li>&ndash; Tailwind CSS via CDN</li>
+            <li>&ndash; Lucide icons via CDN</li>
+            <li>&ndash; Google Fonts specifick&eacute; pro variantu</li>
+            <li>&ndash; Tailwind config s BrightSign barvami</li>
+            <li>&ndash; Pln&ecaron; responsive (375px &ndash; 1440px)</li>
+            <li>&ndash; Ceny sjednoceny: bez DPH</li>
+            <li>&ndash; Re&aacute;ln&eacute; BrightSign fakty (500k+ nasazen&iacute;, #1 na trhu)</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Co by bylo t&rcaron;eba pro produkci</h3>
+          <ul class="space-y-1">
+            <li>&ndash; Re&aacute;ln&eacute; produktov&eacute; fotky (profesion&aacute;ln&iacute; photography)</li>
+            <li>&ndash; SVG logo BrightSign.cz</li>
+            <li>&ndash; Napojen&iacute; na Medusa API (ceny, dostupnost)</li>
+            <li>&ndash; Next.js komponenty m&iacute;sto statick&eacute;ho HTML</li>
+            <li>&ndash; P&rcaron;eklady do 5 jazyk&uring; (cs/sk/pl/en/de)</li>
+            <li>&ndash; Stripe checkout, Packeta widget</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product data used -->
+    <div class="mt-6 bg-white rounded-2xl p-6 border border-gray-100">
+      <h2 class="font-bold text-bs-purple mb-4">Produktov&aacute; data pou&zcaron;it&aacute; ve variant&aacute;ch</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-gray-200">
+              <th class="text-left p-2 font-semibold text-gray-700">Model</th>
+              <th class="text-left p-2 font-semibold text-gray-700">Segment</th>
+              <th class="text-right p-2 font-semibold text-gray-700">Cena (bez DPH)</th>
+              <th class="text-left p-2 font-semibold text-gray-700">Kl&iacute;&ccaron;ov&eacute; vlastnosti</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-gray-100">
+              <td class="p-2 font-medium">HD226</td>
+              <td class="p-2 text-gray-500">Entry 4K</td>
+              <td class="p-2 text-right font-mono">6 900 K&ccaron;</td>
+              <td class="p-2 text-gray-500">4K Single, NPU, HTML5, Standard I/O</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="p-2 font-medium">HD1026</td>
+              <td class="p-2 text-gray-500">4K + Live TV</td>
+              <td class="p-2 text-right font-mono">8 500 K&ccaron;</td>
+              <td class="p-2 text-gray-500">4K Single, HDMI In, Dual LAN, NPU</td>
+            </tr>
+            <tr class="border-b border-gray-100 bg-bs-light/50">
+              <td class="p-2 font-medium">XD236</td>
+              <td class="p-2 text-bs-cyan font-medium">Dual 4K (Bestseller)</td>
+              <td class="p-2 text-right font-mono font-semibold">12 500 K&ccaron;</td>
+              <td class="p-2 text-gray-500">Dual 4K, PoE+, M.2 SSD, NPU</td>
+            </tr>
+            <tr>
+              <td class="p-2 font-medium">XD1036</td>
+              <td class="p-2 text-gray-500">Flagship</td>
+              <td class="p-2 text-right font-mono">24 400 K&ccaron;</td>
+              <td class="p-2 text-gray-500">Dual 4K, Full I/O, PoE+, M.2 SSD, SPDIF</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>lucide.createIcons();</script>
+</body>
+</html>
