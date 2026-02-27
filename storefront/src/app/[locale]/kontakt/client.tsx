@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { trackLead, trackPixel } from '@/lib/analytics'
+import { CheckCircle } from 'lucide-react'
 
 const MEDUSA_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || 'http://localhost:9000'
 const API_KEY = process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY || ''
@@ -62,7 +63,7 @@ export function ContactPageClient() {
     return (
       <div className="mx-auto max-w-4xl px-4 py-12">
         <div className="text-center">
-          <div className="text-5xl mb-4">&#10003;</div>
+          <CheckCircle className="mx-auto mb-4 h-16 w-16 text-brand-accent" />
           <h1 className="text-2xl font-bold text-brand-primary mb-4">
             {t('submitSuccess')}
           </h1>
@@ -76,7 +77,7 @@ export function ContactPageClient() {
       <h1 className="mb-2 text-3xl font-bold text-brand-primary-dark">
         {t('title')}
       </h1>
-      <p className="mb-8 text-text-gray-600">{t('subtitle')}</p>
+      <p className="mb-8 text-muted-foreground">{t('subtitle')}</p>
 
       <div className="grid gap-8 md:grid-cols-2">
         {/* Company Info */}
@@ -85,7 +86,7 @@ export function ContactPageClient() {
             <h2 className="mb-3 text-xl font-semibold text-brand-primary-dark">
               {t('companyInfo')}
             </h2>
-            <div className="space-y-2 text-gray-700">
+            <div className="space-y-2 text-foreground/80">
               <p className="font-medium">Make more s.r.o.</p>
               <p>{t('regNumber')}: 21890161</p>
               <p>{t('vatId')}: CZ21890161</p>
@@ -96,7 +97,7 @@ export function ContactPageClient() {
             <h2 className="mb-3 text-xl font-semibold text-brand-primary-dark">
               {t('contactDetails')}
             </h2>
-            <div className="space-y-2 text-gray-700">
+            <div className="space-y-2 text-foreground/80">
               <p>
                 <span className="font-medium">{t('email')}:</span>{' '}
                 <a
@@ -122,7 +123,7 @@ export function ContactPageClient() {
             <h2 className="mb-3 text-xl font-semibold text-brand-primary-dark">
               {t('businessHours')}
             </h2>
-            <div className="space-y-1 text-gray-700">
+            <div className="space-y-1 text-foreground/80">
               <p>{t('weekdays')}</p>
               <p>{t('weekend')}</p>
             </div>
@@ -130,7 +131,7 @@ export function ContactPageClient() {
         </div>
 
         {/* Contact Form */}
-        <div className="rounded-lg border border-gray-200 bg-gray-50 p-6">
+        <div className="rounded-lg border border-border bg-muted/30 p-6">
           <h2 className="mb-4 text-xl font-semibold text-brand-primary-dark">
             {t('writeUs')}
           </h2>
@@ -150,7 +151,7 @@ export function ContactPageClient() {
             </div>
 
             <div>
-              <label htmlFor="name" className="mb-1 block text-sm font-medium text-gray-700">
+              <label htmlFor="name" className="mb-1 block text-sm font-medium text-foreground">
                 {t('name')} *
               </label>
               <input
@@ -162,11 +163,11 @@ export function ContactPageClient() {
                 maxLength={100}
                 value={form.name}
                 onChange={e => setForm({ ...form, name: e.target.value })}
-                className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-brand-accent focus:outline-none focus:ring-1 focus:ring-brand-accent"
+                className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:border-brand-accent focus:outline-none focus:ring-1 focus:ring-brand-accent"
               />
             </div>
             <div>
-              <label htmlFor="email" className="mb-1 block text-sm font-medium text-gray-700">
+              <label htmlFor="email" className="mb-1 block text-sm font-medium text-foreground">
                 {t('email')} *
               </label>
               <input
@@ -178,11 +179,11 @@ export function ContactPageClient() {
                 maxLength={254}
                 value={form.email}
                 onChange={e => setForm({ ...form, email: e.target.value })}
-                className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-brand-accent focus:outline-none focus:ring-1 focus:ring-brand-accent"
+                className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:border-brand-accent focus:outline-none focus:ring-1 focus:ring-brand-accent"
               />
             </div>
             <div>
-              <label htmlFor="subject" className="mb-1 block text-sm font-medium text-gray-700">
+              <label htmlFor="subject" className="mb-1 block text-sm font-medium text-foreground">
                 {t('subject')}
               </label>
               <input
@@ -192,11 +193,11 @@ export function ContactPageClient() {
                 maxLength={200}
                 value={form.subject}
                 onChange={e => setForm({ ...form, subject: e.target.value })}
-                className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-brand-accent focus:outline-none focus:ring-1 focus:ring-brand-accent"
+                className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:border-brand-accent focus:outline-none focus:ring-1 focus:ring-brand-accent"
               />
             </div>
             <div>
-              <label htmlFor="message" className="mb-1 block text-sm font-medium text-gray-700">
+              <label htmlFor="message" className="mb-1 block text-sm font-medium text-foreground">
                 {t('message')} *
               </label>
               <textarea
@@ -207,12 +208,12 @@ export function ContactPageClient() {
                 maxLength={5000}
                 value={form.message}
                 onChange={e => setForm({ ...form, message: e.target.value })}
-                className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-brand-accent focus:outline-none focus:ring-1 focus:ring-brand-accent"
+                className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:border-brand-accent focus:outline-none focus:ring-1 focus:ring-brand-accent"
               />
             </div>
 
             {error && (
-              <div role="alert" className="bg-red-50 text-red-700 border border-red-200 rounded-lg px-4 py-3 text-sm">
+              <div role="alert" className="bg-destructive/10 text-destructive border border-destructive/20 rounded-lg px-4 py-3 text-sm">
                 {error}
               </div>
             )}
