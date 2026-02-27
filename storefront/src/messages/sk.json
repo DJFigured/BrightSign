@@ -303,7 +303,8 @@
       "title": "Profesionálne digital signage riešenia",
       "subtitle": "Oficiálny distribútor BrightSign prehrávačov pre Slovensko",
       "cta": "Prezrieť produkty",
-      "b2bCta": "B2B registrácia"
+      "b2bCta": "B2B registrácia",
+      "newBadge": "Novinka: Séria 6 s NPU a 5-ročnou zárukou"
     },
     "categories": "Kategórie produktov",
     "featured": "Odporúčané produkty",
@@ -315,11 +316,17 @@
     },
     "trust": {
       "delivery": "Rýchle doručenie",
-      "deliveryDesc": "Odoslanie do 24 hodín",
+      "deliveryDesc": "Expedícia do 48 hodín",
       "warranty": "Plná záruka",
-      "warrantyDesc": "2 roky na všetky produkty",
+      "warrantyDesc": "Až 5 rokov na Sériu 6",
       "support": "Technická podpora",
-      "supportDesc": "Expertné poradenstvo"
+      "supportDesc": "Expertné poradenstvo",
+      "noLicense": "Bez licenčných poplatkov",
+      "noLicenseDesc": "Žiadne mesačné platby",
+      "authorized": "Autorizovaný predajca",
+      "authorizedDesc": "Oficiálna distribúcia pre SR",
+      "euShipping": "Doprava po celej EÚ",
+      "euShippingDesc": "CZ, SK, PL, AT a ďalšie"
     },
     "productLines": {
       "title": "Vyberte podľa radu",

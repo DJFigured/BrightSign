@@ -303,7 +303,8 @@
       "title": "Profesjonalne rozwiązania digital signage",
       "subtitle": "Oficjalny dystrybutor odtwarzaczy BrightSign na Polskę",
       "cta": "Przeglądaj produkty",
-      "b2bCta": "Rejestracja B2B"
+      "b2bCta": "Rejestracja B2B",
+      "newBadge": "Nowość: Seria 6 z NPU i 5-letnią gwarancją"
     },
     "categories": "Kategorie produktów",
     "featured": "Polecane produkty",
@@ -315,11 +316,17 @@
     },
     "trust": {
       "delivery": "Szybka dostawa",
-      "deliveryDesc": "Wysyłka w ciągu 24 godzin",
+      "deliveryDesc": "Wysyłka w ciągu 48 godzin",
       "warranty": "Pełna gwarancja",
-      "warrantyDesc": "2 lata na wszystkie produkty",
+      "warrantyDesc": "Do 5 lat na Serię 6",
       "support": "Wsparcie techniczne",
-      "supportDesc": "Eksperckie doradztwo"
+      "supportDesc": "Eksperckie doradztwo",
+      "noLicense": "Bez opłat licencyjnych",
+      "noLicenseDesc": "Żadnych miesięcznych opłat",
+      "authorized": "Autoryzowany sprzedawca",
+      "authorizedDesc": "Oficjalna dystrybucja na Polskę",
+      "euShipping": "Dostawa w całej UE",
+      "euShippingDesc": "CZ, SK, PL, AT i więcej"
     },
     "productLines": {
       "title": "Wybierz według linii produktów",

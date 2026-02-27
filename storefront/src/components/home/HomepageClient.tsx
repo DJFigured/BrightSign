@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ProductCard } from "@/components/product/ProductCard"
-import { Shield, Zap, HeadphonesIcon, Monitor, Music, Layers, Tv, Cpu } from "lucide-react"
+import { Shield, Zap, HeadphonesIcon, Monitor, Music, Layers, Tv, Cpu, Truck, Award, BadgeCheck, Sparkles, ArrowRight } from "lucide-react"
 
 interface Props {
   featuredProducts: Array<Record<string, unknown>>
@@ -54,21 +54,36 @@ export function HomepageClient({ featuredProducts }: Props) {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-brand-primary-dark py-20 text-white">
-        <div className="mx-auto max-w-7xl px-4 text-center">
-          <h1 className="mb-4 text-4xl font-bold md:text-5xl">
+      <section className="relative overflow-hidden bg-gradient-to-br from-brand-primary-dark via-brand-primary to-brand-primary-light py-20 text-white md:py-28">
+        {/* Background pattern */}
+        <div className="absolute inset-0 opacity-[0.07]" aria-hidden="true">
+          <div className="absolute left-1/4 top-1/4 h-64 w-64 rounded-full bg-brand-accent blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/4 h-48 w-48 rounded-full bg-white blur-3xl" />
+          <div className="absolute right-1/3 top-1/2 h-32 w-32 rounded-full bg-brand-accent blur-2xl" />
+        </div>
+
+        <div className="relative mx-auto max-w-7xl px-4 text-center">
+          {/* Series 6 badge */}
+          <Link href="/kategorie/serie-6" className="group mb-6 inline-flex items-center gap-2 rounded-full border border-brand-accent/30 bg-brand-accent/10 px-4 py-1.5 text-sm backdrop-blur-sm transition-colors hover:bg-brand-accent/20">
+            <Sparkles className="h-4 w-4 text-brand-accent" />
+            <span>{t("hero.newBadge")}</span>
+            <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+          </Link>
+
+          <h1 className="mb-4 text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
             {t("hero.title")}
           </h1>
-          <p className="mx-auto mb-8 max-w-2xl text-lg text-white/80">
+          <p className="mx-auto mb-8 max-w-2xl text-lg text-white/80 md:text-xl">
             {t("hero.subtitle")}
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            <Button size="lg" asChild className="bg-brand-accent hover:bg-brand-accent-dark text-white">
+            <Button size="lg" asChild className="bg-brand-accent hover:bg-brand-accent-dark text-white shadow-lg shadow-brand-accent/25 transition-all hover:shadow-xl hover:shadow-brand-accent/30">
               <Link href="/kategorie/prehravace">
                 {t("hero.cta")}
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" asChild className="border-white/30 text-white hover:bg-white/10">
+            <Button size="lg" variant="outline" asChild className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm">
               <Link href="/b2b/registrace">
                 {t("hero.b2bCta")}
               </Link>
@@ -77,36 +92,27 @@ export function HomepageClient({ featuredProducts }: Props) {
         </div>
       </section>
 
-      {/* Trust Signals */}
-      <section className="border-b border-border bg-white py-10">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-4 md:grid-cols-3">
-          <div className="flex items-center gap-3 text-center md:text-left">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-accent/10">
-              <Zap className="h-6 w-6 text-brand-accent" />
+      {/* Trust Signals - 6 items */}
+      <section className="border-b border-border bg-white py-8">
+        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-4 md:grid-cols-3 lg:grid-cols-6">
+          {[
+            { icon: Zap, title: t("trust.delivery"), desc: t("trust.deliveryDesc") },
+            { icon: Shield, title: t("trust.warranty"), desc: t("trust.warrantyDesc") },
+            { icon: HeadphonesIcon, title: t("trust.support"), desc: t("trust.supportDesc") },
+            { icon: BadgeCheck, title: t("trust.noLicense"), desc: t("trust.noLicenseDesc") },
+            { icon: Award, title: t("trust.authorized"), desc: t("trust.authorizedDesc") },
+            { icon: Truck, title: t("trust.euShipping"), desc: t("trust.euShippingDesc") },
+          ].map((item, i) => (
+            <div key={i} className="flex items-start gap-2.5 text-left">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-accent/10">
+                <item.icon className="h-5 w-5 text-brand-accent" />
+              </div>
+              <div className="min-w-0">
+                <h3 className="text-sm font-semibold leading-tight">{item.title}</h3>
+                <p className="text-xs text-muted-foreground leading-tight mt-0.5">{item.desc}</p>
+              </div>
             </div>
-            <div>
-              <h3 className="font-semibold">{t("trust.delivery")}</h3>
-              <p className="text-muted-foreground text-sm">{t("trust.deliveryDesc")}</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-3 text-center md:text-left">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-accent/10">
-              <Shield className="h-6 w-6 text-brand-accent" />
-            </div>
-            <div>
-              <h3 className="font-semibold">{t("trust.warranty")}</h3>
-              <p className="text-muted-foreground text-sm">{t("trust.warrantyDesc")}</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-3 text-center md:text-left">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-accent/10">
-              <HeadphonesIcon className="h-6 w-6 text-brand-accent" />
-            </div>
-            <div>
-              <h3 className="font-semibold">{t("trust.support")}</h3>
-              <p className="text-muted-foreground text-sm">{t("trust.supportDesc")}</p>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 

@@ -303,7 +303,8 @@
       "title": "Professionelle Digital Signage Lösungen",
       "subtitle": "Offizieller BrightSign Player Distributor für Mitteleuropa",
       "cta": "Produkte ansehen",
-      "b2bCta": "B2B-Registrierung"
+      "b2bCta": "B2B-Registrierung",
+      "newBadge": "Neu: Serie 6 mit NPU und 5 Jahren Garantie"
     },
     "categories": "Produktkategorien",
     "featured": "Empfohlene Produkte",
@@ -315,11 +316,17 @@
     },
     "trust": {
       "delivery": "Schneller Versand",
-      "deliveryDesc": "Versand innerhalb 24 Stunden",
+      "deliveryDesc": "Versand innerhalb 48 Stunden",
       "warranty": "Volle Garantie",
-      "warrantyDesc": "2 Jahre auf alle Produkte",
+      "warrantyDesc": "Bis zu 5 Jahre für Serie 6",
       "support": "Technischer Support",
-      "supportDesc": "Expertenberatung"
+      "supportDesc": "Expertenberatung",
+      "noLicense": "Keine Lizenzgebühren",
+      "noLicenseDesc": "Keine monatlichen Zahlungen",
+      "authorized": "Autorisierter Händler",
+      "authorizedDesc": "Offizielle Distribution für CEE",
+      "euShipping": "EU-weiter Versand",
+      "euShippingDesc": "CZ, SK, PL, AT und mehr"
     },
     "productLines": {
       "title": "Nach Produktlinie wählen",

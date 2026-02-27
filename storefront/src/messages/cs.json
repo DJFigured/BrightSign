@@ -296,7 +296,8 @@
       "title": "Profesionální digital signage řešení",
       "subtitle": "Oficiální distributor BrightSign přehrávačů pro Českou republiku",
       "cta": "Prohlédnout produkty",
-      "b2bCta": "B2B registrace"
+      "b2bCta": "B2B registrace",
+      "newBadge": "Novinka: Série 6 s NPU a 5letou zárukou"
     },
     "categories": "Kategorie produktů",
     "featured": "Doporučené produkty",
@@ -308,11 +309,17 @@
     },
     "trust": {
       "delivery": "Rychlé doručení",
-      "deliveryDesc": "Odeslání do 24 hodin",
+      "deliveryDesc": "Expedice do 48 hodin",
       "warranty": "Plná záruka",
-      "warrantyDesc": "2 roky na všechny produkty",
+      "warrantyDesc": "Až 5 let na Sérii 6",
       "support": "Technická podpora",
-      "supportDesc": "Expertní poradenství"
+      "supportDesc": "Expertní poradenství",
+      "noLicense": "Bez licenčních poplatků",
+      "noLicenseDesc": "Žádné měsíční platby",
+      "authorized": "Autorizovaný prodejce",
+      "authorizedDesc": "Oficiální distribuce pro ČR",
+      "euShipping": "Doprava po celé EU",
+      "euShippingDesc": "CZ, SK, PL, AT a další"
     },
     "productLines": {
       "title": "Vyberte podle řady",
