@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { LocaleSwitcher } from "./LocaleSwitcher"
 import { MobileMenu } from "./MobileMenu"
-import { ShoppingCart, User, Search, Menu, ChevronDown, Loader2 } from "lucide-react"
+import { ShoppingCart, User, Search, Menu, ChevronDown, Loader2, X } from "lucide-react"
 import { useCart } from "@/lib/cart-context"
 import { formatPrice } from "@/lib/medusa-helpers"
 
@@ -146,12 +146,12 @@ export function Header({ navData }: HeaderProps) {
   return (
     <>
       <header className="sticky top-0 z-50 border-b border-border bg-white">
-        {/* Top bar */}
+        {/* Top bar — hidden on very small screens, truncated on mobile */}
         <div className="bg-brand-primary text-white">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-1.5 text-xs">
-            <span>{t("topBar")}</span>
+            <span className="truncate">{t("topBar")}</span>
             <div className="hidden items-center gap-4 md:flex">
-              <Link href="/b2b/registrace" className="hover:text-brand-accent transition-colors">
+              <Link href="/b2b/registrace" className="hover:text-brand-accent transition-colors whitespace-nowrap">
                 {t("b2bRegistration")}
               </Link>
               <LocaleSwitcher />
@@ -271,17 +271,28 @@ export function Header({ navData }: HeaderProps) {
         {/* Mobile search */}
         {searchOpen && (
           <div className="border-t border-border px-4 py-2 md:hidden">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-              <Input
-                placeholder={tc("search")}
-                className="pl-9"
-                autoFocus
-                maxLength={200}
-                value={searchQuery}
-                onChange={(e) => handleSearchChange(e.target.value)}
-                onKeyDown={handleSearch}
-              />
+            <div className="relative flex items-center gap-2">
+              <div className="relative flex-1">
+                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                <Input
+                  placeholder={tc("search")}
+                  className="pl-9 pr-3"
+                  autoFocus
+                  maxLength={200}
+                  value={searchQuery}
+                  onChange={(e) => handleSearchChange(e.target.value)}
+                  onKeyDown={handleSearch}
+                />
+              </div>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="shrink-0"
+                onClick={() => { setSearchOpen(false); setSuggestionsOpen(false); setSearchQuery(""); setSelectedIdx(-1) }}
+                aria-label={tc("close")}
+              >
+                <X className="h-5 w-5" />
+              </Button>
               {suggestionsOpen && (
                 <div className="absolute left-0 top-full z-50 mt-1 w-full rounded-lg border bg-white shadow-lg" role="listbox">
                   {suggestions.map((item, idx) => (

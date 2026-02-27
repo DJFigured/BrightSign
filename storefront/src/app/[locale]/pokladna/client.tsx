@@ -398,7 +398,7 @@ export function CheckoutPageClient() {
                   >
                     {isComplete ? <Check className="h-4 w-4" /> : i + 1}
                   </div>
-                  <span className={`mt-1.5 text-xs sm:text-sm ${
+                  <span className={`mt-1.5 max-w-[4.5rem] sm:max-w-none text-center text-xs sm:text-sm leading-tight ${
                     isCurrent ? "font-semibold text-brand-accent" : isComplete ? "text-brand-primary" : "text-muted-foreground"
                   }`}>
                     {s.label}
@@ -804,23 +804,23 @@ export function CheckoutPageClient() {
                   <h3 className="text-sm font-semibold">{t("reviewTitle")}</h3>
 
                   {/* Shipping address */}
-                  <div className="flex items-start justify-between text-sm">
-                    <div>
+                  <div className="flex items-start justify-between gap-2 text-sm">
+                    <div className="min-w-0">
                       <p className="font-medium text-muted-foreground">{t("shipping")}</p>
-                      <p>{firstName} {lastName}</p>
-                      {isCompany && companyName && <p className="text-muted-foreground">{companyName}</p>}
-                      <p className="text-muted-foreground">{address1}, {city} {postalCode}</p>
+                      <p className="truncate">{firstName} {lastName}</p>
+                      {isCompany && companyName && <p className="truncate text-muted-foreground">{companyName}</p>}
+                      <p className="truncate text-muted-foreground">{address1}, {city} {postalCode}</p>
                     </div>
                     <button type="button" onClick={() => setStep("address")} className="text-xs text-brand-accent hover:underline shrink-0">{t("edit")}</button>
                   </div>
 
                   {/* Billing address (if different) */}
                   {billingDifferent && (
-                    <div className="flex items-start justify-between text-sm">
-                      <div>
+                    <div className="flex items-start justify-between gap-2 text-sm">
+                      <div className="min-w-0">
                         <p className="font-medium text-muted-foreground">{t("billingAddress")}</p>
-                        <p>{billingFirstName} {billingLastName}</p>
-                        <p className="text-muted-foreground">{billingAddress1}, {billingCity} {billingPostalCode}</p>
+                        <p className="truncate">{billingFirstName} {billingLastName}</p>
+                        <p className="truncate text-muted-foreground">{billingAddress1}, {billingCity} {billingPostalCode}</p>
                       </div>
                       <button type="button" onClick={() => setStep("address")} className="text-xs text-brand-accent hover:underline shrink-0">{t("edit")}</button>
                     </div>
@@ -843,9 +843,9 @@ export function CheckoutPageClient() {
                   <div className="text-sm">
                     <p className="font-medium text-muted-foreground mb-1">{t("reviewItems", { count: items.length.toString() })}</p>
                     {items.map((item) => (
-                      <div key={item.id} className="flex justify-between text-muted-foreground">
-                        <span>{item.quantity}x {item.title}</span>
-                        <span>{formatPrice(item.unit_price * item.quantity, currency)}</span>
+                      <div key={item.id} className="flex justify-between gap-2 text-muted-foreground">
+                        <span className="truncate">{item.quantity}x {item.title}</span>
+                        <span className="shrink-0">{formatPrice(item.unit_price * item.quantity, currency)}</span>
                       </div>
                     ))}
                   </div>
