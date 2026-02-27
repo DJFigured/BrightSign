@@ -213,7 +213,12 @@
     "icoPlaceholder": "z.B. HRB 12345",
     "dicPlaceholder": "z.B. DE123456789",
     "differentBillingAddress": "Abweichende Rechnungsadresse",
-    "billingAddress": "Rechnungsadresse"
+    "billingAddress": "Rechnungsadresse",
+    "estimatedDelivery": "Voraussichtliche Lieferung: {days}",
+    "deliveryDays": "{count, plural, one {# Werktag} other {# Werktage}}",
+    "deliveryDefault": "2–4 Werktage",
+    "deliveryExpress": "1–2 Werktage",
+    "deliveryInternational": "3–7 Werktage"
   },
   "auth": {
     "login": "Anmelden",

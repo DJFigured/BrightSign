@@ -206,7 +206,12 @@
     "icoPlaceholder": "např. 12345678",
     "dicPlaceholder": "např. CZ12345678",
     "differentBillingAddress": "Odlišná fakturační adresa",
-    "billingAddress": "Fakturační adresa"
+    "billingAddress": "Fakturační adresa",
+    "estimatedDelivery": "Předpokládané dodání: {days}",
+    "deliveryDays": "{count, plural, one {# pracovní den} few {# pracovní dny} other {# pracovních dnů}}",
+    "deliveryDefault": "2–4 pracovní dny",
+    "deliveryExpress": "1–2 pracovní dny",
+    "deliveryInternational": "3–7 pracovních dnů"
   },
   "auth": {
     "login": "Přihlášení",

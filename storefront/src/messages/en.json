@@ -213,7 +213,12 @@
     "icoPlaceholder": "e.g. 12345678",
     "dicPlaceholder": "e.g. CZ12345678",
     "differentBillingAddress": "Different billing address",
-    "billingAddress": "Billing address"
+    "billingAddress": "Billing address",
+    "estimatedDelivery": "Estimated delivery: {days}",
+    "deliveryDays": "{count, plural, one {# business day} other {# business days}}",
+    "deliveryDefault": "2–4 business days",
+    "deliveryExpress": "1–2 business days",
+    "deliveryInternational": "3–7 business days"
   },
   "auth": {
     "login": "Sign In",

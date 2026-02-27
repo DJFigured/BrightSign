@@ -213,7 +213,12 @@
     "icoPlaceholder": "np. 1234567890",
     "dicPlaceholder": "np. PL1234567890",
     "differentBillingAddress": "Inny adres fakturowy",
-    "billingAddress": "Adres fakturowy"
+    "billingAddress": "Adres fakturowy",
+    "estimatedDelivery": "Przewidywana dostawa: {days}",
+    "deliveryDays": "{count, plural, one {# dzień roboczy} few {# dni robocze} other {# dni roboczych}}",
+    "deliveryDefault": "2–4 dni robocze",
+    "deliveryExpress": "1–2 dni robocze",
+    "deliveryInternational": "3–7 dni roboczych"
   },
   "auth": {
     "login": "Logowanie",

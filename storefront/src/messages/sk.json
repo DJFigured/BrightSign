@@ -213,7 +213,12 @@
     "icoPlaceholder": "napr. 12345678",
     "dicPlaceholder": "napr. SK1234567890",
     "differentBillingAddress": "Odlišná fakturačná adresa",
-    "billingAddress": "Fakturačná adresa"
+    "billingAddress": "Fakturačná adresa",
+    "estimatedDelivery": "Predpokladané doručenie: {days}",
+    "deliveryDays": "{count, plural, one {# pracovný deň} few {# pracovné dni} other {# pracovných dní}}",
+    "deliveryDefault": "2–4 pracovné dni",
+    "deliveryExpress": "1–2 pracovné dni",
+    "deliveryInternational": "3–7 pracovných dní"
   },
   "auth": {
     "login": "Prihlásenie",

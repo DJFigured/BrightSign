@@ -12,7 +12,7 @@ import { Badge } from "@/components/ui/badge"
 import { useCart } from "@/lib/cart-context"
 import { sdk } from "@/lib/sdk"
 import { formatPrice } from "@/lib/medusa-helpers"
-import { Check, Loader2, Package, MapPin, CreditCard, ShoppingBag, Building2, FileText, ChevronDown } from "lucide-react"
+import { Check, Loader2, Package, MapPin, CreditCard, ShoppingBag, Building2, FileText, ChevronDown, Clock } from "lucide-react"
 import { trackEcommerce, mapCartItemToGA4, trackPixel } from "@/lib/analytics"
 import StripePayment from "@/components/checkout/StripePayment"
 
@@ -27,6 +27,21 @@ interface ShippingOption {
 }
 
 const STRIPE_KEY = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+
+/**
+ * Map a shipping option name to a delivery time i18n key.
+ * Falls back to "deliveryDefault" if no pattern matches.
+ */
+function getDeliveryTimeKey(name: string): string {
+  const lower = name.toLowerCase()
+  if (lower.includes("express") || lower.includes("rychl") || lower.includes("next day") || lower.includes("příští den")) {
+    return "deliveryExpress"
+  }
+  if (lower.includes("international") || lower.includes("mezinár") || lower.includes("zahraniční") || lower.includes("medzinár") || lower.includes("międzynar")) {
+    return "deliveryInternational"
+  }
+  return "deliveryDefault"
+}
 
 export function CheckoutPageClient() {
   const tc = useTranslations("common")
@@ -758,7 +773,13 @@ export function CheckoutPageClient() {
                               onChange={(e) => setSelectedShipping(e.target.value)}
                               className="accent-brand-accent"
                             />
-                            <span className="font-medium">{option.name}</span>
+                            <div>
+                              <span className="font-medium">{option.name}</span>
+                              <span className="flex items-center gap-1 text-xs text-muted-foreground mt-0.5">
+                                <Clock className="h-3 w-3" />
+                                {t(getDeliveryTimeKey(option.name))}
+                              </span>
+                            </div>
                           </div>
                           <span className="font-semibold">
                             {option.amount === 0
