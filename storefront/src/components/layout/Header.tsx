@@ -228,11 +228,20 @@ export function Header({ navData }: HeaderProps) {
               variant="ghost"
               size="icon"
               className="md:hidden"
-              onClick={() => setSearchOpen(!searchOpen)}
-              aria-label={t("search")}
+              onClick={() => {
+                if (searchOpen) {
+                  setSearchOpen(false)
+                  setSuggestionsOpen(false)
+                  setSearchQuery("")
+                  setSelectedIdx(-1)
+                } else {
+                  setSearchOpen(true)
+                }
+              }}
+              aria-label={searchOpen ? tc("close") : t("search")}
               aria-expanded={searchOpen}
             >
-              <Search className="h-5 w-5" />
+              {searchOpen ? <X className="h-5 w-5" /> : <Search className="h-5 w-5" />}
             </Button>
 
             {/* Account */}
