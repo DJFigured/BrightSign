@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
+import { CheckCircle, Clock, AlertTriangle } from 'lucide-react'
 
 const MEDUSA_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || 'http://localhost:9000'
 const API_KEY = process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY || ''
@@ -76,7 +77,7 @@ export function B2BRegistracePageClient() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center max-w-md">
-          <div className="text-5xl mb-4">&#10003;</div>
+          <CheckCircle className="mx-auto mb-4 h-16 w-16 text-brand-accent" />
           <h1 className="text-2xl font-bold text-brand-primary mb-4">{t('successTitle')}</h1>
           <p className="text-muted-foreground mb-6">
             {t('inquiryConfirmation', { email: form.email })}
@@ -84,17 +85,17 @@ export function B2BRegistracePageClient() {
 
           {vatStatus === 'valid' && (
             <div className="inline-flex items-center gap-2 bg-green-50 text-green-700 border border-green-200 rounded-lg px-4 py-3 text-sm font-medium">
-              <span>&#10003;</span> {t('vatValid')}
+              <CheckCircle className="h-4 w-4" /> {t('vatValid')}
             </div>
           )}
           {vatStatus === 'pending' && (
             <div className="inline-flex items-center gap-2 bg-amber-50 text-amber-700 border border-amber-200 rounded-lg px-4 py-3 text-sm font-medium">
-              <span>&#8987;</span> {t('vatPending')}
+              <Clock className="h-4 w-4" /> {t('vatPending')}
             </div>
           )}
           {vatStatus === 'invalid' && (
             <div className="inline-flex items-center gap-2 bg-red-50 text-red-700 border border-red-200 rounded-lg px-4 py-3 text-sm font-medium">
-              <span>&#9888;</span> {t('vatInvalid')}
+              <AlertTriangle className="h-4 w-4" /> {t('vatInvalid')}
             </div>
           )}
         </div>
