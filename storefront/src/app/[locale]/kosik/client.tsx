@@ -178,6 +178,16 @@ export function CartPageClient() {
                 {t("checkout")}
               </Link>
             </Button>
+            <Button
+              asChild
+              variant="outline"
+              className="mt-2 w-full"
+              size="sm"
+            >
+              <Link href="/kategorie/prehravace">
+                {tc("continueShopping")}
+              </Link>
+            </Button>
           </div>
         </div>
       </div>
