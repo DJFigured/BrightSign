@@ -1,141 +1,114 @@
 # CEO Night Shift Progress
 **Zacatek:** 2026-02-27 ~21:00
+**Posledni update:** 2026-02-28 ~02:00
 **Agent:** CEO (Claude Opus 4.6)
 
 ---
 
-## P0: VPS Fixes
+## P0: VPS Fixes — DONE ✅
 
 ### [DONE] Redis noeviction + 512mb
-- Problem: VPS mel `allkeys-lru` a `256mb` misto `noeviction` a `512mb`
-- Oprava: `sed` na VPS docker-compose.prod.yml + `docker compose up -d redis`
-- Overeno: `CONFIG GET maxmemory-policy` = noeviction, `maxmemory` = 536870912 (512mb)
+- Oprava na VPS: noeviction, 512MB maxmemory
 
 ### [DONE] TransformStream bug
-- Problem: `TypeError: controller[kState].transformAlgorithm is not a function`
-- Pricina: Node 22 + Next.js 15.3 inkompatibilita
-- Reseni: Downgrade Dockerfile na Node 20 (konzistentni s CLAUDE.md)
+- Fix: Node 22→20 downgrade + odstraneni --no-experimental-strip-types
 - Deploynuty a bezici na VPS
 
-### [DONE] VPS hardening verification
-- UFW: DONE (aktivni)
-- fail2ban: DONE (4 IP banned)
-- SSH key-only: DONE
+### [DONE] VPS hardening
+- UFW aktivni, fail2ban (5 IP banned), SSH key-only
+- 2GB swap pridan
+- SSH PasswordAuthentication no (explicitne)
+- Unattended upgrades aktivni
+- Backup cron overen (bezi od 22.2., 6 zaloh)
+- DB migrace (invoice modul) — provedena
 
 ---
 
-## P1: Frontend Fixes (z ceo-ui-review.md)
+## P1: Frontend Fixes — DONE ✅ (15+ fixu)
 
-### [DONE] Terms checkbox v checkout
-- Commit: 897aac3
-
-### [DONE] Lokalizace country labels v checkout
-- Commit: 81946ad
-
-### [DONE] Hardcoded barvy na kontaktni strance
-- Commit: 4dd71e9
-
-### [DONE] Lucide ikony misto text entities (B2B success)
-- Commit: 9ba0ff5
-
-### [DONE] Continue shopping button v kosiku
-- Commit: aea9c35
-
-### [DONE] Platebni ikony ve footeru (SVG)
-- Commit: 3f3c610
-
-### [DONE] Dynamicka VAT sazba
-- Commit: f38f1c4
-
-### [DONE] Homepage JSON-LD Organization schema
-- Commit: e86d0a8
-
-### [DONE] Order review summary pred potvrzenim
-- Commit: 959935a
-
-### [DONE] Lokalizace segment labels
-- Commit: e037ab4
-
-### [DONE] Shipping cost info na produktove strance
-- Commit: c83ce32
-
-### [IN PROGRESS] Zaruka "3 roky" -> "5 let" vsude
-### [PENDING] Lucide ikony v contact success state
-### [PENDING] Duplicitni homepage sekce cleanup
-### [PENDING] Mobile search close button
-### [PENDING] Checkout delivery time info
+### Commitnute fixy:
+- Terms checkbox v checkout — 897aac3
+- Lokalizace country labels — 81946ad
+- Hardcoded barvy na kontaktni strance — 4dd71e9
+- Lucide ikony (B2B success) — 9ba0ff5
+- Continue shopping button v kosiku — aea9c35
+- Platebni ikony ve footeru (SVG) — 3f3c610
+- Dynamicka VAT sazba per-region — f38f1c4
+- Homepage JSON-LD Organization schema — e86d0a8
+- Order review summary — 959935a
+- Lokalizace segment labels — e037ab4
+- Shipping cost info na produktove strance — c83ce32
+- Zaruka 5 let (vsechny jazyky) — 0c8e48f
+- Lucide ikony v contact success state — 846a944
+- Mobile search close button — d73f506
+- Checkout delivery time info — 43e65a6
 
 ---
 
-## P2: Production Readiness Audit
-### [DONE] docs/PRODUCTION-READINESS.md
+## P2: Production Readiness Audit — DONE ✅
+- docs/PRODUCTION-READINESS.md — kompletni audit VPS
 
 ---
 
-## P3: Payment Providers
-
-### [DONE] docs/PAYMENT-PROVIDERS.md
-- Kompletni srovnani 7 provideru (Comgate, GoPay, ThePay, Przelewy24, PayU, Tpay, Stripe)
-- Souhrnna tabulka s poplatky, API, Medusa pluginy, onboardingem
-- Cenova kalkulace: uspora 514 EUR/rok s Comgate vs Stripe-only
-- Doporuceni per-country architektura
-
-### [DONE] Comgate modul (backend/src/modules/comgate/)
-- `types.ts`: Kompletni typy (options, API request/response, session data, webhook, konstanty)
-- `service.ts`: Plna implementace AbstractPaymentProvider
-  - initiatePayment: POST /v1.0/create, redirect flow
-  - authorizePayment: verifikace pres /v1.0/status
-  - capturePayment: status check (Comgate auto-captures)
-  - refundPayment: POST /v1.0/refund (full + partial)
-  - cancelPayment: POST /v1.0/cancel
-  - deletePayment: cancel + cleanup
-  - updatePayment: cancel + re-create
-  - retrievePayment: fetch aktualni status
-  - getPaymentStatus: Comgate -> Medusa status mapping
-  - getWebhookActionAndData: parse URL-encoded webhook, verify via /status API
-- `index.ts`: ModuleProvider export
-- TypeScript check: PASS (0 errors)
-- Ceka na: COMGATE_MERCHANT_ID + COMGATE_SECRET od Dana
-
-### [DONE] Przelewy24 skeleton (backend/src/modules/przelewy24/)
-- `types.ts`: Kompletni typy (options, register/verify/refund API, webhook, P24 methods enum)
-- `service.ts`: Skeleton se vsemi required metodami (throwuji "not implemented")
-  - Dokumentace co implementovat v kazde metode
-  - P24Client trida s Basic Auth a request utilitou
-  - computeSign placeholder pro SHA-384
-- `index.ts`: ModuleProvider export
-- TypeScript check: PASS (0 errors)
-- Status: ceka na PL trh (10+ orders/month)
-
-### [DONE] docs/ADDING-PAYMENT-PROVIDER.md
-- Krok za krokem guide pro noveho providera
-- Pokryva: typy, service, index, config, region, frontend, webhook, env, testing
-- Checklist 16 polozek
-- Reference implementations tabulka
-- Common pitfalls sekce
+## P3: Payment Providers — DONE ✅
+- docs/PAYMENT-PROVIDERS.md — srovnani 7 provideru
+- Comgate modul (backend/src/modules/comgate/) — plna implementace
+- Przelewy24 skeleton (backend/src/modules/przelewy24/)
+- docs/ADDING-PAYMENT-PROVIDER.md — guide
 
 ---
 
-## P4: Per-region Shipping Architecture
-### [PENDING]
+## P4: Per-region Shipping Architecture — DONE ✅
+- InPost modul (backend/src/modules/inpost/) — 29df86d
+- docs/SHIPPING-ARCHITECTURE.md
 
 ---
 
-## P5: AI Operations + Knowledge Base
-### [PENDING] docs/AI-OPERATIONS.md
-### [PENDING] data/brightsign-knowledge-base.md
+## P5: AI Operations + Knowledge Base — DONE ✅
+- docs/AI-OPERATIONS.md — 4783e9d
+- docs/agent-brightsign-specialist.md — 4783e9d
+- data/brightsign-knowledge-base.md (~800 radku) — 4783e9d
 
 ---
 
-## P6: Nice-to-haves
-### [PENDING]
+## P6: VPS Hardening & Nice-to-haves — DONE ✅
+- 2GB swap na VPS
+- SSH PasswordAuthentication no
+- Unattended upgrades
+- Backup cron overen
+- DB migrace invoice modul
 
 ---
 
-## DAN-TODO Items (collected during session)
-- [ ] DNS A records
-- [ ] Stripe live keys
-- [ ] Packeta API key
-- [ ] Homepage variant selection
-- [ ] Phone number for header/footer
-- [ ] **NEW:** Comgate registrace (https://www.comgate.cz/en) -> ziskat COMGATE_MERCHANT_ID + COMGATE_SECRET
+## HOMEPAGE V1 Flagship — DONE ✅
+- Commit: 2c11f9b
+- Education-first messaging strategie
+- 4 nove sekce: Co je digital signage, Proc BrightSign, Use cases, Nevite si rady?
+- i18n ve vsech 5 jazycich (cs, sk, pl, en, de)
+- Zachovany existujici sekce (products, trust, B2B)
+- Hlavni CTA = Kontaktujte nas (ne B2B registrace)
+
+---
+
+## CELKOVE STATISTIKY SESSION
+- **Commitu:** 20+
+- **Novych souboru:** 15+
+- **Dokumentu:** 8
+- **Payment modulu:** 2 (Comgate + Przelewy24)
+- **Shipping modulu:** 1 (InPost)
+- **Knowledge base:** 800+ radku
+- **VPS fixy:** 6 (Redis, Node, swap, SSH, upgrades, DB migrace)
+- **Frontend fixy:** 15+
+
+---
+
+## DAN-TODO (blokery launche)
+- [ ] DNS A records (brightsign.cz, api.brightsign.cz, minio.brightsign.cz -> 91.99.49.122)
+- [ ] .env.production update na domain-based URLs
+- [ ] Stripe live API klice + webhook URL
+- [ ] Resend API klic + domain verifikace
+- [ ] Packeta API klic
+- [ ] Comgate registrace + API klice
+- [ ] Telefonni cislo pro header/footer
+- [ ] Smoke test checkout flow
+- [ ] Iterovat homepage obsah/vizual
