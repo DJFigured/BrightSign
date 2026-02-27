@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Inter, JetBrains_Mono } from "next/font/google"
 import { notFound } from "next/navigation"
+import dynamic from "next/dynamic"
 import { NextIntlClientProvider, hasLocale } from "next-intl"
 import { getMessages } from "next-intl/server"
 import { routing } from "@/i18n/routing"
@@ -10,13 +11,15 @@ import { Footer } from "@/components/layout/Footer"
 import { CartProvider } from "@/lib/cart-context"
 import { AuthProvider } from "@/lib/auth-context"
 import { CompareProvider } from "@/lib/compare-context"
-import { CompareBar } from "@/components/product/CompareBar"
 import { getNavigationData } from "@/lib/categories"
 import { GoogleTagManager, GoogleTagManagerNoScript } from "@/components/analytics/GoogleTagManager"
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics"
 import { MetaPixel } from "@/components/analytics/MetaPixel"
-import { CookieConsent } from "@/components/analytics/CookieConsent"
-import { BackToTop } from "@/components/ui/BackToTop"
+
+// Lazy-load non-critical UI components
+const CompareBar = dynamic(() => import("@/components/product/CompareBar").then((m) => m.CompareBar), { ssr: false })
+const CookieConsent = dynamic(() => import("@/components/analytics/CookieConsent").then((m) => m.CookieConsent), { ssr: false })
+const BackToTop = dynamic(() => import("@/components/ui/BackToTop").then((m) => m.BackToTop), { ssr: false })
 
 const inter = Inter({
   variable: "--font-inter",

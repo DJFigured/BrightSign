@@ -12,6 +12,7 @@ import { useCart } from "@/lib/cart-context"
 import { formatPrice, getLocalizedDescription } from "@/lib/medusa-helpers"
 import { Minus, Plus, ShoppingCart, ChevronRight, Shield, Truck, FileDown } from "lucide-react"
 import { trackEcommerce, mapProductToItem } from "@/lib/analytics"
+import { addRecentlyViewed, getRecentlyViewed, type RecentlyViewedItem } from "@/lib/recently-viewed"
 
 interface ProductImage {
   id: string
@@ -51,6 +52,7 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
   const [adding, setAdding] = useState(false)
   const [selectedImage, setSelectedImage] = useState(0)
   const [lightboxOpen, setLightboxOpen] = useState(false)
+  const [recentlyViewed, setRecentlyViewed] = useState<RecentlyViewedItem[]>([])
 
   const title = product.title as string
   const description = getLocalizedDescription(
@@ -103,6 +105,20 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
       currency: currencyCode,
     })
   }, [product, priceAmount, currencyCode])
+
+  // Track recently viewed + load list
+  useEffect(() => {
+    const handle = product.handle as string
+    addRecentlyViewed({
+      id: product.id as string,
+      handle,
+      title,
+      thumbnail: thumbnail ?? null,
+    })
+    // Load recently viewed (excluding current product)
+    const viewed = getRecentlyViewed().filter((i) => i.id !== product.id)
+    setRecentlyViewed(viewed)
+  }, [product, title, thumbnail])
 
   async function handleAddToCart() {
     if (!variant) return
@@ -370,6 +386,39 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
                 key={p.id as string}
                 product={p as Parameters<typeof ProductCard>[0]["product"]}
               />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Recently viewed */}
+      {recentlyViewed.length > 0 && (
+        <div className="mt-12">
+          <h2 className="mb-4 text-lg font-bold">{t("recentlyViewed")}</h2>
+          <div className="flex gap-3 overflow-x-auto pb-2">
+            {recentlyViewed.slice(0, 6).map((item) => (
+              <Link
+                key={item.id}
+                href={`/produkt/${item.handle}`}
+                className="group flex w-28 shrink-0 flex-col items-center rounded-lg border p-2 transition-colors hover:border-brand-accent"
+              >
+                {item.thumbnail ? (
+                  <Image
+                    src={item.thumbnail}
+                    alt={item.title}
+                    width={80}
+                    height={80}
+                    className="h-20 w-20 object-contain"
+                  />
+                ) : (
+                  <div className="flex h-20 w-20 items-center justify-center text-xs text-muted-foreground">
+                    {t("noImage")}
+                  </div>
+                )}
+                <span className="mt-1 line-clamp-2 text-center text-xs font-medium group-hover:text-brand-accent">
+                  {item.title}
+                </span>
+              </Link>
             ))}
           </div>
         </div>
