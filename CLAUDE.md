@@ -1,117 +1,74 @@
 # CLAUDE.md - BrightSign EU E-shop Project
 
-## 🎯 Project Overview
+## Project Overview
 
-Building a multi-country B2B e-commerce platform for BrightSign digital signage players using **Medusa.js** headless commerce, deployed on **Coolify + Hetzner VPS**.
+Multi-country B2B e-commerce platform for BrightSign digital signage players.
+**Medusa.js v2** headless commerce + **Next.js 15** storefront, deployed on **Coolify + Hetzner VPS**.
 
 **Owner:** Dan (Make more s.r.o., Czech Republic)
 **Business Model:** Just-in-time resale from COMM-TEC Germany with 30-70% margins
 **Target Markets:** CZ → SK → PL → EU (AT, RO, HU)
 
-## 📁 Documentation Structure
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Backend | Medusa.js v2, Node 20, PostgreSQL 16, Redis 7 |
+| Storefront | Next.js 15.3, next-intl (cs/sk/pl/en/de), Tailwind CSS, pnpm |
+| Payments | Stripe (card) + bank transfer |
+| Shipping | Packeta (TODO: API integration) |
+| Email | Resend (transactional + newsletter audience) |
+| Storage | MinIO (S3-compatible) |
+| Hosting | Hetzner CAX21 (Arm64, 4GB), Coolify, Traefik reverse proxy |
+| CI/CD | GitHub Actions → SSH deploy |
+| Analytics | GTM → GA4 + Meta Pixel (all events include locale) |
+
+## Project Structure
 
 ```
-docs/
-├── PROJECT_BRIEF.md      # Business context, goals, market analysis
-├── TECHNICAL_SPEC.md     # Architecture, stack, deployment
-├── DESIGN_SYSTEM.md      # Brand colors, components, references
-├── PRODUCT_CATALOG.md    # BrightSign product structure
-├── B2B_FLOW.md           # B2B registration, VIES, pricing tiers
-├── INTEGRATIONS.md       # Stripe, Packeta, COMM-TEC, Tabidoo
-├── AI_AGENTS.md          # n8n automation workflows
-└── MARKETING.md          # PPC, newsletter, B2B CRM strategy
-
-tasks/                    # Development task breakdown
-data/                     # Shoptet export, product data
+backend/                   # Medusa.js v2 backend
+  src/api/                 # Custom API routes (contact, B2B, invoices, AI buddy, webhooks)
+  src/modules/             # Custom modules (invoice)
+  src/lib/                 # Shared utils (rate-limit)
+storefront/                # Next.js 15 storefront
+  src/app/[locale]/        # Locale-prefixed pages
+  src/components/          # UI components (product, checkout, analytics, layout)
+  src/lib/                 # Client utils (analytics, auth-context, cart-context, sdk)
+  src/i18n/                # Internationalization config
+docker-compose.prod.yml    # Production Docker stack
+scripts/                   # Backup, hardening scripts
+docs/                      # Business docs, specs, task breakdowns
 ```
 
-## 🚀 Quick Start Commands
+## Development
 
 ```bash
-# 1. Setup Medusa backend
-npx create-medusa-app@latest brightsign-backend
+# Backend
+cd backend && medusa develop
 
-# 2. Setup Next.js storefront
-npx create-next-app@latest brightsign-storefront --typescript --tailwind
+# Storefront
+cd storefront && pnpm dev
 
-# 3. Install Medusa CLI
-npm install -g @medusajs/medusa-cli
-
-# 4. Start development
-cd brightsign-backend && medusa develop
+# Type check
+cd storefront && npx tsc --noEmit
 ```
 
-## 🔧 MCP Servers to Enable
+## Key Architecture Decisions
 
-```bash
-# Medusa documentation
-claude mcp add medusa-docs -- npx -y @anthropic/mcp-server@latest https://docs.medusajs.com/mcp
+- **Stripe webhooks:** Primary = Medusa built-in `/hooks/payment/stripe_stripe`. Custom `/webhooks/stripe` is logger-only backup.
+- **Analytics:** All events auto-inject `locale` from URL path. `trackPixel()` fires Meta Pixel alongside GA4.
+- **i18n:** cs (default), sk, pl, en, de. Localized product descriptions in `metadata.translations[locale].description`.
+- **Auth:** Cookie `_bs_auth` flag + middleware guard. Login/signup tracked in GA4 + Meta Pixel.
+- **Redis:** `noeviction` policy, 512mb maxmemory (required by Medusa workflow engine).
+- **CORS:** Domain-based (`https://brightsign.cz`, `https://www.brightsign.cz`).
 
-# GitHub integration
-claude mcp add github -- npx -y @modelcontextprotocol/server-github
+## Business Rules
 
-# Supabase (if using for DB)
-claude mcp add supabase -- npx -y @anthropic/mcp-server@latest supabase
-```
-
-## 📋 Development Phases
-
-### Phase 1: Infrastructure (Week 1)
-- [ ] Setup Hetzner VPS (CAX21, 4GB RAM)
-- [ ] Install Coolify
-- [ ] Configure PostgreSQL + Redis
-- [ ] Setup GitHub repo with CI/CD
-
-### Phase 2: Medusa Backend (Week 2-3)
-- [ ] Initialize Medusa project
-- [ ] Configure multi-region (CZ, SK, PL, EU)
-- [ ] Setup multi-currency (CZK, EUR, PLN)
-- [ ] Import products from Shoptet export
-- [ ] Configure B2B customer groups
-
-### Phase 3: Storefront (Week 3-4)
-- [ ] Next.js storefront with Tailwind
-- [ ] Multi-language support (i18n)
-- [ ] Product catalog pages
-- [ ] Cart & checkout flow
-- [ ] B2B login & VAT validation
-
-### Phase 4: Integrations (Week 4-5)
-- [ ] Stripe payment gateway
-- [ ] Packeta shipping integration
-- [ ] VIES VAT validation API
-- [ ] Email transactional (Resend)
-
-### Phase 5: Marketing & Launch (Week 5-6)
-- [ ] SEO optimization
-- [ ] Google Analytics / Plausible
-- [ ] Newsletter signup (Resend)
-- [ ] PPC campaign structure
-- [ ] Go-live CZ version
-
-## 🎨 Design Principles
-
-- **Brand Colors:** Primary #1a2b4a (dark blue), Accent #00c389 (green)
-- **Style:** Clean, professional, B2B-focused
-- **Reference:** brightsign.biz (official), brightsign-shop.eu (competitor)
-- **Mobile-first responsive design**
-
-## ⚠️ Important Constraints
-
-1. **No COMM-TEC API** - Stock/prices must be scraped or manually updated
-2. **B2B Focus** - Public RRP prices, automatic discounts after VAT validation
-3. **Multi-country from Day 1** - Architecture must support easy localization
-4. **One-person operation** - Heavy automation via n8n required
-5. **Budget-conscious** - Prefer open-source, self-hosted solutions
-
-## 🔑 Key Business Rules
-
-### Pricing Strategy
-- CZ: Match or slightly undercut Czech competition
+### Pricing
+- CZ: Match or undercut Czech competition
 - SK: Same as CZ (language advantage)
-- PL: 15-20% under local competition (huge arbitrage)
+- PL: 15-20% under local competition
 - AT: 10-15% under German prices
-- RO/HU: Market entry pricing
 
 ### B2B Discounts
 - Standard B2B: 10% off RRP
@@ -119,19 +76,9 @@ claude mcp add supabase -- npx -y @anthropic/mcp-server@latest supabase
 - Partner/Integrator: 20% off RRP (manual approval)
 
 ### Shipping
-- CZ: Packeta, PPL, Zásilkovna
+- CZ: Packeta, PPL, Zasilkovna
 - SK/PL/HU/RO: Packeta international
 - AT/DE: DPD, GLS
-
-## 📞 External Services
-
-| Service | Purpose | Status |
-|---------|---------|--------|
-| COMM-TEC | Supplier | ✅ Active account |
-| Stripe | Payments | 🔧 Setup needed |
-| Packeta | Shipping | 🔧 Setup needed |
-| Resend | Email | 🔧 Setup needed |
-| Hetzner | Hosting | 🔧 Setup needed |
 
 ## AI Buddy Integration
 
@@ -140,22 +87,40 @@ Full docs: `docs/ai-buddy-api.md`
 
 ### Endpoints
 - `GET /store/ai-buddy/health` — connection test (no auth)
-- `GET /store/ai-buddy/dashboard` — main aggregated overview (orders, revenue, inventory, B2B)
+- `GET /store/ai-buddy/dashboard` — main aggregated overview
 - `GET /store/ai-buddy/orders` — filtered/paginated orders
-- `GET /store/ai-buddy/revenue` — revenue breakdown (timeline, region, product, serie)
+- `GET /store/ai-buddy/revenue` — revenue breakdown
 - `GET /store/ai-buddy/inventory` — stock levels + alerts
 - `GET /store/ai-buddy/b2b` — B2B customers + groups
 
-### Auth
-Bearer token: `AI_BUDDY_API_KEY` from `.env`. Health check has no auth.
+Auth: Bearer token `AI_BUDDY_API_KEY` from `.env`.
 
-### Data
-- Prices in minor units (CZK halere, EUR cents, PLN grosze)
-- SKU → Serie: last digit (4=S4, 5=S5, 6=S6)
-- Stock threshold: S5/S6=10, S4 clearance=3
-- 24 products, 4 regions, 3 currencies, 5 customer groups
+## Current Status (2026-02-27)
 
-## 🗣️ Communication
+### Done
+- [x] Infrastructure (Hetzner VPS, Coolify, Docker Compose, CI/CD)
+- [x] Medusa backend (multi-region, multi-currency, products imported)
+- [x] Storefront (all pages, i18n, checkout, B2B registration)
+- [x] Stripe payments (card + bank transfer)
+- [x] Security hardening (16/16 items — CSP, HSTS, rate limiting, auth cookies, honeypot)
+- [x] SEO (generateMetadata, JSON-LD, OG/Twitter, noindex on non-public pages)
+- [x] Analytics (GA4 full funnel + Meta Pixel events + locale tracking)
+- [x] Email (Resend transactional + newsletter)
+
+### Pending (VPS SSH required)
+- [ ] Update `.env.production` CORS to domain-based
+- [ ] Run `docker exec brightsign-backend npx medusa db:migrate` (invoice module)
+- [ ] Set up backup cron job
+- [ ] Configure Stripe webhook URL in Stripe Dashboard → `https://api.brightsign.cz/hooks/payment/stripe_stripe`
+- [ ] Hetzner unlock (DDoS incident) → run hardening script
+
+### Future
+- [ ] Packeta shipping API integration
+- [ ] DNS records (brightsign.cz → VPS)
+- [ ] UI polish (separate task)
+- [ ] PPC campaigns + marketing launch
+
+## Communication
 
 - **Language:** Czech preferred, English OK
 - **Decisions:** Ask before major architectural changes
