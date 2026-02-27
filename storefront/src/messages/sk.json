@@ -176,6 +176,8 @@
     "bankTransferEmailNote": "Zálohová faktúra s QR kódom vám bola zaslaná na e-mail. Po prijatí platby vám zašleme finálnu faktúru a odošleme tovar.",
     "pendingTransfer": "Čaká na bankový prevod",
     "invoiceTitle": "Doklady",
+    "invoiceProforma": "Zálohová faktúra",
+    "invoiceFinal": "Faktúra",
     "invoiceEmailNote": "Faktúra vám bude zaslaná e-mailom.",
     "invoiceProformaNote": "Zálohová faktúra s platobnými údajmi vám bola zaslaná e-mailom. Po zaplatení dostanete finálnu faktúru.",
     "checkoutSteps": "Kroky objednávky",
@@ -266,7 +268,10 @@
     "shippingBadge": "Expedícia do 48h",
     "downloadDatasheet": "Stiahnuť datasheet (PDF)",
     "specYes": "Áno",
-    "specNo": "Nie"
+    "specNo": "Nie",
+    "zoomImage": "Zväčšiť obrázok",
+    "previousImage": "Predchádzajúci obrázok",
+    "nextImage": "Ďalší obrázok"
   },
   "notFound": {
     "title": "Stránka nenájdená",
@@ -601,5 +606,41 @@
     "Player weight": "Hmotnosť",
     "Locking power supply": "Napájanie",
     "Wi-Fi": "Wi-Fi"
+  },
+  "faq": {
+    "title": "Často kladené otázky",
+    "metaDescription": "Odpovede na najčastejšie otázky o BrightSign prehrávačoch, objednávkach, doručení a B2B programe.",
+    "q1": {
+      "question": "Čo je BrightSign a na čo slúži?",
+      "answer": "BrightSign je svetový líder v oblasti digital signage prehrávačov. Prehrávače slúžia na prehrávanie digitálneho obsahu na obrazovkách — v obchodoch, reštauráciách, hoteloch, kanceláriách, nemocniciach a ďalších verejných priestoroch."
+    },
+    "q2": {
+      "question": "Aký je rozdiel medzi sériami S4, S5 a S6?",
+      "answer": "Séria 4 (S4) je staršia generácia vo výpredaji za zvýhodnené ceny. Séria 5 (S5) ponúka vyšší výkon a moderné funkcie. Séria 6 (S6) je najnovšia generácia s NPU pre AI funkcie, 4K60p dekódovaním a najlepším výkonom."
+    },
+    "q3": {
+      "question": "Ako rýchlo doručujete?",
+      "answer": "Skladové položky odosielame do 1–2 pracovných dní. Doručenie na Slovensko trvá obvykle 2–4 dni. Do Česka 1–2 dni. Ostatné krajiny EÚ 3–5 pracovných dní."
+    },
+    "q4": {
+      "question": "Aké platobné metódy prijímáte?",
+      "answer": "Prijímame platby kartou (Visa, Mastercard) cez zabezpečenú platobnú bránu Stripe a bankový prevod. Pre B2B zákazníkov ponúkame aj platbu na faktúru."
+    },
+    "q5": {
+      "question": "Ponúkate B2B zľavy?",
+      "answer": "Áno! Po registrácii do B2B programu a overení IČ DPH cez VIES získate automatickú zľavu 10 % z maloobchodných cien. Pre väčšie objemy alebo partnerskú spoluprácu ponúkame individuálne podmienky."
+    },
+    "q6": {
+      "question": "Aká je záruka na BrightSign prehrávače?",
+      "answer": "BrightSign prehrávače majú štandardnú záruku výrobcu. Séria 5 a 6 majú záruku 3 roky od dátumu nákupu. Clearance produkty série 4 majú záruku 2 roky."
+    },
+    "q7": {
+      "question": "Potrebujem k BrightSign prehrávaču licenciu?",
+      "answer": "Nie! Na rozdiel od konkurenčných riešení BrightSign nevyžaduje žiadne mesačné licenčné poplatky. Softvér BrightAuthor:connected na správu obsahu je úplne zadarmo."
+    },
+    "q8": {
+      "question": "Ako funguje reklamácia a vrátenie tovaru?",
+      "answer": "Tovar môžete vrátiť do 14 dní od doručenia bez udania dôvodu. V prípade vady uplatnite reklamáciu cez náš kontaktný formulár. Podrobnosti nájdete v reklamačnom poriadku."
+    }
   }
 }

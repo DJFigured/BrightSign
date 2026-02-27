@@ -85,6 +85,11 @@ export function Footer({ navData }: FooterProps) {
                   {tc("contact")}
                 </Link>
               </li>
+              <li>
+                <Link href="/faq" className="hover:text-brand-accent transition-colors">
+                  FAQ
+                </Link>
+              </li>
             </ul>
           </nav>
 

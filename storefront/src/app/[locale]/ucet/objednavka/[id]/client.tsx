@@ -12,7 +12,7 @@ import { Badge } from "@/components/ui/badge"
 import { useAuth } from "@/lib/auth-context"
 import { sdk } from "@/lib/sdk"
 import { formatPrice } from "@/lib/medusa-helpers"
-import { Loader2, ArrowLeft, Package, MapPin, ShoppingBag, Truck } from "lucide-react"
+import { Loader2, ArrowLeft, Package, MapPin, ShoppingBag, Truck, FileText, Download } from "lucide-react"
 
 interface OrderDetail {
   id: string
@@ -53,6 +53,19 @@ interface OrderDetail {
   }> | null
 }
 
+interface Invoice {
+  id: string
+  type: string
+  number: string
+  status: string
+  issued_at: string
+  due_at?: string
+  paid_at?: string
+  currency_code: string
+  total: number
+  pdf_url?: string
+}
+
 export function OrderDetailPageClient() {
   const t = useTranslations("checkout")
   const tAccount = useTranslations("account")
@@ -64,6 +77,7 @@ export function OrderDetailPageClient() {
   const orderId = params.id as string
 
   const [order, setOrder] = useState<OrderDetail | null>(null)
+  const [invoices, setInvoices] = useState<Invoice[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -82,6 +96,20 @@ export function OrderDetailPageClient() {
         })
         .catch(console.error)
         .finally(() => setLoading(false))
+
+      // Fetch invoices
+      const backendUrl = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || "http://localhost:9000"
+      fetch(`${backendUrl}/store/orders/${orderId}/invoices`, {
+        credentials: "include",
+        headers: {
+          "x-publishable-api-key": process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY || "",
+        },
+      })
+        .then((r) => r.ok ? r.json() : null)
+        .then((data) => {
+          if (data?.invoices) setInvoices(data.invoices)
+        })
+        .catch(() => {}) // Silently ignore — invoices may not be available yet
     }
   }, [customer, orderId])
 
@@ -296,6 +324,46 @@ export function OrderDetailPageClient() {
             <CardContent className="text-sm">
               {trackingNumbers.map((num, i) => (
                 <p key={i} className="font-mono">{num}</p>
+              ))}
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Invoices / Documents */}
+        {invoices.length > 0 && (
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-base">
+                <FileText className="h-4 w-4" />
+                {t("invoiceTitle")}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3 text-sm">
+              {invoices.map((inv) => (
+                <div key={inv.id} className="flex items-center justify-between rounded-lg border p-3">
+                  <div>
+                    <p className="font-medium">
+                      {inv.type === "proforma" ? t("invoiceProforma") : t("invoiceFinal")} {inv.number}
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      {new Date(inv.issued_at).toLocaleDateString(locale, {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
+                      {" · "}
+                      {formatPrice(inv.total, inv.currency_code?.toUpperCase() ?? currency)}
+                    </p>
+                  </div>
+                  {inv.pdf_url && (
+                    <Button asChild variant="outline" size="sm">
+                      <a href={inv.pdf_url} target="_blank" rel="noopener noreferrer">
+                        <Download className="mr-2 h-4 w-4" />
+                        PDF
+                      </a>
+                    </Button>
+                  )}
+                </div>
               ))}
             </CardContent>
           </Card>

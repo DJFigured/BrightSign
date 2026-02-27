@@ -50,6 +50,7 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
   const [quantity, setQuantity] = useState(1)
   const [adding, setAdding] = useState(false)
   const [selectedImage, setSelectedImage] = useState(0)
+  const [lightboxOpen, setLightboxOpen] = useState(false)
 
   const title = product.title as string
   const description = getLocalizedDescription(
@@ -144,7 +145,14 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
       <div className="grid gap-8 md:grid-cols-2">
         {/* Image gallery */}
         <div>
-          <div className="relative aspect-square overflow-hidden rounded-lg border border-border bg-white">
+          <div
+            className="relative aspect-square overflow-hidden rounded-lg border border-border bg-white cursor-zoom-in"
+            onClick={() => allImages.length > 0 && setLightboxOpen(true)}
+            role="button"
+            tabIndex={0}
+            aria-label={t("zoomImage")}
+            onKeyDown={(e) => e.key === "Enter" && allImages.length > 0 && setLightboxOpen(true)}
+          >
             {allImages.length > 0 ? (
               <Image
                 src={allImages[selectedImage]?.url ?? ""}
@@ -363,6 +371,69 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
                 product={p as Parameters<typeof ProductCard>[0]["product"]}
               />
             ))}
+          </div>
+        </div>
+      )}
+
+      {/* Lightbox modal */}
+      {lightboxOpen && allImages.length > 0 && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4"
+          onClick={() => setLightboxOpen(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={title}
+        >
+          <button
+            onClick={() => setLightboxOpen(false)}
+            className="absolute right-4 top-4 rounded-full bg-white/20 p-2 text-white hover:bg-white/30 transition-colors"
+            aria-label={tc("close")}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+
+          {allImages.length > 1 && (
+            <>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setSelectedImage((prev) => (prev - 1 + allImages.length) % allImages.length)
+                }}
+                className="absolute left-4 rounded-full bg-white/20 p-3 text-white hover:bg-white/30 transition-colors"
+                aria-label={t("previousImage")}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setSelectedImage((prev) => (prev + 1) % allImages.length)
+                }}
+                className="absolute right-4 rounded-full bg-white/20 p-3 text-white hover:bg-white/30 transition-colors"
+                aria-label={t("nextImage")}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </>
+          )}
+
+          <div
+            className="relative h-[80vh] w-full max-w-4xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={allImages[selectedImage]?.url ?? ""}
+              alt={title}
+              fill
+              className="object-contain"
+              sizes="100vw"
+            />
           </div>
         </div>
       )}

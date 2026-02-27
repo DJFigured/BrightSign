@@ -176,6 +176,8 @@
     "bankTransferEmailNote": "Faktura proforma z kodem QR do płatności została wysłana na Twój e-mail. Po otrzymaniu płatności wyślemy fakturę końcową i towar.",
     "pendingTransfer": "Oczekuje na przelew bankowy",
     "invoiceTitle": "Dokumenty",
+    "invoiceProforma": "Faktura proforma",
+    "invoiceFinal": "Faktura",
     "invoiceEmailNote": "Faktura zostanie wysłana na Twój e-mail.",
     "invoiceProformaNote": "Faktura proforma z danymi do przelewu została wysłana na Twój e-mail. Po opłaceniu otrzymasz fakturę końcową.",
     "checkoutSteps": "Kroki zamówienia",
@@ -266,7 +268,10 @@
     "shippingBadge": "Wysyłka do 48h",
     "downloadDatasheet": "Pobierz kartę katalogową (PDF)",
     "specYes": "Tak",
-    "specNo": "Nie"
+    "specNo": "Nie",
+    "zoomImage": "Powiększ zdjęcie",
+    "previousImage": "Poprzednie zdjęcie",
+    "nextImage": "Następne zdjęcie"
   },
   "notFound": {
     "title": "Strona nie znaleziona",
@@ -601,5 +606,41 @@
     "Player weight": "Waga",
     "Locking power supply": "Zasilanie",
     "Wi-Fi": "Wi-Fi"
+  },
+  "faq": {
+    "title": "Najczęściej zadawane pytania",
+    "metaDescription": "Odpowiedzi na najczęstsze pytania dotyczące odtwarzaczy BrightSign, zamówień, dostawy i programu B2B.",
+    "q1": {
+      "question": "Czym jest BrightSign i do czego służy?",
+      "answer": "BrightSign jest światowym liderem w dziedzinie odtwarzaczy digital signage. Odtwarzacze służą do wyświetlania treści cyfrowych na ekranach — w sklepach, restauracjach, hotelach, biurach, szpitalach i innych miejscach publicznych."
+    },
+    "q2": {
+      "question": "Jaka jest różnica między seriami S4, S5 i S6?",
+      "answer": "Seria 4 (S4) to starsza generacja w wyprzedaży w obniżonych cenach. Seria 5 (S5) oferuje wyższą wydajność i nowoczesne funkcje. Seria 6 (S6) to najnowsza generacja z NPU do funkcji AI, dekodowaniem 4K60p i najlepszą wydajnością."
+    },
+    "q3": {
+      "question": "Jak szybko dostarczacie?",
+      "answer": "Produkty magazynowe wysyłamy w ciągu 1–2 dni roboczych. Dostawa do Polski trwa zwykle 2–4 dni. Do Czech 1–2 dni. Inne kraje UE 3–5 dni roboczych."
+    },
+    "q4": {
+      "question": "Jakie metody płatności akceptujecie?",
+      "answer": "Akceptujemy płatności kartą (Visa, Mastercard) przez bezpieczną bramkę płatniczą Stripe oraz przelew bankowy. Dla klientów B2B oferujemy również płatność na fakturę."
+    },
+    "q5": {
+      "question": "Czy oferujecie rabaty B2B?",
+      "answer": "Tak! Po rejestracji w programie B2B i weryfikacji numeru VAT przez VIES otrzymasz automatyczny rabat 10% od cen detalicznych. Dla większych wolumenów lub współpracy partnerskiej oferujemy indywidualne warunki."
+    },
+    "q6": {
+      "question": "Jaka jest gwarancja na odtwarzacze BrightSign?",
+      "answer": "Odtwarzacze BrightSign mają standardową gwarancję producenta. Serie 5 i 6 mają gwarancję 3 lata od daty zakupu. Produkty clearance serii 4 mają gwarancję 2 lata."
+    },
+    "q7": {
+      "question": "Czy potrzebuję licencji do odtwarzacza BrightSign?",
+      "answer": "Nie! W przeciwieństwie do konkurencyjnych rozwiązań BrightSign nie wymaga żadnych miesięcznych opłat licencyjnych. Oprogramowanie BrightAuthor:connected do zarządzania treścią jest całkowicie bezpłatne."
+    },
+    "q8": {
+      "question": "Jak działa reklamacja i zwrot towaru?",
+      "answer": "Towar możesz zwrócić w ciągu 14 dni od dostawy bez podania przyczyny. W przypadku wady złóż reklamację przez nasz formularz kontaktowy. Szczegóły znajdziesz w regulaminie reklamacji."
+    }
   }
 }

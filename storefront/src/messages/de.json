@@ -176,6 +176,8 @@
     "bankTransferEmailNote": "Eine Proformarechnung mit QR-Zahlungscode wurde an Ihre E-Mail gesendet. Nach Zahlungseingang senden wir Ihnen die Endrechnung und versenden die Ware.",
     "pendingTransfer": "Warten auf Banküberweisung",
     "invoiceTitle": "Dokumente",
+    "invoiceProforma": "Proformarechnung",
+    "invoiceFinal": "Rechnung",
     "invoiceEmailNote": "Die Rechnung wird Ihnen per E-Mail zugesandt.",
     "invoiceProformaNote": "Eine Proformarechnung mit Zahlungsdaten wurde an Ihre E-Mail gesendet. Nach der Zahlung erhalten Sie die Endrechnung.",
     "checkoutSteps": "Bestellschritte",
@@ -266,7 +268,10 @@
     "shippingBadge": "Versand innerhalb 48h",
     "downloadDatasheet": "Datenblatt herunterladen (PDF)",
     "specYes": "Ja",
-    "specNo": "Nein"
+    "specNo": "Nein",
+    "zoomImage": "Bild vergrößern",
+    "previousImage": "Vorheriges Bild",
+    "nextImage": "Nächstes Bild"
   },
   "notFound": {
     "title": "Seite nicht gefunden",
@@ -601,5 +606,41 @@
     "Player weight": "Gewicht",
     "Locking power supply": "Stromversorgung",
     "Wi-Fi": "Wi-Fi"
+  },
+  "faq": {
+    "title": "Häufig gestellte Fragen",
+    "metaDescription": "Antworten auf die häufigsten Fragen zu BrightSign-Playern, Bestellungen, Versand und unserem B2B-Programm.",
+    "q1": {
+      "question": "Was ist BrightSign und wofür wird es verwendet?",
+      "answer": "BrightSign ist der Weltmarktführer im Bereich Digital-Signage-Player. Die Player dienen zur Wiedergabe digitaler Inhalte auf Bildschirmen — in Geschäften, Restaurants, Hotels, Büros, Krankenhäusern und anderen öffentlichen Räumen."
+    },
+    "q2": {
+      "question": "Was ist der Unterschied zwischen den Serien S4, S5 und S6?",
+      "answer": "Serie 4 (S4) ist die ältere Generation im Abverkauf zu reduzierten Preisen. Serie 5 (S5) bietet höhere Leistung und moderne Funktionen. Serie 6 (S6) ist die neueste Generation mit NPU für KI-Funktionen, 4K60p-Dekodierung und bester Leistung."
+    },
+    "q3": {
+      "question": "Wie schnell liefern Sie?",
+      "answer": "Lagerartikel versenden wir innerhalb von 1–2 Werktagen. Lieferung nach Österreich und Deutschland dauert 3–5 Werktage. Tschechien 1–2 Tage. Andere EU-Länder 3–5 Werktage."
+    },
+    "q4": {
+      "question": "Welche Zahlungsmethoden akzeptieren Sie?",
+      "answer": "Wir akzeptieren Kartenzahlungen (Visa, Mastercard) über das sichere Stripe-Zahlungsgateway und Banküberweisung. Für B2B-Kunden bieten wir auch Zahlung auf Rechnung."
+    },
+    "q5": {
+      "question": "Bieten Sie B2B-Rabatte an?",
+      "answer": "Ja! Nach der Registrierung für unser B2B-Programm und der Überprüfung Ihrer USt-IdNr. über VIES erhalten Sie automatisch 10 % Rabatt auf die Einzelhandelspreise. Für größere Mengen oder Partnerkooperationen bieten wir individuelle Konditionen."
+    },
+    "q6": {
+      "question": "Welche Garantie haben BrightSign-Player?",
+      "answer": "BrightSign-Player haben eine Standard-Herstellergarantie. Serie 5 und 6 haben 3 Jahre Garantie ab Kaufdatum. Clearance-Produkte der Serie 4 haben 2 Jahre Garantie."
+    },
+    "q7": {
+      "question": "Benötige ich eine Lizenz für einen BrightSign-Player?",
+      "answer": "Nein! Im Gegensatz zu Konkurrenzlösungen erfordert BrightSign keine monatlichen Lizenzgebühren. Die Software BrightAuthor:connected zur Inhaltsverwaltung ist völlig kostenlos."
+    },
+    "q8": {
+      "question": "Wie funktionieren Rückgabe und Reklamation?",
+      "answer": "Sie können Waren innerhalb von 14 Tagen nach Lieferung ohne Angabe von Gründen zurücksenden. Im Falle eines Mangels reichen Sie eine Reklamation über unser Kontaktformular ein. Details finden Sie in unserer Reklamationsordnung."
+    }
   }
 }

@@ -16,6 +16,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: "/obchodni-podminky", changeFrequency: "monthly" as const, priority: 0.3 },
     { path: "/ochrana-udaju", changeFrequency: "monthly" as const, priority: 0.3 },
     { path: "/reklamace", changeFrequency: "monthly" as const, priority: 0.3 },
+    { path: "/faq", changeFrequency: "monthly" as const, priority: 0.5 },
   ]
 
   for (const page of staticPages) {
