@@ -622,7 +622,11 @@
     "send": "Odeslat zprávu",
     "submitting": "Odesílám...",
     "submitError": "Něco se pokazilo, zkuste to prosím znovu.",
-    "submitSuccess": "Děkujeme za zprávu! Ozveme se vám co nejdříve."
+    "submitSuccess": "Děkujeme za zprávu!",
+    "successNote": "Ozveme se vám co nejdříve.",
+    "successCheckEmail": "Potvrzení jsme odeslali na váš e-mail",
+    "successResponseTime": "Obvykle odpovídáme do 24 hodin",
+    "successBrowseProducts": "Prohlédnout produkty"
   },
   "search": {
     "title": "Vyhledávání",

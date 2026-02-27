@@ -629,7 +629,11 @@
     "send": "Send Message",
     "submitting": "Sending...",
     "submitError": "Something went wrong, please try again.",
-    "submitSuccess": "Thank you for your message! We'll get back to you soon."
+    "submitSuccess": "Thank you for your message!",
+    "successNote": "We'll get back to you as soon as possible.",
+    "successCheckEmail": "A confirmation has been sent to your email",
+    "successResponseTime": "We usually respond within 24 hours",
+    "successBrowseProducts": "Browse Products"
   },
   "search": {
     "title": "Search",

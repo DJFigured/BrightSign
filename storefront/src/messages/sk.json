@@ -629,7 +629,11 @@
     "send": "Odoslať správu",
     "submitting": "Odosielam...",
     "submitError": "Niečo sa pokazilo, skúste to prosím znova.",
-    "submitSuccess": "Ďakujeme za správu! Ozveme sa vám čo najskôr."
+    "submitSuccess": "Ďakujeme za správu!",
+    "successNote": "Ozveme sa vám čo najskôr.",
+    "successCheckEmail": "Potvrdenie sme odoslali na váš e-mail",
+    "successResponseTime": "Zvyčajne odpovedáme do 24 hodín",
+    "successBrowseProducts": "Prehliadnuť produkty"
   },
   "search": {
     "title": "Vyhľadávanie",

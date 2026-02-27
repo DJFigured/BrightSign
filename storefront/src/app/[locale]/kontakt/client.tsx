@@ -3,7 +3,9 @@
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { trackLead, trackPixel } from '@/lib/analytics'
-import { CheckCircle } from 'lucide-react'
+import { CheckCircle, Mail, Clock, ArrowRight } from 'lucide-react'
+import Link from 'next/link'
+import { useLocale } from 'next-intl'
 
 const MEDUSA_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || 'http://localhost:9000'
 const API_KEY = process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY || ''
@@ -59,14 +61,38 @@ export function ContactPageClient() {
     }
   }
 
+  const locale = useLocale()
+
   if (submitted) {
     return (
       <div className="mx-auto max-w-4xl px-4 py-12">
         <div className="text-center">
-          <CheckCircle className="mx-auto mb-4 h-16 w-16 text-brand-accent" />
-          <h1 className="text-2xl font-bold text-brand-primary mb-4">
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-brand-accent/10">
+            <CheckCircle className="h-10 w-10 text-brand-accent" />
+          </div>
+          <h1 className="text-2xl font-bold text-brand-primary mb-2">
             {t('submitSuccess')}
           </h1>
+          <p className="text-muted-foreground mb-8">{t('successNote')}</p>
+
+          <div className="mx-auto max-w-md space-y-4 text-left">
+            <div className="flex items-start gap-3 rounded-lg border border-border bg-muted/30 px-4 py-3">
+              <Mail className="mt-0.5 h-5 w-5 shrink-0 text-brand-accent" />
+              <span className="text-sm text-foreground/80">{t('successCheckEmail')}</span>
+            </div>
+            <div className="flex items-start gap-3 rounded-lg border border-border bg-muted/30 px-4 py-3">
+              <Clock className="mt-0.5 h-5 w-5 shrink-0 text-brand-accent" />
+              <span className="text-sm text-foreground/80">{t('successResponseTime')}</span>
+            </div>
+          </div>
+
+          <Link
+            href={`/${locale}/produkty`}
+            className="mt-8 inline-flex items-center gap-2 rounded-md bg-brand-accent px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-brand-accent/90"
+          >
+            {t('successBrowseProducts')}
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </div>
     )

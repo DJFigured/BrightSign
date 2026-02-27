@@ -629,7 +629,11 @@
     "send": "Nachricht senden",
     "submitting": "Wird gesendet...",
     "submitError": "Etwas ist schiefgelaufen, bitte versuchen Sie es erneut.",
-    "submitSuccess": "Vielen Dank für Ihre Nachricht! Wir melden uns so schnell wie möglich."
+    "submitSuccess": "Vielen Dank für Ihre Nachricht!",
+    "successNote": "Wir melden uns so schnell wie möglich.",
+    "successCheckEmail": "Eine Bestätigung wurde an Ihre E-Mail gesendet",
+    "successResponseTime": "Wir antworten in der Regel innerhalb von 24 Stunden",
+    "successBrowseProducts": "Produkte durchsuchen"
   },
   "search": {
     "title": "Suche",
