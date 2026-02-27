@@ -1,28 +1,172 @@
 [
-  { "modelNumber": "HD226", "priceCZK": 17100, "_note": "Série 6 - odhad S5+15%" },
-  { "modelNumber": "HD1026", "priceCZK": 20600, "_note": "Série 6 - odhad S5+15%" },
-  { "modelNumber": "XD236", "priceCZK": 22300, "_note": "Série 6 - odhad S5+15%" },
-  { "modelNumber": "XD1036", "priceCZK": 25800, "_note": "Série 6 - odhad S5+15%" },
+  {
+    "modelNumber": "HD226",
+    "priceCZK": 17100,
+    "priceEUR": 670,
+    "pricePLN": 2799,
+    "_note": "Série 6 HD entry. CZ: S5+15%. PL: first-mover, atraktivní kulatá cena"
+  },
+  {
+    "modelNumber": "HD1026",
+    "priceCZK": 20600,
+    "priceEUR": 808,
+    "pricePLN": 3399,
+    "_note": "Série 6 HD expanded I/O. PL: first-mover"
+  },
+  {
+    "modelNumber": "XD236",
+    "priceCZK": 22300,
+    "priceEUR": 875,
+    "pricePLN": 3699,
+    "_note": "Série 6 XD dual 4K. PL: first-mover"
+  },
+  {
+    "modelNumber": "XD1036",
+    "priceCZK": 25800,
+    "priceEUR": 1012,
+    "pricePLN": 4249,
+    "_note": "Série 6 XD expanded I/O. PL: first-mover"
+  },
 
-  { "modelNumber": "AU335", "priceCZK": 5800 },
-  { "modelNumber": "LS425", "priceCZK": 9200 },
-  { "modelNumber": "LS445", "priceCZK": 11900 },
-  { "modelNumber": "HD225", "priceCZK": 14900 },
-  { "modelNumber": "HD1025", "priceCZK": 17900 },
-  { "modelNumber": "XD235", "priceCZK": 19400 },
-  { "modelNumber": "XD1035", "priceCZK": 22400 },
-  { "modelNumber": "XT245", "priceCZK": 24400 },
-  { "modelNumber": "XT1145", "priceCZK": 26400 },
-  { "modelNumber": "XT2145", "priceCZK": 31900 },
-  { "modelNumber": "XC2055", "priceCZK": 36900 },
-  { "modelNumber": "XC4055", "priceCZK": 49900 },
+  {
+    "modelNumber": "AU335",
+    "priceCZK": 5800,
+    "priceEUR": 227,
+    "pricePLN": 949,
+    "_note": "Série 5 audio. PL: pod 1000 PLN psychologická hranice"
+  },
+  {
+    "modelNumber": "LS425",
+    "priceCZK": 9200,
+    "priceEUR": 361,
+    "pricePLN": 1499,
+    "_note": "Série 5 LS basic"
+  },
+  {
+    "modelNumber": "LS445",
+    "priceCZK": 11900,
+    "priceEUR": 467,
+    "pricePLN": 1949,
+    "_note": "Série 5 LS expanded"
+  },
+  {
+    "modelNumber": "HD225",
+    "priceCZK": 14900,
+    "priceEUR": 584,
+    "pricePLN": 2499,
+    "_note": "Série 5 HD entry. PL: -19% pod daars.pl (3099 PLN)"
+  },
+  {
+    "modelNumber": "HD1025",
+    "priceCZK": 17900,
+    "priceEUR": 702,
+    "pricePLN": 2999,
+    "_note": "Série 5 HD expanded"
+  },
+  {
+    "modelNumber": "XD235",
+    "priceCZK": 19400,
+    "priceEUR": 761,
+    "pricePLN": 3199,
+    "_note": "Série 5 XD. PL: pod supertech.pl (2334 PLN netto = ~2871 brutto) - srovnatelné"
+  },
+  {
+    "modelNumber": "XD1035",
+    "priceCZK": 22400,
+    "priceEUR": 878,
+    "pricePLN": 3699,
+    "_note": "Série 5 XD expanded"
+  },
+  {
+    "modelNumber": "XT245",
+    "priceCZK": 24400,
+    "priceEUR": 957,
+    "pricePLN": 3999,
+    "_note": "Série 5 XT entry"
+  },
+  {
+    "modelNumber": "XT1145",
+    "priceCZK": 26400,
+    "priceEUR": 1035,
+    "pricePLN": 4349,
+    "_note": "Série 5 XT expanded"
+  },
+  {
+    "modelNumber": "XT2145",
+    "priceCZK": 31900,
+    "priceEUR": 1251,
+    "pricePLN": 5249,
+    "_note": "Série 5 XT flagship"
+  },
+  {
+    "modelNumber": "XC2055",
+    "priceCZK": 36900,
+    "priceEUR": 1447,
+    "pricePLN": 6049,
+    "_note": "Série 5 XC video wall"
+  },
+  {
+    "modelNumber": "XC4055",
+    "priceCZK": 49900,
+    "priceEUR": 1957,
+    "pricePLN": 8199,
+    "_note": "Série 5 XC quad video wall"
+  },
 
-  { "modelNumber": "HD224", "priceCZK": 10900, "_note": "Série 4 doprodej (~73% ceny S5)" },
-  { "modelNumber": "HD1024", "priceCZK": 13200, "_note": "Série 4 doprodej (~74% ceny S5)" },
-  { "modelNumber": "XD234", "priceCZK": 14200, "_note": "Série 4 doprodej (~73% ceny S5)" },
-  { "modelNumber": "XD1034", "priceCZK": 16500, "_note": "Série 4 doprodej (~74% ceny S5)" },
-  { "modelNumber": "XT244", "priceCZK": 17900, "_note": "Série 4 doprodej (~73% ceny S5)" },
-  { "modelNumber": "XT1144", "priceCZK": 19400, "_note": "Série 4 doprodej (~73% ceny S5)" },
-  { "modelNumber": "LS424", "priceCZK": 6700, "_note": "Série 4 doprodej (~73% ceny S5)" },
-  { "modelNumber": "LS444", "priceCZK": 8700, "_note": "Série 4 doprodej (~73% ceny S5)" }
+  {
+    "modelNumber": "HD224",
+    "priceCZK": 10900,
+    "priceEUR": 427,
+    "pricePLN": 1799,
+    "_note": "Série 4 doprodej (~73% ceny S5)"
+  },
+  {
+    "modelNumber": "HD1024",
+    "priceCZK": 13200,
+    "priceEUR": 518,
+    "pricePLN": 2199,
+    "_note": "Série 4 doprodej (~74% ceny S5)"
+  },
+  {
+    "modelNumber": "XD234",
+    "priceCZK": 14200,
+    "priceEUR": 557,
+    "pricePLN": 2349,
+    "_note": "Série 4 doprodej (~73% ceny S5)"
+  },
+  {
+    "modelNumber": "XD1034",
+    "priceCZK": 16500,
+    "priceEUR": 647,
+    "pricePLN": 2699,
+    "_note": "Série 4 doprodej (~74% ceny S5)"
+  },
+  {
+    "modelNumber": "XT244",
+    "priceCZK": 17900,
+    "priceEUR": 702,
+    "pricePLN": 2949,
+    "_note": "Série 4 doprodej (~73% ceny S5)"
+  },
+  {
+    "modelNumber": "XT1144",
+    "priceCZK": 19400,
+    "priceEUR": 761,
+    "pricePLN": 3199,
+    "_note": "Série 4 doprodej (~73% ceny S5)"
+  },
+  {
+    "modelNumber": "LS424",
+    "priceCZK": 6700,
+    "priceEUR": 263,
+    "pricePLN": 1099,
+    "_note": "Série 4 doprodej (~73% ceny S5)"
+  },
+  {
+    "modelNumber": "LS444",
+    "priceCZK": 8700,
+    "priceEUR": 341,
+    "pricePLN": 1449,
+    "_note": "Série 4 doprodej (~73% ceny S5)"
+  }
 ]
