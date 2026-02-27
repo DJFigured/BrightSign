@@ -83,6 +83,9 @@ export function CheckoutPageClient() {
   const [ico, setIco] = useState("")
   const [dic, setDic] = useState("")
 
+  // Terms acceptance
+  const [termsAccepted, setTermsAccepted] = useState(false)
+
   // Billing address (different from shipping)
   const [billingDifferent, setBillingDifferent] = useState(false)
   const [billingFirstName, setBillingFirstName] = useState("")
@@ -843,6 +846,30 @@ export function CheckoutPageClient() {
                   </label>
                 </div>
 
+                {/* Terms acceptance */}
+                <div className="rounded-lg border border-border bg-muted/30 p-4">
+                  <label className="flex items-start gap-3 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={termsAccepted}
+                      onChange={(e) => setTermsAccepted(e.target.checked)}
+                      className="mt-0.5 h-4 w-4 accent-brand-accent"
+                      required
+                    />
+                    <span className="text-sm text-muted-foreground">
+                      {t("termsAgreePre")}
+                      <Link href="/obchodni-podminky" target="_blank" className="text-brand-accent hover:underline">
+                        {t("termsLink")}
+                      </Link>
+                      {t("termsAgreeAnd")}
+                      <Link href="/ochrana-udaju" target="_blank" className="text-brand-accent hover:underline">
+                        {t("privacyLink")}
+                      </Link>
+                      {t("termsAgreePost")}
+                    </span>
+                  </label>
+                </div>
+
                 {/* Card payment */}
                 {paymentMethod === "card" && (
                   <>
@@ -861,7 +888,7 @@ export function CheckoutPageClient() {
                           </Button>
                           <Button
                             onClick={handlePlaceOrder}
-                            disabled={loading}
+                            disabled={loading || !termsAccepted}
                             className="flex-1 bg-brand-accent hover:bg-brand-accent-dark text-white"
                             size="lg"
                           >
@@ -887,7 +914,7 @@ export function CheckoutPageClient() {
                       </Button>
                       <Button
                         onClick={handlePlaceOrder}
-                        disabled={loading}
+                        disabled={loading || !termsAccepted}
                         className="flex-1 bg-brand-accent hover:bg-brand-accent-dark text-white"
                         size="lg"
                       >
