@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrightSign.cz — Varianta 2: Dark Tech</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Space Grotesk', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          },
+          colors: {
+            surface: '#0a0a0a',
+            card: '#141414',
+            border: '#222',
+            neon: '#00ff88',
+            neonBlue: '#0088ff',
+            neonPurple: '#8b5cf6'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { font-family: 'Space Grotesk', system-ui, sans-serif; }
+    html { scroll-behavior: smooth; }
+    body { background: #0a0a0a; }
+    .glow-card {
+      position: relative;
+      background: #141414;
+      border: 1px solid #222;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .glow-card:hover {
+      border-color: #00ff88;
+      transform: translateY(-4px);
+    }
+    .glow-card::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #00ff8820, transparent, #0088ff20);
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .glow-card:hover::before { opacity: 1; }
+    .gradient-text {
+      background: linear-gradient(135deg, #00ff88, #0088ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.15;
+      animation: float 8s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(30px, -20px); }
+    }
+    @keyframes pulse-border {
+      0%, 100% { border-color: #222; }
+      50% { border-color: #00ff8840; }
+    }
+    .pulse-border { animation: pulse-border 3s ease-in-out infinite; }
+    .spec-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      padding: 4px 10px;
+      border-radius: 6px;
+      color: #888;
+    }
+    .neon-badge {
+      background: #00ff8815;
+      color: #00ff88;
+      border: 1px solid #00ff8840;
+    }
+  </style>
+</head>
+<body class="text-white antialiased">
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-xl border-b border-border">
+    <div class="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2">
+        <div class="w-7 h-7 rounded-lg bg-neon/20 flex items-center justify-center">
+          <i data-lucide="monitor" class="w-4 h-4 text-neon"></i>
+        </div>
+        <span class="font-bold text-lg">BrightSign<span class="text-neon">.cz</span></span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm text-gray-400">
+        <a href="#produkty" class="hover:text-white transition-colors">Produkty</a>
+        <a href="#spec" class="hover:text-white transition-colors">Specifikace</a>
+        <a href="#proc-my" class="hover:text-white transition-colors">O nas</a>
+        <a href="#" class="neon-badge px-4 py-1.5 rounded-full text-xs font-semibold">B2B program</a>
+      </nav>
+      <button class="md:hidden p-2 text-gray-400"><i data-lucide="menu" class="w-5 h-5"></i></button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative min-h-screen flex items-center overflow-hidden pt-14">
+    <div class="hero-glow bg-neon top-1/4 -left-48"></div>
+    <div class="hero-glow bg-neonBlue bottom-1/4 -right-48"></div>
+    <div class="max-w-7xl mx-auto px-6 py-20 relative z-10">
+      <div class="max-w-3xl">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="neon-badge text-xs font-mono font-semibold px-3 py-1 rounded-full">SERIE 6</span>
+          <span class="spec-tag">2026 — nova generace</span>
+        </div>
+        <h1 class="text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight mb-6">
+          Digital signage<br>
+          <span class="gradient-text">pro budoucnost.</span>
+        </h1>
+        <p class="text-lg text-gray-400 leading-relaxed mb-10 max-w-lg">
+          4K HDR. Neuralni procesor. AI-ready. Prehravace BrightSign Serie 6 definuji novy standard toho, co je mozne.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#produkty" class="bg-neon text-black px-7 py-3 rounded-full font-semibold hover:bg-neon/90 transition-colors">
+            Prohlednout modely
+          </a>
+          <a href="#spec" class="border border-border px-7 py-3 rounded-full font-medium text-gray-300 hover:border-gray-500 transition-colors">
+            Specifikace
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Grid -->
+  <section id="produkty" class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Serie 6 prehravace</h2>
+        <p class="text-gray-400 max-w-lg">Ctyrni modely. Jeden cil: bezchybny digitalni obsah na kazdém displeji.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+
+        <!-- HD226 -->
+        <div class="glow-card p-8">
+          <div class="flex items-start justify-between mb-6">
+            <div>
+              <span class="neon-badge text-[10px] font-mono px-2 py-0.5 rounded">ENTRY</span>
+              <h3 class="text-2xl font-bold mt-3">HD226</h3>
+              <p class="text-sm text-gray-400 mt-1">Vstupni 4K prehravac s HDR</p>
+            </div>
+            <div class="text-right">
+              <p class="text-2xl font-bold text-neon">17 100 Kc</p>
+              <p class="text-xs text-gray-500 font-mono">670 EUR</p>
+            </div>
+          </div>
+          <div class="bg-surface rounded-xl p-8 flex items-center justify-center mb-6 pulse-border border">
+            <i data-lucide="monitor" class="w-16 h-16 text-gray-600"></i>
+          </div>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="spec-tag">Single 4K 60p</span>
+            <span class="spec-tag">10-bit HDR</span>
+            <span class="spec-tag">NPU</span>
+            <span class="spec-tag">HTML5</span>
+            <span class="spec-tag">5 let zaruka</span>
+          </div>
+          <a href="#" class="w-full flex items-center justify-center gap-2 bg-white/5 border border-border hover:border-neon text-white py-3 rounded-xl font-medium transition-colors">
+            <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+            Objednat
+          </a>
+        </div>
+
+        <!-- HD1026 -->
+        <div class="glow-card p-8">
+          <div class="flex items-start justify-between mb-6">
+            <div>
+              <span class="neon-badge text-[10px] font-mono px-2 py-0.5 rounded">EXPANDED I/O</span>
+              <h3 class="text-2xl font-bold mt-3">HD1026</h3>
+              <p class="text-sm text-gray-400 mt-1">4K s Live TV a dual Ethernet</p>
+            </div>
+            <div class="text-right">
+              <p class="text-2xl font-bold text-neon">20 600 Kc</p>
+              <p class="text-xs text-gray-500 font-mono">808 EUR</p>
+            </div>
+          </div>
+          <div class="bg-surface rounded-xl p-8 flex items-center justify-center mb-6 pulse-border border">
+            <i data-lucide="monitor" class="w-16 h-16 text-gray-600"></i>
+          </div>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="spec-tag">Single 4K 60p</span>
+            <span class="spec-tag">HDMI In</span>
+            <span class="spec-tag">Dual ETH</span>
+            <span class="spec-tag">USB-C</span>
+            <span class="spec-tag">GPIO</span>
+          </div>
+          <a href="#" class="w-full flex items-center justify-center gap-2 bg-white/5 border border-border hover:border-neon text-white py-3 rounded-xl font-medium transition-colors">
+            <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+            Objednat
+          </a>
+        </div>
+
+        <!-- XD236 -->
+        <div class="glow-card p-8">
+          <div class="flex items-start justify-between mb-6">
+            <div>
+              <span class="neon-badge text-[10px] font-mono px-2 py-0.5 rounded">PERFORMANCE</span>
+              <h3 class="text-2xl font-bold mt-3">XD236</h3>
+              <p class="text-sm text-gray-400 mt-1">Dual 4K s PoE+ napajenim</p>
+            </div>
+            <div class="text-right">
+              <p class="text-2xl font-bold text-neon">22 300 Kc</p>
+              <p class="text-xs text-gray-500 font-mono">875 EUR</p>
+            </div>
+          </div>
+          <div class="bg-surface rounded-xl p-8 flex items-center justify-center mb-6 pulse-border border">
+            <i data-lucide="monitor" class="w-16 h-16 text-gray-600"></i>
+          </div>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="spec-tag">Dual 4K 60p</span>
+            <span class="spec-tag">10-bit HDR</span>
+            <span class="spec-tag">PoE+</span>
+            <span class="spec-tag">M.2 SSD</span>
+            <span class="spec-tag">WebGL</span>
+          </div>
+          <a href="#" class="w-full flex items-center justify-center gap-2 bg-white/5 border border-border hover:border-neon text-white py-3 rounded-xl font-medium transition-colors">
+            <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+            Objednat
+          </a>
+        </div>
+
+        <!-- XD1036 -->
+        <div class="glow-card p-8 relative">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-neon to-neonBlue rounded-t-2xl"></div>
+          <div class="flex items-start justify-between mb-6">
+            <div>
+              <span class="bg-gradient-to-r from-neon to-neonBlue text-black text-[10px] font-mono font-bold px-2 py-0.5 rounded">FLAGSHIP</span>
+              <h3 class="text-2xl font-bold mt-3">XD1036</h3>
+              <p class="text-sm text-gray-400 mt-1">Vlajkova lod Serie 6</p>
+            </div>
+            <div class="text-right">
+              <p class="text-2xl font-bold gradient-text">25 800 Kc</p>
+              <p class="text-xs text-gray-500 font-mono">1 012 EUR</p>
+            </div>
+          </div>
+          <div class="bg-surface rounded-xl p-8 flex items-center justify-center mb-6 border border-neon/20">
+            <i data-lucide="monitor" class="w-16 h-16 text-neon/40"></i>
+          </div>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="spec-tag">Dual 4K 60p</span>
+            <span class="spec-tag">HDMI In</span>
+            <span class="spec-tag">PoE+</span>
+            <span class="spec-tag">Dual ETH</span>
+            <span class="spec-tag">M.2 SSD</span>
+            <span class="spec-tag">SPDIF</span>
+          </div>
+          <a href="#" class="w-full flex items-center justify-center gap-2 bg-neon text-black py-3 rounded-xl font-semibold hover:bg-neon/90 transition-colors">
+            <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+            Objednat
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Specs Comparison -->
+  <section id="spec" class="py-24 border-t border-border">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl font-bold mb-12">Porovnani modelu</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-border">
+              <th class="text-left py-3 px-4 text-gray-500 font-mono text-xs">SPECIFIKACE</th>
+              <th class="text-center py-3 px-4 text-gray-300 font-semibold">HD226</th>
+              <th class="text-center py-3 px-4 text-gray-300 font-semibold">HD1026</th>
+              <th class="text-center py-3 px-4 text-gray-300 font-semibold">XD236</th>
+              <th class="text-center py-3 px-4 text-neon font-semibold">XD1036</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-400">
+            <tr class="border-b border-border/50"><td class="py-3 px-4 font-mono text-xs text-gray-500">4K dekodovani</td><td class="text-center py-3 px-4">Single</td><td class="text-center py-3 px-4">Single</td><td class="text-center py-3 px-4">Dual</td><td class="text-center py-3 px-4 text-neon">Dual</td></tr>
+            <tr class="border-b border-border/50"><td class="py-3 px-4 font-mono text-xs text-gray-500">10-bit HDR</td><td class="text-center py-3 px-4 text-neon">Ano</td><td class="text-center py-3 px-4 text-neon">Ano</td><td class="text-center py-3 px-4 text-neon">Ano</td><td class="text-center py-3 px-4 text-neon">Ano</td></tr>
+            <tr class="border-b border-border/50"><td class="py-3 px-4 font-mono text-xs text-gray-500">NPU (AI)</td><td class="text-center py-3 px-4 text-neon">Ano</td><td class="text-center py-3 px-4 text-neon">Ano</td><td class="text-center py-3 px-4 text-neon">Ano</td><td class="text-center py-3 px-4 text-neon">Ano</td></tr>
+            <tr class="border-b border-border/50"><td class="py-3 px-4 font-mono text-xs text-gray-500">PoE+</td><td class="text-center py-3 px-4 text-gray-600">—</td><td class="text-center py-3 px-4 text-gray-600">—</td><td class="text-center py-3 px-4 text-neon">Ano</td><td class="text-center py-3 px-4 text-neon">Ano</td></tr>
+            <tr class="border-b border-border/50"><td class="py-3 px-4 font-mono text-xs text-gray-500">HDMI vstup</td><td class="text-center py-3 px-4 text-gray-600">—</td><td class="text-center py-3 px-4 text-neon">Ano</td><td class="text-center py-3 px-4 text-gray-600">—</td><td class="text-center py-3 px-4 text-neon">Ano</td></tr>
+            <tr class="border-b border-border/50"><td class="py-3 px-4 font-mono text-xs text-gray-500">Dual Ethernet</td><td class="text-center py-3 px-4 text-gray-600">—</td><td class="text-center py-3 px-4 text-neon">Ano</td><td class="text-center py-3 px-4 text-gray-600">—</td><td class="text-center py-3 px-4 text-neon">Ano</td></tr>
+            <tr class="border-b border-border/50"><td class="py-3 px-4 font-mono text-xs text-gray-500">M.2 SSD slot</td><td class="text-center py-3 px-4 text-gray-600">—</td><td class="text-center py-3 px-4 text-gray-600">—</td><td class="text-center py-3 px-4 text-neon">Ano</td><td class="text-center py-3 px-4 text-neon">Ano</td></tr>
+            <tr><td class="py-3 px-4 font-mono text-xs text-gray-500">Cena s DPH</td><td class="text-center py-3 px-4 font-semibold text-white">17 100 Kc</td><td class="text-center py-3 px-4 font-semibold text-white">20 600 Kc</td><td class="text-center py-3 px-4 font-semibold text-white">22 300 Kc</td><td class="text-center py-3 px-4 font-semibold text-neon">25 800 Kc</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Us -->
+  <section id="proc-my" class="py-24 border-t border-border">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl font-bold mb-12">Proc <span class="gradient-text">BrightSign.cz</span></h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="glow-card p-6">
+          <i data-lucide="shield-check" class="w-8 h-8 text-neon mb-4"></i>
+          <h3 class="font-semibold mb-2">Autorizovany distributor</h3>
+          <p class="text-sm text-gray-400">Oficialní partner BrightSign. Plna zaruka, primo od vyrobce.</p>
+        </div>
+        <div class="glow-card p-6">
+          <i data-lucide="zap" class="w-8 h-8 text-neon mb-4"></i>
+          <h3 class="font-semibold mb-2">Expedice do 48h</h3>
+          <p class="text-sm text-gray-400">Skladove polozky odesleme do 2 pracovnich dnu.</p>
+        </div>
+        <div class="glow-card p-6">
+          <i data-lucide="users" class="w-8 h-8 text-neon mb-4"></i>
+          <h3 class="font-semibold mb-2">B2B slevy az 20%</h3>
+          <p class="text-sm text-gray-400">Volume ceny pro firemni zakazniky a integratory.</p>
+        </div>
+        <div class="glow-card p-6">
+          <i data-lucide="globe" class="w-8 h-8 text-neon mb-4"></i>
+          <h3 class="font-semibold mb-2">Doprava CZ, SK, PL, EU</h3>
+          <p class="text-sm text-gray-400">Multi-country e-shop s lokalnimi cenami a jazyky.</p>
+        </div>
+        <div class="glow-card p-6">
+          <i data-lucide="lock" class="w-8 h-8 text-neon mb-4"></i>
+          <h3 class="font-semibold mb-2">Bezpecne platby</h3>
+          <p class="text-sm text-gray-400">Stripe platby kartou, bankovni prevod pro B2B.</p>
+        </div>
+        <div class="glow-card p-6">
+          <i data-lucide="headphones" class="w-8 h-8 text-neon mb-4"></i>
+          <h3 class="font-semibold mb-2">Technicka podpora</h3>
+          <p class="text-sm text-gray-400">Pomoc s vyberem, konfiguraci a nasazenim. CZ/SK/EN.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-border py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-wrap justify-between items-center gap-4">
+        <div>
+          <p class="font-bold text-lg">BrightSign<span class="text-neon">.cz</span></p>
+          <p class="text-xs text-gray-500 mt-1">Make more s.r.o. | info@brightsign.cz</p>
+        </div>
+        <p class="text-xs text-gray-600">&copy; 2026 Vsechna prava vyhrazena.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>lucide.createIcons();</script>
+</body>
+</html>

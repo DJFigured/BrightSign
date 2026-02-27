@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrightSign.cz — Varianta 4: Editorial / Storytelling</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+            sans: ['Source Sans 3', 'system-ui', 'sans-serif']
+          },
+          colors: {
+            ink: '#1a1a1a',
+            paper: '#faf9f6',
+            warm: '#f5f0ea',
+            terracotta: '#c65d3e',
+            sage: '#6b8f71',
+            cream: '#f7f3ed'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Source Sans 3', system-ui, sans-serif; }
+    h1, h2, h3, .font-serif { font-family: 'Playfair Display', Georgia, serif; }
+    html { scroll-behavior: smooth; }
+    .editorial-line::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: #c65d3e;
+      margin-top: 16px;
+    }
+    .use-case-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+    .use-case-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);
+      z-index: 1;
+    }
+    .use-case-card > * { position: relative; z-index: 2; }
+    .pull-quote {
+      border-left: 4px solid #c65d3e;
+      padding-left: 24px;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body class="bg-paper text-ink antialiased">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b border-ink/10">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#" class="font-serif text-2xl font-bold">Bright<span class="text-terracotta">Sign</span></a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-ink/60">
+        <a href="#prehravace" class="hover:text-ink transition-colors">Prehravace</a>
+        <a href="#pouziti" class="hover:text-ink transition-colors">Kde se pouziva</a>
+        <a href="#serie6" class="hover:text-ink transition-colors">Serie 6</a>
+        <a href="#" class="border-b-2 border-terracotta pb-0.5 text-ink font-semibold">B2B nabidka</a>
+      </nav>
+      <button class="md:hidden"><i data-lucide="menu" class="w-5 h-5"></i></button>
+    </div>
+  </header>
+
+  <!-- Hero — Magazine style -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-12 gap-8 items-end">
+        <div class="md:col-span-7">
+          <p class="text-terracotta font-semibold text-sm tracking-widest uppercase mb-6">Clanek / Technologie</p>
+          <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] mb-6">
+            Proc Serie 6 meni pravidla hry v digital signage
+          </h1>
+          <p class="text-lg text-ink/60 leading-relaxed mb-8 max-w-lg">
+            Neuralni procesor. 4K HDR. AI-ready platforma. BrightSign predstavuje nejambicioznejsi generaci svych prehravace — a my jsme prvni, kdo je nabizi v CR.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-ink/40">
+            <span>BrightSign.cz redakce</span>
+            <span>|</span>
+            <span>Unor 2026</span>
+            <span>|</span>
+            <span>5 min cteni</span>
+          </div>
+        </div>
+        <div class="md:col-span-5">
+          <div class="bg-warm rounded-2xl aspect-[4/5] flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-terracotta/10 to-sage/10"></div>
+            <div class="relative text-center">
+              <i data-lucide="monitor" class="w-24 h-24 text-ink/20 mx-auto mb-4"></i>
+              <p class="font-serif text-lg text-ink/40">BrightSign Serie 6</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Article Lead -->
+  <section class="pb-16">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="pull-quote mb-12">
+        Kazdy displej je jen tak dobry, jako obsah, ktery na nem bezi. A kazdy obsah je jen tak dobry, jako prehravac, ktery ho pohadani.
+      </div>
+      <p class="text-lg text-ink/70 leading-relaxed mb-6">
+        Kdyz BrightSign pred deseti lety predstavil svuj prvni dedicated media player, trh digital signage vypadal uplne jinak. Dnes se na jejich technologii spolehaji letiste, obchodni retezce, restaurace, hotely i korporace po celem svete.
+      </p>
+      <p class="text-lg text-ink/70 leading-relaxed">
+        Serie 6 prinasi to, co jeste zadny signage player nemel: <strong>neuralni procesor (NPU)</strong> primo v zarizeni. To umoznuje analyzu obsahu v realnem case, AI-driven interakce a novou uroven personalizace — vse bez cloud zavislosti.
+      </p>
+    </div>
+  </section>
+
+  <!-- Use Cases — Where BrightSign is used -->
+  <section id="pouziti" class="py-20 bg-warm">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4 editorial-line">Kde se BrightSign pouziva</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="use-case-card bg-gradient-to-br from-ink/80 to-ink aspect-[3/4] p-6 flex flex-col justify-end text-white">
+          <i data-lucide="shopping-bag" class="w-8 h-8 mb-3 text-terracotta"></i>
+          <h3 class="font-serif text-xl font-bold mb-1">Retail</h3>
+          <p class="text-sm text-white/70">Vitrinove displeje, menu boardy, interaktivni katalogy. 4K kvalita, ktera prodava.</p>
+        </div>
+        <div class="use-case-card bg-gradient-to-br from-sage/80 to-sage aspect-[3/4] p-6 flex flex-col justify-end text-white">
+          <i data-lucide="utensils" class="w-8 h-8 mb-3 text-cream"></i>
+          <h3 class="font-serif text-xl font-bold mb-1">Restaurace</h3>
+          <p class="text-sm text-white/70">Digitalni jidelni listky, TV streaming, ambiencni obsah. Vzdálená správa z jednoho mista.</p>
+        </div>
+        <div class="use-case-card bg-gradient-to-br from-terracotta/80 to-terracotta aspect-[3/4] p-6 flex flex-col justify-end text-white">
+          <i data-lucide="building-2" class="w-8 h-8 mb-3 text-cream"></i>
+          <h3 class="font-serif text-xl font-bold mb-1">Korporace</h3>
+          <p class="text-sm text-white/70">Meeting room signage, informacni tabule, firemni komunikace. Integrace s Live TV.</p>
+        </div>
+        <div class="use-case-card bg-gradient-to-br from-ink/60 to-ink/90 aspect-[3/4] p-6 flex flex-col justify-end text-white">
+          <i data-lucide="bed" class="w-8 h-8 mb-3 text-terracotta"></i>
+          <h3 class="font-serif text-xl font-bold mb-1">Hotely</h3>
+          <p class="text-sm text-white/70">Lobby displeje, navigace, wellness informace. Diskretni a spolehlive reseni 24/7.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Serie 6 Products -->
+  <section id="serie6" class="py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="mb-16">
+        <p class="text-terracotta font-semibold text-sm tracking-widest uppercase mb-4">Nabidka</p>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold editorial-line">Prehravace Serie 6</h2>
+      </div>
+
+      <!-- Product 1 - HD226 -->
+      <article class="grid md:grid-cols-12 gap-8 mb-16 pb-16 border-b border-ink/10">
+        <div class="md:col-span-5">
+          <div class="bg-warm rounded-xl aspect-square flex items-center justify-center">
+            <i data-lucide="monitor" class="w-20 h-20 text-ink/15"></i>
+          </div>
+        </div>
+        <div class="md:col-span-7">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="bg-terracotta/10 text-terracotta text-xs font-bold px-3 py-1 rounded-full">SERIE 6</span>
+            <span class="text-xs text-ink/40">Entry-level 4K</span>
+          </div>
+          <h3 class="font-serif text-2xl md:text-3xl font-bold mb-3">BrightSign HD226</h3>
+          <p class="text-ink/60 leading-relaxed mb-6">
+            Vstupni brana do sveta Serie 6. Single 4K HDR dekodovani, neuralni procesor pro AI funkce a HTML5 engine postaveny na Chromiu. Idealni pro mensi projekty s ambicemi na profesionalni uroven.
+          </p>
+          <div class="grid grid-cols-3 gap-4 mb-6">
+            <div class="bg-warm rounded-lg p-3 text-center">
+              <p class="text-xs text-ink/40">Rozliseni</p>
+              <p class="font-semibold text-sm">4K 60p HDR</p>
+            </div>
+            <div class="bg-warm rounded-lg p-3 text-center">
+              <p class="text-xs text-ink/40">Procesor</p>
+              <p class="font-semibold text-sm">NPU (AI)</p>
+            </div>
+            <div class="bg-warm rounded-lg p-3 text-center">
+              <p class="text-xs text-ink/40">Zaruka</p>
+              <p class="font-semibold text-sm">5 let</p>
+            </div>
+          </div>
+          <div class="flex items-baseline gap-3 mb-4">
+            <span class="font-serif text-3xl font-bold">17 100 Kc</span>
+            <span class="text-sm text-ink/40">s DPH | 670 EUR</span>
+          </div>
+          <a href="#" class="inline-flex items-center gap-2 bg-ink text-white px-6 py-3 rounded-lg font-semibold hover:bg-ink/80 transition-colors">
+            <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+            Vlozit do kosiku
+          </a>
+        </div>
+      </article>
+
+      <!-- Product 2 - XD236 -->
+      <article class="grid md:grid-cols-12 gap-8 mb-16 pb-16 border-b border-ink/10">
+        <div class="md:col-span-5 md:order-2">
+          <div class="bg-warm rounded-xl aspect-square flex items-center justify-center">
+            <i data-lucide="monitor" class="w-20 h-20 text-ink/15"></i>
+          </div>
+        </div>
+        <div class="md:col-span-7 md:order-1">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="bg-sage/10 text-sage text-xs font-bold px-3 py-1 rounded-full">VYKON</span>
+            <span class="text-xs text-ink/40">Dual 4K + PoE+</span>
+          </div>
+          <h3 class="font-serif text-2xl md:text-3xl font-bold mb-3">BrightSign XD236</h3>
+          <p class="text-ink/60 leading-relaxed mb-6">
+            Dual 4K dekodovani s HDR, napajeni pres PoE+ a M.2 SSD slot pro vysokokapacitni obsah. XD236 je srdce nasi nabidky — idealni pro narocne instalace, kde neni misto pro kompromisy.
+          </p>
+          <div class="grid grid-cols-3 gap-4 mb-6">
+            <div class="bg-warm rounded-lg p-3 text-center">
+              <p class="text-xs text-ink/40">Dekodovani</p>
+              <p class="font-semibold text-sm">Dual 4K 60p</p>
+            </div>
+            <div class="bg-warm rounded-lg p-3 text-center">
+              <p class="text-xs text-ink/40">Napajeni</p>
+              <p class="font-semibold text-sm">PoE+</p>
+            </div>
+            <div class="bg-warm rounded-lg p-3 text-center">
+              <p class="text-xs text-ink/40">Uloziste</p>
+              <p class="font-semibold text-sm">M.2 SSD</p>
+            </div>
+          </div>
+          <div class="flex items-baseline gap-3 mb-4">
+            <span class="font-serif text-3xl font-bold">22 300 Kc</span>
+            <span class="text-sm text-ink/40">s DPH | 875 EUR</span>
+          </div>
+          <a href="#" class="inline-flex items-center gap-2 bg-ink text-white px-6 py-3 rounded-lg font-semibold hover:bg-ink/80 transition-colors">
+            <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+            Vlozit do kosiku
+          </a>
+        </div>
+      </article>
+
+      <!-- Product 3 - HD1026 -->
+      <article class="grid md:grid-cols-12 gap-8 mb-16 pb-16 border-b border-ink/10">
+        <div class="md:col-span-5">
+          <div class="bg-warm rounded-xl aspect-square flex items-center justify-center">
+            <i data-lucide="monitor" class="w-20 h-20 text-ink/15"></i>
+          </div>
+        </div>
+        <div class="md:col-span-7">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="bg-terracotta/10 text-terracotta text-xs font-bold px-3 py-1 rounded-full">EXPANDED</span>
+            <span class="text-xs text-ink/40">Live TV + Dual ETH</span>
+          </div>
+          <h3 class="font-serif text-2xl md:text-3xl font-bold mb-3">BrightSign HD1026</h3>
+          <p class="text-ink/60 leading-relaxed mb-6">
+            Vse co nabizi HD226, plus HDMI vstup pro Live TV signal, dualní Ethernet pro redundantni sítování a USB-C s GPIO pro profesionální integrace. Idealni pro hotely a korporatni prostory.
+          </p>
+          <div class="grid grid-cols-3 gap-4 mb-6">
+            <div class="bg-warm rounded-lg p-3 text-center">
+              <p class="text-xs text-ink/40">Live TV</p>
+              <p class="font-semibold text-sm">HDMI In</p>
+            </div>
+            <div class="bg-warm rounded-lg p-3 text-center">
+              <p class="text-xs text-ink/40">Sit</p>
+              <p class="font-semibold text-sm">Dual ETH</p>
+            </div>
+            <div class="bg-warm rounded-lg p-3 text-center">
+              <p class="text-xs text-ink/40">Porty</p>
+              <p class="font-semibold text-sm">USB-C + GPIO</p>
+            </div>
+          </div>
+          <div class="flex items-baseline gap-3 mb-4">
+            <span class="font-serif text-3xl font-bold">20 600 Kc</span>
+            <span class="text-sm text-ink/40">s DPH | 808 EUR</span>
+          </div>
+          <a href="#" class="inline-flex items-center gap-2 bg-ink text-white px-6 py-3 rounded-lg font-semibold hover:bg-ink/80 transition-colors">
+            <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+            Vlozit do kosiku
+          </a>
+        </div>
+      </article>
+
+      <!-- Product 4 - XD1036 Flagship -->
+      <article class="grid md:grid-cols-12 gap-8">
+        <div class="md:col-span-5 md:order-2">
+          <div class="bg-gradient-to-br from-terracotta/10 to-sage/10 rounded-xl aspect-square flex items-center justify-center border-2 border-terracotta/20">
+            <div class="text-center">
+              <i data-lucide="monitor" class="w-20 h-20 text-terracotta/30 mx-auto mb-2"></i>
+              <span class="font-serif text-xs text-terracotta/60">Vlajkova lod</span>
+            </div>
+          </div>
+        </div>
+        <div class="md:col-span-7 md:order-1">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="bg-ink text-white text-xs font-bold px-3 py-1 rounded-full">FLAGSHIP</span>
+            <span class="text-xs text-ink/40">Vse v jednom</span>
+          </div>
+          <h3 class="font-serif text-2xl md:text-3xl font-bold mb-3">BrightSign XD1036</h3>
+          <p class="text-ink/60 leading-relaxed mb-6">
+            Absolutni spicka Serie 6. Dual 4K HDR, PoE+ napajeni, Live TV vstup, dual Ethernet, M.2 SSD a SPDIF audio. Pro enterprise projekty, kde potrebujete vse, co BrightSign nabizi.
+          </p>
+          <div class="grid grid-cols-3 gap-4 mb-6">
+            <div class="bg-warm rounded-lg p-3 text-center">
+              <p class="text-xs text-ink/40">Video</p>
+              <p class="font-semibold text-sm">Dual 4K HDR</p>
+            </div>
+            <div class="bg-warm rounded-lg p-3 text-center">
+              <p class="text-xs text-ink/40">I/O</p>
+              <p class="font-semibold text-sm">Full expanded</p>
+            </div>
+            <div class="bg-warm rounded-lg p-3 text-center">
+              <p class="text-xs text-ink/40">Audio</p>
+              <p class="font-semibold text-sm">SPDIF out</p>
+            </div>
+          </div>
+          <div class="flex items-baseline gap-3 mb-4">
+            <span class="font-serif text-3xl font-bold text-terracotta">25 800 Kc</span>
+            <span class="text-sm text-ink/40">s DPH | 1 012 EUR</span>
+          </div>
+          <a href="#" class="inline-flex items-center gap-2 bg-terracotta text-white px-6 py-3 rounded-lg font-semibold hover:bg-terracotta/90 transition-colors">
+            <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+            Vlozit do kosiku
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Why Us -->
+  <section id="prehravace" class="py-20 bg-warm">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="font-serif text-3xl font-bold mb-12 editorial-line">Proc nakupovat u nas</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="flex gap-5">
+          <div class="w-12 h-12 rounded-full bg-terracotta/10 flex items-center justify-center shrink-0">
+            <i data-lucide="shield-check" class="w-5 h-5 text-terracotta"></i>
+          </div>
+          <div>
+            <h3 class="font-serif text-lg font-bold mb-1">Autorizovany distributor</h3>
+            <p class="text-ink/60 text-sm leading-relaxed">Oficialní BrightSign partner pro Ceskou republiku a EU. Produkty primo od vyrobce pres COMM-TEC s plnou zarukou.</p>
+          </div>
+        </div>
+        <div class="flex gap-5">
+          <div class="w-12 h-12 rounded-full bg-sage/10 flex items-center justify-center shrink-0">
+            <i data-lucide="truck" class="w-5 h-5 text-sage"></i>
+          </div>
+          <div>
+            <h3 class="font-serif text-lg font-bold mb-1">Rychle doruceni</h3>
+            <p class="text-ink/60 text-sm leading-relaxed">Expedice do 48 hodin. Doprava Packeta po celé CR, SK, PL a EU.</p>
+          </div>
+        </div>
+        <div class="flex gap-5">
+          <div class="w-12 h-12 rounded-full bg-terracotta/10 flex items-center justify-center shrink-0">
+            <i data-lucide="users" class="w-5 h-5 text-terracotta"></i>
+          </div>
+          <div>
+            <h3 class="font-serif text-lg font-bold mb-1">B2B program</h3>
+            <p class="text-ink/60 text-sm leading-relaxed">Slevovy program az 20% pro firemni zakazniky a AV integratory. Fakturace, projektova podpora.</p>
+          </div>
+        </div>
+        <div class="flex gap-5">
+          <div class="w-12 h-12 rounded-full bg-sage/10 flex items-center justify-center shrink-0">
+            <i data-lucide="headphones" class="w-5 h-5 text-sage"></i>
+          </div>
+          <div>
+            <h3 class="font-serif text-lg font-bold mb-1">Odborne poradenstvi</h3>
+            <p class="text-ink/60 text-sm leading-relaxed">Pomuzeme vybrat spravny model, naplanovat instalaci a optimalizovat obsah. Cesky, slovensky, anglicky.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-ink text-white py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-12 mb-12">
+        <div>
+          <p class="font-serif text-2xl font-bold mb-3">Bright<span class="text-terracotta">Sign</span></p>
+          <p class="text-sm text-white/50 leading-relaxed">Autorizovany distributor BrightSign pro CR a EU. Provozuje Make more s.r.o.</p>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-3">Navigace</h4>
+          <ul class="space-y-2 text-sm text-white/50">
+            <li><a href="#" class="hover:text-white transition-colors">Prehravace Serie 6</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Serie 5</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">B2B registrace</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Kontakt</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-3">Kontakt</h4>
+          <ul class="space-y-2 text-sm text-white/50">
+            <li>info@brightsign.cz</li>
+            <li>Make more s.r.o.</li>
+            <li>IC: 21890161</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-8 text-xs text-white/30">
+        <p>&copy; 2026 Make more s.r.o. Vsechna prava vyhrazena.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>lucide.createIcons();</script>
+</body>
+</html>
