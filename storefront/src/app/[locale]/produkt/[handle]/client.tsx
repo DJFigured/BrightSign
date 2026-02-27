@@ -31,14 +31,14 @@ interface Props {
   breadcrumbs?: BreadcrumbItem[]
 }
 
-// Map familyCode prefix to segment label
-const SEGMENT_LABELS: Record<string, string> = {
-  LS: "Basic",
-  AU: "Audio",
-  HD: "Entry 4K",
-  XD: "Performance 4K",
-  XT: "Enterprise",
-  XC: "Video Wall",
+// Map familyCode prefix to segment translation key
+const SEGMENT_KEYS: Record<string, string> = {
+  LS: "segmentBasic",
+  AU: "segmentAudio",
+  HD: "segmentEntry4K",
+  XD: "segmentPerformance4K",
+  XT: "segmentEnterprise",
+  XC: "segmentVideoWall",
 }
 
 
@@ -84,7 +84,7 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
   const lineCode = (metadata?.lineCode as string) || (metadata?.familyName as string)?.replace(/[0-9]/g, "")
   const isClearance = metadata?.clearance === "true"
   const warranty = (metadata?.warranty as string) || undefined
-  const segment = lineCode ? SEGMENT_LABELS[lineCode] : undefined
+  const segmentKey = lineCode ? SEGMENT_KEYS[lineCode] : undefined
   const productNumber = metadata?.productNumber as string | undefined
   const specs = metadata?.specs as Record<string, string> | undefined
   const datasheetUrl = metadata?.datasheetUrl as string | undefined
@@ -217,9 +217,9 @@ export function ProductDetailClient({ product, relatedProducts, breadcrumbs }: P
               {isClearance && (
                 <Badge className="bg-orange-500 text-white text-xs">{t("clearance")}</Badge>
               )}
-              {segment && (
+              {segmentKey && (
                 <Badge variant="outline" className="bg-white/90 text-xs">
-                  {segment}
+                  {t(segmentKey)}
                 </Badge>
               )}
             </div>
