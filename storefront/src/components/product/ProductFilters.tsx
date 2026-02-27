@@ -102,6 +102,7 @@ export function ProductFilters({
                     ? "bg-brand-primary text-white"
                     : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                 }`}
+                aria-pressed={filters.series.includes(s)}
               >
                 {t("seriesN", { n: s })}
               </button>
@@ -126,6 +127,7 @@ export function ProductFilters({
                     ? "bg-brand-accent text-white"
                     : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                 }`}
+                aria-pressed={filters.lines.includes(l)}
               >
                 {LINE_LABELS[l] ?? l}
               </button>
@@ -182,7 +184,7 @@ export function ProductFilters({
           <div className="mt-2 space-y-3 rounded-lg border border-gray-200 bg-white p-4">
             <div className="flex items-center justify-between">
               <span className="text-sm font-medium">{t("filtersLabel")}</span>
-              <button onClick={() => setMobileOpen(false)}>
+              <button onClick={() => setMobileOpen(false)} aria-label={t("close")}>
                 <X className="h-4 w-4 text-muted-foreground" />
               </button>
             </div>

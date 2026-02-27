@@ -473,7 +473,9 @@
     "results": "products",
     "noResults": "No products match the selected filters.",
     "prev": "Previous",
-    "next": "Next"
+    "next": "Next",
+    "close": "Close",
+    "pagination": "Pagination"
   },
   "legal": {
     "terms": {

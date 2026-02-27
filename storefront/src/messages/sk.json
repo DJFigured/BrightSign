@@ -473,7 +473,9 @@
     "results": "produktov",
     "noResults": "Žiadne produkty nezodpovedajú vybraným filtrom.",
     "prev": "Predchádzajúce",
-    "next": "Ďalšie"
+    "next": "Ďalšie",
+    "close": "Zavrieť",
+    "pagination": "Stránkovanie"
   },
   "legal": {
     "terms": {

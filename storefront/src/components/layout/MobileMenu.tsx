@@ -72,6 +72,7 @@ export function MobileMenu({ open, onClose, navData }: MobileMenuProps) {
           <button
             onClick={() => toggleSection("players")}
             className="flex items-center justify-between rounded-md px-3 py-2 text-sm font-medium hover:bg-muted transition-colors"
+            aria-expanded={expandedSections.has("players")}
           >
             {th("players")}
             <ChevronDown className={`h-4 w-4 transition-transform ${expandedSections.has("players") ? "rotate-180" : ""}`} />
@@ -92,6 +93,7 @@ export function MobileMenu({ open, onClose, navData }: MobileMenuProps) {
                   <button
                     onClick={() => toggleSection(s.handle)}
                     className="flex w-full items-center justify-between rounded-md px-3 py-1.5 text-sm font-medium hover:bg-muted transition-colors"
+                    aria-expanded={expandedSections.has(s.handle)}
                   >
                     {catName(s.handle, s.name)}
                     {s.children.length > 0 && (

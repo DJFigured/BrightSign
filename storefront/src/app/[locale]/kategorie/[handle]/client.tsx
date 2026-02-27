@@ -239,7 +239,7 @@ export function CategoryPageClient({
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="mt-8 flex items-center justify-center gap-2">
+            <nav aria-label={tf("pagination")} className="mt-8 flex items-center justify-center gap-2">
               <Button
                 variant="outline"
                 size="sm"
@@ -259,7 +259,7 @@ export function CategoryPageClient({
                 )}
               </Button>
 
-              <span className="px-3 text-sm text-muted-foreground">
+              <span className="px-3 text-sm text-muted-foreground" aria-current="page">
                 {currentPage} / {totalPages}
               </span>
 
@@ -281,7 +281,7 @@ export function CategoryPageClient({
                   </span>
                 )}
               </Button>
-            </div>
+            </nav>
           )}
         </div>
       </div>

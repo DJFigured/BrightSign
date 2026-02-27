@@ -104,8 +104,8 @@ export function ProductCard({ product }: ProductCardProps) {
             </div>
           )}
 
-          {/* Badges */}
-          <div className="absolute left-2 top-2 flex flex-col gap-1">
+          {/* Badges (decorative — product info is in the title) */}
+          <div className="absolute left-2 top-2 flex flex-col gap-1" aria-hidden="true">
             {series && (
               <Badge
                 variant="secondary"
@@ -137,6 +137,7 @@ export function ProductCard({ product }: ProductCardProps) {
             <Badge
               variant="secondary"
               className="absolute right-2 top-2 bg-green-100 text-green-700 text-[10px]"
+              aria-hidden="true"
             >
               {warranty}
             </Badge>

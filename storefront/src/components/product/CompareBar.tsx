@@ -41,6 +41,7 @@ export function CompareBar() {
               <button
                 onClick={() => removeItem(item.id)}
                 className="ml-1 text-muted-foreground hover:text-foreground"
+                aria-label={`${t("remove")}: ${item.title}`}
               >
                 <X className="h-3 w-3" />
               </button>
@@ -64,6 +65,7 @@ export function CompareBar() {
           <button
             onClick={clear}
             className="text-xs text-muted-foreground hover:text-foreground underline"
+            aria-label={t("clearAll")}
           >
             {t("clear")}
           </button>

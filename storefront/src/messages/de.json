@@ -473,7 +473,9 @@
     "results": "Produkte",
     "noResults": "Keine Produkte entsprechen den ausgewählten Filtern.",
     "prev": "Vorherige",
-    "next": "Nächste"
+    "next": "Nächste",
+    "close": "Schließen",
+    "pagination": "Seitennavigation"
   },
   "legal": {
     "terms": {

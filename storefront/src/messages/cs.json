@@ -466,7 +466,9 @@
     "results": "produktů",
     "noResults": "Žádné produkty neodpovídají vybraným filtrům.",
     "prev": "Předchozí",
-    "next": "Další"
+    "next": "Další",
+    "close": "Zavřít",
+    "pagination": "Stránkování"
   },
   "legal": {
     "terms": {
