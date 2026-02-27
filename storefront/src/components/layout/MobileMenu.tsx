@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import { useTranslations, useMessages } from "next-intl"
 import { Link } from "@/i18n/navigation"
 import {
@@ -53,8 +54,14 @@ export function MobileMenu({ open, onClose, navData }: MobileMenuProps) {
     <Sheet open={open} onOpenChange={onClose}>
       <SheetContent side="left" className="w-[300px] sm:w-[350px]">
         <SheetHeader>
-          <SheetTitle className="text-left text-lg font-bold text-brand-primary">
-            Bright<span className="text-brand-accent">Sign</span>.cz
+          <SheetTitle className="text-left">
+            <Image
+              src="/logo.svg"
+              alt="BrightSign.cz"
+              width={160}
+              height={27}
+              className="h-6 w-auto"
+            />
           </SheetTitle>
         </SheetHeader>
 

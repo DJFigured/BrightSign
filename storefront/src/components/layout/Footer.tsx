@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { useTranslations, useMessages } from "next-intl"
 import { Link } from "@/i18n/navigation"
 import { NewsletterSignup } from "./NewsletterSignup"
@@ -22,9 +23,15 @@ export function Footer({ navData }: FooterProps) {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-5">
           {/* Company + Newsletter */}
           <div className="lg:col-span-2">
-            <h3 className="mb-3 text-lg font-bold">
-              Bright<span className="text-brand-accent">Sign</span>.cz
-            </h3>
+            <Link href="/" className="mb-3 inline-block" aria-label="BrightSign.cz">
+              <Image
+                src="/logo-light.svg"
+                alt="BrightSign.cz"
+                width={180}
+                height={30}
+                className="h-7 w-auto"
+              />
+            </Link>
             <p className="text-sm text-white/60">{t("description")}</p>
             <p className="mt-3 text-sm text-white/60">{t("company")}</p>
 

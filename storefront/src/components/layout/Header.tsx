@@ -162,8 +162,15 @@ export function Header({ navData }: HeaderProps) {
         {/* Main nav */}
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3">
           {/* Logo */}
-          <Link href="/" className="shrink-0 text-xl font-bold text-brand-primary">
-            Bright<span className="text-brand-accent">Sign</span>.cz
+          <Link href="/" className="shrink-0" aria-label="BrightSign.cz">
+            <Image
+              src="/logo.svg"
+              alt="BrightSign.cz"
+              width={180}
+              height={30}
+              className="h-7 w-auto sm:h-8"
+              priority
+            />
           </Link>
 
           {/* Search - desktop */}
