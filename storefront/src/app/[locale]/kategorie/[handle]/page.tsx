@@ -21,9 +21,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     const cat = product_categories[0]
     if (cat) {
+      const title = `${cat.name} | BrightSign.cz`
+      const description = cat.description || `${cat.name} — BrightSign digital signage`
       return {
-        title: `${cat.name} | BrightSign.cz`,
-        description: cat.description || `${cat.name} — BrightSign digital signage`,
+        title,
+        description,
+        openGraph: {
+          title,
+          description,
+          type: "website",
+        },
+        twitter: {
+          card: "summary",
+          title,
+          description,
+        },
       }
     }
   } catch {

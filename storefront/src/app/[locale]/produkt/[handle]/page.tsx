@@ -47,13 +47,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const seoDesc = locale === "cs" ? seo?.description : undefined
   const desc = seoDesc || plainDesc || (product.subtitle as string) || undefined
 
+  const title = seo?.title || (product.title as string)
+  const thumbnailUrl = product.thumbnail as string | undefined
+
   return {
-    title: seo?.title || (product.title as string),
+    title,
     description: desc,
     openGraph: {
-      title: seo?.title || (product.title as string),
+      title,
       description: desc,
-      images: product.thumbnail ? [{ url: product.thumbnail as string }] : undefined,
+      type: "website",
+      images: thumbnailUrl ? [{ url: thumbnailUrl, alt: title }] : undefined,
+    },
+    twitter: {
+      card: thumbnailUrl ? "summary_large_image" : "summary",
+      title,
+      description: desc,
+      images: thumbnailUrl ? [thumbnailUrl] : undefined,
     },
   }
 }

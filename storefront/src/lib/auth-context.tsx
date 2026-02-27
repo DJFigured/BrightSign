@@ -8,6 +8,7 @@ interface Customer {
   email: string
   first_name?: string
   last_name?: string
+  phone?: string
   has_account: boolean
   metadata?: Record<string, unknown>
 }

@@ -5,9 +5,13 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://brightsign.cz"
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("faq")
+  const title = `${t("title")} | BrightSign.cz`
+  const description = t("metaDescription")
   return {
-    title: `${t("title")} | BrightSign.cz`,
-    description: t("metaDescription"),
+    title,
+    description,
+    openGraph: { title, description, type: "website" },
+    twitter: { card: "summary", title, description },
   }
 }
 

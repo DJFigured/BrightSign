@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from "react"
+import { createContext, useContext, useState, useEffect, useCallback, useMemo, type ReactNode } from "react"
 
 export interface CompareItem {
   id: string
@@ -78,8 +78,13 @@ export function CompareProvider({ children }: { children: ReactNode }) {
 
   const clear = useCallback(() => setItems([]), [])
 
+  const value = useMemo(
+    () => ({ items, addItem, removeItem, isInCompare, toggleItem, clear }),
+    [items, addItem, removeItem, isInCompare, toggleItem, clear]
+  )
+
   return (
-    <CompareContext.Provider value={{ items, addItem, removeItem, isInCompare, toggleItem, clear }}>
+    <CompareContext.Provider value={value}>
       {children}
     </CompareContext.Provider>
   )

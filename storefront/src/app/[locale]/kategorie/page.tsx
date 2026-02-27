@@ -7,9 +7,21 @@ import type { Metadata } from "next"
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("category")
+  const title = `${t("allProducts")} | BrightSign.cz`
+  const description = t("allProductsDescription")
   return {
-    title: `${t("allProducts")} | BrightSign.cz`,
-    description: t("allProductsDescription"),
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "website",
+    },
+    twitter: {
+      card: "summary",
+      title,
+      description,
+    },
   }
 }
 

@@ -79,6 +79,7 @@ export function OrderDetailPageClient() {
   const [order, setOrder] = useState<OrderDetail | null>(null)
   const [invoices, setInvoices] = useState<Invoice[]>([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
 
   useEffect(() => {
     if (!authLoading && !customer) {
@@ -89,12 +90,13 @@ export function OrderDetailPageClient() {
   useEffect(() => {
     if (customer && orderId) {
       setLoading(true)
+      setError(false)
       sdk.store.order
         .retrieve(orderId)
         .then((res) => {
           setOrder((res as { order: OrderDetail }).order ?? res as unknown as OrderDetail)
         })
-        .catch(console.error)
+        .catch(() => setError(true))
         .finally(() => setLoading(false))
 
       // Fetch invoices
@@ -117,6 +119,20 @@ export function OrderDetailPageClient() {
     return (
       <div className="flex items-center justify-center py-16">
         <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="mx-auto max-w-2xl px-4 py-16 text-center">
+        <p className="text-destructive" role="alert">{tAccount("ordersError")}</p>
+        <Button asChild variant="outline" className="mt-4">
+          <Link href="/ucet">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            {t("backToOrders")}
+          </Link>
+        </Button>
       </div>
     )
   }

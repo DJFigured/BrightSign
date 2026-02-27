@@ -309,35 +309,46 @@ export function CheckoutPageClient() {
       <h1 className="mb-6 text-2xl font-bold">{tc("checkout")}</h1>
 
       {/* Step indicator */}
-      <nav aria-label={t("checkoutSteps")} className="mb-8 flex items-center gap-2">
-        {steps.map((s, i) => {
-          const currentIdx = steps.findIndex((st) => st.key === step)
-          const isComplete = currentIdx > i
-          const isCurrent = step === s.key
-          return (
-            <div key={s.key} className="flex items-center gap-2">
-              {i > 0 && <div className="h-px w-8 bg-border" aria-hidden="true" />}
-              <div
-                aria-current={isCurrent ? "step" : undefined}
-                aria-label={`${s.label} — ${isComplete ? t("stepComplete") : isCurrent ? t("stepCurrent") : t("stepUpcoming")}`}
-                className={`flex h-8 w-8 items-center justify-center rounded-full text-sm font-medium ${
-                  isCurrent
-                    ? "bg-brand-accent text-white"
-                    : isComplete
-                      ? "bg-brand-primary text-white"
-                      : "bg-muted text-muted-foreground"
-                }`}
-              >
-                {isComplete ? (
-                  <Check className="h-4 w-4" />
-                ) : (
-                  i + 1
+      <nav aria-label={t("checkoutSteps")} className="mb-8">
+        <div className="flex items-center">
+          {steps.map((s, i) => {
+            const currentIdx = steps.findIndex((st) => st.key === step)
+            const isComplete = currentIdx > i
+            const isCurrent = step === s.key
+            return (
+              <div key={s.key} className="flex flex-1 items-center">
+                <div className="flex flex-col items-center">
+                  <div
+                    aria-current={isCurrent ? "step" : undefined}
+                    aria-label={`${s.label} — ${isComplete ? t("stepComplete") : isCurrent ? t("stepCurrent") : t("stepUpcoming")}`}
+                    className={`flex h-9 w-9 items-center justify-center rounded-full text-sm font-semibold transition-colors ${
+                      isCurrent
+                        ? "bg-brand-accent text-white ring-4 ring-brand-accent/20"
+                        : isComplete
+                          ? "bg-brand-primary text-white"
+                          : "bg-muted text-muted-foreground"
+                    }`}
+                  >
+                    {isComplete ? <Check className="h-4 w-4" /> : i + 1}
+                  </div>
+                  <span className={`mt-1.5 text-xs sm:text-sm ${
+                    isCurrent ? "font-semibold text-brand-accent" : isComplete ? "text-brand-primary" : "text-muted-foreground"
+                  }`}>
+                    {s.label}
+                  </span>
+                </div>
+                {i < steps.length - 1 && (
+                  <div
+                    aria-hidden="true"
+                    className={`mx-2 h-0.5 flex-1 rounded transition-colors ${
+                      currentIdx > i ? "bg-brand-primary" : "bg-muted"
+                    }`}
+                  />
                 )}
               </div>
-              <span className="hidden text-sm sm:inline">{s.label}</span>
-            </div>
-          )
-        })}
+            )
+          })}
+        </div>
       </nav>
 
       <div className="grid gap-8 lg:grid-cols-3">
