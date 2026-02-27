@@ -3,9 +3,13 @@ import type { Metadata } from "next"
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("legal.terms")
+  const title = `${t("title")} | BrightSign.cz`
+  const description = t("metaDescription")
   return {
-    title: `${t("title")} | BrightSign.cz`,
-    description: t("metaDescription"),
+    title,
+    description,
+    openGraph: { title, description, type: "website" },
+    twitter: { card: "summary", title, description },
   }
 }
 

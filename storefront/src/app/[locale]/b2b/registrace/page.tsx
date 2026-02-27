@@ -4,9 +4,13 @@ import { B2BRegistracePageClient } from "./client"
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("b2b")
+  const title = `${t("title")} | BrightSign.cz`
+  const description = t("subtitle")
   return {
-    title: `${t("title")} | BrightSign.cz`,
-    description: t("subtitle"),
+    title,
+    description,
+    openGraph: { title, description, type: "website" },
+    twitter: { card: "summary", title, description },
   }
 }
 
