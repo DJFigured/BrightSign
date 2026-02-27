@@ -61,7 +61,13 @@ export default async function HomePage() {
     name: "BrightSign.cz",
     legalName: "Make more s.r.o.",
     url: SITE_URL,
-    logo: `${SITE_URL}/favicon.ico`,
+    logo: `${SITE_URL}/logo.svg`,
+    image: `${SITE_URL}/logo.svg`,
+    taxID: "CZ21890161",
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "CZ",
+    },
     contactPoint: {
       "@type": "ContactPoint",
       email: "info@brightsign.cz",
