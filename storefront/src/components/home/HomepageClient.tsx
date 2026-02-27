@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ProductCard } from "@/components/product/ProductCard"
-import { Shield, Zap, HeadphonesIcon, Monitor, Music, Layers, Tv, Cpu, Truck, Award, BadgeCheck, Sparkles, ArrowRight } from "lucide-react"
+import { Shield, Zap, HeadphonesIcon, Monitor, Music, Layers, Tv, Cpu, Truck, Award, BadgeCheck, Sparkles, ArrowRight, Globe, Users, Package, Wrench } from "lucide-react"
 
 interface Props {
   featuredProducts: Array<Record<string, unknown>>
@@ -113,6 +113,34 @@ export function HomepageClient({ featuredProducts }: Props) {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Why Buy From Us */}
+      <section className="py-12 bg-muted/20">
+        <div className="mx-auto max-w-7xl px-4">
+          <h2 className="mb-2 text-center text-2xl font-bold">{t("whyUs.title")}</h2>
+          <p className="mb-8 text-center text-muted-foreground">{t("whyUs.subtitle")}</p>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { icon: Award, titleKey: "specialist" as const, descKey: "specialistDesc" as const },
+              { icon: Users, titleKey: "b2bProgram" as const, descKey: "b2bProgramDesc" as const },
+              { icon: Globe, titleKey: "multiLang" as const, descKey: "multiLangDesc" as const },
+              { icon: Package, titleKey: "fastDelivery" as const, descKey: "fastDeliveryDesc" as const },
+              { icon: Wrench, titleKey: "techSupport" as const, descKey: "techSupportDesc" as const },
+              { icon: Shield, titleKey: "warranty5" as const, descKey: "warranty5Desc" as const },
+            ].map((item, i) => (
+              <div key={i} className="flex gap-4 rounded-lg border border-border bg-white p-5 shadow-sm">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-brand-accent/10">
+                  <item.icon className="h-6 w-6 text-brand-accent" />
+                </div>
+                <div>
+                  <h3 className="font-semibold">{t(`whyUs.${item.titleKey}`)}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">{t(`whyUs.${item.descKey}`)}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

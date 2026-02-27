@@ -398,6 +398,22 @@
       "title": "Series 4 at Discounted Prices",
       "description": "Previous generation players at clearance prices. Ideal for expanding existing installations or budget-conscious projects.",
       "cta": "View Clearance"
+    },
+    "whyUs": {
+      "title": "Why Buy From Us",
+      "subtitle": "We are a specialized e-shop focused exclusively on BrightSign technology",
+      "specialist": "BrightSign Specialist",
+      "specialistDesc": "We focus exclusively on BrightSign products. We know every model, its capabilities and optimal deployment.",
+      "b2bProgram": "B2B Discount Program",
+      "b2bProgramDesc": "Business customers receive 10-20% discounts. Registration is free and takes a minute.",
+      "multiLang": "5 Language Versions",
+      "multiLangDesc": "E-shop in Czech, Slovak, Polish, English and German. We serve all of Central Europe.",
+      "fastDelivery": "Fast Delivery",
+      "fastDeliveryDesc": "Ships within 48 hours. Delivery via Packeta to CZ, SK, PL and other EU countries.",
+      "techSupport": "Technical Support",
+      "techSupportDesc": "We help with choosing the right model, configuration and deployment. In Czech and English.",
+      "warranty5": "Up to 5 Year Warranty",
+      "warranty5Desc": "Series 5 and 6 come with a 5-year manufacturer warranty. All products with full BrightSign support."
     }
   },
   "b2b": {

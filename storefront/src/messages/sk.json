@@ -398,6 +398,22 @@
       "title": "Séria 4 za zvýhodnené ceny",
       "description": "Prehrávače predchádzajúcej generácie za výpredajové ceny. Ideálne pre rozšírenie existujúcich inštalácií alebo projekty s obmedzeným rozpočtom.",
       "cta": "Zobraziť výpredaj"
+    },
+    "whyUs": {
+      "title": "Prečo nakupovať u nás",
+      "subtitle": "Sme špecializovaný e-shop zameraný výhradne na BrightSign technológie",
+      "specialist": "Špecialista na BrightSign",
+      "specialistDesc": "Zameriavame sa výhradne na BrightSign produkty. Poznáme každý model, jeho možnosti a optimálne nasadenie.",
+      "b2bProgram": "B2B program so zľavami",
+      "b2bProgramDesc": "Firemní zákazníci získavajú zľavy 10-20 % z cien. Registrácia je zadarmo a trvá minútu.",
+      "multiLang": "5 jazykových mutácií",
+      "multiLangDesc": "E-shop v češtine, slovenčine, poľštine, angličtine a nemčine. Obsluhujeme celú strednú Európu.",
+      "fastDelivery": "Rýchle doručenie",
+      "fastDeliveryDesc": "Expedícia do 48 hodín. Doručenie cez Packetu do CZ, SK, PL a ďalších krajín EÚ.",
+      "techSupport": "Technická podpora",
+      "techSupportDesc": "Pomôžeme s výberom správneho modelu, konfiguráciou aj nasadením. Slovensky aj anglicky.",
+      "warranty5": "Záruka až 5 rokov",
+      "warranty5Desc": "Séria 5 a 6 majú 5-ročnú záruku výrobcu. Všetky produkty s plnou podporou BrightSign."
     }
   },
   "b2b": {

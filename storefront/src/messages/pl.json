@@ -398,6 +398,22 @@
       "title": "Seria 4 w obniżonych cenach",
       "description": "Odtwarzacze poprzedniej generacji w cenach wyprzedażowych. Idealne do rozbudowy istniejących instalacji lub projektów z ograniczonym budżetem.",
       "cta": "Zobacz wyprzedaż"
+    },
+    "whyUs": {
+      "title": "Dlaczego warto kupować u nas",
+      "subtitle": "Jesteśmy specjalistycznym sklepem internetowym poświęconym wyłącznie technologiom BrightSign",
+      "specialist": "Specjalista BrightSign",
+      "specialistDesc": "Koncentrujemy się wyłącznie na produktach BrightSign. Znamy każdy model, jego możliwości i optymalne zastosowanie.",
+      "b2bProgram": "Program rabatowy B2B",
+      "b2bProgramDesc": "Klienci biznesowi otrzymują rabaty 10-20%. Rejestracja jest bezpłatna i trwa minutę.",
+      "multiLang": "5 wersji językowych",
+      "multiLangDesc": "Sklep w języku czeskim, słowackim, polskim, angielskim i niemieckim. Obsługujemy całą Europę Środkową.",
+      "fastDelivery": "Szybka dostawa",
+      "fastDeliveryDesc": "Wysyłka w ciągu 48 godzin. Dostawa przez Packetę do CZ, SK, PL i innych krajów UE.",
+      "techSupport": "Wsparcie techniczne",
+      "techSupportDesc": "Pomagamy w wyborze odpowiedniego modelu, konfiguracji i wdrożeniu. Po polsku i angielsku.",
+      "warranty5": "Gwarancja do 5 lat",
+      "warranty5Desc": "Serie 5 i 6 mają 5-letnią gwarancję producenta. Wszystkie produkty z pełnym wsparciem BrightSign."
     }
   },
   "b2b": {

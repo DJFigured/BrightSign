@@ -398,6 +398,22 @@
       "title": "Serie 4 zu reduzierten Preisen",
       "description": "Player der vorherigen Generation zu Abverkaufspreisen. Ideal für die Erweiterung bestehender Installationen oder budgetbewusste Projekte.",
       "cta": "Abverkauf anzeigen"
+    },
+    "whyUs": {
+      "title": "Warum bei uns kaufen",
+      "subtitle": "Wir sind ein spezialisierter Online-Shop, der sich ausschliesslich auf BrightSign-Technologie konzentriert",
+      "specialist": "BrightSign-Spezialist",
+      "specialistDesc": "Wir konzentrieren uns ausschliesslich auf BrightSign-Produkte. Wir kennen jedes Modell, seine Moglichkeiten und den optimalen Einsatz.",
+      "b2bProgram": "B2B-Rabattprogramm",
+      "b2bProgramDesc": "Geschaeftskunden erhalten 10-20% Rabatt. Die Registrierung ist kostenlos und dauert eine Minute.",
+      "multiLang": "5 Sprachversionen",
+      "multiLangDesc": "Online-Shop auf Tschechisch, Slowakisch, Polnisch, Englisch und Deutsch. Wir bedienen ganz Mitteleuropa.",
+      "fastDelivery": "Schnelle Lieferung",
+      "fastDeliveryDesc": "Versand innerhalb von 48 Stunden. Lieferung ueber Packeta nach CZ, SK, PL und andere EU-Laender.",
+      "techSupport": "Technischer Support",
+      "techSupportDesc": "Wir helfen bei der Auswahl des richtigen Modells, der Konfiguration und dem Einsatz. Auf Deutsch und Englisch.",
+      "warranty5": "Bis zu 5 Jahre Garantie",
+      "warranty5Desc": "Serie 5 und 6 haben 5 Jahre Herstellergarantie. Alle Produkte mit vollem BrightSign-Support."
     }
   },
   "b2b": {
