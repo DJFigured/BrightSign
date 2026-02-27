@@ -7,6 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: `${t("register")} | BrightSign.cz`,
     description: t("registerSubtitle"),
+    robots: { index: false },
   }
 }
 

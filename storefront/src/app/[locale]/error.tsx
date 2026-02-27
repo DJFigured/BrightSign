@@ -14,7 +14,7 @@ export default function Error({
   return (
     <div className="flex min-h-[60vh] items-center justify-center px-4">
       <div className="text-center">
-        <h1 className="text-6xl font-bold text-[#1a2b4a] mb-4">500</h1>
+        <h1 className="text-6xl font-bold text-brand-primary mb-4">500</h1>
         <h2 className="text-2xl font-semibold mb-4">{t("error")}</h2>
         <p className="text-gray-600 mb-8">
           {t("errorDescription")}
@@ -22,7 +22,7 @@ export default function Error({
         <div className="flex gap-4 justify-center">
           <button
             onClick={reset}
-            className="bg-[#00c389] text-white px-6 py-3 rounded-lg hover:bg-[#00a872] transition-colors"
+            className="bg-brand-accent text-white px-6 py-3 rounded-lg hover:bg-brand-accent/90 transition-colors"
           >
             {t("retry")}
           </button>

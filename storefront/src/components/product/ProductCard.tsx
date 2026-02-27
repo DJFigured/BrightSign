@@ -158,7 +158,8 @@ export function ProductCard({ product }: ProductCardProps) {
                 ? "bg-brand-accent text-white"
                 : "bg-white/80 text-muted-foreground hover:bg-white hover:text-foreground"
             }`}
-            title={tc("toggleCompare")}
+            aria-label={`${tc("toggleCompare")}: ${product.title}`}
+            aria-pressed={inCompare}
           >
             <GitCompareArrows className="h-3 w-3" />
             {inCompare ? tc("inCompare") : tc("addToCompare")}
