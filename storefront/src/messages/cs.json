@@ -316,10 +316,10 @@
   },
   "home": {
     "hero": {
-      "title": "Profesionální digital signage řešení",
-      "subtitle": "Oficiální distributor BrightSign přehrávačů pro Českou republiku",
+      "title": "Proměňte obrazovky v nástroj růstu vašeho podnikání",
+      "subtitle": "BrightSign — světová jednička v digital signage. Profesionální přehrávače bez licenčních poplatků.",
       "cta": "Prohlédnout produkty",
-      "b2bCta": "B2B registrace",
+      "b2bCta": "Poraďte se s námi",
       "newBadge": "Novinka: Série 6 s NPU a 5letou zárukou"
     },
     "categories": "Kategorie produktů",
@@ -413,6 +413,92 @@
       "title": "Série 4 za zvýhodněné ceny",
       "description": "Přehrávače předchozí generace za výprodejové ceny. Ideální pro rozšíření stávajících instalací nebo projekty s omezeným rozpočtem.",
       "cta": "Zobrazit doprodej"
+    },
+    "digitalSignage": {
+      "title": "Co je digital signage?",
+      "subtitle": "Digitální zobrazovací řešení pro vaše podnikání",
+      "sales": {
+        "title": "Zvýšení prodejů",
+        "desc": "Dynamický obsah zvyšuje prodeje až o 30 % oproti statickým plakátům"
+      },
+      "communication": {
+        "title": "Profesionální komunikace",
+        "desc": "Jednotný firemní vizuál na všech obrazovkách v celé síti poboček"
+      },
+      "time": {
+        "title": "Úspora času",
+        "desc": "Centrální správa obsahu — aktualizujte stovky displejů jedním kliknutím"
+      },
+      "remote": {
+        "title": "Vzdálená správa",
+        "desc": "Plná kontrola přes internet odkudkoli, monitoring stavu v reálném čase"
+      }
+    },
+    "whyBrightsignSection": {
+      "title": "Proč BrightSign?",
+      "subtitle": "#1 platforma pro digital signage na světě",
+      "stat1": {
+        "value": "#1",
+        "label": "Na světě",
+        "desc": "Největší podíl na trhu digital signage přehrávačů"
+      },
+      "stat2": {
+        "value": "500 000+",
+        "label": "Instalací",
+        "desc": "Ve více než 100 zemích světa"
+      },
+      "stat3": {
+        "value": "0 Kč",
+        "label": "Licence",
+        "desc": "BrightAuthor:connected je kompletně zdarma"
+      },
+      "stat4": {
+        "value": "5 let",
+        "label": "Záruka",
+        "desc": "Na přehrávače Série 5 a 6"
+      },
+      "os": {
+        "title": "BrightSignOS",
+        "desc": "Dedikovaný operační systém navržený pro 99,9% spolehlivost a nepřetržitý provoz"
+      },
+      "software": {
+        "title": "BrightAuthor:connected",
+        "desc": "Profesionální software pro správu obsahu a přehrávačů — zcela zdarma"
+      },
+      "warranty": {
+        "title": "5letá záruka",
+        "desc": "Nejdelší záruka v odvětví digital signage — na Sérii 5 i 6"
+      }
+    },
+    "useCases": {
+      "title": "Kde se BrightSign používá?",
+      "subtitle": "Řešení pro každé odvětví",
+      "retail": {
+        "title": "Retail & obchody",
+        "desc": "Menu boardy, promo displeje, výlohy, navigace v obchodě",
+        "example": "Síť prodejen s digitálními cenovkami a promo obrazovkami"
+      },
+      "restaurant": {
+        "title": "Restaurace & gastronomie",
+        "desc": "Digitální jídelníčky, drive-through panely, objednávkové kiosky",
+        "example": "Řetězce fast food s dynamickými menu tabulemi"
+      },
+      "hotel": {
+        "title": "Hotely & konference",
+        "desc": "Info kiosky, lobby displeje, konferenční sály, navigace",
+        "example": "Hotelové lobby s uvítacími obrazovkami a přehledem akcí"
+      },
+      "corporate": {
+        "title": "Korporát & kanceláře",
+        "desc": "Zasedací místnosti, recepce, interní komunikace, dashboardy",
+        "example": "Firemní centrály s obrazovkami pro interní komunikaci"
+      }
+    },
+    "needHelp": {
+      "title": "Nevíte si rady?",
+      "subtitle": "Pomůžeme vám vybrat správné řešení pro váš projekt",
+      "cta": "Kontaktujte nás",
+      "ctaDesc": "Bezplatná konzultace"
     },
     "whyUs": {
       "title": "Proč nakupovat u nás",

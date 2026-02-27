@@ -323,10 +323,10 @@
   },
   "home": {
     "hero": {
-      "title": "Professional Digital Signage Solutions",
-      "subtitle": "Official BrightSign player distributor for Central Europe",
+      "title": "Turn your screens into a growth engine for your business",
+      "subtitle": "BrightSign — the world leader in digital signage. Professional players with zero license fees.",
       "cta": "Browse Products",
-      "b2bCta": "B2B Registration",
+      "b2bCta": "Talk to an Expert",
       "newBadge": "New: Series 6 with NPU and 5-year warranty"
     },
     "categories": "Product Categories",
@@ -420,6 +420,92 @@
       "title": "Series 4 at Discounted Prices",
       "description": "Previous generation players at clearance prices. Ideal for expanding existing installations or budget-conscious projects.",
       "cta": "View Clearance"
+    },
+    "digitalSignage": {
+      "title": "What is digital signage?",
+      "subtitle": "Digital display solutions for your business",
+      "sales": {
+        "title": "Boost Sales",
+        "desc": "Dynamic content increases sales by up to 30% compared to static posters"
+      },
+      "communication": {
+        "title": "Professional Communication",
+        "desc": "Consistent brand visuals across all screens in your entire branch network"
+      },
+      "time": {
+        "title": "Save Time",
+        "desc": "Centralized content management — update hundreds of displays with a single click"
+      },
+      "remote": {
+        "title": "Remote Management",
+        "desc": "Full control via the internet from anywhere, real-time status monitoring"
+      }
+    },
+    "whyBrightsignSection": {
+      "title": "Why BrightSign?",
+      "subtitle": "The #1 digital signage platform in the world",
+      "stat1": {
+        "value": "#1",
+        "label": "Worldwide",
+        "desc": "Largest market share in digital signage players"
+      },
+      "stat2": {
+        "value": "500,000+",
+        "label": "Installations",
+        "desc": "In more than 100 countries worldwide"
+      },
+      "stat3": {
+        "value": "$0",
+        "label": "License Fees",
+        "desc": "BrightAuthor:connected is completely free"
+      },
+      "stat4": {
+        "value": "5 Years",
+        "label": "Warranty",
+        "desc": "On Series 5 and Series 6 players"
+      },
+      "os": {
+        "title": "BrightSignOS",
+        "desc": "Dedicated operating system designed for 99.9% reliability and non-stop operation"
+      },
+      "software": {
+        "title": "BrightAuthor:connected",
+        "desc": "Professional content and player management software — completely free of charge"
+      },
+      "warranty": {
+        "title": "5-Year Warranty",
+        "desc": "The longest warranty in the digital signage industry — on Series 5 and 6"
+      }
+    },
+    "useCases": {
+      "title": "Where is BrightSign used?",
+      "subtitle": "Solutions for every industry",
+      "retail": {
+        "title": "Retail & Stores",
+        "desc": "Menu boards, promo displays, window signage, in-store navigation",
+        "example": "Retail chains with digital price tags and promotional screens"
+      },
+      "restaurant": {
+        "title": "Restaurants & Food Service",
+        "desc": "Digital menus, drive-through panels, ordering kiosks",
+        "example": "Fast food chains with dynamic menu boards"
+      },
+      "hotel": {
+        "title": "Hotels & Conferences",
+        "desc": "Info kiosks, lobby displays, conference halls, wayfinding",
+        "example": "Hotel lobbies with welcome screens and event schedules"
+      },
+      "corporate": {
+        "title": "Corporate & Offices",
+        "desc": "Meeting rooms, reception areas, internal communications, dashboards",
+        "example": "Corporate HQs with screens for internal communication"
+      }
+    },
+    "needHelp": {
+      "title": "Need Guidance?",
+      "subtitle": "We'll help you choose the right solution for your project",
+      "cta": "Contact Us",
+      "ctaDesc": "Free consultation"
     },
     "whyUs": {
       "title": "Why Buy From Us",

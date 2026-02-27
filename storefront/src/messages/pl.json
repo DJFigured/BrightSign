@@ -323,10 +323,10 @@
   },
   "home": {
     "hero": {
-      "title": "Profesjonalne rozwiązania digital signage",
-      "subtitle": "Oficjalny dystrybutor odtwarzaczy BrightSign na Polskę",
+      "title": "Zamień ekrany w narzędzie rozwoju Twojego biznesu",
+      "subtitle": "BrightSign — światowy lider digital signage. Profesjonalne odtwarzacze bez opłat licencyjnych.",
       "cta": "Przeglądaj produkty",
-      "b2bCta": "Rejestracja B2B",
+      "b2bCta": "Porozmawiaj z nami",
       "newBadge": "Nowość: Seria 6 z NPU i 5-letnią gwarancją"
     },
     "categories": "Kategorie produktów",
@@ -420,6 +420,92 @@
       "title": "Seria 4 w obniżonych cenach",
       "description": "Odtwarzacze poprzedniej generacji w cenach wyprzedażowych. Idealne do rozbudowy istniejących instalacji lub projektów z ograniczonym budżetem.",
       "cta": "Zobacz wyprzedaż"
+    },
+    "digitalSignage": {
+      "title": "Czym jest digital signage?",
+      "subtitle": "Cyfrowe rozwiązania wizualne dla Twojego biznesu",
+      "sales": {
+        "title": "Wzrost sprzedaży",
+        "desc": "Dynamiczne treści zwiększają sprzedaż nawet o 30% w porównaniu ze statycznymi plakatami"
+      },
+      "communication": {
+        "title": "Profesjonalna komunikacja",
+        "desc": "Jednolity wizerunek firmy na wszystkich ekranach w całej sieci oddziałów"
+      },
+      "time": {
+        "title": "Oszczędność czasu",
+        "desc": "Centralne zarządzanie treścią — aktualizuj setki wyświetlaczy jednym kliknięciem"
+      },
+      "remote": {
+        "title": "Zdalne zarządzanie",
+        "desc": "Pełna kontrola przez internet z dowolnego miejsca, monitoring w czasie rzeczywistym"
+      }
+    },
+    "whyBrightsignSection": {
+      "title": "Dlaczego BrightSign?",
+      "subtitle": "Platforma nr 1 na świecie dla digital signage",
+      "stat1": {
+        "value": "#1",
+        "label": "Na świecie",
+        "desc": "Największy udział w rynku odtwarzaczy digital signage"
+      },
+      "stat2": {
+        "value": "500 000+",
+        "label": "Instalacji",
+        "desc": "W ponad 100 krajach świata"
+      },
+      "stat3": {
+        "value": "0 zł",
+        "label": "Licencje",
+        "desc": "BrightAuthor:connected jest całkowicie bezpłatny"
+      },
+      "stat4": {
+        "value": "5 lat",
+        "label": "Gwarancja",
+        "desc": "Na odtwarzacze Serii 5 i 6"
+      },
+      "os": {
+        "title": "BrightSignOS",
+        "desc": "Dedykowany system operacyjny zaprojektowany dla 99,9% niezawodności i ciągłej pracy"
+      },
+      "software": {
+        "title": "BrightAuthor:connected",
+        "desc": "Profesjonalne oprogramowanie do zarządzania treścią i odtwarzaczami — całkowicie bezpłatne"
+      },
+      "warranty": {
+        "title": "5-letnia gwarancja",
+        "desc": "Najdłuższa gwarancja w branży digital signage — na Serię 5 i 6"
+      }
+    },
+    "useCases": {
+      "title": "Gdzie stosuje się BrightSign?",
+      "subtitle": "Rozwiązania dla każdej branży",
+      "retail": {
+        "title": "Handel & sklepy",
+        "desc": "Tablice menu, wyświetlacze promocyjne, witryny, nawigacja w sklepie",
+        "example": "Sieć sklepów z cyfrowymi cenówkami i ekranami promocyjnymi"
+      },
+      "restaurant": {
+        "title": "Restauracje & gastronomia",
+        "desc": "Cyfrowe menu, panele drive-through, kioski zamówień",
+        "example": "Sieci fast food z dynamicznymi tablicami menu"
+      },
+      "hotel": {
+        "title": "Hotele & konferencje",
+        "desc": "Kioski informacyjne, wyświetlacze w lobby, sale konferencyjne",
+        "example": "Lobby hotelowe z ekranami powitalnymi i programem wydarzeń"
+      },
+      "corporate": {
+        "title": "Korporacje & biura",
+        "desc": "Sale konferencyjne, recepcje, komunikacja wewnętrzna, dashboardy",
+        "example": "Centrale firm z ekranami do komunikacji wewnętrznej"
+      }
+    },
+    "needHelp": {
+      "title": "Potrzebujesz pomocy?",
+      "subtitle": "Pomożemy Ci wybrać odpowiednie rozwiązanie dla Twojego projektu",
+      "cta": "Skontaktuj się z nami",
+      "ctaDesc": "Bezpłatna konsultacja"
     },
     "whyUs": {
       "title": "Dlaczego warto kupować u nas",

@@ -323,10 +323,10 @@
   },
   "home": {
     "hero": {
-      "title": "Professionelle Digital Signage Lösungen",
-      "subtitle": "Offizieller BrightSign Player Distributor für Mitteleuropa",
+      "title": "Verwandeln Sie Bildschirme in ein Wachstumsinstrument für Ihr Unternehmen",
+      "subtitle": "BrightSign — der Weltmarktführer im Digital Signage. Professionelle Player ohne Lizenzgebühren.",
       "cta": "Produkte ansehen",
-      "b2bCta": "B2B-Registrierung",
+      "b2bCta": "Lassen Sie sich beraten",
       "newBadge": "Neu: Serie 6 mit NPU und 5 Jahren Garantie"
     },
     "categories": "Produktkategorien",
@@ -420,6 +420,92 @@
       "title": "Serie 4 zu reduzierten Preisen",
       "description": "Player der vorherigen Generation zu Abverkaufspreisen. Ideal für die Erweiterung bestehender Installationen oder budgetbewusste Projekte.",
       "cta": "Abverkauf anzeigen"
+    },
+    "digitalSignage": {
+      "title": "Was ist Digital Signage?",
+      "subtitle": "Digitale Anzeigelösungen für Ihr Unternehmen",
+      "sales": {
+        "title": "Umsatzsteigerung",
+        "desc": "Dynamische Inhalte steigern den Umsatz um bis zu 30 % im Vergleich zu statischen Plakaten"
+      },
+      "communication": {
+        "title": "Professionelle Kommunikation",
+        "desc": "Einheitliches Markendesign auf allen Bildschirmen in Ihrem gesamten Filialnetz"
+      },
+      "time": {
+        "title": "Zeitersparnis",
+        "desc": "Zentrale Inhaltsverwaltung — aktualisieren Sie Hunderte Displays mit einem Klick"
+      },
+      "remote": {
+        "title": "Fernverwaltung",
+        "desc": "Volle Kontrolle über das Internet von überall, Echtzeit-Statusüberwachung"
+      }
+    },
+    "whyBrightsignSection": {
+      "title": "Warum BrightSign?",
+      "subtitle": "Die Nr. 1 Plattform für Digital Signage weltweit",
+      "stat1": {
+        "value": "#1",
+        "label": "Weltweit",
+        "desc": "Grösster Marktanteil bei Digital-Signage-Playern"
+      },
+      "stat2": {
+        "value": "500.000+",
+        "label": "Installationen",
+        "desc": "In mehr als 100 Ländern weltweit"
+      },
+      "stat3": {
+        "value": "0 €",
+        "label": "Lizenzgebühren",
+        "desc": "BrightAuthor:connected ist vollständig kostenlos"
+      },
+      "stat4": {
+        "value": "5 Jahre",
+        "label": "Garantie",
+        "desc": "Auf Player der Serie 5 und 6"
+      },
+      "os": {
+        "title": "BrightSignOS",
+        "desc": "Dediziertes Betriebssystem für 99,9 % Zuverlässigkeit und unterbrechungsfreien Betrieb"
+      },
+      "software": {
+        "title": "BrightAuthor:connected",
+        "desc": "Professionelle Software zur Inhalts- und Player-Verwaltung — völlig kostenlos"
+      },
+      "warranty": {
+        "title": "5 Jahre Garantie",
+        "desc": "Die längste Garantie in der Digital-Signage-Branche — auf Serie 5 und 6"
+      }
+    },
+    "useCases": {
+      "title": "Wo wird BrightSign eingesetzt?",
+      "subtitle": "Lösungen für jede Branche",
+      "retail": {
+        "title": "Einzelhandel & Geschäfte",
+        "desc": "Menütafeln, Werbe-Displays, Schaufenster, In-Store-Navigation",
+        "example": "Filialnetze mit digitalen Preisschildern und Werbebildschirmen"
+      },
+      "restaurant": {
+        "title": "Gastronomie & Restaurants",
+        "desc": "Digitale Speisekarten, Drive-Through-Anzeigen, Bestell-Kioske",
+        "example": "Fast-Food-Ketten mit dynamischen Menütafeln"
+      },
+      "hotel": {
+        "title": "Hotels & Konferenzen",
+        "desc": "Info-Kioske, Lobby-Displays, Konferenzsäle, Wegweiser",
+        "example": "Hotel-Lobbys mit Willkommensbildschirmen und Veranstaltungsprogramm"
+      },
+      "corporate": {
+        "title": "Unternehmen & Büros",
+        "desc": "Besprechungsräume, Empfang, interne Kommunikation, Dashboards",
+        "example": "Firmenzentralen mit Bildschirmen für die interne Kommunikation"
+      }
+    },
+    "needHelp": {
+      "title": "Brauchen Sie Beratung?",
+      "subtitle": "Wir helfen Ihnen, die richtige Lösung für Ihr Projekt zu finden",
+      "cta": "Kontaktieren Sie uns",
+      "ctaDesc": "Kostenlose Beratung"
     },
     "whyUs": {
       "title": "Warum bei uns kaufen",

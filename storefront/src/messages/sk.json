@@ -323,10 +323,10 @@
   },
   "home": {
     "hero": {
-      "title": "Profesionálne digital signage riešenia",
-      "subtitle": "Oficiálny distribútor BrightSign prehrávačov pre Slovensko",
+      "title": "Premeňte obrazovky na nástroj rastu vášho podnikania",
+      "subtitle": "BrightSign — svetová jednotka v digital signage. Profesionálne prehrávače bez licenčných poplatkov.",
       "cta": "Prezrieť produkty",
-      "b2bCta": "B2B registrácia",
+      "b2bCta": "Poraďte sa s nami",
       "newBadge": "Novinka: Séria 6 s NPU a 5-ročnou zárukou"
     },
     "categories": "Kategórie produktov",
@@ -420,6 +420,92 @@
       "title": "Séria 4 za zvýhodnené ceny",
       "description": "Prehrávače predchádzajúcej generácie za výpredajové ceny. Ideálne pre rozšírenie existujúcich inštalácií alebo projekty s obmedzeným rozpočtom.",
       "cta": "Zobraziť výpredaj"
+    },
+    "digitalSignage": {
+      "title": "Čo je digital signage?",
+      "subtitle": "Digitálne zobrazovacie riešenia pre vaše podnikanie",
+      "sales": {
+        "title": "Zvýšenie predajov",
+        "desc": "Dynamický obsah zvyšuje predaje až o 30 % oproti statickým plagátom"
+      },
+      "communication": {
+        "title": "Profesionálna komunikácia",
+        "desc": "Jednotný firemný vizuál na všetkých obrazovkách v celej sieti pobočiek"
+      },
+      "time": {
+        "title": "Úspora času",
+        "desc": "Centrálna správa obsahu — aktualizujte stovky displejov jedným kliknutím"
+      },
+      "remote": {
+        "title": "Vzdialená správa",
+        "desc": "Plná kontrola cez internet odkiaľkoľvek, monitoring stavu v reálnom čase"
+      }
+    },
+    "whyBrightsignSection": {
+      "title": "Prečo BrightSign?",
+      "subtitle": "#1 platforma pre digital signage na svete",
+      "stat1": {
+        "value": "#1",
+        "label": "Na svete",
+        "desc": "Najväčší podiel na trhu digital signage prehrávačov"
+      },
+      "stat2": {
+        "value": "500 000+",
+        "label": "Inštalácií",
+        "desc": "Vo viac než 100 krajinách sveta"
+      },
+      "stat3": {
+        "value": "0 €",
+        "label": "Licencie",
+        "desc": "BrightAuthor:connected je kompletne zadarmo"
+      },
+      "stat4": {
+        "value": "5 rokov",
+        "label": "Záruka",
+        "desc": "Na prehrávače Séria 5 a 6"
+      },
+      "os": {
+        "title": "BrightSignOS",
+        "desc": "Dedikovaný operačný systém navrhnutý pre 99,9% spoľahlivosť a nepretržitú prevádzku"
+      },
+      "software": {
+        "title": "BrightAuthor:connected",
+        "desc": "Profesionálny softvér na správu obsahu a prehrávačov — úplne zadarmo"
+      },
+      "warranty": {
+        "title": "5-ročná záruka",
+        "desc": "Najdlhšia záruka v odvetví digital signage — na Sériu 5 aj 6"
+      }
+    },
+    "useCases": {
+      "title": "Kde sa BrightSign používa?",
+      "subtitle": "Riešenia pre každé odvetvie",
+      "retail": {
+        "title": "Retail & obchody",
+        "desc": "Menu boardy, promo displeje, výklady, navigácia v obchode",
+        "example": "Sieť predajní s digitálnymi cenovkami a promo obrazovkami"
+      },
+      "restaurant": {
+        "title": "Reštaurácie & gastronómia",
+        "desc": "Digitálne jedálne lístky, drive-through panely, objednávkové kiosky",
+        "example": "Reťazce fast food s dynamickými menu tabuľami"
+      },
+      "hotel": {
+        "title": "Hotely & konferencie",
+        "desc": "Info kiosky, lobby displeje, konferenčné sály, navigácia",
+        "example": "Hotelové lobby s uvítacími obrazovkami a prehľadom akcií"
+      },
+      "corporate": {
+        "title": "Korporát & kancelárie",
+        "desc": "Zasadacie miestnosti, recepcie, interná komunikácia, dashboardy",
+        "example": "Firemné centrály s obrazovkami pre internú komunikáciu"
+      }
+    },
+    "needHelp": {
+      "title": "Neviete si rady?",
+      "subtitle": "Pomôžeme vám vybrať správne riešenie pre váš projekt",
+      "cta": "Kontaktujte nás",
+      "ctaDesc": "Bezplatná konzultácia"
     },
     "whyUs": {
       "title": "Prečo nakupovať u nás",

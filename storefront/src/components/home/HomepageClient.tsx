@@ -6,7 +6,12 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ProductCard } from "@/components/product/ProductCard"
-import { Shield, Zap, HeadphonesIcon, Monitor, Music, Layers, Tv, Cpu, Truck, Award, BadgeCheck, Sparkles, ArrowRight, Globe, Users, Package, Wrench } from "lucide-react"
+import {
+  Shield, Zap, HeadphonesIcon, Monitor, Music, Layers, Tv, Cpu, Truck, Award,
+  BadgeCheck, Sparkles, ArrowRight, Globe, Users, Package, Wrench,
+  TrendingUp, Presentation, Clock, Wifi, ShoppingBag, UtensilsCrossed, Building2, Briefcase,
+  CheckCircle2, MessageCircle
+} from "lucide-react"
 
 interface Props {
   featuredProducts: Array<Record<string, unknown>>
@@ -47,13 +52,29 @@ const SEGMENT_HREFS: Record<string, string> = {
   advanced: "/kategorie/xt-prehravace",
 }
 
+const DIGITAL_SIGNAGE_ITEMS = [
+  { icon: TrendingUp, key: "sales" as const },
+  { icon: Presentation, key: "communication" as const },
+  { icon: Clock, key: "time" as const },
+  { icon: Wifi, key: "remote" as const },
+] as const
+
+const USE_CASE_ITEMS = [
+  { icon: ShoppingBag, key: "retail" as const, color: "bg-blue-50 text-blue-600" },
+  { icon: UtensilsCrossed, key: "restaurant" as const, color: "bg-orange-50 text-orange-600" },
+  { icon: Building2, key: "hotel" as const, color: "bg-emerald-50 text-emerald-600" },
+  { icon: Briefcase, key: "corporate" as const, color: "bg-purple-50 text-purple-600" },
+] as const
+
 export function HomepageClient({ featuredProducts }: Props) {
   const t = useTranslations("home")
   const tp = useTranslations("product")
 
   return (
     <>
-      {/* Hero Section */}
+      {/* ============================================================ */}
+      {/* 1. HERO SECTION                                              */}
+      {/* ============================================================ */}
       <section className="relative overflow-hidden bg-gradient-to-br from-brand-primary-dark via-brand-primary to-brand-primary-light py-20 text-white md:py-28">
         {/* Background pattern */}
         <div className="absolute inset-0 opacity-[0.07]" aria-hidden="true">
@@ -84,7 +105,7 @@ export function HomepageClient({ featuredProducts }: Props) {
               </Link>
             </Button>
             <Button size="lg" variant="outline" asChild className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm">
-              <Link href="/b2b/registrace">
+              <Link href="/kontakt">
                 {t("hero.b2bCta")}
               </Link>
             </Button>
@@ -92,7 +113,9 @@ export function HomepageClient({ featuredProducts }: Props) {
         </div>
       </section>
 
-      {/* Trust Signals - 6 items */}
+      {/* ============================================================ */}
+      {/* 2. TRUST SIGNALS                                             */}
+      {/* ============================================================ */}
       <section className="border-b border-border bg-white py-8">
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-4 md:grid-cols-3 lg:grid-cols-6">
           {[
@@ -116,61 +139,105 @@ export function HomepageClient({ featuredProducts }: Props) {
         </div>
       </section>
 
-      {/* Why Buy From Us */}
-      <section className="py-12 bg-muted/20">
+      {/* ============================================================ */}
+      {/* 3. CO JE DIGITAL SIGNAGE — NEW                               */}
+      {/* ============================================================ */}
+      <section className="py-16 bg-gradient-to-b from-white to-muted/30">
         <div className="mx-auto max-w-7xl px-4">
-          <h2 className="mb-2 text-center text-2xl font-bold">{t("whyUs.title")}</h2>
-          <p className="mb-8 text-center text-muted-foreground">{t("whyUs.subtitle")}</p>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              { icon: Award, titleKey: "specialist" as const, descKey: "specialistDesc" as const },
-              { icon: Users, titleKey: "b2bProgram" as const, descKey: "b2bProgramDesc" as const },
-              { icon: Globe, titleKey: "multiLang" as const, descKey: "multiLangDesc" as const },
-              { icon: Package, titleKey: "fastDelivery" as const, descKey: "fastDeliveryDesc" as const },
-              { icon: Wrench, titleKey: "techSupport" as const, descKey: "techSupportDesc" as const },
-              { icon: Shield, titleKey: "warranty5" as const, descKey: "warranty5Desc" as const },
-            ].map((item, i) => (
-              <div key={i} className="flex gap-4 rounded-lg border border-border bg-white p-5 shadow-sm">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-brand-accent/10">
-                  <item.icon className="h-6 w-6 text-brand-accent" />
+          <div className="text-center mb-10">
+            <h2 className="text-2xl font-bold md:text-3xl">{t("digitalSignage.title")}</h2>
+            <p className="mt-2 text-muted-foreground max-w-xl mx-auto">{t("digitalSignage.subtitle")}</p>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {DIGITAL_SIGNAGE_ITEMS.map((item) => (
+              <Card key={item.key} className="border-0 shadow-md hover:shadow-lg transition-shadow">
+                <CardContent className="p-6 text-center">
+                  <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-accent/10">
+                    <item.icon className="h-7 w-7 text-brand-accent" />
+                  </div>
+                  <h3 className="font-semibold text-lg mb-2">{t(`digitalSignage.${item.key}.title`)}</h3>
+                  <p className="text-sm text-muted-foreground">{t(`digitalSignage.${item.key}.desc`)}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/* 4. PROC BRIGHTSIGN — NEW                                     */}
+      {/* ============================================================ */}
+      <section className="py-16 bg-brand-primary text-white">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl font-bold md:text-3xl">{t("whyBrightsignSection.title")}</h2>
+            <p className="mt-2 text-white/70 max-w-xl mx-auto">{t("whyBrightsignSection.subtitle")}</p>
+          </div>
+
+          {/* Stats grid */}
+          <div className="grid grid-cols-2 gap-6 mb-12 md:grid-cols-4">
+            {(["stat1", "stat2", "stat3", "stat4"] as const).map((stat) => (
+              <div key={stat} className="text-center">
+                <div className="text-3xl font-bold text-brand-accent md:text-4xl">
+                  {t(`whyBrightsignSection.${stat}.value`)}
                 </div>
-                <div>
-                  <h3 className="font-semibold">{t(`whyUs.${item.titleKey}`)}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">{t(`whyUs.${item.descKey}`)}</p>
+                <div className="mt-1 font-semibold">{t(`whyBrightsignSection.${stat}.label`)}</div>
+                <p className="mt-1 text-sm text-white/60">{t(`whyBrightsignSection.${stat}.desc`)}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Benefit cards */}
+          <div className="grid gap-6 md:grid-cols-3">
+            {([
+              { key: "os" as const, icon: Cpu },
+              { key: "software" as const, icon: Monitor },
+              { key: "warranty" as const, icon: Shield },
+            ]).map((item) => (
+              <div key={item.key} className="rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-brand-accent/20">
+                  <item.icon className="h-5 w-5 text-brand-accent" />
                 </div>
+                <h3 className="font-semibold text-lg">{t(`whyBrightsignSection.${item.key}.title`)}</h3>
+                <p className="mt-2 text-sm text-white/70">{t(`whyBrightsignSection.${item.key}.desc`)}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Featured Products */}
-      {featuredProducts.length > 0 && (
-        <section className="py-12">
-          <div className="mx-auto max-w-7xl px-4">
-            <div className="mb-8 flex items-center justify-between">
-              <h2 className="text-2xl font-bold">{t("featured")}</h2>
-              <Button variant="outline" asChild>
-                <Link href="/kategorie/prehravace">
-                  {t("viewAll")}
-                </Link>
-              </Button>
-            </div>
-            <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-              {featuredProducts.slice(0, 8).map((product, idx) => (
-                <ProductCard
-                  key={product.id as string}
-                  product={product as Parameters<typeof ProductCard>[0]["product"]}
-                  listName="featured"
-                  index={idx}
-                />
-              ))}
-            </div>
+      {/* ============================================================ */}
+      {/* 5. USE CASES — NEW                                           */}
+      {/* ============================================================ */}
+      <section className="py-16">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl font-bold md:text-3xl">{t("useCases.title")}</h2>
+            <p className="mt-2 text-muted-foreground max-w-xl mx-auto">{t("useCases.subtitle")}</p>
           </div>
-        </section>
-      )}
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {USE_CASE_ITEMS.map((item) => (
+              <Card key={item.key} className="overflow-hidden hover:shadow-lg transition-shadow">
+                <CardContent className="p-6">
+                  <div className={`mb-4 flex h-12 w-12 items-center justify-center rounded-xl ${item.color}`}>
+                    <item.icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="font-semibold text-lg mb-2">{t(`useCases.${item.key}.title`)}</h3>
+                  <p className="text-sm text-muted-foreground mb-3">{t(`useCases.${item.key}.desc`)}</p>
+                  <p className="text-xs text-muted-foreground/80 italic flex items-start gap-1.5">
+                    <CheckCircle2 className="h-3.5 w-3.5 mt-0.5 shrink-0 text-brand-accent" />
+                    {t(`useCases.${item.key}.example`)}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      {/* Product Lines */}
+      {/* ============================================================ */}
+      {/* 6. PRODUCT LINES (existing)                                  */}
+      {/* ============================================================ */}
       <section className="bg-muted/30 py-12">
         <div className="mx-auto max-w-7xl px-4">
           <h2 className="mb-2 text-center text-2xl font-bold">{t("productLines.title")}</h2>
@@ -204,7 +271,9 @@ export function HomepageClient({ featuredProducts }: Props) {
         </div>
       </section>
 
-      {/* Segment Guide */}
+      {/* ============================================================ */}
+      {/* 7. SEGMENT GUIDE (existing)                                  */}
+      {/* ============================================================ */}
       <section className="py-12">
         <div className="mx-auto max-w-7xl px-4">
           <h2 className="mb-2 text-center text-2xl font-bold">{t("segmentGuide.title")}</h2>
@@ -229,7 +298,59 @@ export function HomepageClient({ featuredProducts }: Props) {
         </div>
       </section>
 
-      {/* Why BrightSign */}
+      {/* ============================================================ */}
+      {/* 8. NEVITE SI RADY? CTA — NEW                                 */}
+      {/* ============================================================ */}
+      <section className="py-16 bg-gradient-to-r from-brand-primary to-brand-primary-light text-white">
+        <div className="mx-auto max-w-4xl px-4 text-center">
+          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-white/10 backdrop-blur-sm">
+            <MessageCircle className="h-8 w-8 text-brand-accent" />
+          </div>
+          <h2 className="text-2xl font-bold md:text-3xl">{t("needHelp.title")}</h2>
+          <p className="mt-3 text-lg text-white/80 max-w-xl mx-auto">{t("needHelp.subtitle")}</p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Button size="lg" asChild className="bg-brand-accent hover:bg-brand-accent-dark text-white shadow-lg shadow-brand-accent/25">
+              <Link href="/kontakt">
+                {t("needHelp.cta")}
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+          <p className="mt-4 text-sm text-white/60">{t("needHelp.ctaDesc")}</p>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/* 9. FEATURED PRODUCTS (existing)                              */}
+      {/* ============================================================ */}
+      {featuredProducts.length > 0 && (
+        <section className="py-12">
+          <div className="mx-auto max-w-7xl px-4">
+            <div className="mb-8 flex items-center justify-between">
+              <h2 className="text-2xl font-bold">{t("featured")}</h2>
+              <Button variant="outline" asChild>
+                <Link href="/kategorie/prehravace">
+                  {t("viewAll")}
+                </Link>
+              </Button>
+            </div>
+            <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+              {featuredProducts.slice(0, 8).map((product, idx) => (
+                <ProductCard
+                  key={product.id as string}
+                  product={product as Parameters<typeof ProductCard>[0]["product"]}
+                  listName="featured"
+                  index={idx}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ============================================================ */}
+      {/* 10. WHY BRIGHTSIGN STATS (existing)                          */}
+      {/* ============================================================ */}
       <section className="bg-brand-primary text-white py-12">
         <div className="mx-auto max-w-7xl px-4">
           <h2 className="mb-8 text-center text-2xl font-bold">{t("whyBrightsign.title")}</h2>
@@ -258,7 +379,39 @@ export function HomepageClient({ featuredProducts }: Props) {
         </div>
       </section>
 
-      {/* Clearance Banner */}
+      {/* ============================================================ */}
+      {/* 11. WHY BUY FROM US (existing)                               */}
+      {/* ============================================================ */}
+      <section className="py-12 bg-muted/20">
+        <div className="mx-auto max-w-7xl px-4">
+          <h2 className="mb-2 text-center text-2xl font-bold">{t("whyUs.title")}</h2>
+          <p className="mb-8 text-center text-muted-foreground">{t("whyUs.subtitle")}</p>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { icon: Award, titleKey: "specialist" as const, descKey: "specialistDesc" as const },
+              { icon: Users, titleKey: "b2bProgram" as const, descKey: "b2bProgramDesc" as const },
+              { icon: Globe, titleKey: "multiLang" as const, descKey: "multiLangDesc" as const },
+              { icon: Package, titleKey: "fastDelivery" as const, descKey: "fastDeliveryDesc" as const },
+              { icon: Wrench, titleKey: "techSupport" as const, descKey: "techSupportDesc" as const },
+              { icon: Shield, titleKey: "warranty5" as const, descKey: "warranty5Desc" as const },
+            ].map((item, i) => (
+              <div key={i} className="flex gap-4 rounded-lg border border-border bg-white p-5 shadow-sm">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-brand-accent/10">
+                  <item.icon className="h-6 w-6 text-brand-accent" />
+                </div>
+                <div>
+                  <h3 className="font-semibold">{t(`whyUs.${item.titleKey}`)}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">{t(`whyUs.${item.descKey}`)}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/* 12. CLEARANCE BANNER (existing)                              */}
+      {/* ============================================================ */}
       <section className="bg-orange-50 py-10">
         <div className="mx-auto max-w-7xl px-4 text-center">
           <Badge className="mb-3 bg-orange-500 text-white">{tp("clearance")}</Badge>
@@ -274,7 +427,9 @@ export function HomepageClient({ featuredProducts }: Props) {
         </div>
       </section>
 
-      {/* B2B Banner */}
+      {/* ============================================================ */}
+      {/* 13. B2B BANNER (existing)                                    */}
+      {/* ============================================================ */}
       <section className="bg-brand-primary/5 py-16">
         <div className="mx-auto max-w-7xl px-4 text-center">
           <h2 className="mb-2 text-2xl font-bold">{t("b2b.title")}</h2>
