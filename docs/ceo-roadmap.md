@@ -1,5 +1,5 @@
 # Strategicky plan a roadmapa - BrightSight
-**Datum:** 2026-02-27
+**Datum:** 2026-02-27 (aktualizovano 2026-02-27)
 **Autor:** CEO Agent
 
 ---
@@ -38,29 +38,29 @@ Stat se cislem 1 online prodejcem BrightSign v CEE regionu (CZ, SK, PL) behem 12
 | 11 | Test bank transfer objednavka | Dan | 30min | #8, #5 |
 
 ### Doprava
-| # | Ukol | Kdo | Cas | Zavislost |
-|---|------|-----|-----|-----------|
-| 12 | Ziskat Packeta API klic z client.packeta.com | Dan | 1h | Packeta ucet |
-| 13 | Backend: Packeta shipping provider plugin/implementace | Subagent | 2-3 dny | #12 |
-| 14 | Storefront: Packeta widget na checkout (vyber vydejiho mista) | Subagent | 1 den | #13 |
-| 15 | Medusa admin: Shipping options pro CZ, SK, PL s cenami | Dan | 1h | #13 |
+| # | Ukol | Kdo | Cas | Zavislost | Stav |
+|---|------|-----|-----|-----------|------|
+| 12 | Ziskat Packeta API klic z client.packeta.com | Dan | 1h | Packeta ucet | CEKA NA DANA |
+| 13 | Backend: Packeta shipping provider plugin/implementace | Subagent | 2-3 dny | #12 | HOTOVO (80b4a30) |
+| 14 | Storefront: Packeta widget na checkout (vyber vydejiho mista) | Subagent | 1 den | #13 | TODO |
+| 15 | Medusa admin: Shipping options pro CZ, SK, PL s cenami | Dan | 1h | #13 | TODO |
 
 ### Obsah a vizual
-| # | Ukol | Kdo | Cas | Zavislost |
-|---|------|-----|-----|-----------|
-| 16 | Vytvorit SVG logo (text logo s ikonou) | Subagent/Dan | 2h | Zadna |
-| 17 | Stahnout produktove fotky z brightsign.biz (vsechny modely) | Subagent | 2h | Zadna |
-| 18 | Nahrat fotky do MinIO / prirazeni k produktum | Subagent | 2h | #5, #17 |
-| 19 | Pridat Serie 6 produkty (HD226, XD236, etc.) do Medusa | Subagent | 4h | #5 |
-| 20 | Homepage hero: pridat background image | Subagent | 1h | #17 |
-| 21 | Doplnit telefonni cislo do headeru a paticky | Subagent | 30min | Dan da cislo |
+| # | Ukol | Kdo | Cas | Zavislost | Stav |
+|---|------|-----|-----|-----------|------|
+| 16 | Vytvorit SVG logo (text logo s ikonou) | Subagent/Dan | 2h | Zadna | HOTOVO (33e7836) |
+| 17 | Stahnout produktove fotky z brightsign.biz (vsechny modely) | Subagent | 2h | Zadna | TODO |
+| 18 | Nahrat fotky do MinIO / prirazeni k produktum | Subagent | 2h | #5, #17 | TODO |
+| 19 | Pridat Serie 6 produkty (HD226, XD236, etc.) do Medusa | Subagent | 4h | #5 | HOTOVO (bfe9178) -- import script + data |
+| 20 | Homepage hero redesign + trust signals + "Proc u nas" | Subagent | 1h | Zadna | HOTOVO (9137be1, d398469) |
+| 21 | Doplnit telefonni cislo do headeru a paticky | Subagent | 30min | Dan da cislo | TODO |
 
 ### Checkout opravy
-| # | Ukol | Kdo | Cas | Zavislost |
-|---|------|-----|-----|-----------|
-| 22 | Pridat firemni pole do checkout (firma, ICO, DIC) | Subagent | 2h | Zadna |
-| 23 | Pridat moznost odlisne fakturacni adresy | Subagent | 2h | Zadna |
-| 24 | Country selector dropdown v adresnim formulari | Subagent | 1h | Zadna |
+| # | Ukol | Kdo | Cas | Zavislost | Stav |
+|---|------|-----|-----|-----------|------|
+| 22 | Pridat firemni pole do checkout (firma, ICO, DIC) | Subagent | 2h | Zadna | HOTOVO (3d0bb08) |
+| 23 | Pridat moznost odlisne fakturacni adresy | Subagent | 2h | Zadna | HOTOVO (3d0bb08) |
+| 24 | Country selector dropdown v adresnim formulari | Subagent | 1h | Zadna | HOTOVO (3d0bb08) |
 
 ### Testovani
 | # | Ukol | Kdo | Cas | Zavislost |
@@ -88,14 +88,14 @@ Stat se cislem 1 online prodejcem BrightSign v CEE regionu (CZ, SK, PL) behem 12
 | 7 | LinkedIn post -- announcement noveho e-shopu | 1h |
 
 ### UX vylepseni
-| # | Ukol | Cas |
-|---|------|-----|
-| 8 | Homepage: pridat "Proc kupovat u nas" sekci | 2h |
-| 9 | Homepage: pridat "Novinka: Serie 6" banner | 1h |
-| 10 | Produktove stranky: specifikace panel vedle galerie na desktopu | 4h |
-| 11 | Pridat datasheet PDF link na produktove stranky | 2h |
-| 12 | Pridat badge "Skladem" / "Na objednavku" vyrazneji | 1h |
-| 13 | Pridat dodaci lhutu na produktovou stranku | 1h |
+| # | Ukol | Cas | Stav |
+|---|------|-----|------|
+| 8 | Homepage: pridat "Proc kupovat u nas" sekci | 2h | HOTOVO (d398469) |
+| 9 | Homepage: pridat "Novinka: Serie 6" banner | 1h | HOTOVO (9137be1 -- badge v hero) |
+| 10 | Produktove stranky: specifikace panel vedle galerie na desktopu | 4h | HOTOVO (073eea3) |
+| 11 | Pridat datasheet PDF link na produktove stranky | 2h | UZ EXISTOVALO |
+| 12 | Pridat badge "Skladem" / "Na objednavku" vyrazneji | 1h | HOTOVO (073eea3) |
+| 13 | Pridat dodaci lhutu na produktovou stranku | 1h | HOTOVO (073eea3) |
 
 ### Monitoring
 | # | Ukol | Cas |
@@ -113,7 +113,7 @@ Stat se cislem 1 online prodejcem BrightSign v CEE regionu (CZ, SK, PL) behem 12
 |---|------|
 | 1 | Google Ads -- PL kampan (brand + product) |
 | 2 | Google Ads -- SK kampan |
-| 3 | PL cenova strategie -- nastavit specificke PLN ceny v Medusa |
+| 3 | PL cenova strategie -- nastavit specificke PLN ceny v Medusa | HOTOVO -- manualni PLN ceny v price-overrides.json (bfe9178) |
 | 4 | Overit a upravit PL preklady (nativni korektura) |
 | 5 | Google Merchant Center -- produktovy feed pro Shopping kampane |
 
