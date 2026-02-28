@@ -26,6 +26,7 @@
     "@medusajs/cli": "2.13.1",
     "@medusajs/framework": "2.13.1",
     "@medusajs/medusa": "2.13.1",
+    "@sentry/node": "^10.40.0",
     "imap": "^0.8.19",
     "mailparser": "^3.9.3",
     "pdfmake": "^0.3.5",

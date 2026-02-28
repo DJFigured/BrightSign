@@ -765,6 +765,47 @@
     "Locking power supply": "Zasilanie",
     "Wi-Fi": "Wi-Fi"
   },
+  "solutions": {
+    "indexTitle": "Rozwiązania według branży",
+    "indexSubtitle": "Wybierz rozwiązanie digital signage dopasowane do Twojej branży",
+    "indexMetaDescription": "Rozwiązania BrightSign digital signage dla handlu, restauracji, hoteli i środowisk korporacyjnych.",
+    "learnMore": "Dowiedz się więcej",
+    "recommendedProducts": "Polecane produkty",
+    "viewProducts": "Zobacz produkty",
+    "viewAllProducts": "Zobacz wszystkie produkty",
+    "retail": {
+      "title": "Digital signage dla handlu detalicznego",
+      "subtitle": "Wyświetlacze POS, nawigacja klientów, ekrany promocyjne",
+      "description": "Zwiększ sprzedaż i popraw doświadczenie klientów dzięki cyfrowym wyświetlaczom bezpośrednio w sklepie. Odtwarzacze BrightSign pozwalają wyświetlać aktualne promocje, kierować klientów po sklepie i prezentować produkty na dynamicznych wyświetlaczach POS — bez opłat licencyjnych.",
+      "metaDescription": "BrightSign digital signage dla handlu — wyświetlacze POS, nawigacja klientów, ekrany promocyjne. Bez opłat licencyjnych.",
+      "cta": "Zobacz rozwiązania dla handlu",
+      "products": "HD226, XD236"
+    },
+    "restaurace": {
+      "title": "Cyfrowe menu i zamawianie",
+      "subtitle": "Tablice menu, wyświetlacze drive-through, wyświetlacze kuchenne",
+      "description": "Zmodernizuj swoją restaurację dzięki cyfrowym tablicom menu, które możesz aktualizować centralnie i w czasie rzeczywistym. Odtwarzacze BrightSign niezawodnie wyświetlają menu, oferty dnia i panele drive-through — bez przestojów i bez miesięcznych opłat licencyjnych.",
+      "metaDescription": "BrightSign digital signage dla restauracji — cyfrowe tablice menu, wyświetlacze drive-through, wyświetlacze kuchenne.",
+      "cta": "Zobacz rozwiązania dla restauracji",
+      "products": "HD226, HD1026"
+    },
+    "hotely": {
+      "title": "Wyświetlacze dla hotelarstwa",
+      "subtitle": "Wyświetlacze w lobby, kioski konferencyjne, systemy nawigacji",
+      "description": "Stwórz profesjonalne pierwsze wrażenie dla gości dzięki cyfrowym wyświetlaczom w lobby, kioskom informacyjnym i oznaczeniom konferencyjnym. Odtwarzacze BrightSign obsługują treści 4K, interaktywne ekrany dotykowe i zdalne zarządzanie z jednego panelu.",
+      "metaDescription": "BrightSign digital signage dla hoteli — wyświetlacze w lobby, kioski konferencyjne, systemy nawigacji.",
+      "cta": "Zobacz rozwiązania dla hoteli",
+      "products": "XD236, XD1036"
+    },
+    "korporat": {
+      "title": "Rozwiązania dla środowiska korporacyjnego",
+      "subtitle": "Sale konferencyjne, recepcje, komunikacja firmowa",
+      "description": "Usprawnij komunikację wewnętrzną i wzmocnij wizerunek firmy dzięki digital signage. Odtwarzacze BrightSign zasilają wyświetlacze w salach konferencyjnych, na recepcjach i w przestrzeniach wspólnych — z obsługą treści 4K/8K, transmisji na żywo i centralnego zarządzania.",
+      "metaDescription": "BrightSign digital signage dla firm — sale konferencyjne, recepcje, komunikacja firmowa.",
+      "cta": "Zobacz rozwiązania korporacyjne",
+      "products": "XT245, XT1145"
+    }
+  },
   "faq": {
     "title": "Najczęściej zadawane pytania",
     "metaDescription": "Odpowiedzi na najczęstsze pytania dotyczące odtwarzaczy BrightSign, zamówień, dostawy i programu B2B.",

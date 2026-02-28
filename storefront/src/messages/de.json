@@ -765,6 +765,47 @@
     "Locking power supply": "Stromversorgung",
     "Wi-Fi": "Wi-Fi"
   },
+  "solutions": {
+    "indexTitle": "Lösungen nach Branche",
+    "indexSubtitle": "Wählen Sie eine Digital-Signage-Lösung passend zu Ihrer Branche",
+    "indexMetaDescription": "BrightSign Digital-Signage-Lösungen für Einzelhandel, Gastronomie, Hotels und Unternehmen.",
+    "learnMore": "Mehr erfahren",
+    "recommendedProducts": "Empfohlene Produkte",
+    "viewProducts": "Produkte ansehen",
+    "viewAllProducts": "Alle Produkte ansehen",
+    "retail": {
+      "title": "Digital Signage für den Einzelhandel",
+      "subtitle": "POS-Displays, Kundenleitsysteme, Werbebildschirme",
+      "description": "Steigern Sie den Umsatz und verbessern Sie das Kundenerlebnis mit digitalen Displays direkt auf der Verkaufsfläche. BrightSign Player zeigen aktuelle Angebote, leiten Kunden durch das Geschäft und präsentieren Produkte auf dynamischen POS-Displays — ohne Lizenzgebühren.",
+      "metaDescription": "BrightSign Digital Signage für den Einzelhandel — POS-Displays, Kundenleitsysteme, Werbebildschirme. Keine Lizenzgebühren.",
+      "cta": "Retail-Lösungen entdecken",
+      "products": "HD226, XD236"
+    },
+    "restaurace": {
+      "title": "Digitale Menüboards und Bestellungen",
+      "subtitle": "Menüboards, Drive-Through-Anzeigen, Küchendisplays",
+      "description": "Modernisieren Sie Ihr Restaurant mit digitalen Menüboards, die Sie zentral und in Echtzeit aktualisieren können. BrightSign Player zeigen zuverlässig Speisekarten, Tagesangebote und Drive-Through-Anzeigen — ohne Ausfallzeiten und ohne monatliche Lizenzgebühren.",
+      "metaDescription": "BrightSign Digital Signage für die Gastronomie — Menüboards, Drive-Through-Anzeigen, Küchendisplays.",
+      "cta": "Gastronomie-Lösungen entdecken",
+      "products": "HD226, HD1026"
+    },
+    "hotely": {
+      "title": "Displays für das Gastgewerbe",
+      "subtitle": "Lobby-Displays, Konferenz-Kioske, Leitsysteme",
+      "description": "Schaffen Sie einen professionellen ersten Eindruck für Ihre Gäste mit digitalen Lobby-Displays, Informationskiosken und Konferenz-Signage. BrightSign Player unterstützen 4K-Inhalte, interaktive Touchscreens und Fernverwaltung über ein zentrales Dashboard.",
+      "metaDescription": "BrightSign Digital Signage für Hotels — Lobby-Displays, Konferenz-Kioske, Leitsysteme.",
+      "cta": "Hotel-Lösungen entdecken",
+      "products": "XD236, XD1036"
+    },
+    "korporat": {
+      "title": "Digital Signage für Unternehmen",
+      "subtitle": "Besprechungsräume, Empfang, Unternehmenskommunikation",
+      "description": "Optimieren Sie die interne Kommunikation und stärken Sie die Markenpräsenz mit Digital Signage. BrightSign Player betreiben Displays in Besprechungsräumen, im Empfangsbereich und in Gemeinschaftsflächen — mit Unterstützung für 4K/8K-Inhalte, Live-Streaming und zentrale Verwaltung.",
+      "metaDescription": "BrightSign Digital Signage für Unternehmen — Besprechungsräume, Empfang, Unternehmenskommunikation.",
+      "cta": "Unternehmenslösungen entdecken",
+      "products": "XT245, XT1145"
+    }
+  },
   "faq": {
     "title": "Häufig gestellte Fragen",
     "metaDescription": "Antworten auf die häufigsten Fragen zu BrightSign-Playern, Bestellungen, Versand und unserem B2B-Programm.",

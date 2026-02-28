@@ -765,6 +765,47 @@
     "Locking power supply": "Power Supply",
     "Wi-Fi": "Wi-Fi"
   },
+  "solutions": {
+    "indexTitle": "Solutions by Industry",
+    "indexSubtitle": "Choose a digital signage solution tailored to your industry",
+    "indexMetaDescription": "BrightSign digital signage solutions for retail, restaurants, hotels, and corporate environments.",
+    "learnMore": "Learn more",
+    "recommendedProducts": "Recommended Products",
+    "viewProducts": "View Products",
+    "viewAllProducts": "View all products",
+    "retail": {
+      "title": "Digital Signage for Retail",
+      "subtitle": "POS displays, customer wayfinding, promotional screens",
+      "description": "Boost sales and enhance the customer experience with digital displays right on the shop floor. BrightSign players let you show live promotions, guide customers through the store, and present products on dynamic POS displays — all without license fees.",
+      "metaDescription": "BrightSign digital signage for retail — POS displays, customer wayfinding, promotional screens. No license fees.",
+      "cta": "Explore retail solutions",
+      "products": "HD226, XD236"
+    },
+    "restaurace": {
+      "title": "Digital Menus & Ordering",
+      "subtitle": "Menu boards, drive-through displays, kitchen displays",
+      "description": "Modernise your restaurant with digital menu boards you can update centrally and in real time. BrightSign players reliably display menus, daily specials, and drive-through panels — with zero downtime and no monthly license fees.",
+      "metaDescription": "BrightSign digital signage for restaurants — digital menu boards, drive-through displays, kitchen displays.",
+      "cta": "Explore restaurant solutions",
+      "products": "HD226, HD1026"
+    },
+    "hotely": {
+      "title": "Displays for Hospitality",
+      "subtitle": "Lobby displays, conference kiosks, wayfinding systems",
+      "description": "Create a professional first impression for your guests with digital lobby displays, information kiosks, and conference signage. BrightSign players support 4K content, interactive touchscreens, and remote management from a single dashboard.",
+      "metaDescription": "BrightSign digital signage for hotels — lobby displays, conference kiosks, wayfinding systems.",
+      "cta": "Explore hospitality solutions",
+      "products": "XD236, XD1036"
+    },
+    "korporat": {
+      "title": "Corporate Digital Signage",
+      "subtitle": "Meeting rooms, reception areas, corporate communications",
+      "description": "Streamline internal communications and strengthen your brand presence with digital signage. BrightSign players power displays in meeting rooms, reception areas, and common spaces — supporting 4K/8K content, live streaming, and centralised management.",
+      "metaDescription": "BrightSign digital signage for corporate — meeting rooms, reception areas, corporate communications.",
+      "cta": "Explore corporate solutions",
+      "products": "XT245, XT1145"
+    }
+  },
   "faq": {
     "title": "Frequently Asked Questions",
     "metaDescription": "Answers to the most common questions about BrightSign players, orders, shipping, and our B2B program.",

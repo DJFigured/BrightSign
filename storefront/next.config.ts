@@ -1,4 +1,5 @@
 import type { NextConfig } from "next"
+import { withSentryConfig } from "@sentry/nextjs"
 import createNextIntlPlugin from "next-intl/plugin"
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts")
@@ -38,7 +39,7 @@ const nextConfig: NextConfig = {
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' https://fonts.gstatic.com",
               "img-src 'self' data: blob: https://minio.brightsign.cz https://api.brightsign.cz https://*.brightsign.biz https://*.google-analytics.com https://*.googletagmanager.com",
-              "connect-src 'self' https://api.brightsign.cz https://*.stripe.com https://*.google-analytics.com https://*.googletagmanager.com",
+              "connect-src 'self' https://api.brightsign.cz https://*.stripe.com https://*.google-analytics.com https://*.googletagmanager.com https://*.sentry.io",
               "frame-src 'self' https://js.stripe.com https://hooks.stripe.com",
               "object-src 'none'",
               "base-uri 'self'",
@@ -51,4 +52,15 @@ const nextConfig: NextConfig = {
   },
 }
 
-export default withNextIntl(nextConfig)
+export default withSentryConfig(withNextIntl(nextConfig), {
+  // Disable source map upload (no auth token configured yet)
+  sourcemaps: {
+    disable: true,
+  },
+
+  // Route browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers
+  tunnelRoute: "/monitoring",
+
+  // Disable the Sentry build-time logger
+  silent: true,
+})

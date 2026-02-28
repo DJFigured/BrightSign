@@ -765,6 +765,47 @@
     "Locking power supply": "Napájanie",
     "Wi-Fi": "Wi-Fi"
   },
+  "solutions": {
+    "indexTitle": "Riešenia podľa odvetvia",
+    "indexSubtitle": "Vyberte si riešenie digital signage prispôsobené vášmu odvetviu",
+    "indexMetaDescription": "BrightSign digital signage riešenia pre retail, reštaurácie, hotely a korporátne prostredie.",
+    "learnMore": "Zistiť viac",
+    "recommendedProducts": "Odporúčané produkty",
+    "viewProducts": "Zobraziť produkty",
+    "viewAllProducts": "Zobraziť všetky produkty",
+    "retail": {
+      "title": "Digitálny signage pre maloobchod",
+      "subtitle": "Informačné displeje, navigácia zákazníkov, promo obrazovky",
+      "description": "Zvýšte predaje a zlepšite zákaznícky zážitok pomocou digitálnych displejov priamo v predajni. BrightSign prehrávače umožňujú zobrazovať aktuálne ponuky, navigovať zákazníkov po predajnej ploche a prezentovať produkty na dynamických POS displejoch bez licenčných poplatkov.",
+      "metaDescription": "BrightSign digital signage pre maloobchod — POS displeje, navigácia zákazníkov, promo obrazovky. Bez licenčných poplatkov.",
+      "cta": "Prezrieť riešenia pre retail",
+      "products": "HD226, XD236"
+    },
+    "restaurace": {
+      "title": "Digitálne menu a objednávky",
+      "subtitle": "Menu boardy, drive-through displeje, kuchynské displeje",
+      "description": "Modernizujte svoju reštauráciu s digitálnymi menu tabuľami, ktoré môžete aktualizovať centrálne a v reálnom čase. BrightSign prehrávače spoľahlivo zobrazujú jedálne lístky, denné ponuky aj drive-through panely bez výpadkov a bez mesačných licenčných poplatkov.",
+      "metaDescription": "BrightSign digital signage pre reštaurácie — digitálne menu boardy, drive-through displeje, kuchynské displeje.",
+      "cta": "Prezrieť riešenia pre reštaurácie",
+      "products": "HD226, HD1026"
+    },
+    "hotely": {
+      "title": "Displeje pre hotelierstvo",
+      "subtitle": "Lobby displeje, konferenčné kiosky, orientačné systémy",
+      "description": "Vytvorte profesionálny prvý dojem pre vašich hostí s digitálnymi displejmi v lobby, informačnými kioskami a konferenčným signage. BrightSign prehrávače podporujú 4K obsah, interaktívne dotykové obrazovky a vzdialenú správu z jedného miesta.",
+      "metaDescription": "BrightSign digital signage pre hotely — lobby displeje, konferenčné kiosky, orientačné systémy.",
+      "cta": "Prezrieť riešenia pre hotely",
+      "products": "XD236, XD1036"
+    },
+    "korporat": {
+      "title": "Riešenia pre firemné prostredie",
+      "subtitle": "Zasadacie miestnosti, recepcie, firemná komunikácia",
+      "description": "Zefektívnite internú komunikáciu a reprezentáciu vašej firmy pomocou digitálneho signage. BrightSign prehrávače poháňajú displeje v zasadacích miestnostiach, na recepciách a v spoločných priestoroch — s podporou 4K/8K obsahu, live streamingu a centrálnej správy.",
+      "metaDescription": "BrightSign digital signage pre firmy — zasadacie miestnosti, recepcie, firemná komunikácia.",
+      "cta": "Prezrieť firemné riešenia",
+      "products": "XT245, XT1145"
+    }
+  },
   "faq": {
     "title": "Často kladené otázky",
     "metaDescription": "Odpovede na najčastejšie otázky o BrightSign prehrávačoch, objednávkach, doručení a B2B programe.",

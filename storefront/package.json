@@ -12,6 +12,7 @@
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
     "@medusajs/js-sdk": "^2.13.1",
+    "@sentry/nextjs": "^10.40.0",
     "@stripe/react-stripe-js": "^5.6.0",
     "@stripe/stripe-js": "^8.7.0",
     "class-variance-authority": "^0.7.1",
