@@ -1,8 +1,12 @@
 import Medusa from "@medusajs/js-sdk"
 
+// Server-side (SSR): use MEDUSA_BACKEND_URL (runtime, Docker internal)
+// Client-side (browser): use NEXT_PUBLIC_MEDUSA_BACKEND_URL (baked at build)
 let MEDUSA_BACKEND_URL = "http://localhost:9000"
 
-if (process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL) {
+if (typeof window === "undefined" && process.env.MEDUSA_BACKEND_URL) {
+  MEDUSA_BACKEND_URL = process.env.MEDUSA_BACKEND_URL
+} else if (process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL) {
   MEDUSA_BACKEND_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL
 }
 
