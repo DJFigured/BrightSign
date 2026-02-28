@@ -4,8 +4,7 @@ import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { trackLead, trackPixel } from '@/lib/analytics'
 import { CheckCircle, Mail, Clock, ArrowRight } from 'lucide-react'
-import Link from 'next/link'
-import { useLocale } from 'next-intl'
+import { Link } from '@/i18n/navigation'
 
 const MEDUSA_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || 'http://localhost:9000'
 const API_KEY = process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY || ''
@@ -61,8 +60,6 @@ export function ContactPageClient() {
     }
   }
 
-  const locale = useLocale()
-
   if (submitted) {
     return (
       <div className="mx-auto max-w-4xl px-4 py-12">
@@ -87,7 +84,7 @@ export function ContactPageClient() {
           </div>
 
           <Link
-            href={`/${locale}/produkty`}
+            href="/kategorie/prehravace"
             className="mt-8 inline-flex items-center gap-2 rounded-md bg-brand-accent px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-brand-accent/90"
           >
             {t('successBrowseProducts')}

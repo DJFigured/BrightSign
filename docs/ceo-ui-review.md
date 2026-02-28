@@ -204,3 +204,38 @@
 6. **Shipping options v Medusa admin** -- ceny dopravy
 7. **Produktove fotky upload do MinIO** -- po stazeni je potreba nahrat na server
 8. **DB migrace** (invoice modul) -- SSH na VPS
+
+---
+
+## HOMEPAGE UI VARIANTY (2026-02-27)
+
+**10 HTML prototypu pripraveno k vyberu:** `storefront/ui-variants/INDEX.html`
+
+### Sada 2: Brand Native (V1-V5)
+| # | Nazev | Styl | Font |
+|---|-------|------|------|
+| V1 | Flagship | Corporate, mega menu, BrightSignOS sekce | Inter |
+| V2 | Product Focus | Specs+ceny, comparison table, sticky bar | Jakarta Sans |
+| V3 | Solutions | Industry karty, trust signals, konfigurator | Manrope |
+| V4 | Premium | Full dark mode, glow efekty, a11y compliant | Sora |
+| V5 | Conversion | Urgency, CTA, trust signals, floating cart | DM Sans |
+
+### Sada 1: Rebrandovano (V6-V10)
+| # | Nazev | Puvodni styl | Novy styl |
+|---|-------|-------------|-----------|
+| V6 | Minimal | Green Apple | Purple/cyan minimalism |
+| V7 | Dark Tech | Neon green | Purple/cyan neon glow |
+| V8 | Enterprise | Navy B2B | Purple B2B trust |
+| V9 | Editorial | Terracotta serif | Purple/magenta magazine |
+| V10 | Bold | Multi-neon | Brand purple/cyan/magenta energy |
+
+### Co bylo opraveno ve vsech 10:
+- Ceny sjednoceny na bez DPH (HD226=6900, HD1026=8500, XD236=12500, XD1036=24400)
+- Vsechny fake social proof odstranen (star ratings, fake testimonials, fake company counts)
+- Realne BrightSign fakty (#1 global market share, 500k+ deployments, 100+ countries)
+- Ceska diakritika opravena v Sade 2
+- prefers-reduced-motion na V4 + V5
+- WCAG AA kontrast na V4
+
+### Dalsi krok:
+Dan otevre INDEX.html, vybere viteze → implementace do Next.js storefrontu

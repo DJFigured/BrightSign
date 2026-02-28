@@ -53,6 +53,7 @@ Stat se cislem 1 online prodejcem BrightSign v CEE regionu (CZ, SK, PL) behem 12
 | 18 | Nahrat fotky do MinIO / prirazeni k produktum | Subagent | 2h | #5, #17 | TODO |
 | 19 | Pridat Serie 6 produkty (HD226, XD236, etc.) do Medusa | Subagent | 4h | #5 | HOTOVO (bfe9178) -- import script + data |
 | 20 | Homepage hero redesign + trust signals + "Proc u nas" | Subagent | 1h | Zadna | HOTOVO (9137be1, d398469) |
+| 20b | **10 UI variant prototypu homepage** (storefront/ui-variants/) | Subagent | 4h | Zadna | **HOTOVO** -- Dan vybere viteze, pak Next.js implementace |
 | 21 | Doplnit telefonni cislo do headeru a paticky | Subagent | 30min | Dan da cislo | TODO |
 
 ### Checkout opravy
