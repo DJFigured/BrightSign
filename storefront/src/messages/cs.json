@@ -48,7 +48,8 @@
     "accessories": "Příslušenství",
     "series5": "Série 5",
     "series4": "Série 4",
-    "language": "Jazyk / Language"
+    "language": "Jazyk / Language",
+    "solutions": "Řešení"
   },
   "footer": {
     "company": "Make more s.r.o.",
@@ -73,7 +74,8 @@
       "error": "Něco se nepovedlo. Zkuste to znovu."
     },
     "paymentMethods": "Platební metody",
-    "bankTransfer": "Bankovní převod"
+    "bankTransfer": "Bankovní převod",
+    "solutions": "Řešení"
   },
   "cart": {
     "title": "Košík",

@@ -97,6 +97,11 @@ export function Footer({ navData }: FooterProps) {
                   FAQ
                 </Link>
               </li>
+              <li>
+                <Link href="/reseni" className="hover:text-brand-accent transition-colors">
+                  {t("solutions")}
+                </Link>
+              </li>
             </ul>
           </nav>
 

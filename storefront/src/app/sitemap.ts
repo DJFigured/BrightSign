@@ -17,6 +17,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: "/ochrana-udaju", changeFrequency: "monthly" as const, priority: 0.3 },
     { path: "/reklamace", changeFrequency: "monthly" as const, priority: 0.3 },
     { path: "/faq", changeFrequency: "monthly" as const, priority: 0.5 },
+    { path: "/reseni", changeFrequency: "weekly" as const, priority: 0.7 },
+    { path: "/reseni/retail", changeFrequency: "monthly" as const, priority: 0.6 },
+    { path: "/reseni/restaurace", changeFrequency: "monthly" as const, priority: 0.6 },
+    { path: "/reseni/hotely", changeFrequency: "monthly" as const, priority: 0.6 },
+    { path: "/reseni/korporat", changeFrequency: "monthly" as const, priority: 0.6 },
   ]
 
   for (const page of staticPages) {

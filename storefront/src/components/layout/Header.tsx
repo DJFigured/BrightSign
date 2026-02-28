@@ -439,6 +439,14 @@ export function Header({ navData }: HeaderProps) {
                 {catName(s.handle, s.name)}
               </Link>
             ))}
+
+            {/* Solutions */}
+            <Link
+              href="/reseni"
+              className="font-medium text-foreground hover:text-brand-accent transition-colors"
+            >
+              {t("solutions")}
+            </Link>
           </div>
         </nav>
       </header>

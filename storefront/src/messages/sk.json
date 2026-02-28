@@ -48,7 +48,8 @@
     "accessories": "Príslušenstvo",
     "series5": "Séria 5",
     "series4": "Séria 4",
-    "language": "Jazyk / Language"
+    "language": "Jazyk / Language",
+    "solutions": "Riešenia"
   },
   "footer": {
     "company": "Make more s.r.o.",
@@ -73,7 +74,8 @@
     "series4": "BrightSign Séria 4",
     "series5": "BrightSign Séria 5",
     "paymentMethods": "Platobné metódy",
-    "bankTransfer": "Bankový prevod"
+    "bankTransfer": "Bankový prevod",
+    "solutions": "Riešenia"
   },
   "cart": {
     "title": "Košík",

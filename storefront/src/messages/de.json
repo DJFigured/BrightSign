@@ -48,7 +48,8 @@
     "accessories": "Zubehör",
     "series5": "Serie 5",
     "series4": "Serie 4",
-    "language": "Sprache / Language"
+    "language": "Sprache / Language",
+    "solutions": "Lösungen"
   },
   "footer": {
     "company": "Make more s.r.o.",
@@ -73,7 +74,8 @@
     "series4": "BrightSign Serie 4",
     "series5": "BrightSign Serie 5",
     "paymentMethods": "Zahlungsmethoden",
-    "bankTransfer": "Banküberweisung"
+    "bankTransfer": "Banküberweisung",
+    "solutions": "Lösungen"
   },
   "cart": {
     "title": "Warenkorb",
