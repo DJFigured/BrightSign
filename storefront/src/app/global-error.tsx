@@ -51,6 +51,7 @@ export default function GlobalError({
             >
               Zkusit znovu
             </button>
+            {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- global error boundary, app is crashed, Link won't work */}
             <a
               href="/"
               style={{
