@@ -17,6 +17,7 @@ services:
       - "9000"
     labels:
       - "traefik.enable=true"
+      - "traefik.docker.network=coolify"
       # Shared service
       - "traefik.http.services.bs-backend.loadbalancer.server.port=9000"
       # HTTPS redirect middleware
@@ -65,8 +66,10 @@ services:
       MEDUSA_BACKEND_URL: http://backend:9000
     expose:
       - "3000"
+
     labels:
       - "traefik.enable=true"
+      - "traefik.docker.network=coolify"
       # Shared service
       - "traefik.http.services.bs-storefront.loadbalancer.server.port=3000"
       # EU domain (active — DNS points here)
@@ -107,6 +110,7 @@ services:
       - "9001"
     labels:
       - "traefik.enable=true"
+      - "traefik.docker.network=coolify"
       # Shared service
       - "traefik.http.services.bs-minio.loadbalancer.server.port=9000"
       # EU domain (active — DNS points here)
