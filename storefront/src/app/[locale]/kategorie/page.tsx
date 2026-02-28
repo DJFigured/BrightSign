@@ -1,15 +1,16 @@
 import { sdk } from "@/lib/sdk"
 import { getLocale, getTranslations } from "next-intl/server"
-import { regionMap, type Locale } from "@/i18n/config"
+import { regionMap, getDomainConfigByLocale, type Locale } from "@/i18n/config"
 import { getRegionId } from "@/lib/medusa-helpers"
+import { localizePath } from "@/lib/url-helpers"
 import { CategoryPageClient } from "./[handle]/client"
 import type { Metadata } from "next"
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://brightsign.cz"
-
 export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale() as Locale
+  const config = getDomainConfigByLocale(locale)
   const t = await getTranslations("category")
-  const title = `${t("allProducts")} | BrightSign.cz`
+  const title = `${t("allProducts")} | ${config.storeName}`
   const description = t("allProductsDescription")
   return {
     title,
@@ -34,6 +35,8 @@ interface Props {
 export default async function AllProductsPage({ searchParams }: Props) {
   const sp = await searchParams
   const locale = await getLocale() as Locale
+  const config = getDomainConfigByLocale(locale)
+  const siteUrl = config.siteUrl
   const tc = await getTranslations("category")
   const regionCode = regionMap[locale]
   const regionId = getRegionId(regionCode)
@@ -68,8 +71,8 @@ export default async function AllProductsPage({ searchParams }: Props) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "BrightSign.cz", item: `${SITE_URL}/${locale}` },
-      { "@type": "ListItem", position: 2, name: tc("allProducts"), item: `${SITE_URL}/${locale}/kategorie` },
+      { "@type": "ListItem", position: 1, name: config.storeName, item: siteUrl },
+      { "@type": "ListItem", position: 2, name: tc("allProducts"), item: `${siteUrl}${localizePath("/kategorie", locale)}` },
     ],
   }
 

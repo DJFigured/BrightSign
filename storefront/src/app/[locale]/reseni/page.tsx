@@ -1,8 +1,8 @@
 import { getTranslations, getLocale } from "next-intl/server"
+import { getDomainConfigByLocale, type Locale } from "@/i18n/config"
+import { localizePath } from "@/lib/url-helpers"
 import type { Metadata } from "next"
 import { Link } from "@/i18n/navigation"
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://brightsign.cz"
 
 const VERTICALS = [
   { slug: "retail", icon: "🏬" },
@@ -12,8 +12,10 @@ const VERTICALS = [
 ] as const
 
 export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale() as Locale
+  const config = getDomainConfigByLocale(locale)
   const t = await getTranslations("solutions")
-  const title = `${t("indexTitle")} | BrightSign.cz`
+  const title = `${t("indexTitle")} | ${config.storeName}`
   const description = t("indexMetaDescription")
 
   return {
@@ -26,14 +28,16 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function SolutionsIndexPage() {
   const t = await getTranslations("solutions")
-  const locale = await getLocale()
+  const locale = await getLocale() as Locale
+  const config = getDomainConfigByLocale(locale)
+  const siteUrl = config.siteUrl
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "BrightSign.cz", item: `${SITE_URL}/${locale}` },
-      { "@type": "ListItem", position: 2, name: t("indexTitle"), item: `${SITE_URL}/${locale}/reseni` },
+      { "@type": "ListItem", position: 1, name: config.storeName, item: siteUrl },
+      { "@type": "ListItem", position: 2, name: t("indexTitle"), item: `${siteUrl}${localizePath("/reseni", locale)}` },
     ],
   }
 

@@ -1,9 +1,9 @@
 import { getTranslations, getLocale } from "next-intl/server"
+import { getDomainConfigByLocale, type Locale } from "@/i18n/config"
+import { localizePath } from "@/lib/url-helpers"
 import type { Metadata } from "next"
 import { Link } from "@/i18n/navigation"
 import { notFound } from "next/navigation"
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://brightsign.cz"
 
 const VERTICALS = ["retail", "restaurace", "hotely", "korporat"] as const
 type Vertical = (typeof VERTICALS)[number]
@@ -50,10 +50,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params
   if (!isVertical(slug)) return {}
 
+  const locale = await getLocale() as Locale
+  const config = getDomainConfigByLocale(locale)
   const t = await getTranslations("solutions")
-  const title = `${t(`${slug}.title`)} | BrightSign.cz`
+  const title = `${t(`${slug}.title`)} | ${config.storeName}`
   const description = t(`${slug}.metaDescription`)
-  const locale = await getLocale()
 
   return {
     title,
@@ -62,7 +63,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title,
       description,
       type: "website",
-      url: `${SITE_URL}/${locale}/reseni/${slug}`,
+      url: `${config.siteUrl}${localizePath(`/reseni/${slug}`, locale)}`,
     },
     twitter: { card: "summary", title, description },
   }
@@ -74,7 +75,9 @@ export default async function SolutionPage({ params }: PageProps) {
 
   const t = await getTranslations("solutions")
   const tCommon = await getTranslations("common")
-  const locale = await getLocale()
+  const locale = await getLocale() as Locale
+  const config = getDomainConfigByLocale(locale)
+  const siteUrl = config.siteUrl
 
   const products = VERTICAL_PRODUCTS[slug]
 
@@ -82,9 +85,9 @@ export default async function SolutionPage({ params }: PageProps) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "BrightSign.cz", item: `${SITE_URL}/${locale}` },
-      { "@type": "ListItem", position: 2, name: t("indexTitle"), item: `${SITE_URL}/${locale}/reseni` },
-      { "@type": "ListItem", position: 3, name: t(`${slug}.title`), item: `${SITE_URL}/${locale}/reseni/${slug}` },
+      { "@type": "ListItem", position: 1, name: config.storeName, item: siteUrl },
+      { "@type": "ListItem", position: 2, name: t("indexTitle"), item: `${siteUrl}${localizePath("/reseni", locale)}` },
+      { "@type": "ListItem", position: 3, name: t(`${slug}.title`), item: `${siteUrl}${localizePath(`/reseni/${slug}`, locale)}` },
     ],
   }
 

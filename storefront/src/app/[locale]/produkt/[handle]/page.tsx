@@ -1,7 +1,8 @@
 import { sdk } from "@/lib/sdk"
 import { getLocale, getTranslations } from "next-intl/server"
-import { regionMap, type Locale } from "@/i18n/config"
+import { regionMap, getDomainConfigByLocale, type Locale } from "@/i18n/config"
 import { getRegionId, getLocalizedDescription } from "@/lib/medusa-helpers"
+import { localizePath } from "@/lib/url-helpers"
 import { notFound } from "next/navigation"
 import { ProductDetailClient } from "./client"
 import type { Metadata } from "next"
@@ -71,6 +72,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ProductPage({ params }: Props) {
   const { handle } = await params
   const locale = await getLocale() as Locale
+  const config = getDomainConfigByLocale(locale)
+  const siteUrl = config.siteUrl
   const regionCode = regionMap[locale]
   const regionId = getRegionId(regionCode)
 
@@ -98,24 +101,22 @@ export default async function ProductPage({ params }: Props) {
     { name: tHeader("players"), href: "/kategorie/prehravace" },
   ]
   if (categories && categories.length > 0) {
-    // Add first category (series family)
     const cat = categories[0]
     breadcrumbs.push({ name: cat.name, href: `/kategorie/${cat.handle}` })
   }
   breadcrumbs.push({ name: product.title as string, href: `/produkt/${handle}` })
 
   // BreadcrumbList JSON-LD
-  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://brightsign.cz"
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "BrightSign.cz", item: `${SITE_URL}/${locale}` },
+      { "@type": "ListItem", position: 1, name: config.storeName, item: siteUrl },
       ...breadcrumbs.map((bc, i) => ({
         "@type": "ListItem",
         position: i + 2,
         name: bc.name,
-        item: `${SITE_URL}/${locale}${bc.href}`,
+        item: `${siteUrl}${localizePath(bc.href, locale)}`,
       })),
     ],
   }

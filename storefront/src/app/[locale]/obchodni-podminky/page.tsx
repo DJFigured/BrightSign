@@ -1,11 +1,13 @@
 import { getTranslations, getLocale } from "next-intl/server"
+import { getDomainConfigByLocale, type Locale } from "@/i18n/config"
+import { localizePath } from "@/lib/url-helpers"
 import type { Metadata } from "next"
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://brightsign.cz"
-
 export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale() as Locale
+  const config = getDomainConfigByLocale(locale)
   const t = await getTranslations("legal.terms")
-  const title = `${t("title")} | BrightSign.cz`
+  const title = `${t("title")} | ${config.storeName}`
   const description = t("metaDescription")
   return {
     title,
@@ -17,7 +19,9 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function TermsPage() {
   const t = await getTranslations("legal.terms")
-  const locale = await getLocale()
+  const locale = await getLocale() as Locale
+  const config = getDomainConfigByLocale(locale)
+  const siteUrl = config.siteUrl
 
   const sections = [
     "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8",
@@ -27,8 +31,8 @@ export default async function TermsPage() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "BrightSign.cz", item: `${SITE_URL}/${locale}` },
-      { "@type": "ListItem", position: 2, name: t("title"), item: `${SITE_URL}/${locale}/obchodni-podminky` },
+      { "@type": "ListItem", position: 1, name: config.storeName, item: siteUrl },
+      { "@type": "ListItem", position: 2, name: t("title"), item: `${siteUrl}${localizePath("/obchodni-podminky", locale)}` },
     ],
   }
 

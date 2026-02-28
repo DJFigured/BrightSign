@@ -4,7 +4,7 @@ import { notFound } from "next/navigation"
 import { NextIntlClientProvider, hasLocale } from "next-intl"
 import { getMessages } from "next-intl/server"
 import { routing } from "@/i18n/routing"
-import { locales } from "@/i18n/config"
+import { allDomains, getDomainConfigByLocale, type Locale } from "@/i18n/config"
 import { getTranslations } from "next-intl/server"
 import { Header, type HeaderNavData } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
@@ -30,8 +30,6 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 })
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://brightsign.cz"
-
 const hreflangMap: Record<string, string> = {
   cs: "cs-CZ",
   sk: "sk-SK",
@@ -46,21 +44,23 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>
 }): Promise<Metadata> {
   const { locale } = await params
+  const domainConfig = getDomainConfigByLocale(locale as Locale)
 
+  // hreflang alternates pointing to each domain
   const languages: Record<string, string> = {}
-  for (const loc of locales) {
-    languages[hreflangMap[loc] || loc] = `${SITE_URL}/${loc}`
+  for (const d of allDomains) {
+    languages[hreflangMap[d.locale] || d.locale] = d.siteUrl
   }
-  languages["x-default"] = `${SITE_URL}/cs`
+  languages["x-default"] = domainConfig.siteUrl
 
   return {
-    metadataBase: new URL(SITE_URL),
+    metadataBase: new URL(domainConfig.siteUrl),
     alternates: {
-      canonical: `${SITE_URL}/${locale}`,
+      canonical: domainConfig.siteUrl,
       languages,
     },
     openGraph: {
-      siteName: "BrightSign.cz",
+      siteName: domainConfig.storeName,
       type: "website",
       locale: hreflangMap[locale] || locale,
     },

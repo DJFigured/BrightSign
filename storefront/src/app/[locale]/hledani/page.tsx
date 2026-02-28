@@ -1,5 +1,5 @@
 import { getLocale, getTranslations } from "next-intl/server"
-import { regionMap, type Locale } from "@/i18n/config"
+import { regionMap, getDomainConfigByLocale, type Locale } from "@/i18n/config"
 import { getRegionId } from "@/lib/medusa-helpers"
 import { sdk } from "@/lib/sdk"
 import { SearchResultsClient } from "./client"
@@ -11,11 +11,13 @@ interface Props {
 
 export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
   const sp = await searchParams
+  const locale = await getLocale() as Locale
+  const config = getDomainConfigByLocale(locale)
   const t = await getTranslations("search")
   const query = sp.q || ""
   const ts = await getTranslations("common")
   return {
-    title: query ? `${t("resultsFor", { query })} | BrightSign.cz` : `${t("title")} | BrightSign.cz`,
+    title: query ? `${t("resultsFor", { query })} | ${config.storeName}` : `${t("title")} | ${config.storeName}`,
     description: ts("search"),
     robots: { index: false },
   }

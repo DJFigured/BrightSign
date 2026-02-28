@@ -7,7 +7,6 @@ import { Link, useRouter } from "@/i18n/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
-import { LocaleSwitcher } from "./LocaleSwitcher"
 import { MobileMenu } from "./MobileMenu"
 import { ShoppingCart, User, Search, Menu, ChevronDown, Loader2, X } from "lucide-react"
 import { useCart } from "@/lib/cart-context"
@@ -154,7 +153,6 @@ export function Header({ navData }: HeaderProps) {
               <Link href="/b2b/registrace" className="hover:text-brand-accent transition-colors whitespace-nowrap">
                 {t("b2bRegistration")}
               </Link>
-              <LocaleSwitcher />
             </div>
           </div>
         </div>
@@ -162,10 +160,10 @@ export function Header({ navData }: HeaderProps) {
         {/* Main nav */}
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3">
           {/* Logo */}
-          <Link href="/" className="shrink-0" aria-label="BrightSign.cz">
+          <Link href="/" className="shrink-0" aria-label="eBrightSign">
             <Image
               src="/logo.svg"
-              alt="BrightSign.cz"
+              alt="eBrightSign"
               width={180}
               height={30}
               className="h-7 w-auto sm:h-8"

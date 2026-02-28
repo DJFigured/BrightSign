@@ -329,7 +329,93 @@
       "subtitle": "BrightSign — der Weltmarktführer im Digital Signage. Professionelle Player ohne Lizenzgebühren.",
       "cta": "Produkte ansehen",
       "b2bCta": "Lassen Sie sich beraten",
-      "newBadge": "Neu: Serie 6 mit NPU und 5 Jahren Garantie"
+      "newBadge": "Neu: Serie 6 mit NPU und 5 Jahren Garantie",
+      "heroProduct": "XD236",
+      "heroProductLine": "Serie 6 | Dual 4K",
+      "heroProductBrand": "BrightSign Serie 6",
+      "heroProductPrice": "ab 539 €",
+      "heroProductPriceNote": "zzgl. MwSt.",
+      "inStock": "Auf Lager",
+      "warranty5y": "5 Jahre Garantie"
+    },
+    "tabNav": {
+      "products": "Produkt wählen",
+      "solutions": "Branchenlösungen",
+      "support": "Support & Service"
+    },
+    "serie6": {
+      "badge": "Neu 2026",
+      "title": "Lernen Sie die Serie 6 kennen",
+      "subtitle": "Neue Generation von BrightSign-Playern mit 10-Bit-HDR, Neuralprozessor und 5 Jahren Garantie.",
+      "viewAll": "Alle Produkte einschließlich Serie 5 anzeigen",
+      "buy": "Kaufen",
+      "from": "ab",
+      "exVat": "zzgl. MwSt.",
+      "hd226": {
+        "tag": "Entry 4K",
+        "headerSub": "Serie 6 | Standard I/O",
+        "name": "BrightSign HD226",
+        "desc": "Einstiegs-4K-Player mit HDR und NPU",
+        "spec1": "4K Single HDR 10-bit",
+        "spec2": "NPU (AI-ready)",
+        "spec3": "HTML5 + Chromium",
+        "price": "279 €"
+      },
+      "hd1026": {
+        "tag": "Expanded I/O",
+        "headerSub": "Serie 6 | HDMI In + Dual LAN",
+        "name": "BrightSign HD1026",
+        "desc": "4K-Player mit erweitertem I/O",
+        "spec1": "HDMI-Eingang (Live TV)",
+        "spec2": "Dual Ethernet",
+        "spec3": "NPU (AI-ready)",
+        "price": "339 €"
+      },
+      "xd236": {
+        "tag": "Dual 4K",
+        "bestseller": "Bestseller",
+        "headerSub": "Serie 6 | PoE+ | M.2 SSD",
+        "name": "BrightSign XD236",
+        "desc": "Leistungsstarker Dual-4K-Player mit PoE+",
+        "spec1": "Dual 4K HDR 10-bit",
+        "spec2": "PoE+ Stromversorgung",
+        "spec3": "M.2 SSD Slot",
+        "price": "539 €"
+      },
+      "xd1036": {
+        "tag": "Flagship",
+        "headerSub": "Serie 6 | Full I/O | PoE+",
+        "name": "BrightSign XD1036",
+        "desc": "Flaggschiff mit erweitertem I/O",
+        "spec1": "HDMI In + Dual LAN",
+        "spec2": "Dual 4K HDR 10-bit",
+        "spec3": "PoE+ + M.2 SSD",
+        "price": "979 €"
+      }
+    },
+    "brightSignOS": {
+      "badge": "BrightSignOS",
+      "title": "Betriebssystem für Digital Signage entwickelt",
+      "subtitle": "Jeder BrightSign-Player läuft auf BrightSignOS — einem proprietären System, das ausschließlich für die Wiedergabe von Inhalten optimiert ist.",
+      "secure": { "title": "Secure — Sicher", "desc": "Geschlossenes OS ohne Zugriffspunkte für Malware. Null bekannte Sicherheitsvorfälle." },
+      "reliable": { "title": "Reliable — Zuverlässig", "desc": "99,99% Betriebszeit. Player nimmt nach Stromausfall automatisch in Sekunden den Betrieb wieder auf." },
+      "superior": { "title": "Superior — Überlegen", "desc": "4K HDR bei 60fps, Dual-Stream-Dekodierung, NPU für KI-Anwendungen. Kompromisslose Leistung." },
+      "sustainable": { "title": "Sustainable — Nachhaltig", "desc": "Verbrauch ab 5W. Kein Lüfter, kein Lärm, minimaler thermischer Fußabdruck." },
+      "uptime": "Betriebszeit"
+    },
+    "useCasesVisual": {
+      "badge": "Warum BrightSign",
+      "title": "#1 auf dem weltweiten Digital-Signage-Markt",
+      "subtitle": "BrightSign ist der globale Marktführer bei Digital-Signage-Playern mit über 500.000 Installationen in mehr als 100 Ländern.",
+      "check1": "500.000+ Installationen weltweit",
+      "check2": "Zentrale Verwaltung über BrightSign Network",
+      "check3": "Lüfterlos — null bewegliche Teile",
+      "check4": "Enterprise-Zuverlässigkeit — speziell entwickeltes OS",
+      "cta": "Kostenlose Beratung",
+      "imagePlaceholder": "Retail-Installation",
+      "imageSubtitle": "BrightSign im 24/7-Betrieb",
+      "powerLabel": "Stromverbrauch",
+      "powerValue": "ab 5W"
     },
     "categories": "Produktkategorien",
     "featured": "Empfohlene Produkte",
@@ -507,7 +593,9 @@
       "title": "Brauchen Sie Beratung?",
       "subtitle": "Wir helfen Ihnen, die richtige Lösung für Ihr Projekt zu finden",
       "cta": "Kontaktieren Sie uns",
-      "ctaDesc": "Kostenlose Beratung"
+      "ctaDesc": "Kostenlose Beratung",
+      "phoneCta": "+420 XXX XXX XXX",
+      "phoneHref": "+420000000000"
     },
     "whyUs": {
       "title": "Warum bei uns kaufen",

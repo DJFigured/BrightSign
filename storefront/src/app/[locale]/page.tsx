@@ -1,15 +1,16 @@
 import { getLocale, getTranslations } from "next-intl/server"
-import { regionMap, type Locale } from "@/i18n/config"
+import { regionMap, getDomainConfigByLocale, type Locale } from "@/i18n/config"
 import { getRegionId } from "@/lib/medusa-helpers"
+import { localizePath } from "@/lib/url-helpers"
 import { sdk } from "@/lib/sdk"
 import { HomepageClient } from "@/components/home/HomepageClient"
 import type { Metadata } from "next"
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://brightsign.cz"
-
 export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale() as Locale
+  const config = getDomainConfigByLocale(locale)
   const t = await getTranslations("home")
-  const title = `BrightSign.cz — ${t("hero.title")}`
+  const title = `${config.storeName} — ${t("hero.title")}`
   const description = t("hero.subtitle")
 
   return {
@@ -19,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description,
       type: "website",
-      url: SITE_URL,
+      url: config.siteUrl,
     },
     twitter: {
       card: "summary",
@@ -31,6 +32,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function HomePage() {
   const locale = await getLocale() as Locale
+  const config = getDomainConfigByLocale(locale)
+  const siteUrl = config.siteUrl
   const regionCode = regionMap[locale]
   const regionId = getRegionId(regionCode)
 
@@ -55,14 +58,16 @@ export default async function HomePage() {
     // Silently fail — homepage still renders
   }
 
+  const searchPath = localizePath("/hledani", locale)
+
   const orgJsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "BrightSign.cz",
+    name: config.storeName,
     legalName: "Make more s.r.o.",
-    url: SITE_URL,
-    logo: `${SITE_URL}/logo.svg`,
-    image: `${SITE_URL}/logo.svg`,
+    url: siteUrl,
+    logo: `${siteUrl}/logo.svg`,
+    image: `${siteUrl}/logo.svg`,
     taxID: "CZ21890161",
     address: {
       "@type": "PostalAddress",
@@ -79,13 +84,13 @@ export default async function HomePage() {
   const websiteJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "BrightSign.cz",
-    url: SITE_URL,
+    name: config.storeName,
+    url: siteUrl,
     potentialAction: {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: `${SITE_URL}/${locale}/hledani?q={search_term_string}`,
+        urlTemplate: `${siteUrl}${searchPath}?q={search_term_string}`,
       },
       "query-input": "required name=search_term_string",
     },

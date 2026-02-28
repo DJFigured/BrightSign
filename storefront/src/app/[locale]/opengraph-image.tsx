@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og"
 
 export const runtime = "edge"
-export const alt = "BrightSign.cz — Digital Signage Solutions"
+export const alt = "eBrightSign.eu — Digital Signage Solutions"
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
@@ -42,6 +42,16 @@ export default function Image({ params }: { params: { locale: string } }) {
               fontSize: 72,
               fontWeight: 700,
               color: "#ffffff",
+              opacity: 0.6,
+            }}
+          >
+            e
+          </span>
+          <span
+            style={{
+              fontSize: 72,
+              fontWeight: 700,
+              color: "#ffffff",
             }}
           >
             Bright
@@ -63,7 +73,7 @@ export default function Image({ params }: { params: { locale: string } }) {
               opacity: 0.6,
             }}
           >
-            .cz
+            .eu
           </span>
         </div>
         <div

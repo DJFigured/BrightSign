@@ -322,7 +322,105 @@
       "subtitle": "BrightSign — světová jednička v digital signage. Profesionální přehrávače bez licenčních poplatků.",
       "cta": "Prohlédnout produkty",
       "b2bCta": "Poraďte se s námi",
-      "newBadge": "Novinka: Série 6 s NPU a 5letou zárukou"
+      "newBadge": "Novinka: Série 6 s NPU a 5letou zárukou",
+      "heroProduct": "XD236",
+      "heroProductLine": "Série 6 | Dual 4K",
+      "heroProductBrand": "BrightSign Série 6",
+      "heroProductPrice": "od 12 500 Kč",
+      "heroProductPriceNote": "bez DPH",
+      "inStock": "Skladem",
+      "warranty5y": "5 let záruka"
+    },
+    "tabNav": {
+      "products": "Vybrat produkt",
+      "solutions": "Řešení podle odvětví",
+      "support": "Podpora a servis"
+    },
+    "serie6": {
+      "badge": "Novinka 2026",
+      "title": "Seznamte se se Sérií 6",
+      "subtitle": "Nová generace BrightSign přehrávačů s 10-bit HDR, neuronovým procesorem a 5letou zárukou.",
+      "viewAll": "Zobrazit všechny produkty včetně Série 5",
+      "buy": "Koupit",
+      "from": "od",
+      "exVat": "bez DPH",
+      "hd226": {
+        "tag": "Entry 4K",
+        "headerSub": "Série 6 | Standard I/O",
+        "name": "BrightSign HD226",
+        "desc": "Vstupní 4K přehrávač s HDR a NPU",
+        "spec1": "4K Single HDR 10-bit",
+        "spec2": "NPU (AI ready)",
+        "spec3": "HTML5 + Chromium",
+        "price": "6 900 Kč"
+      },
+      "hd1026": {
+        "tag": "Expanded I/O",
+        "headerSub": "Série 6 | HDMI In + Dual LAN",
+        "name": "BrightSign HD1026",
+        "desc": "4K přehrávač s rozšířeným I/O",
+        "spec1": "HDMI vstup (Live TV)",
+        "spec2": "Dual Ethernet",
+        "spec3": "NPU (AI ready)",
+        "price": "8 500 Kč"
+      },
+      "xd236": {
+        "tag": "Dual 4K",
+        "bestseller": "Bestseller",
+        "headerSub": "Série 6 | PoE+ | M.2 SSD",
+        "name": "BrightSign XD236",
+        "desc": "Výkonný dual 4K přehrávač s PoE+",
+        "spec1": "Dual 4K HDR 10-bit",
+        "spec2": "PoE+ napájení",
+        "spec3": "M.2 SSD slot",
+        "price": "12 500 Kč"
+      },
+      "xd1036": {
+        "tag": "Flagship",
+        "headerSub": "Série 6 | Full I/O | PoE+",
+        "name": "BrightSign XD1036",
+        "desc": "Vlajková loď s rozšířeným I/O",
+        "spec1": "HDMI In + Dual LAN",
+        "spec2": "Dual 4K HDR 10-bit",
+        "spec3": "PoE+ + M.2 SSD",
+        "price": "24 400 Kč"
+      }
+    },
+    "brightSignOS": {
+      "badge": "BrightSignOS",
+      "title": "Operační systém vytvořený pro digital signage",
+      "subtitle": "Každý BrightSign přehrávač běží na BrightSignOS — proprietárním systému optimalizovaném výhradně pro prezentaci obsahu. Žádné zbytečné procesy, žádné aktualizace Windows, žádné zpomalení.",
+      "secure": {
+        "title": "Secure — Zabezpečený",
+        "desc": "Uzavřený OS bez přístupových bodů pro malware. Nulový počet známých bezpečnostních incidentů."
+      },
+      "reliable": {
+        "title": "Reliable — Spolehlivý",
+        "desc": "99,99% uptime. Přehrávač po výpadku proudu automaticky obnoví provoz během sekund."
+      },
+      "superior": {
+        "title": "Superior — Převyšující",
+        "desc": "4K HDR při 60fps, dual-stream dekódování, NPU pro AI aplikace. Výkon bez kompromisů."
+      },
+      "sustainable": {
+        "title": "Sustainable — Udržitelný",
+        "desc": "Spotřeba od 5W. Žádný ventilátor, žádný hluk, minimální tepelný otisk."
+      },
+      "uptime": "uptime"
+    },
+    "useCasesVisual": {
+      "badge": "Proč BrightSign",
+      "title": "#1 na světovém trhu digital signage",
+      "subtitle": "BrightSign je globální jednička v digital signage přehrávačích s více než 500 000 nasazení ve více než 100 zemích. Účelově vytvořený OS znamená žádné pády Windows, žádné viry, žádnou údržbu.",
+      "check1": "500 000+ nasazení po celém světě",
+      "check2": "Centrální správa přes BrightSign Network",
+      "check3": "Bez ventilátorů — nulové pohyblivé části",
+      "check4": "Podniková spolehlivost — účelově vytvořený OS",
+      "cta": "Nezávazná konzultace",
+      "imagePlaceholder": "Retail instalace",
+      "imageSubtitle": "BrightSign v provozu 24/7",
+      "powerLabel": "Spotřeba energie",
+      "powerValue": "od 5W"
     },
     "categories": "Kategorie produktů",
     "featured": "Doporučené produkty",
@@ -500,7 +598,9 @@
       "title": "Nevíte si rady?",
       "subtitle": "Pomůžeme vám vybrat správné řešení pro váš projekt",
       "cta": "Kontaktujte nás",
-      "ctaDesc": "Bezplatná konzultace"
+      "ctaDesc": "Bezplatná konzultace",
+      "phoneCta": "+420 XXX XXX XXX",
+      "phoneHref": "+420000000000"
     },
     "whyUs": {
       "title": "Proč nakupovat u nás",

@@ -5,7 +5,7 @@
  * GTM then routes events to GA4, Meta, Google Ads, Sklik, etc.
  * If GTM is not configured, events are silently dropped (graceful degradation).
  *
- * Every event automatically includes `locale` (extracted from URL path).
+ * Every event automatically includes `locale` (extracted from html lang attribute).
  * Meta Pixel events are fired alongside GA4 events where applicable.
  */
 
@@ -53,11 +53,11 @@ declare global {
 
 // ──── Helpers ────
 
-/** Extract locale from URL path (first segment, e.g. /sk/produkt → "sk") */
+/** Extract locale from html lang attribute (set by Next.js layout) */
 function getLocale(): string {
   if (typeof window === "undefined") return "unknown"
-  const segment = window.location.pathname.split("/")[1]
-  return segment && /^(cs|sk|pl|en|de)$/.test(segment) ? segment : "cs"
+  const lang = document.documentElement.lang
+  return lang && /^(cs|sk|pl|en|de)$/.test(lang) ? lang : "en"
 }
 
 function push(data: EcommerceEvent | CustomEvent | Record<string, unknown>) {

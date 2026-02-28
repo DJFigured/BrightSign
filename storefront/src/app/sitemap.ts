@@ -1,18 +1,30 @@
 import type { MetadataRoute } from "next"
+import { headers } from "next/headers"
 import { sdk } from "@/lib/sdk"
-import { locales } from "@/i18n/config"
+import { getDomainConfig, type Locale } from "@/i18n/config"
+import { localizePath } from "@/lib/url-helpers"
 
 // Generate at runtime (not build time) — backend unavailable during Docker build
 export const dynamic = "force-dynamic"
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://ebrightsign.eu"
-
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const headersList = await headers()
+  const hostname =
+    headersList.get("x-forwarded-host") || headersList.get("host") || ""
+  const config = getDomainConfig(hostname)
+  const locale = config.locale as Locale
+  const baseUrl = config.siteUrl
+
+  function url(internalPath: string): string {
+    const localized = localizePath(internalPath, locale)
+    return `${baseUrl}${localized}`
+  }
+
   const entries: MetadataRoute.Sitemap = []
 
-  // Static pages per locale
+  // Static pages (internal Czech paths — localized automatically)
   const staticPages = [
-    { path: "", changeFrequency: "daily" as const, priority: 1.0 },
+    { path: "/", changeFrequency: "daily" as const, priority: 1.0 },
     { path: "/kategorie", changeFrequency: "daily" as const, priority: 0.9 },
     { path: "/kontakt", changeFrequency: "monthly" as const, priority: 0.5 },
     { path: "/b2b/registrace", changeFrequency: "monthly" as const, priority: 0.6 },
@@ -28,13 +40,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ]
 
   for (const page of staticPages) {
-    for (const locale of locales) {
-      entries.push({
-        url: `${SITE_URL}/${locale}${page.path}`,
-        changeFrequency: page.changeFrequency,
-        priority: page.priority,
-      })
-    }
+    entries.push({
+      url: url(page.path),
+      changeFrequency: page.changeFrequency,
+      priority: page.priority,
+    })
   }
 
   // Dynamic: categories
@@ -45,13 +55,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })) as { product_categories: Array<{ handle: string }> }
 
     for (const cat of product_categories) {
-      for (const locale of locales) {
-        entries.push({
-          url: `${SITE_URL}/${locale}/kategorie/${cat.handle}`,
-          changeFrequency: "weekly",
-          priority: 0.7,
-        })
-      }
+      entries.push({
+        url: url(`/kategorie/${cat.handle}`),
+        changeFrequency: "weekly",
+        priority: 0.7,
+      })
     }
   } catch {
     // Silently skip if API unavailable
@@ -65,13 +73,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })) as { products: Array<{ handle: string }> }
 
     for (const product of products) {
-      for (const locale of locales) {
-        entries.push({
-          url: `${SITE_URL}/${locale}/produkt/${product.handle}`,
-          changeFrequency: "weekly",
-          priority: 0.8,
-        })
-      }
+      entries.push({
+        url: url(`/produkt/${product.handle}`),
+        changeFrequency: "weekly",
+        priority: 0.8,
+      })
     }
   } catch {
     // Silently skip if API unavailable

@@ -1,11 +1,13 @@
 import { getTranslations, getLocale } from "next-intl/server"
+import { getDomainConfigByLocale, type Locale } from "@/i18n/config"
+import { localizePath } from "@/lib/url-helpers"
 import type { Metadata } from "next"
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://brightsign.cz"
-
 export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale() as Locale
+  const config = getDomainConfigByLocale(locale)
   const t = await getTranslations("faq")
-  const title = `${t("title")} | BrightSign.cz`
+  const title = `${t("title")} | ${config.storeName}`
   const description = t("metaDescription")
   return {
     title,
@@ -19,7 +21,9 @@ const FAQ_KEYS = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8"] as const
 
 export default async function FaqPage() {
   const t = await getTranslations("faq")
-  const locale = await getLocale()
+  const locale = await getLocale() as Locale
+  const config = getDomainConfigByLocale(locale)
+  const siteUrl = config.siteUrl
 
   const faqItems = FAQ_KEYS.map((key) => ({
     question: t(`${key}.question`),
@@ -43,8 +47,8 @@ export default async function FaqPage() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "BrightSign.cz", item: `${SITE_URL}/${locale}` },
-      { "@type": "ListItem", position: 2, name: t("title"), item: `${SITE_URL}/${locale}/faq` },
+      { "@type": "ListItem", position: 1, name: config.storeName, item: siteUrl },
+      { "@type": "ListItem", position: 2, name: t("title"), item: `${siteUrl}${localizePath("/faq", locale)}` },
     ],
   }
 

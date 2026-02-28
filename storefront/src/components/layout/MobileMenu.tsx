@@ -11,7 +11,6 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet"
 import { Separator } from "@/components/ui/separator"
-import { LocaleSwitcher } from "./LocaleSwitcher"
 import { ChevronDown } from "lucide-react"
 import type { HeaderNavData } from "./Header"
 
@@ -57,7 +56,7 @@ export function MobileMenu({ open, onClose, navData }: MobileMenuProps) {
           <SheetTitle className="text-left">
             <Image
               src="/logo.svg"
-              alt="BrightSign.cz"
+              alt="eBrightSign"
               width={160}
               height={27}
               className="h-6 w-auto"
@@ -173,12 +172,6 @@ export function MobileMenu({ open, onClose, navData }: MobileMenuProps) {
           ))}
         </nav>
 
-        <Separator className="my-4" />
-
-        <div className="px-3">
-          <p className="mb-2 text-xs text-muted-foreground">{th("language")}</p>
-          <LocaleSwitcher />
-        </div>
       </SheetContent>
     </Sheet>
   )

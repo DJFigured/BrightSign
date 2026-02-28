@@ -1,7 +1,8 @@
 import { sdk } from "@/lib/sdk"
 import { getLocale, getTranslations } from "next-intl/server"
-import { regionMap, type Locale } from "@/i18n/config"
+import { regionMap, getDomainConfigByLocale, type Locale } from "@/i18n/config"
 import { getRegionId } from "@/lib/medusa-helpers"
+import { localizePath } from "@/lib/url-helpers"
 import { CategoryPageClient } from "./client"
 import type { Metadata } from "next"
 
@@ -12,6 +13,8 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { handle } = await params
+  const locale = await getLocale() as Locale
+  const config = getDomainConfigByLocale(locale)
   try {
     const { product_categories } = (await sdk.store.category.list({
       fields: "name,description",
@@ -21,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     const cat = product_categories[0]
     if (cat) {
-      const title = `${cat.name} | BrightSign.cz`
+      const title = `${cat.name} | ${config.storeName}`
       const description = cat.description || `${cat.name} — BrightSign digital signage`
       return {
         title,
@@ -41,13 +44,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   } catch {
     // fallback
   }
-  return { title: `${handle} | BrightSign.cz` }
+  return { title: `${handle} | ${config.storeName}` }
 }
 
 export default async function CategoryPage({ params, searchParams }: Props) {
   const { handle } = await params
   const sp = await searchParams
   const locale = await getLocale() as Locale
+  const config = getDomainConfigByLocale(locale)
+  const siteUrl = config.siteUrl
   const regionCode = regionMap[locale]
   const regionId = getRegionId(regionCode)
 
@@ -109,11 +114,10 @@ export default async function CategoryPage({ params, searchParams }: Props) {
   }
 
   // Build breadcrumb path for structured data
-  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://brightsign.cz"
   const tc = await getTranslations("common")
   const breadcrumbItems: Array<{ name: string; url: string }> = [
-    { name: "BrightSign.cz", url: `${SITE_URL}/${locale}` },
-    { name: tc("products"), url: `${SITE_URL}/${locale}/kategorie` },
+    { name: config.storeName, url: siteUrl },
+    { name: tc("products"), url: `${siteUrl}${localizePath("/kategorie", locale)}` },
   ]
 
   if (category) {
@@ -123,13 +127,13 @@ export default async function CategoryPage({ params, searchParams }: Props) {
       if (parent) {
         breadcrumbItems.push({
           name: parent.name,
-          url: `${SITE_URL}/${locale}/kategorie/${parent.handle}`,
+          url: `${siteUrl}${localizePath(`/kategorie/${parent.handle}`, locale)}`,
         })
       }
     }
     breadcrumbItems.push({
       name: category.name,
-      url: `${SITE_URL}/${locale}/kategorie/${handle}`,
+      url: `${siteUrl}${localizePath(`/kategorie/${handle}`, locale)}`,
     })
   }
 
@@ -150,7 +154,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
     "@type": "CollectionPage",
     name: category?.name ?? handle,
     description: category ? `${category.name} — BrightSign digital signage` : undefined,
-    url: `${SITE_URL}/${locale}/kategorie/${handle}`,
+    url: `${siteUrl}${localizePath(`/kategorie/${handle}`, locale)}`,
     numberOfItems: count,
     mainEntity: {
       "@type": "ItemList",
@@ -158,7 +162,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
       itemListElement: products.slice(0, 10).map((p, i) => ({
         "@type": "ListItem",
         position: i + 1,
-        url: `${SITE_URL}/${locale}/produkt/${p.handle as string}`,
+        url: `${siteUrl}${localizePath(`/produkt/${p.handle as string}`, locale)}`,
         name: p.title as string,
       })),
     },

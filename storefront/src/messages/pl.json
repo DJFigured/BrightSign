@@ -329,7 +329,93 @@
       "subtitle": "BrightSign — światowy lider digital signage. Profesjonalne odtwarzacze bez opłat licencyjnych.",
       "cta": "Przeglądaj produkty",
       "b2bCta": "Porozmawiaj z nami",
-      "newBadge": "Nowość: Seria 6 z NPU i 5-letnią gwarancją"
+      "newBadge": "Nowość: Seria 6 z NPU i 5-letnią gwarancją",
+      "heroProduct": "XD236",
+      "heroProductLine": "Seria 6 | Dual 4K",
+      "heroProductBrand": "BrightSign Seria 6",
+      "heroProductPrice": "od 2 299 zł",
+      "heroProductPriceNote": "netto",
+      "inStock": "Dostępny",
+      "warranty5y": "5-letnia gwarancja"
+    },
+    "tabNav": {
+      "products": "Wybierz produkt",
+      "solutions": "Rozwiązania branżowe",
+      "support": "Wsparcie i serwis"
+    },
+    "serie6": {
+      "badge": "Nowość 2026",
+      "title": "Poznaj Serię 6",
+      "subtitle": "Nowa generacja odtwarzaczy BrightSign z 10-bit HDR, procesorem neuronowym i 5-letnią gwarancją.",
+      "viewAll": "Zobacz wszystkie produkty, w tym Serię 5",
+      "buy": "Kup",
+      "from": "od",
+      "exVat": "netto",
+      "hd226": {
+        "tag": "Entry 4K",
+        "headerSub": "Seria 6 | Standard I/O",
+        "name": "BrightSign HD226",
+        "desc": "Podstawowy odtwarzacz 4K z HDR i NPU",
+        "spec1": "4K Single HDR 10-bit",
+        "spec2": "NPU (AI ready)",
+        "spec3": "HTML5 + Chromium",
+        "price": "1 199 zł"
+      },
+      "hd1026": {
+        "tag": "Expanded I/O",
+        "headerSub": "Seria 6 | HDMI In + Dual LAN",
+        "name": "BrightSign HD1026",
+        "desc": "Odtwarzacz 4K z rozszerzonym I/O",
+        "spec1": "Wejście HDMI (Live TV)",
+        "spec2": "Dual Ethernet",
+        "spec3": "NPU (AI ready)",
+        "price": "1 449 zł"
+      },
+      "xd236": {
+        "tag": "Dual 4K",
+        "bestseller": "Bestseller",
+        "headerSub": "Seria 6 | PoE+ | M.2 SSD",
+        "name": "BrightSign XD236",
+        "desc": "Wydajny odtwarzacz dual 4K z PoE+",
+        "spec1": "Dual 4K HDR 10-bit",
+        "spec2": "Zasilanie PoE+",
+        "spec3": "Slot M.2 SSD",
+        "price": "2 299 zł"
+      },
+      "xd1036": {
+        "tag": "Flagship",
+        "headerSub": "Seria 6 | Full I/O | PoE+",
+        "name": "BrightSign XD1036",
+        "desc": "Flagowiec z rozszerzonym I/O",
+        "spec1": "HDMI In + Dual LAN",
+        "spec2": "Dual 4K HDR 10-bit",
+        "spec3": "PoE+ + M.2 SSD",
+        "price": "4 199 zł"
+      }
+    },
+    "brightSignOS": {
+      "badge": "BrightSignOS",
+      "title": "System operacyjny stworzony dla digital signage",
+      "subtitle": "Każdy odtwarzacz BrightSign działa na BrightSignOS — autorskim systemie zoptymalizowanym wyłącznie do prezentacji treści.",
+      "secure": { "title": "Secure — Bezpieczny", "desc": "Zamknięty OS bez punktów dostępu dla złośliwego oprogramowania. Zero znanych incydentów bezpieczeństwa." },
+      "reliable": { "title": "Reliable — Niezawodny", "desc": "99,99% uptime. Odtwarzacz automatycznie wznawia pracę w ciągu sekund po awarii zasilania." },
+      "superior": { "title": "Superior — Przewyższający", "desc": "4K HDR przy 60fps, dekodowanie dual-stream, NPU dla aplikacji AI. Wydajność bez kompromisów." },
+      "sustainable": { "title": "Sustainable — Zrównoważony", "desc": "Zużycie od 5W. Bez wentylatora, bez hałasu, minimalny ślad termiczny." },
+      "uptime": "uptime"
+    },
+    "useCasesVisual": {
+      "badge": "Dlaczego BrightSign",
+      "title": "#1 na światowym rynku digital signage",
+      "subtitle": "BrightSign to globalny lider w odtwarzaczach digital signage z ponad 500 000 wdrożeń w ponad 100 krajach.",
+      "check1": "500 000+ wdrożeń na całym świecie",
+      "check2": "Centralne zarządzanie przez BrightSign Network",
+      "check3": "Bez wentylatorów — zero ruchomych części",
+      "check4": "Niezawodność klasy enterprise — dedykowany OS",
+      "cta": "Bezpłatna konsultacja",
+      "imagePlaceholder": "Instalacja w handlu detalicznym",
+      "imageSubtitle": "BrightSign w pracy 24/7",
+      "powerLabel": "Zużycie energii",
+      "powerValue": "od 5W"
     },
     "categories": "Kategorie produktów",
     "featured": "Polecane produkty",
@@ -507,7 +593,9 @@
       "title": "Potrzebujesz pomocy?",
       "subtitle": "Pomożemy Ci wybrać odpowiednie rozwiązanie dla Twojego projektu",
       "cta": "Skontaktuj się z nami",
-      "ctaDesc": "Bezpłatna konsultacja"
+      "ctaDesc": "Bezpłatna konsultacja",
+      "phoneCta": "+420 XXX XXX XXX",
+      "phoneHref": "+420000000000"
     },
     "whyUs": {
       "title": "Dlaczego warto kupować u nas",

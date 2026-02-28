@@ -329,7 +329,93 @@
       "subtitle": "BrightSign — svetová jednotka v digital signage. Profesionálne prehrávače bez licenčných poplatkov.",
       "cta": "Prezrieť produkty",
       "b2bCta": "Poraďte sa s nami",
-      "newBadge": "Novinka: Séria 6 s NPU a 5-ročnou zárukou"
+      "newBadge": "Novinka: Séria 6 s NPU a 5-ročnou zárukou",
+      "heroProduct": "XD236",
+      "heroProductLine": "Séria 6 | Dual 4K",
+      "heroProductBrand": "BrightSign Séria 6",
+      "heroProductPrice": "od 539 €",
+      "heroProductPriceNote": "bez DPH",
+      "inStock": "Skladom",
+      "warranty5y": "5-ročná záruka"
+    },
+    "tabNav": {
+      "products": "Vybrať produkt",
+      "solutions": "Riešenia podľa odvetvia",
+      "support": "Podpora a servis"
+    },
+    "serie6": {
+      "badge": "Novinka 2026",
+      "title": "Spoznajte Sériu 6",
+      "subtitle": "Nová generácia BrightSign prehrávačov s 10-bit HDR, neurónovým procesorom a 5-ročnou zárukou.",
+      "viewAll": "Zobraziť všetky produkty vrátane Série 5",
+      "buy": "Kúpiť",
+      "from": "od",
+      "exVat": "bez DPH",
+      "hd226": {
+        "tag": "Entry 4K",
+        "headerSub": "Séria 6 | Standard I/O",
+        "name": "BrightSign HD226",
+        "desc": "Vstupný 4K prehrávač s HDR a NPU",
+        "spec1": "4K Single HDR 10-bit",
+        "spec2": "NPU (AI ready)",
+        "spec3": "HTML5 + Chromium",
+        "price": "279 €"
+      },
+      "hd1026": {
+        "tag": "Expanded I/O",
+        "headerSub": "Séria 6 | HDMI In + Dual LAN",
+        "name": "BrightSign HD1026",
+        "desc": "4K prehrávač s rozšíreným I/O",
+        "spec1": "HDMI vstup (Live TV)",
+        "spec2": "Dual Ethernet",
+        "spec3": "NPU (AI ready)",
+        "price": "339 €"
+      },
+      "xd236": {
+        "tag": "Dual 4K",
+        "bestseller": "Bestseller",
+        "headerSub": "Séria 6 | PoE+ | M.2 SSD",
+        "name": "BrightSign XD236",
+        "desc": "Výkonný dual 4K prehrávač s PoE+",
+        "spec1": "Dual 4K HDR 10-bit",
+        "spec2": "PoE+ napájanie",
+        "spec3": "M.2 SSD slot",
+        "price": "539 €"
+      },
+      "xd1036": {
+        "tag": "Flagship",
+        "headerSub": "Séria 6 | Full I/O | PoE+",
+        "name": "BrightSign XD1036",
+        "desc": "Vlajková loď s rozšíreným I/O",
+        "spec1": "HDMI In + Dual LAN",
+        "spec2": "Dual 4K HDR 10-bit",
+        "spec3": "PoE+ + M.2 SSD",
+        "price": "979 €"
+      }
+    },
+    "brightSignOS": {
+      "badge": "BrightSignOS",
+      "title": "Operačný systém vytvorený pre digital signage",
+      "subtitle": "Každý BrightSign prehrávač beží na BrightSignOS — proprietárnom systéme optimalizovanom výhradne pre prezentáciu obsahu. Žiadne zbytočné procesy, žiadne aktualizácie Windows, žiadne spomalenie.",
+      "secure": { "title": "Secure — Zabezpečený", "desc": "Uzavretý OS bez prístupových bodov pre malvér. Nulový počet známych bezpečnostných incidentov." },
+      "reliable": { "title": "Reliable — Spoľahlivý", "desc": "99,99% uptime. Prehrávač po výpadku prúdu automaticky obnoví prevádzku v priebehu sekúnd." },
+      "superior": { "title": "Superior — Prevyšujúci", "desc": "4K HDR pri 60fps, dual-stream dekódovanie, NPU pre AI aplikácie. Výkon bez kompromisov." },
+      "sustainable": { "title": "Sustainable — Udržateľný", "desc": "Spotreba od 5W. Žiadny ventilátor, žiadny hluk, minimálna tepelná stopa." },
+      "uptime": "uptime"
+    },
+    "useCasesVisual": {
+      "badge": "Prečo BrightSign",
+      "title": "#1 na svetovom trhu digital signage",
+      "subtitle": "BrightSign je globálna jednotka v digital signage prehrávačoch s viac ako 500 000 nasadení vo viac ako 100 krajinách.",
+      "check1": "500 000+ nasadení po celom svete",
+      "check2": "Centrálna správa cez BrightSign Network",
+      "check3": "Bez ventilátorov — nulové pohyblivé časti",
+      "check4": "Podniková spoľahlivosť — účelovo vytvorený OS",
+      "cta": "Nezáväzná konzultácia",
+      "imagePlaceholder": "Retail inštalácia",
+      "imageSubtitle": "BrightSign v prevádzke 24/7",
+      "powerLabel": "Spotreba energie",
+      "powerValue": "od 5W"
     },
     "categories": "Kategórie produktov",
     "featured": "Odporúčané produkty",
@@ -507,7 +593,9 @@
       "title": "Neviete si rady?",
       "subtitle": "Pomôžeme vám vybrať správne riešenie pre váš projekt",
       "cta": "Kontaktujte nás",
-      "ctaDesc": "Bezplatná konzultácia"
+      "ctaDesc": "Bezplatná konzultácia",
+      "phoneCta": "+420 XXX XXX XXX",
+      "phoneHref": "+420000000000"
     },
     "whyUs": {
       "title": "Prečo nakupovať u nás",
