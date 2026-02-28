@@ -34,6 +34,16 @@ interface ProductCardProps {
   index?: number
 }
 
+// Static fallback images for products without Medusa thumbnails
+const STATIC_FALLBACK: Record<string, string> = {
+  hd6: "/products/hd6-front.png",
+  xd6: "/products/xd6-front.png",
+  hd5: "/products/hd5-front.png",
+  xd5: "/products/xd5-front.jpg",
+  xt5: "/products/xt5-front.png",
+  ls5: "/products/ls5-front.png",
+}
+
 // Map familyCode prefix to segment label translation key
 const SEGMENT_KEYS: Record<string, string> = {
   LS: "segmentBasic",
@@ -106,19 +116,23 @@ export function ProductCard({ product, listName, index }: ProductCardProps) {
     <Link href={`/produkt/${product.handle}`} onClick={handleSelectItem}>
       <Card className="group h-full overflow-hidden transition-shadow hover:shadow-lg">
         <div className="relative aspect-square overflow-hidden bg-white">
-          {product.thumbnail ? (
-            <Image
-              src={product.thumbnail}
-              alt={product.title}
-              fill
-              className="object-contain p-4 transition-transform group-hover:scale-105"
-              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-            />
-          ) : (
-            <div className="flex h-full items-center justify-center text-muted-foreground">
-              {tp("noImage")}
-            </div>
-          )}
+          {(() => {
+            const familyCode = meta?.familyCode as string | undefined
+            const imgSrc = product.thumbnail || (familyCode ? STATIC_FALLBACK[familyCode] : null)
+            return imgSrc ? (
+              <Image
+                src={imgSrc}
+                alt={product.title}
+                fill
+                className="object-contain p-4 transition-transform group-hover:scale-105"
+                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              />
+            ) : (
+              <div className="flex h-full items-center justify-center text-muted-foreground">
+                {tp("noImage")}
+              </div>
+            )
+          })()}
 
           {/* Badges (decorative — product info is in the title) */}
           <div className="absolute left-2 top-2 flex flex-col gap-1" aria-hidden="true">

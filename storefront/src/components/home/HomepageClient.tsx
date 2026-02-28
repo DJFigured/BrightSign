@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ProductCard } from "@/components/product/ProductCard"
+import Image from "next/image"
 import {
   Shield, Zap, HeadphonesIcon, Monitor, Music, Layers, Tv, Cpu, Truck, Award,
   BadgeCheck, ArrowRight, Globe, Users,
@@ -55,10 +56,10 @@ const DIGITAL_SIGNAGE_ITEMS = [
 ] as const
 
 const SERIE6_PRODUCTS = [
-  { key: "hd226", model: "HD226", href: "/kategorie/hd-prehravace", highlighted: false },
-  { key: "hd1026", model: "HD1026", href: "/kategorie/hd-prehravace", highlighted: false },
-  { key: "xd236", model: "XD236", href: "/kategorie/xd-prehravace", highlighted: true },
-  { key: "xd1036", model: "XD1036", href: "/kategorie/xd-prehravace", highlighted: false },
+  { key: "hd226", model: "HD226", href: "/kategorie/hd-prehravace", highlighted: false, image: "/products/hd6-front.png" },
+  { key: "hd1026", model: "HD1026", href: "/kategorie/hd-prehravace", highlighted: false, image: "/products/hd6-front.png" },
+  { key: "xd236", model: "XD236", href: "/kategorie/xd-prehravace", highlighted: true, image: "/products/xd6-front.png" },
+  { key: "xd1036", model: "XD1036", href: "/kategorie/xd-prehravace", highlighted: false, image: "/products/xd6-front.png" },
 ] as const
 
 const BRIGHTSIGNOS_FEATURES = [
@@ -106,7 +107,7 @@ export function HomepageClient({ featuredProducts }: Props) {
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
-                <Button size="lg" variant="outline" asChild className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm">
+                <Button size="lg" variant="outline" asChild className="border-white/50 bg-white/10 text-white hover:bg-white/20 backdrop-blur-sm">
                   <Link href="/kontakt">
                     {t("hero.b2bCta")}
                   </Link>
@@ -117,14 +118,16 @@ export function HomepageClient({ featuredProducts }: Props) {
             {/* Right: Product Visual */}
             <div className="hidden justify-center md:flex">
               <div className="relative">
-                <div className="flex h-80 w-80 items-center justify-center rounded-3xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm">
+                <div className="flex h-80 w-80 flex-col items-center justify-center rounded-3xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 p-6 backdrop-blur-sm">
+                  <Image
+                    src="/products/xd6-front.png"
+                    alt={t("hero.heroProduct")}
+                    width={220}
+                    height={180}
+                    className="mb-4 drop-shadow-2xl"
+                    priority
+                  />
                   <div className="text-center">
-                    <div className="mx-auto mb-4 flex h-32 w-48 items-center justify-center rounded-xl border border-white/20 bg-gradient-to-br from-brand-primary/50 to-brand-primary-dark/80">
-                      <div className="text-white">
-                        <div className="text-3xl font-bold">{t("hero.heroProduct")}</div>
-                        <div className="mt-1 text-xs text-white/70">{t("hero.heroProductLine")}</div>
-                      </div>
-                    </div>
                     <div className="text-sm text-white/60">{t("hero.heroProductBrand")}</div>
                     <div className="mt-1 text-xl font-bold text-brand-accent">{t("hero.heroProductPrice")}</div>
                     <div className="text-xs text-white/40">{t("hero.heroProductPriceNote")}</div>
@@ -214,13 +217,20 @@ export function HomepageClient({ featuredProducts }: Props) {
                       {t("serie6.xd236.bestseller")}
                     </div>
                   )}
-                  {/* Dark gradient header */}
-                  <div className={`relative flex h-48 flex-col items-center justify-center p-6 ${product.highlighted ? "bg-gradient-to-br from-brand-primary to-pink-600" : "bg-gradient-to-br from-brand-primary-dark via-brand-primary to-brand-primary/80"}`}>
+                  {/* Dark gradient header with product image */}
+                  <div className={`relative flex h-48 flex-col items-center justify-end p-6 ${product.highlighted ? "bg-gradient-to-br from-brand-primary to-pink-600" : "bg-gradient-to-br from-brand-primary-dark via-brand-primary to-brand-primary/80"}`}>
                     <div className="absolute left-3 top-3 rounded-full bg-brand-accent/20 px-2.5 py-1 text-xs font-bold text-brand-accent">
                       {t(`serie6.${product.key}.tag`)}
                     </div>
-                    <div className="mb-1 text-3xl font-bold text-white">{product.model}</div>
-                    <div className="text-sm text-white/50">{t(`serie6.${product.key}.headerSub`)}</div>
+                    <Image
+                      src={product.image}
+                      alt={product.model}
+                      width={140}
+                      height={100}
+                      className="mb-2 drop-shadow-lg"
+                    />
+                    <div className="mb-1 text-lg font-bold text-white">{product.model}</div>
+                    <div className="text-xs text-white/50">{t(`serie6.${product.key}.headerSub`)}</div>
                   </div>
                   {/* Card body */}
                   <div className="p-5">

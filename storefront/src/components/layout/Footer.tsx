@@ -110,8 +110,8 @@ export function Footer({ navData }: FooterProps) {
             <h4 className="mb-3 font-semibold">{tc("contact")}</h4>
             <ul className="space-y-2 text-sm text-white/60">
               <li>
-                <a href="mailto:info@brightsign.cz" className="hover:text-brand-accent transition-colors">
-                  info@brightsign.cz
+                <a href="mailto:info@ebrightsign.eu" className="hover:text-brand-accent transition-colors">
+                  info@ebrightsign.eu
                 </a>
               </li>
               <li>Make more s.r.o.</li>
