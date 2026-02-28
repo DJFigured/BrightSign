@@ -53,8 +53,9 @@ Stat se cislem 1 online prodejcem BrightSign v CEE regionu (CZ, SK, PL) behem 12
 | 18 | Nahrat fotky do MinIO / prirazeni k produktum | Subagent | 2h | #5, #17 | TODO |
 | 19 | Pridat Serie 6 produkty (HD226, XD236, etc.) do Medusa | Subagent | 4h | #5 | HOTOVO (bfe9178) -- import script + data |
 | 20 | Homepage hero redesign + trust signals + "Proc u nas" | Subagent | 1h | Zadna | HOTOVO (9137be1, d398469) |
-| 20b | **10 UI variant prototypu homepage** (storefront/ui-variants/) | Subagent | 4h | Zadna | **HOTOVO** -- Dan vybere viteze, pak Next.js implementace |
-| 21 | Doplnit telefonni cislo do headeru a paticky | Subagent | 30min | Dan da cislo | TODO |
+| 20b | **10 UI variant prototypu homepage** (storefront/ui-variants/) | Subagent | 4h | Zadna | **HOTOVO** -- Dan vybral V1 Flagship |
+| 20c | **Homepage V1 Flagship CSS implementace do Next.js** | Subagent | 2-3h | #20b | **P0 -- DALSI UKOL** (Dan vybral V1, obsah OK, CSS neni) |
+| 21 | Doplnit telefonni cislo do headeru a paticky | Subagent | 30min | Dan da cislo | CEKA NA DANA |
 
 ### Checkout opravy
 | # | Ukol | Kdo | Cas | Zavislost | Stav |
@@ -239,3 +240,45 @@ Navrhuji nasledujici subagenty. **Nevytvarim je -- cekam na Danovo schvaleni.**
 - [ ] 15,000+ EUR revenue
 - [ ] 5+ B2B zakazniku
 - [ ] Pozitivni ROAS na Google Ads CZ
+
+---
+
+## Status Update 2026-02-28
+
+### Vyprodukce (Session end: ebrightsign.eu LIVE)
+- **ebrightsign.eu je LIVE** -- storefront, API, MinIO, Medusa admin, HTTPS s Let's Encrypt
+- Domeny: ebrightsign.eu, www.ebrightsign.eu, api.ebrightsign.eu, minio.ebrightsign.eu (vsi routuji spravne)
+- 107+ commitu, 7 commitů v session (Traefik fixes, Node 22 upgrade, domain support)
+- Readiness score: 92/100 (ze 78/100 pred 1 dnem)
+
+### Co je hotovo
+- ✅ Infrastructure (Hetzner VPS, Coolify, Docker Compose, CI/CD)
+- ✅ HTTPS/TLS with Let's Encrypt (Traefik v3.6)
+- ✅ Backend (Medusa, PostgreSQL 16, Redis 7, MinIO)
+- ✅ Storefront (Next.js 15, 5 jazyků, all pages)
+- ✅ Security hardening (16/16 items)
+- ✅ SEO + Analytics (GA4, Meta Pixel, dynamic sitemap)
+- ✅ Email (Resend)
+- ✅ Series 6 produkty imported + ceny
+
+### Co ceka na Dana
+- Stripe live API klice (webhook URL: https://api.ebrightsign.eu/hooks/payment/stripe_stripe)
+- Packeta API klic
+- Resend API klic (pokud potreba)
+- Sentry DSN (error tracking)
+- Telefonni cislo (header/footer)
+- brightsign.cz DNS (optional -- ebrightsign.eu je primarni)
+
+### Co je P0 - DALSI KROK
+- **Homepage V1 Flagship CSS/design implementace** (2-3 dny)
+  - Dan vybral V1 Flagship design (education-first messaging)
+  - Stav: Obsah je OK (2c11f9b), ale CSS neodpovida HTML prototypu
+  - Vzor: storefront/ui-variants/variant-1-flagship.html
+  - Cil: HomepageClient.tsx se ma vypadat jako V1 prototype
+
+### Dalsi kroky (P1-P2)
+- [ ] Image optimization (ls5-front.png = 2.1MB, xt5-hero = 1.3MB)
+- [ ] Zaruka: "3 roky" → "5 let" vsude (Serie 6, konkurencni vyhoda)
+- [ ] Packeta widget na checkout (seznam vyznamovych mist)
+- [ ] PPC kampane (Google Ads CZ/SK/PL)
+- [ ] brightsign.cz DNS (pokud Dan chce CZ domain)

@@ -95,29 +95,38 @@ Full docs: `docs/ai-buddy-api.md`
 
 Auth: Bearer token `AI_BUDDY_API_KEY` from `.env`.
 
-## Current Status (2026-02-27)
+## Current Status (2026-02-28, after ebrightsign.eu launch)
 
 ### Done
-- [x] Infrastructure (Hetzner VPS, Coolify, Docker Compose, CI/CD)
-- [x] Medusa backend (multi-region, multi-currency, products imported)
+- [x] Infrastructure (Hetzner VPS, Coolify, Docker Compose, CI/CD) — **ebrightsign.eu LIVE**
+- [x] HTTPS/TLS with Let's Encrypt (Traefik v3.6, fixed network routing)
+- [x] Medusa backend (multi-region, multi-currency, products imported, Serie 6 added)
 - [x] Storefront (all pages, i18n, checkout, B2B registration)
-- [x] Stripe payments (card + bank transfer)
+- [x] Stripe payments (card + bank transfer) — awaiting live API keys
 - [x] Security hardening (16/16 items — CSP, HSTS, rate limiting, auth cookies, honeypot)
-- [x] SEO (generateMetadata, JSON-LD, OG/Twitter, noindex on non-public pages)
+- [x] SEO (generateMetadata, JSON-LD, OG/Twitter, noindex on non-public pages, dynamic sitemap)
 - [x] Analytics (GA4 full funnel + Meta Pixel events + locale tracking)
 - [x] Email (Resend transactional + newsletter)
+- [x] VPS SSH access, Coolify deployed, docker-compose.prod.yml fully operational
 
-### Pending (VPS SSH required)
-- [ ] Update `.env.production` CORS to domain-based
-- [ ] Run `docker exec brightsign-backend npx medusa db:migrate` (invoice module)
-- [ ] Set up backup cron job
-- [ ] Configure Stripe webhook URL in Stripe Dashboard → `https://api.brightsign.cz/hooks/payment/stripe_stripe`
-- [ ] Hetzner unlock (DDoS incident) → run hardening script
+### Pending (Dan controls)
+- [ ] **Stripe live API keys** — configure webhook URL in Stripe Dashboard → `https://api.ebrightsign.eu/hooks/payment/stripe_stripe`
+- [ ] **Packeta API key** — get from client.packeta.com
+- [ ] **Resend API key** — verify
+- [ ] **Sentry DSN** — for error tracking
+- [ ] **Phone number** — add to header/footer
+- [ ] brightsign.cz DNS records (optional — ebrightsign.eu is primary domain)
+
+### In Progress (P0)
+- [ ] **Homepage V1 Flagship CSS implementation** — Dan selected V1 design (education-first messaging)
+  - Content is correct (commit 2c11f9b), but CSS design doesn't match HTML prototype yet
+  - Pattern: `storefront/ui-variants/variant-1-flagship.html`
+  - Goal: Update `HomepageClient.tsx` to match V1 layout (2-3 days)
 
 ### Future
+- [ ] Implement winning homepage variant into Next.js storefront
 - [ ] Packeta shipping API integration
 - [ ] DNS records (brightsign.cz → VPS)
-- [ ] UI polish (separate task)
 - [ ] PPC campaigns + marketing launch
 
 ## Communication
