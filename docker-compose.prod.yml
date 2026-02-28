@@ -30,15 +30,15 @@ services:
       - "traefik.http.routers.bs-backend-eu-http.rule=Host(`api.ebrightsign.eu`)"
       - "traefik.http.routers.bs-backend-eu-http.entrypoints=http"
       - "traefik.http.routers.bs-backend-eu-http.middlewares=redirect-to-https"
-      # CZ domain (pending — DNS not yet pointing here)
-      - "traefik.http.routers.bs-backend-cz.rule=Host(`api.brightsign.cz`)"
-      - "traefik.http.routers.bs-backend-cz.entrypoints=https"
-      - "traefik.http.routers.bs-backend-cz.tls=true"
-      - "traefik.http.routers.bs-backend-cz.tls.certresolver=letsencrypt"
-      - "traefik.http.routers.bs-backend-cz.service=bs-backend"
-      - "traefik.http.routers.bs-backend-cz-http.rule=Host(`api.brightsign.cz`)"
-      - "traefik.http.routers.bs-backend-cz-http.entrypoints=http"
-      - "traefik.http.routers.bs-backend-cz-http.middlewares=redirect-to-https"
+      # CZ domain — uncomment when brightsign.cz DNS points to VPS
+      # - "traefik.http.routers.bs-backend-cz.rule=Host(`api.brightsign.cz`)"
+      # - "traefik.http.routers.bs-backend-cz.entrypoints=https"
+      # - "traefik.http.routers.bs-backend-cz.tls=true"
+      # - "traefik.http.routers.bs-backend-cz.tls.certresolver=letsencrypt"
+      # - "traefik.http.routers.bs-backend-cz.service=bs-backend"
+      # - "traefik.http.routers.bs-backend-cz-http.rule=Host(`api.brightsign.cz`)"
+      # - "traefik.http.routers.bs-backend-cz-http.entrypoints=http"
+      # - "traefik.http.routers.bs-backend-cz-http.middlewares=redirect-to-https"
     depends_on:
       postgres:
         condition: service_healthy
@@ -78,15 +78,15 @@ services:
       - "traefik.http.routers.bs-storefront-eu-http.rule=Host(`ebrightsign.eu`) || Host(`www.ebrightsign.eu`)"
       - "traefik.http.routers.bs-storefront-eu-http.entrypoints=http"
       - "traefik.http.routers.bs-storefront-eu-http.middlewares=redirect-to-https"
-      # CZ domain (pending — DNS not yet pointing here)
-      - "traefik.http.routers.bs-storefront-cz.rule=Host(`brightsign.cz`) || Host(`www.brightsign.cz`)"
-      - "traefik.http.routers.bs-storefront-cz.entrypoints=https"
-      - "traefik.http.routers.bs-storefront-cz.tls=true"
-      - "traefik.http.routers.bs-storefront-cz.tls.certresolver=letsencrypt"
-      - "traefik.http.routers.bs-storefront-cz.service=bs-storefront"
-      - "traefik.http.routers.bs-storefront-cz-http.rule=Host(`brightsign.cz`) || Host(`www.brightsign.cz`)"
-      - "traefik.http.routers.bs-storefront-cz-http.entrypoints=http"
-      - "traefik.http.routers.bs-storefront-cz-http.middlewares=redirect-to-https"
+      # CZ domain — uncomment when brightsign.cz DNS points to VPS
+      # - "traefik.http.routers.bs-storefront-cz.rule=Host(`brightsign.cz`) || Host(`www.brightsign.cz`)"
+      # - "traefik.http.routers.bs-storefront-cz.entrypoints=https"
+      # - "traefik.http.routers.bs-storefront-cz.tls=true"
+      # - "traefik.http.routers.bs-storefront-cz.tls.certresolver=letsencrypt"
+      # - "traefik.http.routers.bs-storefront-cz.service=bs-storefront"
+      # - "traefik.http.routers.bs-storefront-cz-http.rule=Host(`brightsign.cz`) || Host(`www.brightsign.cz`)"
+      # - "traefik.http.routers.bs-storefront-cz-http.entrypoints=http"
+      # - "traefik.http.routers.bs-storefront-cz-http.middlewares=redirect-to-https"
     depends_on:
       backend:
         condition: service_healthy
@@ -115,12 +115,12 @@ services:
       - "traefik.http.routers.bs-minio-eu.tls=true"
       - "traefik.http.routers.bs-minio-eu.tls.certresolver=letsencrypt"
       - "traefik.http.routers.bs-minio-eu.service=bs-minio"
-      # CZ domain (pending — DNS not yet pointing here)
-      - "traefik.http.routers.bs-minio-cz.rule=Host(`minio.brightsign.cz`)"
-      - "traefik.http.routers.bs-minio-cz.entrypoints=https"
-      - "traefik.http.routers.bs-minio-cz.tls=true"
-      - "traefik.http.routers.bs-minio-cz.tls.certresolver=letsencrypt"
-      - "traefik.http.routers.bs-minio-cz.service=bs-minio"
+      # CZ domain — uncomment when brightsign.cz DNS points to VPS
+      # - "traefik.http.routers.bs-minio-cz.rule=Host(`minio.brightsign.cz`)"
+      # - "traefik.http.routers.bs-minio-cz.entrypoints=https"
+      # - "traefik.http.routers.bs-minio-cz.tls=true"
+      # - "traefik.http.routers.bs-minio-cz.tls.certresolver=letsencrypt"
+      # - "traefik.http.routers.bs-minio-cz.service=bs-minio"
     volumes:
       - minio_data:/data
     healthcheck:
