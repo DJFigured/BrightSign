@@ -4,42 +4,22 @@ import { ContainerRegistrationKeys } from "@medusajs/framework/utils"
 /**
  * GET /health
  * Public healthcheck endpoint for UptimeRobot / monitoring.
- * Pings PostgreSQL and Redis, returns status.
+ * Pings PostgreSQL via a lightweight query.
  */
 export async function GET(req: MedusaRequest, res: MedusaResponse) {
-  const checks: Record<string, "ok" | "error"> = {
-    database: "error",
-    redis: "error",
-  }
-
-  // Check PostgreSQL
   try {
     const query = req.scope.resolve(ContainerRegistrationKeys.QUERY)
     await query.graph({ entity: "product", fields: ["id"], pagination: { take: 1 } })
-    checks.database = "ok"
+
+    res.status(200).json({
+      status: "ok",
+      version: "2.13.1",
+      timestamp: new Date().toISOString(),
+    })
   } catch {
-    // database unreachable
+    res.status(503).json({
+      status: "error",
+      timestamp: new Date().toISOString(),
+    })
   }
-
-  // Check Redis
-  try {
-    const redis = req.scope.resolve("redis") as any
-    if (redis?.ping) {
-      await redis.ping()
-      checks.redis = "ok"
-    } else if (redis?.status === "ready") {
-      checks.redis = "ok"
-    }
-  } catch {
-    // redis unreachable
-  }
-
-  const healthy = checks.database === "ok" && checks.redis === "ok"
-
-  res.status(healthy ? 200 : 503).json({
-    status: healthy ? "ok" : "degraded",
-    checks,
-    version: "2.13.1",
-    timestamp: new Date().toISOString(),
-  })
 }
