@@ -2,7 +2,10 @@ import type { MetadataRoute } from "next"
 import { sdk } from "@/lib/sdk"
 import { locales } from "@/i18n/config"
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://brightsign.cz"
+// Generate at runtime (not build time) — backend unavailable during Docker build
+export const dynamic = "force-dynamic"
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://ebrightsign.eu"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const entries: MetadataRoute.Sitemap = []
